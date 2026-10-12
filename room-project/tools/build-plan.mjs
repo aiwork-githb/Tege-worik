@@ -228,7 +228,7 @@ push(text(X(160), Y(494), 'Сиденье у окна 230×50, h 45', `font-size
 push(text(X(160), Y(485), 'под ним радиатор 100×30 (пунктир)', `font-size="6" text-anchor="middle" fill="${C.muted}"`));
 const sf = item('soffit');
 push(rect(sf.x0, sf.x1, sf.y0, sf.y1, `fill="none" stroke="${C.ceiling}" stroke-width="0.7" stroke-dasharray="6 3"`));
-push(badge(80, 500, 14));
+push(badge(84, 500, 14));
 
 // 34, 35 книжные шкафы в углах стены C: к сиденью — открытые полки, к столу — шкаф
 for (const id of ['studyBookcase', 'gamingBookcase']) {
@@ -241,7 +241,22 @@ for (const id of ['studyBookcase', 'gamingBookcase']) {
   push(`<line x1="${X(zoneSide[0] + 3)}" y1="${Y(bc.y0 + 1.5)}" x2="${X(zoneSide[1] - 3)}" y2="${Y(bc.y0 + 1.5)}" stroke="${C.ink}" stroke-width="1.2"/>`);
   push(badge((seatSide[0] + seatSide[1]) / 2, 500, bc.n));
 }
-push(rect(333, 354, 478, 523, `fill="none" stroke="${C.muted}" stroke-width="0.6" stroke-dasharray="2 2"`));
+// нижние дверцы шкафов открываются под столешницей
+for (const id of ['studyBookcase', 'gamingBookcase']) {
+  const bc = item(id);
+  const w = (bc.x1 - bc.x0) / 2;
+  push(`<path d="M ${X(bc.x0)} ${Y(bc.y0)} L ${X(bc.x0)} ${Y(bc.y0 - w)} A ${w} ${w} 0 0 1 ${X(bc.x0 + w)} ${Y(bc.y0)}" fill="none" stroke="${C.muted}" stroke-width="0.5" stroke-dasharray="2 2"/>`);
+  push(`<path d="M ${X(bc.x1)} ${Y(bc.y0)} L ${X(bc.x1)} ${Y(bc.y0 - w)} A ${w} ${w} 0 0 0 ${X(bc.x1 - w)} ${Y(bc.y0)}" fill="none" stroke="${C.muted}" stroke-width="0.5" stroke-dasharray="2 2"/>`);
+}
+// 36 мягкие спинки у торцов сиденья
+for (const id of ['seatBackL', 'seatBackR']) {
+  const b = item(id);
+  push(rect(b.x0, b.x1, b.y0, b.y1, `fill="${C.soft}" stroke="${C.ink}" stroke-width="0.5"`));
+}
+// системный блок под игровым столом
+const pcIt = item('pc');
+push(rect(pcIt.x0, pcIt.x1, pcIt.y0, pcIt.y1, `fill="none" stroke="${C.muted}" stroke-width="0.6" stroke-dasharray="2 2"`));
+push(text(X((pcIt.x0 + pcIt.x1) / 2), Y(pcIt.y0 + 7), 'ПК', `font-size="6" text-anchor="middle" fill="${C.muted}"`));
 push(badge(272, 500, 15));
 
 // 16 кольцо и держатель мяча
@@ -313,7 +328,8 @@ const legend = [
   [11, 'Игровое кресло'], [12, 'Перфопанель (h 135–195)'], [13, 'Медиатумба (h 15–55)'],
   [14, 'Сиденье у окна (h 45)'], [15, 'Дубовый короб над окном (h 235)'], [16, 'Мини-кольцо и держатель мяча'],
   [17, 'Проектор на потолке'], [18, 'Экран 100″, низ на 90'], [30, 'Ковёр 160×230'],
-  [34, 'Книжный шкаф 65×50×235 у учёбы'], [35, 'Книжный шкаф 70×50×235 у игры'],
+  [34, 'Книжный шкаф 65×50: внизу полки с дверцами'], [35, 'Книжный шкаф 70×50: внизу полки с дверцами'],
+  [36, 'Мягкие спинки у сиденья (h 45–75)'],
 ];
 push(text(PX, 84, 'МЕБЕЛЬ И ОБОРУДОВАНИЕ', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 legend.forEach(([n, s], i) => {
@@ -326,7 +342,7 @@ const PX2 = 680;
 push(text(PX2, 84, 'ЭЛЕКТРИКА', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const shortPower = {
   E1: 'выключатель, h 90', E2: '1 розетка, h 30, уборка', E3: '4 розетки, h 35, медиа + LAN',
-  E4: '4 розетки, h 85, игра', E5: '4 розетки, h 30, ниша ПК + LAN', E6: '1 розетка USB, h 55',
+  E4: '4 розетки, h 85, игра', E5: '4 розетки, h 30, у ПК + 2 LAN', E6: '1 розетка USB, h 55',
   E7: '2 розетки, h 60, кровать', E8: '1 розетка, h 20, LED', E9: 'бра у кровати, h 105',
   E10: '2 розетки, h 85, учёба', E11: 'LED полок, h 118', E12: 'бра у окна, h 100',
   E13: 'проектор: розетка + HDMI', E14: 'мотор экрана', E15: 'LED в коробе',
@@ -341,7 +357,7 @@ const sockets = POWER.filter((p) => p.type === 'socket').reduce((a, p) => a + p.
 push(text(PX2, 98 + POWER.length * 11.5 + 4, `Розеток всего ${sockets}: игра 8, кровать 2, учёба 2`, `font-size="6.5" fill="${C.muted}"`));
 
 // обозначения
-const LY = 335;
+const LY = 342;
 push(text(PX, LY, 'ОБОЗНАЧЕНИЯ', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const sym = [
   [(x, y) => `<line x1="${x}" y1="${y}" x2="${x + 20}" y2="${y}" stroke="${C.pass}" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>`, 'проход, см (минимум 70)'],
@@ -361,7 +377,7 @@ sym.forEach(([draw, s], i) => {
 });
 
 // результаты проверки
-const CY = 412;
+const CY = 418;
 push(text(PX, CY, 'ПРОВЕРКА ПЛАНИРОВКИ (tools/check-layout.mjs)', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const results = runChecks();
 results.forEach((r, i) => {
@@ -371,7 +387,7 @@ results.forEach((r, i) => {
 });
 
 // компас и масштабная линейка
-const KY = 620;
+const KY = 648;
 push(`<g transform="translate(${PX + 20} ${KY})">
   <circle r="16" fill="none" stroke="${C.ink}" stroke-width="0.6"/>
   <path d="M -14 0 L 4 -5 L 4 5 Z" fill="${C.ink}"/>

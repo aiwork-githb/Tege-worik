@@ -78,6 +78,20 @@ export function runChecks() {
   add('Шкафы у окна', 'Шкафы стоят в углах и примыкают к торцам сиденья',
     studyBc.x0 === 0 && studyBc.x1 === seat.x0 && gameBc.x1 === ROOM.width && gameBc.x0 === seat.x1, '');
 
+  // Мягкие спинки у торцов сиденья: от сиденья до уровня столов; нижние дверцы шкафов открываются под столешницей.
+  const gDesk = ITEMS.find((it) => it.id === 'gamingDesk');
+  const backs = ITEMS.filter((it) => it.id.startsWith('seatBack'));
+  add('Шкафы у окна', `Мягкие спинки от сиденья (${seat.h1}) до уровня столов (${gDesk.h1})`,
+    backs.length === 2 && backs.every((b) => b.h0 === seat.h1 && b.h1 === gDesk.h1 && b.h1 === ITEMS.find((it) => it.id === 'studyDesk').h1), '');
+  const doorBlockers = [];
+  for (const bc of [studyBc, gameBc]) {
+    const leafW = (bc.x1 - bc.x0) / 2;
+    const swing = { x0: bc.x0, x1: bc.x1, y0: bc.y0 - leafW, y1: bc.y0, h0: 0, h1: bc.lower };
+    ITEMS.filter((it) => it.kind === 'floor' && !['studyDesk', 'gamingDesk'].includes(it.id) && it.id !== bc.id && volumeOverlap(it, swing))
+      .forEach((it) => doorBlockers.push(`${bc.name}: ${it.name}`));
+  }
+  add('Шкафы у окна', 'Нижние дверцы шкафов открываются под столешницей свободно', doorBlockers.length === 0, doorBlockers.join('; '));
+
   // 7. Учебное место: сидящий смотрит на стену D, левая рука — к стене A (меньшие y).
   const desk = ITEMS.find((it) => it.id === 'studyDesk');
   const ped = ITEMS.find((it) => it.id === 'pedestal');
