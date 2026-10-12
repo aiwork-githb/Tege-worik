@@ -8,6 +8,8 @@
     <rect width="4" height="4" fill="#5A5652"/><rect x="1" y="1" width="2" height="2" fill="#8E8983"/></pattern>
   <pattern id="peg" width="3" height="3" patternUnits="userSpaceOnUse">
     <rect width="3" height="3" fill="#3A3836"/><circle cx="1.5" cy="1.5" r="0.6" fill="#9A948D"/></pattern>
+  <pattern id="shelf" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="4" fill="#E9D7BD"/><line x1="0" y1="2" x2="4" y2="2" stroke="#9C7A55" stroke-width="0.6"/></pattern>
   <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
     <path d="M0,0 L10,5 L0,10 z" fill="#2F7D55"/></marker>
 </defs>
@@ -45,54 +47,56 @@
 <path d="M 315 620 A 70 70 0 0 1 385 550" fill="none" stroke="#2E2C2A" stroke-width="0.6" stroke-dasharray="3 2"/>
 <rect x="385" y="550" width="4" height="70" fill="#B8956A" stroke="#2E2C2A" stroke-width="0.6"/>
 <text x="350" y="641" font-size="7" text-anchor="middle" fill="#6E6862">дверь 70×200, внутрь</text>
-<rect x="200" y="280" width="160" height="230" fill="#E4DED5" stroke="#6E6862" stroke-width="0.5" stroke-dasharray="2 2"/>
+<rect x="200" y="290" width="160" height="230" fill="#E4DED5" stroke="#6E6862" stroke-width="0.5" stroke-dasharray="2 2"/>
 <g fill="none" stroke="#FFFFFF" stroke-width="1.2">
-  <rect x="208" y="288" width="144" height="214" />
-  <rect x="255" y="425" width="50" height="77" />
-  <circle cx="280" cy="425" r="25"/>
-  <line x1="208" y1="370" x2="352" y2="370"/>
+  <rect x="208" y="298" width="144" height="214" />
+  <rect x="255" y="435" width="50" height="77" />
+  <circle cx="280" cy="435" r="25"/>
+  <line x1="208" y1="380" x2="352" y2="380"/>
 </g>
 <rect x="80" y="570" width="210" height="50" fill="#E6E1DA" stroke="#2E2C2A" stroke-width="0.8"/>
 <rect x="80" y="565" width="106" height="5" fill="url(#perf)" stroke="#2E2C2A" stroke-width="0.5"/>
 <rect x="184" y="560" width="106" height="5" fill="url(#perf)" stroke="#2E2C2A" stroke-width="0.5"/>
 <text x="185" y="588" font-size="8.5" text-anchor="middle" fill="#2E2C2A" font-weight="600">Шкаф-купе 210×60×255</text>
-<text x="185" y="598" font-size="6.5" text-anchor="middle" fill="#6E6862">двери: перфорированный металл</text>
+<text x="185" y="598" font-size="6.5" text-anchor="middle" fill="#6E6862">двери: перфорированный МДФ, графит</text>
 <g><circle cx="94" cy="590" r="6" fill="#2E2C2A"/><text x="94" y="592.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">1</text></g>
-<rect x="80" y="265" width="5" height="215" fill="#B9B2A8" stroke="#2E2C2A" stroke-width="0.6"/>
-<rect x="85" y="320" width="210" height="150" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
-<rect x="110" y="345" width="160" height="100" fill="none" stroke="#B8956A" stroke-width="0.5" stroke-dasharray="3 2"/>
-<rect x="90" y="325" width="200" height="140" fill="#F6F2EC" stroke="#6E6862" stroke-width="0.5"/>
-<rect x="94" y="400" width="33" height="58" fill="#FFFFFF" stroke="#6E6862" stroke-width="0.5" rx="4"/>
-<rect x="94" y="332" width="33" height="58" fill="#FFFFFF" stroke="#6E6862" stroke-width="0.5" rx="4"/>
-<rect x="263" y="326" width="24" height="138" fill="#C7652F" opacity="0.85" stroke="none"/>
-<text x="220" y="388" font-size="8.5" text-anchor="middle" fill="#2E2C2A" font-weight="600">Кровать 140×200</text>
-<text x="220" y="398" font-size="6.5" text-anchor="middle" fill="#6E6862">рама 150×210, парящая</text>
-<text x="220" y="407" font-size="6" text-anchor="middle" fill="#6E6862">плед — оранжевый</text>
-<g><circle cx="230" cy="335" r="6" fill="#2E2C2A"/><text x="230" y="337.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text></g>
-<g><circle cx="94" cy="275" r="6" fill="#2E2C2A"/><text x="94" y="277.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">4</text></g>
-<rect x="85" y="270" width="40" height="45" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.7"/>
-<g><circle cx="108" cy="293" r="6" fill="#2E2C2A"/><text x="108" y="295.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">5</text></g>
-<rect x="80" y="95" width="65" height="160" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
-<rect x="80" y="95" width="30" height="160" fill="none" stroke="#7A5FA8" stroke-width="0.7" stroke-dasharray="4 2"/>
-<rect x="88" y="102" width="50" height="40" fill="none" stroke="#6E6862" stroke-width="0.6" stroke-dasharray="2 2"/>
-<text x="126" y="180" font-size="8" font-weight="600" fill="#2E2C2A" text-anchor="middle" transform="rotate(-90 126 180)">Учебный стол 160×65</text>
-<g><circle cx="126" cy="238" r="6" fill="#2E2C2A"/><text x="126" y="240.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">6</text></g>
-<g><circle cx="95" cy="175" r="6" fill="#2E2C2A"/><text x="95" y="177.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">7</text></g>
-<g><circle cx="113" cy="122" r="6" fill="#2E2C2A"/><text x="113" y="124.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">8</text></g>
-<rect x="150" y="147" width="65" height="65" fill="none" stroke="#2E2C2A" stroke-width="0.6" stroke-dasharray="3 2" rx="8"/>
-<circle cx="182.5" cy="179.5" r="20" fill="#FFFFFF" stroke="#2E2C2A" stroke-width="0.6"/>
-<g><circle cx="182.5" cy="179.5" r="6" fill="#2E2C2A"/><text x="182.5" y="181.9" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">9</text></g>
-<rect x="305" y="154" width="67" height="66" fill="none" stroke="#2E2C2A" stroke-width="0.6" stroke-dasharray="3 2" rx="8"/>
-<circle cx="338.5" cy="187" r="20" fill="#FFFFFF" stroke="#2E2C2A" stroke-width="0.6"/>
-<g><circle cx="338.5" cy="187" r="6" fill="#2E2C2A"/><text x="338.5" y="189.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">11</text></g>
-<rect x="375" y="95" width="70" height="180" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
-<line x1="407" y1="244" x2="410" y2="185" stroke="#3A3836" stroke-width="2.4"/>
-<line x1="410" y1="184" x2="407" y2="125" stroke="#3A3836" stroke-width="2.4"/>
-<rect x="385" y="104" width="50" height="21" fill="none" stroke="#6E6862" stroke-width="0.6" stroke-dasharray="2 2"/>
-<text x="392" y="185" font-size="8" font-weight="600" fill="#2E2C2A" text-anchor="middle" transform="rotate(-90 392 185)">Игровой стол 180×70</text>
-<rect x="441" y="125" width="4" height="120" fill="url(#peg)" stroke="#2E2C2A" stroke-width="0.4"/>
-<g><circle cx="425" cy="260" r="6" fill="#2E2C2A"/><text x="425" y="262.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">10</text></g>
-<g><circle cx="432" cy="110" r="6" fill="#2E2C2A"/><text x="432" y="112.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">12</text></g>
+<rect x="80" y="275" width="5" height="215" fill="#B9B2A8" stroke="#2E2C2A" stroke-width="0.6"/>
+<rect x="85" y="330" width="210" height="150" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
+<rect x="110" y="355" width="160" height="100" fill="none" stroke="#B8956A" stroke-width="0.5" stroke-dasharray="3 2"/>
+<rect x="90" y="335" width="200" height="140" fill="#F6F2EC" stroke="#6E6862" stroke-width="0.5"/>
+<rect x="94" y="410" width="33" height="58" fill="#FFFFFF" stroke="#6E6862" stroke-width="0.5" rx="4"/>
+<rect x="94" y="342" width="33" height="58" fill="#FFFFFF" stroke="#6E6862" stroke-width="0.5" rx="4"/>
+<rect x="263" y="336" width="24" height="138" fill="#C7652F" opacity="0.85" stroke="none"/>
+<text x="220" y="398" font-size="8.5" text-anchor="middle" fill="#2E2C2A" font-weight="600">Кровать 140×200</text>
+<text x="220" y="408" font-size="6.5" text-anchor="middle" fill="#6E6862">рама 150×210, парящая</text>
+<text x="220" y="417" font-size="6" text-anchor="middle" fill="#6E6862">плед — оранжевый</text>
+<g><circle cx="230" cy="345" r="6" fill="#2E2C2A"/><text x="230" y="347.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">2</text></g>
+<g><circle cx="94" cy="283" r="6" fill="#2E2C2A"/><text x="94" y="285.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">4</text></g>
+<rect x="85" y="280" width="40" height="45" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.7"/>
+<g><circle cx="108" cy="302.5" r="6" fill="#2E2C2A"/><text x="108" y="304.9" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">5</text></g>
+<rect x="80" y="145" width="65" height="130" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
+<rect x="80" y="145" width="30" height="130" fill="none" stroke="#7A5FA8" stroke-width="0.7" stroke-dasharray="4 2"/>
+<rect x="83" y="228" width="55" height="45" fill="none" stroke="#6E6862" stroke-width="0.6" stroke-dasharray="2 2"/>
+<line x1="86" y1="255" x2="135" y2="255" stroke="#6E6862" stroke-width="0.4" stroke-dasharray="2 2"/>
+<line x1="86" y1="239" x2="135" y2="239" stroke="#6E6862" stroke-width="0.4" stroke-dasharray="2 2"/>
+<text x="126" y="187" font-size="8" font-weight="600" fill="#2E2C2A" text-anchor="middle" transform="rotate(-90 126 187)">Стол 130×65</text>
+<g><circle cx="126" cy="154" r="6" fill="#2E2C2A"/><text x="126" y="156.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">6</text></g>
+<g><circle cx="95" cy="187" r="6" fill="#2E2C2A"/><text x="95" y="189.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">7</text></g>
+<g><circle cx="110" cy="250.5" r="6" fill="#2E2C2A"/><text x="110" y="252.9" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">8</text></g>
+<rect x="150" y="154" width="65" height="65" fill="none" stroke="#2E2C2A" stroke-width="0.6" stroke-dasharray="3 2" rx="8"/>
+<circle cx="182.5" cy="186.5" r="20" fill="#FFFFFF" stroke="#2E2C2A" stroke-width="0.6"/>
+<g><circle cx="182.5" cy="186.5" r="6" fill="#2E2C2A"/><text x="182.5" y="188.9" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">9</text></g>
+<rect x="305" y="182" width="67" height="66" fill="none" stroke="#2E2C2A" stroke-width="0.6" stroke-dasharray="3 2" rx="8"/>
+<circle cx="338.5" cy="215" r="20" fill="#FFFFFF" stroke="#2E2C2A" stroke-width="0.6"/>
+<g><circle cx="338.5" cy="215" r="6" fill="#2E2C2A"/><text x="338.5" y="217.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">11</text></g>
+<rect x="375" y="145" width="70" height="140" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
+<line x1="407" y1="275" x2="410" y2="216" stroke="#3A3836" stroke-width="2.4"/>
+<line x1="410" y1="214" x2="407" y2="155" stroke="#3A3836" stroke-width="2.4"/>
+<rect x="379" y="281" width="62" height="4" fill="#3A3836" stroke="none"/>
+<text x="392" y="215" font-size="8" font-weight="600" fill="#2E2C2A" text-anchor="middle" transform="rotate(-90 392 215)">Игровой стол 140×70</text>
+<rect x="441" y="150" width="4" height="120" fill="url(#peg)" stroke="#2E2C2A" stroke-width="0.4"/>
+<g><circle cx="425" cy="271" r="6" fill="#2E2C2A"/><text x="425" y="273.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">10</text></g>
+<g><circle cx="432" cy="158" r="6" fill="#2E2C2A"/><text x="432" y="160.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">12</text></g>
 <rect x="405" y="295" width="40" height="200" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
 <text x="421" y="395" font-size="7.5" font-weight="600" fill="#2E2C2A" text-anchor="middle" transform="rotate(-90 421 395)">Медиатумба 200×40</text>
 <g><circle cx="421" cy="480" r="6" fill="#2E2C2A"/><text x="421" y="482.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">13</text></g>
@@ -138,25 +142,36 @@
 <text x="240" y="135" font-size="6" text-anchor="middle" fill="#6E6862">под ним радиатор 100×30 (пунктир)</text>
 <rect x="80" y="95" width="365" height="50" fill="none" stroke="#7A5FA8" stroke-width="0.7" stroke-dasharray="6 3"/>
 <g><circle cx="160" cy="120" r="6" fill="#2E2C2A"/><text x="160" y="122.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">14</text></g>
+<rect x="80" y="95" width="65" height="50" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
+<rect x="117" y="97" width="28" height="46" fill="url(#shelf)" stroke="#B8956A" stroke-width="0.5"/>
+<line x1="117" y1="145" x2="117" y2="95" stroke="#2E2C2A" stroke-width="0.6"/>
+<line x1="83" y1="143.5" x2="114" y2="143.5" stroke="#2E2C2A" stroke-width="1.2"/>
+<g><circle cx="131" cy="120" r="6" fill="#2E2C2A"/><text x="131" y="122.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">34</text></g>
+<rect x="375" y="95" width="70" height="50" fill="#DCC29E" stroke="#2E2C2A" stroke-width="0.8"/>
+<rect x="375" y="97" width="28" height="46" fill="url(#shelf)" stroke="#B8956A" stroke-width="0.5"/>
+<line x1="403" y1="145" x2="403" y2="95" stroke="#2E2C2A" stroke-width="0.6"/>
+<line x1="406" y1="143.5" x2="442" y2="143.5" stroke="#2E2C2A" stroke-width="1.2"/>
+<g><circle cx="389" cy="120" r="6" fill="#2E2C2A"/><text x="389" y="122.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">35</text></g>
+<rect x="413" y="97" width="21" height="45" fill="none" stroke="#6E6862" stroke-width="0.6" stroke-dasharray="2 2"/>
 <g><circle cx="352" cy="120" r="6" fill="#2E2C2A"/><text x="352" y="122.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">15</text></g>
 <path d="M 338.5 620 A 11.5 11.5 0 0 0 361.5 620" fill="none" stroke="#7A5FA8" stroke-width="0.8" stroke-dasharray="2 1.5"/>
 <rect x="327" y="618" width="45" height="2" fill="#7A5FA8" opacity="0.6"/>
 <circle cx="433" cy="585" r="12" fill="none" stroke="#2E2C2A" stroke-width="0.7"/>
 <g><circle cx="350" cy="580" r="6" fill="#2E2C2A"/><text x="350" y="582.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">16</text></g>
 <g><circle cx="412" cy="585" r="6" fill="#2E2C2A"/><text x="412" y="587.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">16</text></g>
-<g><circle cx="338" cy="495" r="6" fill="#2E2C2A"/><text x="338" y="497.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">30</text></g>
+<g><circle cx="338" cy="505" r="6" fill="#2E2C2A"/><text x="338" y="507.4" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7" font-weight="700" text-anchor="middle" fill="#FFFFFF">30</text></g>
 <g stroke="#2F7D55" fill="#2F7D55">
-  <line x1="230" y1="559" x2="230" y2="471" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
-  <rect x="217" y="508.8" width="26" height="9" rx="2" fill="#FFFFFF" stroke="none" opacity="0.9"/>
-  <text x="230" y="516" stroke="none" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7.5" font-weight="700" text-anchor="middle">90</text></g>
+  <line x1="230" y1="559" x2="230" y2="481" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
+  <rect x="217" y="513.8" width="26" height="9" rx="2" fill="#FFFFFF" stroke="none" opacity="0.9"/>
+  <text x="230" y="521" stroke="none" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7.5" font-weight="700" text-anchor="middle">80</text></g>
 <g stroke="#2F7D55" fill="#2F7D55">
-  <line x1="296" y1="350" x2="404" y2="350" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
-  <rect x="337" y="343.8" width="26" height="9" rx="2" fill="#FFFFFF" stroke="none" opacity="0.9"/>
-  <text x="350" y="351" stroke="none" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7.5" font-weight="700" text-anchor="middle">110</text></g>
+  <line x1="296" y1="360" x2="404" y2="360" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
+  <rect x="337" y="353.8" width="26" height="9" rx="2" fill="#FFFFFF" stroke="none" opacity="0.9"/>
+  <text x="350" y="361" stroke="none" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7.5" font-weight="700" text-anchor="middle">110</text></g>
 <g stroke="#2F7D55" fill="#2F7D55">
-  <line x1="216" y1="180" x2="304" y2="180" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
-  <rect x="247" y="173.8" width="26" height="9" rx="2" fill="#FFFFFF" stroke="none" opacity="0.9"/>
-  <text x="260" y="181" stroke="none" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7.5" font-weight="700" text-anchor="middle">90</text></g>
+  <line x1="216" y1="187" x2="304" y2="187" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
+  <rect x="247" y="180.8" width="26" height="9" rx="2" fill="#FFFFFF" stroke="none" opacity="0.9"/>
+  <text x="260" y="188" stroke="none" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="7.5" font-weight="700" text-anchor="middle">90</text></g>
 <g stroke="#2F7D55" fill="#2F7D55">
   <line x1="316" y1="520" x2="384" y2="520" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
   <rect x="337" y="513.8" width="26" height="9" rx="2" fill="#FFFFFF" stroke="none" opacity="0.9"/>
@@ -167,22 +182,22 @@
 <text x="432" y="527.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="end">E2</text>
 <circle cx="440" cy="395" r="4.6" fill="#2C64B0"/><text x="440" y="397.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text x="432" y="397.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="end">E3</text>
-<circle cx="440" cy="190" r="4.6" fill="#2C64B0"/><text x="440" y="192.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
-<text x="432" y="192.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="end">E4</text>
+<circle cx="440" cy="215" r="4.6" fill="#2C64B0"/><text x="440" y="217.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="432" y="217.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="end">E4</text>
 <circle cx="440" cy="120" r="4.6" fill="#2C64B0"/><text x="440" y="122.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
 <text x="432" y="122.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="end">E5</text>
 <circle cx="360" cy="100" r="4.6" fill="#2C64B0"/><text x="360" y="102.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
 <text x="367" y="110" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E6</text>
-<circle cx="85" cy="290" r="4.6" fill="#2C64B0"/><text x="85" y="292.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
-<text x="93" y="292.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E7</text>
-<circle cx="85" cy="440" r="4.6" fill="#2C64B0"/><text x="85" y="442.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
-<text x="93" y="442.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E8</text>
-<path d="M 85 297 L 90 302 L 85 307 L 80 302 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
-<text x="93" y="304.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E9</text>
-<circle cx="85" cy="230" r="4.6" fill="#2C64B0"/><text x="85" y="232.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
-<text x="93" y="232.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E10</text>
-<path d="M 85 243 L 90 248 L 85 253 L 80 248 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
-<text x="93" y="250.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E11</text>
+<circle cx="85" cy="300" r="4.6" fill="#2C64B0"/><text x="85" y="302.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="93" y="302.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E7</text>
+<circle cx="85" cy="450" r="4.6" fill="#2C64B0"/><text x="85" y="452.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="93" y="452.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E8</text>
+<path d="M 85 307 L 90 312 L 85 317 L 80 312 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
+<text x="93" y="314.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E9</text>
+<circle cx="85" cy="254" r="4.6" fill="#2C64B0"/><text x="85" y="256.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="93" y="256.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E10</text>
+<path d="M 85 263 L 90 268 L 85 273 L 80 268 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
+<text x="93" y="270.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E11</text>
 <path d="M 312 95 L 317 100 L 312 105 L 307 100 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
 <text x="319" y="110" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E12</text>
 <path d="M 155 389 L 160 394 L 155 399 L 150 394 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
@@ -191,18 +206,28 @@
 <text x="445" y="512.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E14</text>
 <path d="M 318 115 L 323 120 L 318 125 L 313 120 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
 <text x="325" y="122.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E15</text>
+<path d="M 100 95 L 105 100 L 100 105 L 95 100 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
+<text x="107" y="110" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E16</text>
+<path d="M 425 95 L 430 100 L 425 105 L 420 100 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
+<text x="432" y="110" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" fill="#2C64B0" text-anchor="start">E17</text>
 <line x1="80" y1="39" x2="445" y2="39" stroke="#2E2C2A" stroke-width="0.6"/>
 <line x1="80" y1="53" x2="80" y2="36" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="77.5" y1="41.5" x2="82.5" y2="36.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="145" y1="53" x2="145" y2="36" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="142.5" y1="41.5" x2="147.5" y2="36.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <line x1="170" y1="53" x2="170" y2="36" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="167.5" y1="41.5" x2="172.5" y2="36.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <line x1="298" y1="53" x2="298" y2="36" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="295.5" y1="41.5" x2="300.5" y2="36.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="375" y1="53" x2="375" y2="36" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="372.5" y1="41.5" x2="377.5" y2="36.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <line x1="445" y1="53" x2="445" y2="36" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="442.5" y1="41.5" x2="447.5" y2="36.5" stroke="#2E2C2A" stroke-width="0.9"/>
-<text x="125" y="36.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A">90</text>
+<text x="112.5" y="36.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A">65</text>
+<text x="157.5" y="36.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A">25</text>
 <text x="234" y="36.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A">128</text>
-<text x="371.5" y="36.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A">147</text>
+<text x="336.5" y="36.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A">77</text>
+<text x="410" y="36.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A">70</text>
 <line x1="80" y1="23" x2="445" y2="23" stroke="#2E2C2A" stroke-width="0.6"/>
 <line x1="80" y1="53" x2="80" y2="20" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="77.5" y1="25.5" x2="82.5" y2="20.5" stroke="#2E2C2A" stroke-width="0.9"/>
@@ -235,25 +260,28 @@
 <line x1="51.5" y1="622.5" x2="56.5" y2="617.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <line x1="66" y1="560" x2="51" y2="560" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="51.5" y1="562.5" x2="56.5" y2="557.5" stroke="#2E2C2A" stroke-width="0.9"/>
-<line x1="66" y1="470" x2="51" y2="470" stroke="#2E2C2A" stroke-width="0.35"/>
-<line x1="51.5" y1="472.5" x2="56.5" y2="467.5" stroke="#2E2C2A" stroke-width="0.9"/>
-<line x1="66" y1="320" x2="51" y2="320" stroke="#2E2C2A" stroke-width="0.35"/>
-<line x1="51.5" y1="322.5" x2="56.5" y2="317.5" stroke="#2E2C2A" stroke-width="0.9"/>
-<line x1="66" y1="315" x2="51" y2="315" stroke="#2E2C2A" stroke-width="0.35"/>
-<line x1="51.5" y1="317.5" x2="56.5" y2="312.5" stroke="#2E2C2A" stroke-width="0.9"/>
-<line x1="66" y1="270" x2="51" y2="270" stroke="#2E2C2A" stroke-width="0.35"/>
-<line x1="51.5" y1="272.5" x2="56.5" y2="267.5" stroke="#2E2C2A" stroke-width="0.9"/>
-<line x1="66" y1="255" x2="51" y2="255" stroke="#2E2C2A" stroke-width="0.35"/>
-<line x1="51.5" y1="257.5" x2="56.5" y2="252.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="66" y1="480" x2="51" y2="480" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="51.5" y1="482.5" x2="56.5" y2="477.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="66" y1="330" x2="51" y2="330" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="51.5" y1="332.5" x2="56.5" y2="327.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="66" y1="325" x2="51" y2="325" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="51.5" y1="327.5" x2="56.5" y2="322.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="66" y1="280" x2="51" y2="280" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="51.5" y1="282.5" x2="56.5" y2="277.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="66" y1="275" x2="51" y2="275" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="51.5" y1="277.5" x2="56.5" y2="272.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="66" y1="145" x2="51" y2="145" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="51.5" y1="147.5" x2="56.5" y2="142.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <line x1="66" y1="95" x2="51" y2="95" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="51.5" y1="97.5" x2="56.5" y2="92.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <text x="51.5" y="590" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 590)">60</text>
-<text x="51.5" y="515" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 515)">90</text>
-<text x="51.5" y="395" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 395)">150</text>
-<text x="45" y="317.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 45 317.5)">5</text>
-<text x="51.5" y="292.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 292.5)">45</text>
-<text x="45" y="262.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 45 262.5)">15</text>
-<text x="51.5" y="175" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 175)">160</text>
+<text x="51.5" y="520" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 520)">80</text>
+<text x="51.5" y="405" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 405)">150</text>
+<text x="45" y="327.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 45 327.5)">5</text>
+<text x="51.5" y="302.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 302.5)">45</text>
+<text x="45" y="277.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 45 277.5)">5</text>
+<text x="51.5" y="210" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 210)">130</text>
+<text x="51.5" y="120" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 51.5 120)">50</text>
 <line x1="32" y1="620" x2="32" y2="95" stroke="#2E2C2A" stroke-width="0.6"/>
 <line x1="66" y1="620" x2="29" y2="620" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="29.5" y1="622.5" x2="34.5" y2="617.5" stroke="#2E2C2A" stroke-width="0.9"/>
@@ -267,14 +295,17 @@
 <line x1="470.5" y1="497.5" x2="475.5" y2="492.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <line x1="459" y1="295" x2="476" y2="295" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="470.5" y1="297.5" x2="475.5" y2="292.5" stroke="#2E2C2A" stroke-width="0.9"/>
-<line x1="459" y1="275" x2="476" y2="275" stroke="#2E2C2A" stroke-width="0.35"/>
-<line x1="470.5" y1="277.5" x2="475.5" y2="272.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="459" y1="285" x2="476" y2="285" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="470.5" y1="287.5" x2="475.5" y2="282.5" stroke="#2E2C2A" stroke-width="0.9"/>
+<line x1="459" y1="145" x2="476" y2="145" stroke="#2E2C2A" stroke-width="0.35"/>
+<line x1="470.5" y1="147.5" x2="475.5" y2="142.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <line x1="459" y1="95" x2="476" y2="95" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="470.5" y1="97.5" x2="475.5" y2="92.5" stroke="#2E2C2A" stroke-width="0.9"/>
 <text x="470.5" y="557.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 470.5 557.5)">125</text>
 <text x="470.5" y="395" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 470.5 395)">200</text>
-<text x="470.5" y="285" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 470.5 285)">20</text>
-<text x="470.5" y="185" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 470.5 185)">180</text>
+<text x="464" y="290" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 464 290)">10</text>
+<text x="470.5" y="215" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 470.5 215)">140</text>
+<text x="470.5" y="120" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="8" text-anchor="middle" fill="#2E2C2A" transform="rotate(-90 470.5 120)">50</text>
 <line x1="493" y1="620" x2="493" y2="95" stroke="#2E2C2A" stroke-width="0.6"/>
 <line x1="459" y1="620" x2="496" y2="620" stroke="#2E2C2A" stroke-width="0.35"/>
 <line x1="490.5" y1="622.5" x2="495.5" y2="617.5" stroke="#2E2C2A" stroke-width="0.9"/>
@@ -291,113 +322,129 @@
 <text x="535" y="62" font-size="7" fill="#6E6862">Размеры в см. Потолок 260 черновой / 255 чистовой (натяжной).</text>
 <text x="535" y="84" font-size="7" font-weight="700" letter-spacing="0.8" fill="#2E2C2A">МЕБЕЛЬ И ОБОРУДОВАНИЕ</text>
 <circle cx="540" cy="95.4" r="5" fill="#2E2C2A"/><text x="540" y="97.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
-<text x="549" y="98" font-size="7.2" fill="#2E2C2A">Шкаф-купе, перфорированные двери</text>
-<circle cx="540" cy="107.9" r="5" fill="#2E2C2A"/><text x="540" y="110.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
-<text x="549" y="110.5" font-size="7.2" fill="#2E2C2A">Кровать парящая 140×200</text>
-<circle cx="540" cy="120.4" r="5" fill="#2E2C2A"/><text x="540" y="122.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
-<text x="549" y="123" font-size="7.2" fill="#2E2C2A">Мягкие панели изголовья</text>
-<circle cx="540" cy="132.9" r="5" fill="#2E2C2A"/><text x="540" y="135.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
-<text x="549" y="135.5" font-size="7.2" fill="#2E2C2A">Тумба подвесная</text>
-<circle cx="540" cy="145.4" r="5" fill="#2E2C2A"/><text x="540" y="147.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
-<text x="549" y="148" font-size="7.2" fill="#2E2C2A">Учебный стол 160×65</text>
-<circle cx="540" cy="157.9" r="5" fill="#2E2C2A"/><text x="540" y="160.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
-<text x="549" y="160.5" font-size="7.2" fill="#2E2C2A">Полки над столом (h 120–235)</text>
-<circle cx="540" cy="170.4" r="5" fill="#2E2C2A"/><text x="540" y="172.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
-<text x="549" y="173" font-size="7.2" fill="#2E2C2A">Тумба подкатная (под столом)</text>
-<circle cx="540" cy="182.9" r="5" fill="#2E2C2A"/><text x="540" y="185.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">9</text>
-<text x="549" y="185.5" font-size="7.2" fill="#2E2C2A">Кресло для учёбы</text>
-<circle cx="540" cy="195.4" r="5" fill="#2E2C2A"/><text x="540" y="197.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">10</text>
-<text x="549" y="198" font-size="7.2" fill="#2E2C2A">Игровой стол 180×70</text>
-<circle cx="540" cy="207.9" r="5" fill="#2E2C2A"/><text x="540" y="210.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">11</text>
-<text x="549" y="210.5" font-size="7.2" fill="#2E2C2A">Игровое кресло</text>
-<circle cx="540" cy="220.4" r="5" fill="#2E2C2A"/><text x="540" y="222.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">12</text>
-<text x="549" y="223" font-size="7.2" fill="#2E2C2A">Перфопанель (h 135–195)</text>
-<circle cx="540" cy="232.9" r="5" fill="#2E2C2A"/><text x="540" y="235.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">13</text>
-<text x="549" y="235.5" font-size="7.2" fill="#2E2C2A">Медиатумба (h 15–55)</text>
-<circle cx="540" cy="245.4" r="5" fill="#2E2C2A"/><text x="540" y="247.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">14</text>
-<text x="549" y="248" font-size="7.2" fill="#2E2C2A">Сиденье у окна (h 45)</text>
-<circle cx="540" cy="257.9" r="5" fill="#2E2C2A"/><text x="540" y="260.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">15</text>
-<text x="549" y="260.5" font-size="7.2" fill="#2E2C2A">Дубовый короб над окном (h 235)</text>
-<circle cx="540" cy="270.4" r="5" fill="#2E2C2A"/><text x="540" y="272.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">16</text>
-<text x="549" y="273" font-size="7.2" fill="#2E2C2A">Мини-кольцо и держатель мяча</text>
-<circle cx="540" cy="282.9" r="5" fill="#2E2C2A"/><text x="540" y="285.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">17</text>
-<text x="549" y="285.5" font-size="7.2" fill="#2E2C2A">Проектор на потолке</text>
-<circle cx="540" cy="295.4" r="5" fill="#2E2C2A"/><text x="540" y="297.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">18</text>
-<text x="549" y="298" font-size="7.2" fill="#2E2C2A">Экран 100″, низ на 90</text>
-<circle cx="540" cy="307.9" r="5" fill="#2E2C2A"/><text x="540" y="310.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">30</text>
-<text x="549" y="310.5" font-size="7.2" fill="#2E2C2A">Ковёр 160×230</text>
+<text x="549" y="98" font-size="7.2" fill="#2E2C2A">Шкаф-купе, перфорированный МДФ</text>
+<circle cx="540" cy="106.9" r="5" fill="#2E2C2A"/><text x="540" y="109.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="549" y="109.5" font-size="7.2" fill="#2E2C2A">Кровать парящая 140×200</text>
+<circle cx="540" cy="118.4" r="5" fill="#2E2C2A"/><text x="540" y="120.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="549" y="121" font-size="7.2" fill="#2E2C2A">Мягкие панели изголовья</text>
+<circle cx="540" cy="129.9" r="5" fill="#2E2C2A"/><text x="540" y="132.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+<text x="549" y="132.5" font-size="7.2" fill="#2E2C2A">Тумба подвесная</text>
+<circle cx="540" cy="141.4" r="5" fill="#2E2C2A"/><text x="540" y="143.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+<text x="549" y="144" font-size="7.2" fill="#2E2C2A">Учебный стол 130×65</text>
+<circle cx="540" cy="152.9" r="5" fill="#2E2C2A"/><text x="540" y="155.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+<text x="549" y="155.5" font-size="7.2" fill="#2E2C2A">Полки над столом (h 120–235)</text>
+<circle cx="540" cy="164.4" r="5" fill="#2E2C2A"/><text x="540" y="166.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
+<text x="549" y="167" font-size="7.2" fill="#2E2C2A">Тумба с 4 ящиками, слева под столом</text>
+<circle cx="540" cy="175.9" r="5" fill="#2E2C2A"/><text x="540" y="178.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">9</text>
+<text x="549" y="178.5" font-size="7.2" fill="#2E2C2A">Кресло для учёбы</text>
+<circle cx="540" cy="187.4" r="5" fill="#2E2C2A"/><text x="540" y="189.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">10</text>
+<text x="549" y="190" font-size="7.2" fill="#2E2C2A">Игровой стол 140×70</text>
+<circle cx="540" cy="198.9" r="5" fill="#2E2C2A"/><text x="540" y="201.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">11</text>
+<text x="549" y="201.5" font-size="7.2" fill="#2E2C2A">Игровое кресло</text>
+<circle cx="540" cy="210.4" r="5" fill="#2E2C2A"/><text x="540" y="212.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">12</text>
+<text x="549" y="213" font-size="7.2" fill="#2E2C2A">Перфопанель (h 135–195)</text>
+<circle cx="540" cy="221.9" r="5" fill="#2E2C2A"/><text x="540" y="224.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">13</text>
+<text x="549" y="224.5" font-size="7.2" fill="#2E2C2A">Медиатумба (h 15–55)</text>
+<circle cx="540" cy="233.4" r="5" fill="#2E2C2A"/><text x="540" y="235.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">14</text>
+<text x="549" y="236" font-size="7.2" fill="#2E2C2A">Сиденье у окна (h 45)</text>
+<circle cx="540" cy="244.9" r="5" fill="#2E2C2A"/><text x="540" y="247.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">15</text>
+<text x="549" y="247.5" font-size="7.2" fill="#2E2C2A">Дубовый короб над окном (h 235)</text>
+<circle cx="540" cy="256.4" r="5" fill="#2E2C2A"/><text x="540" y="258.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">16</text>
+<text x="549" y="259" font-size="7.2" fill="#2E2C2A">Мини-кольцо и держатель мяча</text>
+<circle cx="540" cy="267.9" r="5" fill="#2E2C2A"/><text x="540" y="270.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">17</text>
+<text x="549" y="270.5" font-size="7.2" fill="#2E2C2A">Проектор на потолке</text>
+<circle cx="540" cy="279.4" r="5" fill="#2E2C2A"/><text x="540" y="281.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">18</text>
+<text x="549" y="282" font-size="7.2" fill="#2E2C2A">Экран 100″, низ на 90</text>
+<circle cx="540" cy="290.9" r="5" fill="#2E2C2A"/><text x="540" y="293.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">30</text>
+<text x="549" y="293.5" font-size="7.2" fill="#2E2C2A">Ковёр 160×230</text>
+<circle cx="540" cy="302.4" r="5" fill="#2E2C2A"/><text x="540" y="304.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">34</text>
+<text x="549" y="305" font-size="7.2" fill="#2E2C2A">Книжный шкаф 65×50×235 у учёбы</text>
+<circle cx="540" cy="313.9" r="5" fill="#2E2C2A"/><text x="540" y="316.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">35</text>
+<text x="549" y="316.5" font-size="7.2" fill="#2E2C2A">Книжный шкаф 70×50×235 у игры</text>
 <text x="680" y="84" font-size="7" font-weight="700" letter-spacing="0.8" fill="#2E2C2A">ЭЛЕКТРИКА</text>
 <text x="680" y="98" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E1</text>
 <text x="697" y="98" font-size="6.8" fill="#2E2C2A">выключатель, h 90</text>
-<text x="680" y="110.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E2</text>
-<text x="697" y="110.5" font-size="6.8" fill="#2E2C2A">1 розетка, h 30, уборка</text>
-<text x="680" y="123" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E3</text>
-<text x="697" y="123" font-size="6.8" fill="#2E2C2A">4 розетки, h 35, медиа + LAN</text>
-<text x="680" y="135.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E4</text>
-<text x="697" y="135.5" font-size="6.8" fill="#2E2C2A">4 розетки, h 85, игра</text>
-<text x="680" y="148" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E5</text>
-<text x="697" y="148" font-size="6.8" fill="#2E2C2A">4 розетки, h 30, игра + 2 LAN</text>
-<text x="680" y="160.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E6</text>
-<text x="697" y="160.5" font-size="6.8" fill="#2E2C2A">1 розетка USB, h 55</text>
-<text x="680" y="173" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E7</text>
-<text x="697" y="173" font-size="6.8" fill="#2E2C2A">2 розетки, h 60, кровать</text>
-<text x="680" y="185.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E8</text>
-<text x="697" y="185.5" font-size="6.8" fill="#2E2C2A">1 розетка, h 20, LED</text>
-<text x="680" y="198" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E9</text>
-<text x="697" y="198" font-size="6.8" fill="#2E2C2A">бра у кровати, h 105</text>
-<text x="680" y="210.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E10</text>
-<text x="697" y="210.5" font-size="6.8" fill="#2E2C2A">2 розетки, h 85, учёба</text>
-<text x="680" y="223" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E11</text>
-<text x="697" y="223" font-size="6.8" fill="#2E2C2A">LED полок, h 118</text>
-<text x="680" y="235.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E12</text>
-<text x="697" y="235.5" font-size="6.8" fill="#2E2C2A">бра у окна, h 100</text>
-<text x="680" y="248" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E13</text>
-<text x="697" y="248" font-size="6.8" fill="#2E2C2A">проектор: розетка + HDMI</text>
-<text x="680" y="260.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E14</text>
-<text x="697" y="260.5" font-size="6.8" fill="#2E2C2A">мотор экрана</text>
-<text x="680" y="273" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E15</text>
-<text x="697" y="273" font-size="6.8" fill="#2E2C2A">LED в коробе</text>
-<text x="680" y="289.5" font-size="6.5" fill="#6E6862">Розеток всего 19: игра 8, кровать 2, учёба 2</text>
-<text x="535" y="340" font-size="7" font-weight="700" letter-spacing="0.8" fill="#2E2C2A">ОБОЗНАЧЕНИЯ</text>
-<line x1="535" y1="356" x2="555" y2="356" stroke="#2F7D55" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
-<text x="561" y="358.5" font-size="6.8" fill="#2E2C2A">проход, см (минимум 70)</text>
-<line x1="675" y1="356" x2="695" y2="356" stroke="#7A5FA8" stroke-width="0.8" stroke-dasharray="4 2"/>
-<text x="701" y="358.5" font-size="6.8" fill="#2E2C2A">выше 120 см / на потолке</text>
-<line x1="535" y1="371" x2="555" y2="371" stroke="#7A5FA8" stroke-width="1.1" stroke-dasharray="10 3 2 3"/>
-<text x="561" y="373.5" font-size="6.8" fill="#2E2C2A">магнитный трек в потолке</text>
-<rect x="675" y="368" width="20" height="6" fill="none" stroke="#B03A2E" stroke-width="0.7" stroke-dasharray="3 2"/>
-<text x="701" y="373.5" font-size="6.8" fill="#2E2C2A">радиатор 100×30, h 6–32</text>
-<circle cx="545" cy="386" r="4.6" fill="#2C64B0"/><text x="545" y="388.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
-<text x="561" y="388.5" font-size="6.8" fill="#2E2C2A">розетки (число в кружке)</text>
-<path d="M 685 381 L 690 386 L 685 391 L 680 386 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
-<text x="701" y="388.5" font-size="6.8" fill="#2E2C2A">вывод под свет / технику</text>
-<rect x="535" y="398" width="20" height="6" fill="url(#hatch)"/>
-<text x="561" y="403.5" font-size="6.8" fill="#2E2C2A">стены (толщина условная)</text>
-<path d="M 675 405 A 12 12 0 0 1 687 393" fill="none" stroke="#2E2C2A" stroke-width="0.6" stroke-dasharray="3 2"/>
-<text x="701" y="403.5" font-size="6.8" fill="#2E2C2A">открывание двери R 70</text>
-<text x="535" y="425" font-size="7" font-weight="700" letter-spacing="0.8" fill="#2E2C2A">ПРОВЕРКА ПЛАНИРОВКИ (tools/check-layout.mjs)</text>
-<text x="535" y="439" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="439" font-size="6.8" fill="#2E2C2A">Габариты: Вся мебель внутри 365 × 525 × 255</text>
-<text x="535" y="450.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="450.5" font-size="6.8" fill="#2E2C2A">Пересечения: Предметы не пересекаются</text>
-<text x="535" y="462" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="462" font-size="6.8" fill="#2E2C2A">Дверь: Зона открывания двери (R 70) свободна</text>
-<text x="535" y="473.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="473.5" font-size="6.8" fill="#2E2C2A">Дверь: Открытое на 90° полотно ни во что не упирается</text>
-<text x="535" y="485" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="485" font-size="6.8" fill="#2E2C2A">Окно: Проём 128×150 выше подоконника 74 свободен</text>
-<text x="535" y="496.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="496.5" font-size="6.8" fill="#2E2C2A">Радиатор: Радиатор открыт снизу и спереди, над ним решётка сиденья</text>
-<text x="535" y="508" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="508" font-size="6.8" fill="#2E2C2A">Радиатор: Зазор радиатор → сиденье 4 см (нужно ≥ 4)</text>
-<text x="535" y="519.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="519.5" font-size="6.8" fill="#2E2C2A">Проходы: Вход: дверной проём → комната: 70 см</text>
+<text x="680" y="109.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E2</text>
+<text x="697" y="109.5" font-size="6.8" fill="#2E2C2A">1 розетка, h 30, уборка</text>
+<text x="680" y="121" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E3</text>
+<text x="697" y="121" font-size="6.8" fill="#2E2C2A">4 розетки, h 35, медиа + LAN</text>
+<text x="680" y="132.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E4</text>
+<text x="697" y="132.5" font-size="6.8" fill="#2E2C2A">4 розетки, h 85, игра</text>
+<text x="680" y="144" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E5</text>
+<text x="697" y="144" font-size="6.8" fill="#2E2C2A">4 розетки, h 30, ниша ПК + LAN</text>
+<text x="680" y="155.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E6</text>
+<text x="697" y="155.5" font-size="6.8" fill="#2E2C2A">1 розетка USB, h 55</text>
+<text x="680" y="167" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E7</text>
+<text x="697" y="167" font-size="6.8" fill="#2E2C2A">2 розетки, h 60, кровать</text>
+<text x="680" y="178.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E8</text>
+<text x="697" y="178.5" font-size="6.8" fill="#2E2C2A">1 розетка, h 20, LED</text>
+<text x="680" y="190" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E9</text>
+<text x="697" y="190" font-size="6.8" fill="#2E2C2A">бра у кровати, h 105</text>
+<text x="680" y="201.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E10</text>
+<text x="697" y="201.5" font-size="6.8" fill="#2E2C2A">2 розетки, h 85, учёба</text>
+<text x="680" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E11</text>
+<text x="697" y="213" font-size="6.8" fill="#2E2C2A">LED полок, h 118</text>
+<text x="680" y="224.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E12</text>
+<text x="697" y="224.5" font-size="6.8" fill="#2E2C2A">бра у окна, h 100</text>
+<text x="680" y="236" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E13</text>
+<text x="697" y="236" font-size="6.8" fill="#2E2C2A">проектор: розетка + HDMI</text>
+<text x="680" y="247.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E14</text>
+<text x="697" y="247.5" font-size="6.8" fill="#2E2C2A">мотор экрана</text>
+<text x="680" y="259" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E15</text>
+<text x="697" y="259" font-size="6.8" fill="#2E2C2A">LED в коробе</text>
+<text x="680" y="270.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E16</text>
+<text x="697" y="270.5" font-size="6.8" fill="#2E2C2A">LED шкафа у учёбы, h 225</text>
+<text x="680" y="282" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6.5" font-weight="700" fill="#2C64B0">E17</text>
+<text x="697" y="282" font-size="6.8" fill="#2E2C2A">LED шкафа у игры, h 225</text>
+<text x="680" y="297.5" font-size="6.5" fill="#6E6862">Розеток всего 19: игра 8, кровать 2, учёба 2</text>
+<text x="535" y="335" font-size="7" font-weight="700" letter-spacing="0.8" fill="#2E2C2A">ОБОЗНАЧЕНИЯ</text>
+<line x1="535" y1="351" x2="555" y2="351" stroke="#2F7D55" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>
+<text x="561" y="353.5" font-size="6.8" fill="#2E2C2A">проход, см (минимум 70)</text>
+<line x1="675" y1="351" x2="695" y2="351" stroke="#7A5FA8" stroke-width="0.8" stroke-dasharray="4 2"/>
+<text x="701" y="353.5" font-size="6.8" fill="#2E2C2A">выше 120 см / на потолке</text>
+<line x1="535" y1="366" x2="555" y2="366" stroke="#7A5FA8" stroke-width="1.1" stroke-dasharray="10 3 2 3"/>
+<text x="561" y="368.5" font-size="6.8" fill="#2E2C2A">магнитный трек в потолке</text>
+<rect x="675" y="363" width="20" height="6" fill="none" stroke="#B03A2E" stroke-width="0.7" stroke-dasharray="3 2"/>
+<text x="701" y="368.5" font-size="6.8" fill="#2E2C2A">радиатор 100×30, h 6–32</text>
+<circle cx="545" cy="381" r="4.6" fill="#2C64B0"/><text x="545" y="383.2" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+<text x="561" y="383.5" font-size="6.8" fill="#2E2C2A">розетки (число в кружке)</text>
+<path d="M 685 376 L 690 381 L 685 386 L 680 381 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.2"/>
+<text x="701" y="383.5" font-size="6.8" fill="#2E2C2A">вывод под свет / технику</text>
+<rect x="535" y="393" width="20" height="6" fill="url(#hatch)"/>
+<text x="561" y="398.5" font-size="6.8" fill="#2E2C2A">стены (толщина условная)</text>
+<path d="M 675 400 A 12 12 0 0 1 687 388" fill="none" stroke="#2E2C2A" stroke-width="0.6" stroke-dasharray="3 2"/>
+<text x="701" y="398.5" font-size="6.8" fill="#2E2C2A">открывание двери R 70</text>
+<text x="535" y="412" font-size="7" font-weight="700" letter-spacing="0.8" fill="#2E2C2A">ПРОВЕРКА ПЛАНИРОВКИ (tools/check-layout.mjs)</text>
+<text x="535" y="426" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="426" font-size="6.8" fill="#2E2C2A">Габариты: Вся мебель внутри 365 × 525 × 255</text>
+<text x="535" y="436.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="436.5" font-size="6.8" fill="#2E2C2A">Пересечения: Предметы не пересекаются</text>
+<text x="535" y="447" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="447" font-size="6.8" fill="#2E2C2A">Дверь: Зона открывания двери (R 70) свободна</text>
+<text x="535" y="457.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="457.5" font-size="6.8" fill="#2E2C2A">Дверь: Открытое на 90° полотно ни во что не упирается</text>
+<text x="535" y="468" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="468" font-size="6.8" fill="#2E2C2A">Окно: Проём 128×150 выше подоконника 74 свободен</text>
+<text x="535" y="478.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="478.5" font-size="6.8" fill="#2E2C2A">Радиатор: Радиатор открыт снизу и спереди, над ним решётка сиденья</text>
+<text x="535" y="489" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="489" font-size="6.8" fill="#2E2C2A">Радиатор: Зазор радиатор → сиденье 4 см (нужно ≥ 4)</text>
+<text x="535" y="499.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="499.5" font-size="6.8" fill="#2E2C2A">Шкафы у окна: Глубина шкафов 50 и 50 = глубине сиденья 50</text>
+<text x="535" y="510" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="510" font-size="6.8" fill="#2E2C2A">Шкафы у окна: Шкафы стоят в углах и примыкают к торцам сиденья</text>
+<text x="535" y="520.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="520.5" font-size="6.8" fill="#2E2C2A">Учебное место: Тумба с ящиками слева от сидящего</text>
 <text x="535" y="531" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="531" font-size="6.8" fill="#2E2C2A">Проходы: Шкаф ↔ кровать: 90 см</text>
-<text x="535" y="542.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="542.5" font-size="6.8" fill="#2E2C2A">Проходы: Изножье кровати ↔ медиатумба: 110 см</text>
-<text x="535" y="554" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="554" font-size="6.8" fill="#2E2C2A">Проходы: К окну между креслами: 90 см</text>
+<text x="546" y="531" font-size="6.8" fill="#2E2C2A">Учебное место: Место для ног под столом 83 см (нужно ≥ 70)</text>
+<text x="535" y="541.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="541.5" font-size="6.8" fill="#2E2C2A">Проходы: Вход: дверной проём → комната: 70 см</text>
+<text x="535" y="552" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="552" font-size="6.8" fill="#2E2C2A">Проходы: Шкаф ↔ кровать: 80 см</text>
+<text x="535" y="562.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="562.5" font-size="6.8" fill="#2E2C2A">Проходы: Изножье кровати ↔ медиатумба: 110 см</text>
+<text x="535" y="573" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="573" font-size="6.8" fill="#2E2C2A">Проходы: К окну между креслами: 90 см</text>
 <g transform="translate(555 620)">
   <circle r="16" fill="none" stroke="#2E2C2A" stroke-width="0.6"/>
   <path d="M -14 0 L 4 -5 L 4 5 Z" fill="#2E2C2A"/>

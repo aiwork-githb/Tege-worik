@@ -69,7 +69,24 @@ export function runChecks() {
   const seat = ITEMS.find((it) => it.id === 'windowSeat');
   add('Радиатор', `Зазор радиатор → сиденье ${seat.h0 - RADIATOR.h1} см (нужно ≥ 4)`, seat.h0 - RADIATOR.h1 >= 4, '');
 
-  // 6. Проходы.
+  // 6. Книжные шкафы по углам стены C: глубина как у сиденья, примыкают к его торцам.
+  const studyBc = ITEMS.find((it) => it.id === 'studyBookcase');
+  const gameBc = ITEMS.find((it) => it.id === 'gamingBookcase');
+  const seatDepth = seat.y1 - seat.y0;
+  add('Шкафы у окна', `Глубина шкафов ${studyBc.y1 - studyBc.y0} и ${gameBc.y1 - gameBc.y0} = глубине сиденья ${seatDepth}`,
+    studyBc.y1 - studyBc.y0 === seatDepth && gameBc.y1 - gameBc.y0 === seatDepth && studyBc.y1 === ROOM.length && gameBc.y1 === ROOM.length, '');
+  add('Шкафы у окна', 'Шкафы стоят в углах и примыкают к торцам сиденья',
+    studyBc.x0 === 0 && studyBc.x1 === seat.x0 && gameBc.x1 === ROOM.width && gameBc.x0 === seat.x1, '');
+
+  // 7. Учебное место: сидящий смотрит на стену D, левая рука — к стене A (меньшие y).
+  const desk = ITEMS.find((it) => it.id === 'studyDesk');
+  const ped = ITEMS.find((it) => it.id === 'pedestal');
+  const chairS = ITEMS.find((it) => it.id === 'studyChair');
+  const knee = desk.y1 - ped.y1;
+  add('Учебное место', 'Тумба с ящиками слева от сидящего', (ped.y0 + ped.y1) / 2 < (chairS.y0 + chairS.y1) / 2, '');
+  add('Учебное место', `Место для ног под столом ${knee} см (нужно ≥ 70)`, knee >= 70, '');
+
+  // 8. Проходы.
   for (const p of PASSAGES) {
     const width = Math.min(p.x1 - p.x0, p.y1 - p.y0);
     const blockers = ITEMS.filter((it) => blocksPassage(it) && footprintOverlap(it, p)).map((it) => it.name);

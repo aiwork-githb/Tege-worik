@@ -168,6 +168,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { ROOM, DOOR, WINDOW, RADIATOR, ITEMS, TRACKS, POWER } from './layout.js';
 
 const state = { ready: false, errors: [], frames: 0, scene: 'day', view: 'overview' };
@@ -194,6 +195,7 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadowMap.autoUpdate = false; // карта теней пересчитывается, только пока светит солнце
 RectAreaLightUniformsLib.init();
 
 const scene = new THREE.Scene();
@@ -513,7 +515,7 @@ let doorTarget = 0;
     const map = perfMap.clone(); const em = perfGlow.clone();
     const rx = (x1 - x0 - 2 * fr) / 2.4, ry = (it.h1 - 13 - 2 * fr) / 2.4;
     map.repeat.set(rx, ry); em.repeat.set(rx, ry); map.needsUpdate = em.needsUpdate = true;
-    const pm = new THREE.MeshStandardMaterial({ color: '#ffffff', map, emissive: COL.warmLed, emissiveMap: em, emissiveIntensity: 0, roughness: 0.5, metalness: 0.4 });
+    const pm = new THREE.MeshStandardMaterial({ color: '#ffffff', map, emissive: COL.warmLed, emissiveMap: em, emissiveIntensity: 0, roughness: 0.75, metalness: 0.05 });
     glowMat.push(pm);
     box(x0 + fr, x1 - fr, y0 + 1, y1 - 1, 10 + fr, it.h1 - 3 - fr, pm, g);
   }
@@ -551,11 +553,12 @@ let doorTarget = 0;
   for (let i = 0; i < n; i++) box(1, it.x1, it.y0 + i * step + 0.3, it.y0 + (i + 1) * step - 0.3, 2, it.h1, MAT.soft, g);
   // бра для чтения на панели
   const lampHead = led(COL.warmLed);
-  box(it.x1, it.x1 + 10, 316, 320, 104, 106, MAT.graphite, g);
+  const sy = POWER.find((p) => p.id === 'E9').pos;
+  box(it.x1, it.x1 + 10, sy - 2, sy + 2, 104, 106, MAT.graphite, g);
   const shade = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.045, 0.08, 20, 1, true), MAT.graphite);
-  shade.position.copy(V(it.x1 + 12, 318, 102)); shade.castShadow = true; g.add(shade);
+  shade.position.copy(V(it.x1 + 12, sy, 102)); shade.castShadow = true; g.add(shade);
   const bulb = new THREE.Mesh(new THREE.CircleGeometry(0.04, 20), lampHead);
-  bulb.rotation.x = -Math.PI / 2; bulb.position.copy(V(it.x1 + 12, 318, 98.2)); g.add(bulb);
+  bulb.rotation.x = -Math.PI / 2; bulb.position.copy(V(it.x1 + 12, sy, 98.2)); g.add(bulb);
   registerEmissive('sconce', [lampHead], 5);
 }
 {
@@ -563,8 +566,8 @@ let doorTarget = 0;
   const g = group(itemInfo('nightstand'));
   box(it.x0, it.x1, it.y0, it.y1, it.h0, it.h1, MAT.oak, g);
   box(it.x1, it.x1 + 0.3, it.y0 + 2, it.y1 - 2, 43, 43.6, MAT.black, g, { cast: false });
-  box(12, 32, 312, 332, it.h1, it.h1 + 3, MAT.book[3], g);
-  box(14, 30, 313, 330, it.h1 + 3, it.h1 + 5, MAT.book[5], g);
+  box(12, 32, it.y0 + 7, it.y0 + 27, it.h1, it.h1 + 3, MAT.book[3], g);
+  box(14, 30, it.y0 + 8, it.y0 + 25, it.h1 + 3, it.h1 + 5, MAT.book[5], g);
 }
 
 // ---------------------------------------------------------------- 6–9. учебная зона
@@ -572,29 +575,28 @@ let doorTarget = 0;
   const it = item('studyDesk');
   const g = group(itemInfo('studyDesk'));
   box(it.x0, it.x1, it.y0, it.y1, 72, 75, MAT.oak, g);
-  box(it.x1 - 6, it.x1 - 2, it.y0 + 2, it.y0 + 6, 0, 72, MAT.graphite, g);
   box(it.x0, it.x0 + 3, it.y0 + 4, it.y1 - 4, 62, 72, MAT.graphite, g);
   // ноутбук
-  box(20, 46, 425, 460, 75, 76.4, MAT.graphite, g);
+  box(20, 46, 410, 445, 75, 76.4, MAT.graphite, g);
   const lid = new THREE.Mesh(new THREE.BoxGeometry(0.012, 0.21, 0.35), MAT.graphite);
-  lid.position.copy(V(19.5, 442.5, 86.5)); lid.rotation.z = -0.18; lid.castShadow = true; g.add(lid);
+  lid.position.copy(V(19.5, 427.5, 86.5)); lid.rotation.z = -0.18; lid.castShadow = true; g.add(lid);
   const lapMat = new THREE.MeshStandardMaterial({ color: '#111', emissive: '#ffffff', emissiveMap: laptopTex, emissiveIntensity: 0, roughness: 0.4 });
   const lap = new THREE.Mesh(new THREE.PlaneGeometry(0.33, 0.19), lapMat);
   lap.rotation.y = Math.PI / 2; lap.rotation.x = 0; lap.position.set(0.006, 0, 0);
   lid.add(lap);
   registerEmissive('laptop', [lapMat], 1.1);
   // настольная лампа слева от сидящего (окно справа)
-  box(14, 26, 372, 384, 75, 76.5, MAT.graphite, g);
-  box(19, 21, 377, 379, 76.5, 112, MAT.graphite, g);
-  box(19, 38, 377, 379, 110, 112, MAT.graphite, g);
+  box(14, 26, 352, 364, 75, 76.5, MAT.graphite, g);
+  box(19, 21, 357, 359, 76.5, 112, MAT.graphite, g);
+  box(19, 38, 357, 359, 110, 112, MAT.graphite, g);
   const head = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.04, 0.07, 18, 1, true), MAT.graphite);
-  head.position.copy(V(38, 378, 107)); head.castShadow = true; g.add(head);
+  head.position.copy(V(38, 358, 107)); head.castShadow = true; g.add(head);
   const deskLed = led(COL.neutralLed);
   const dl = new THREE.Mesh(new THREE.CircleGeometry(0.038, 18), deskLed);
-  dl.rotation.x = -Math.PI / 2; dl.position.copy(V(38, 378, 103.6)); g.add(dl);
+  dl.rotation.x = -Math.PI / 2; dl.position.copy(V(38, 358, 103.6)); g.add(dl);
   registerEmissive('desk', [deskLed], 6);
-  box(30, 52, 482, 500, 75, 78, MAT.book[2], g);
-  box(32, 50, 483, 498, 78, 80, MAT.book[6], g);
+  box(30, 52, 450, 468, 75, 78, MAT.book[2], g);
+  box(32, 50, 451, 466, 78, 80, MAT.book[6], g);
 }
 {
   const it = item('shelves');
@@ -607,11 +609,12 @@ let doorTarget = 0;
   }
   box(it.x0, it.x1, it.y0, it.y0 + 2, it.h0, it.h1, MAT.oak, g);
   box(it.x0, it.x1, it.y1 - 2, it.y1, it.h0, it.h1, MAT.oak, g);
-  box(it.x0, it.x1, 444, 446, it.h0, it.h1, MAT.oak, g);
+  const midY = (it.y0 + it.y1) / 2;
+  box(it.x0, it.x1, midY - 1, midY + 1, it.h0, it.h1, MAT.oak, g);
   registerEmissive('shelf', [stripMat], 5);
   const r = rng(17);
   for (const h of levels.slice(0, 3)) {
-    for (const [ya, yb] of [[it.y0 + 3, 443], [447, it.y1 - 3]]) {
+    for (const [ya, yb] of [[it.y0 + 3, midY - 2], [midY + 2, it.y1 - 3]]) {
       let y = ya + r() * 6;
       while (y < yb - 4) {
         if (r() < 0.12 && yb - y > 26) {
@@ -629,8 +632,10 @@ let doorTarget = 0;
 {
   const it = item('pedestal');
   const g = group(itemInfo('pedestal'));
-  box(it.x0, it.x1, it.y0, it.y1, 2, it.h1, MAT.enamel, g);
-  for (const h of [21, 40]) box(it.x1, it.x1 + 0.3, it.y0 + 1, it.y1 - 1, h, h + 0.5, MAT.black, g, { cast: false });
+  box(it.x0, it.x1, it.y0, it.y1, 2, it.h1, MAT.oak, g);
+  box(it.x0 + 2, it.x1 - 2, it.y0 + 2, it.y1 - 2, 0, 2, MAT.black, g, { cast: false });
+  for (const h of [18, 36, 54]) box(it.x1, it.x1 + 0.3, it.y0 + 1, it.y1 - 1, h, h + 0.5, MAT.black, g, { cast: false });
+  for (const h of [12, 30, 48, 66]) box(it.x1, it.x1 + 1.2, (it.y0 + it.y1) / 2 - 6, (it.y0 + it.y1) / 2 + 6, h - 0.6, h + 0.6, MAT.graphite, g, { cast: false });
 }
 
 function chair(info, { cx, cy, back = 105, head = false, seatMat, backMat, facing = 0 }) {
@@ -678,24 +683,20 @@ function chair(info, { cx, cy, back = 105, head = false, seatMat, backMat, facin
   const it = item('gamingDesk');
   const g = group(itemInfo('gamingDesk'));
   box(it.x0, it.x1, it.y0, it.y1, 72, 75, MAT.oak, g);
-  for (const yc of [365, 505]) {
-    box(333, 341, yc - 4, yc + 4, 4, 68, MAT.graphite, g);
-    box(300, 362, yc - 3, yc + 3, 0, 4, MAT.graphite, g);
-  }
-  box(336, 341, 365, 505, 66, 72, MAT.graphite, g);
-  box(346, 360, 380, 490, 60, 70, MAT.graphite, g);
+  box(it.x0 + 4, it.x1 - 2, it.y0 + 1, it.y0 + 4, 0, 72, MAT.graphite, g);
+  box(346, 360, it.y0 + 15, it.y1 - 15, 60, 70, MAT.graphite, g);
   // клавиатура, мышь
-  box(300, 314, 413, 457, 75, 77, MAT.graphite, g);
-  box(302, 309, 466, 472, 75, 78, MAT.graphite, g);
-  // ПК под столом
-  box(305, 355, 495, 516, 3, 50, MAT.graphite, g);
+  box(300, 314, 383, 427, 75, 77, MAT.graphite, g);
+  box(302, 309, 436, 442, 75, 78, MAT.graphite, g);
+  // ПК стоит в нише книжного шкафа под столешницей
+  box(333, 354, 478, 523, 3, 50, MAT.graphite, g);
   const pcGlass = led('#FFE6C2');
-  box(305, 355, 494.6, 495, 6, 47, pcGlass, g, { cast: false });
+  box(335, 352, 477.6, 478, 6, 45, pcGlass, g, { cast: false });
   // кронштейн и мониторы
-  box(353, 357, 433, 437, 75, 112, MAT.graphite, g);
+  box(353, 357, 403, 407, 75, 112, MAT.graphite, g);
   const monMat = new THREE.MeshStandardMaterial({ color: '#0d0d0f', emissive: '#ffffff', emissiveMap: monitorTex, emissiveIntensity: 0, roughness: 0.3 });
   const biasMat = led('#FFF3E0');
-  [[405, 0.2], [466, -0.2]].forEach(([yc, rot]) => {
+  [[374.5, 0.2], [435.5, -0.2]].forEach(([yc, rot]) => {
     const mon = new THREE.Group(); mon.position.copy(V(331, yc, 108)); mon.rotation.y = rot; g.add(mon);
     const body = new THREE.Mesh(new THREE.BoxGeometry(0.025, 0.37, 0.62), MAT.black); body.castShadow = true; mon.add(body);
     const scr = new THREE.Mesh(new THREE.PlaneGeometry(0.6, 0.34), monMat); scr.rotation.y = -Math.PI / 2; scr.position.x = -0.0135; mon.add(scr);
@@ -703,8 +704,8 @@ function chair(info, { cx, cy, back = 105, head = false, seatMat, backMat, facin
     const armB = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.03, 0.03), MAT.graphite); armB.position.set(0.11, 0, 0); mon.add(armB);
   });
   const barMat = led(COL.neutralLed);
-  box(326, 333, 420, 452, 127, 129, MAT.graphite, g);
-  box(325.8, 326, 421, 451, 127.2, 128.8, barMat, g, { cast: false });
+  box(326, 333, 389, 421, 127, 129, MAT.graphite, g);
+  box(325.8, 326, 390, 420, 127.2, 128.8, barMat, g, { cast: false });
   registerEmissive('monitors', [monMat, pcGlass], 1);
   registerEmissive('bias', [biasMat], 3);
   registerEmissive('bar', [barMat], 5);
@@ -714,10 +715,10 @@ function chair(info, { cx, cy, back = 105, head = false, seatMat, backMat, facin
   const g = group(itemInfo('pegboard'));
   box(it.x0, it.x1, it.y0, it.y1, it.h0, it.h1, MAT.peg, g);
   const hp = new THREE.Mesh(new THREE.TorusGeometry(0.085, 0.012, 10, 28, Math.PI), MAT.black);
-  hp.position.copy(V(357, 470, 172)); hp.rotation.y = Math.PI / 2; g.add(hp);
-  for (const s of [-1, 1]) { const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.03, 18), MAT.black); cup.rotation.x = Math.PI / 2; cup.position.copy(V(357, 470 + s * 8.5, 164)); g.add(cup); }
-  box(352, 360, 395, 410, 150, 155, MAT.graphite, g);
-  box(352, 360, 420, 432, 160, 166, MAT.white, g);
+  hp.position.copy(V(357, 445, 172)); hp.rotation.y = Math.PI / 2; g.add(hp);
+  for (const s of [-1, 1]) { const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.03, 18), MAT.black); cup.rotation.x = Math.PI / 2; cup.position.copy(V(357, 445 + s * 8.5, 164)); g.add(cup); }
+  box(352, 360, 368, 383, 150, 155, MAT.graphite, g);
+  box(352, 360, 393, 405, 160, 166, MAT.white, g);
 }
 {
   const it = item('console');
@@ -804,6 +805,83 @@ const beamMat = new THREE.MeshBasicMaterial({ color: '#FFF1D8', transparent: tru
   box(RADIATOR.x0, RADIATOR.x1, RADIATOR.y0, RADIATOR.y1, RADIATOR.h0, RADIATOR.h0 + 2, MAT.graphite, g);
   box(RADIATOR.x1, RADIATOR.x1 + 4, 516, L, 8, 10, MAT.graphite, g);
 }
+
+// ---------------------------------------------------------------- 34–35. книжные шкафы по углам стены C
+// Отсек к сиденью открыт вбок (полки видны с сиденья), отсек к столу открыт в комнату.
+function bookRow(g, r, along, a0, a1, h, maxH, d0, d1) {
+  let a = a0 + r() * 3;
+  while (a < a1 - 3) {
+    if (r() < 0.1 && a1 - a > 22) {
+      const bw = 18 + r() * 3;
+      if (along === 'y') box(d0, d1, a, a + bw, h, h + Math.min(14, maxH), MAT.graphiteMatte, g);
+      else box(a, a + bw, d0, d1, h, h + Math.min(14, maxH), MAT.graphiteMatte, g);
+      a += bw + 1; continue;
+    }
+    const w = 2 + r() * 2.8, hb = Math.min(maxH - 3, 18 + r() * 12);
+    if (a + w > a1) break;
+    const mat = MAT.book[(r() * MAT.book.length) | 0];
+    if (along === 'y') box(d0, d1, a, a + w, h, h + hb, mat, g);
+    else box(a, a + w, d0, d1, h, h + hb, mat, g);
+    a += w + 0.15;
+    if (r() < 0.07) a += 8 + r() * 8;
+  }
+}
+function bookcase(id, seed) {
+  const it = item(id);
+  const g = group(itemInfo(id));
+  const r = rng(seed);
+  const t = 2, toPlus = it.openTo === '+x';
+  const [sx0, sx1] = toPlus ? [it.split + 1, it.x1] : [it.x0, it.split - 1];       // отсек к сиденью
+  const [zx0, zx1] = toPlus ? [it.x0 + t, it.split - 1] : [it.split + 1, it.x1 - t]; // отсек к столу
+  const y0 = it.y0, y1 = it.y1, H = it.h1;
+  const strip = led(COL.warmLed);
+  // корпус
+  if (toPlus) box(it.x0, it.x0 + t, y0, y1, 0, H, MAT.oak, g); else box(it.x1 - t, it.x1, y0, y1, 0, H, MAT.oak, g);
+  box(it.split - 1, it.split + 1, y0, y1, 0, H, MAT.oak, g);
+  box(it.x0, it.x1, y1 - t, y1, 0, H, MAT.oak, g);
+  box(it.x0, it.x1, y0, y1, H - t, H, MAT.oak, g);
+  box(it.x0, it.x1, y0 + 2, y1, 0, 3, MAT.black, g);
+  // отсек к сиденью: торец к комнате закрыт, полки видны со стороны сиденья
+  box(sx0, sx1, y0, y0 + t, 0, H, MAT.oak, g);
+  const levels = [45, 85, 125, 165, 205];
+  for (const h of levels) {
+    box(sx0, sx1, y0 + t, y1 - t, h - 2.5, h, MAT.oak, g);
+    const ex = toPlus ? [sx1 - 3, sx1 - 1] : [sx0 + 1, sx0 + 3];
+    box(ex[0], ex[1], y0 + 4, y1 - 4, h - 2.9, h - 2.5, strip, g, { cast: false });
+  }
+  const [bd0, bd1] = toPlus ? [sx0 + 1, sx0 + 23] : [sx1 - 23, sx1 - 1];
+  [45, 85, 125, 165].forEach((h, i) => { if (i !== 1 || seed % 2) bookRow(g, r, 'y', y0 + t + 1, y1 - t - 1, h, 37, bd0, bd1); });
+  box(bd0, bd1, y0 + 6, y0 + 26, 3, 25, MAT.graphiteMatte, g);
+  // отсек к столу: внизу дверца (учёба) или ниша под ПК (игра), выше открытые полки, вверху дверца
+  box(zx0, zx1, y0 + t, y1 - t, 72, 75, MAT.oak, g);
+  if (id === 'studyBookcase') {
+    box(zx0 + 0.3, zx1 - 0.3, y0, y0 + 1.8, 3.5, 71.5, MAT.oak, g);
+    box(zx0 + 3, zx0 + 13, y0 - 0.4, y0, 66, 67, MAT.graphite, g, { cast: false });
+  }
+  for (const h of [115, 152]) {
+    box(zx0, zx1, y0 + t, y1 - t, h - 2.5, h, MAT.oak, g);
+    box(zx0 + 2, zx1 - 2, y0 + 1, y0 + 3, h - 2.9, h - 2.5, strip, g, { cast: false });
+  }
+  box(zx0, zx1, y0 + t, y1 - t, 188, 190, MAT.oak, g);
+  box(zx0 + 2, zx1 - 2, y0 + 1, y0 + 3, 187.6, 188, strip, g, { cast: false });
+  box(zx0 + 0.3, zx1 - 0.3, y0, y0 + 1.8, 190.5, H - t - 0.3, MAT.oak, g);
+  box(zx0 + 3, zx0 + 13, y0 - 0.4, y0, 192, 193, MAT.graphite, g, { cast: false });
+  bookRow(g, r, 'x', zx0 + 1, zx1 - 1, 75, 37, y0 + 3, y0 + 25);
+  bookRow(g, r, 'x', zx0 + 1, zx1 - 1, 115, 34, y0 + 3, y0 + 25);
+  if (id === 'gamingBookcase') {
+    // кубок на верхней открытой полке
+    const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.02, 0.1, 20), MAT.graphite);
+    cup.position.copy(V((zx0 + zx1) / 2, y0 + 15, 152 + 15)); cup.castShadow = true; g.add(cup);
+    box((zx0 + zx1) / 2 - 4, (zx0 + zx1) / 2 + 4, y0 + 11, y0 + 19, 152, 156, MAT.graphite, g);
+    box((zx0 + zx1) / 2 - 1, (zx0 + zx1) / 2 + 1, y0 + 14, y0 + 16, 156, 162, MAT.graphite, g);
+  } else {
+    bookRow(g, r, 'x', zx0 + 1, zx1 - 1, 152, 34, y0 + 3, y0 + 25);
+  }
+  registerEmissive('shelf', [strip], 5);
+}
+bookcase('studyBookcase', 31);
+bookcase('gamingBookcase', 42);
+
 const blindRoll = new THREE.Group();
 {
   const it = item('soffit');
@@ -872,7 +950,7 @@ const spotMat = led(COL.neutralLed);
   });
   registerEmissive('track1', [trackLinMat[1]], 4);
   registerEmissive('track2', [trackLinMat[2]], 4);
-  for (const [x, y, tx, ty, th] of [[120, 125, 105, 60, 120], [250, 430, 365, 435, 150]]) {
+  for (const [x, y, tx, ty, th] of [[120, 125, 105, 60, 120], [250, 410, 365, 410, 150]]) {
     const s = new THREE.Group(); s.position.copy(V(x, y, CEIL - 4)); g.add(s);
     const body = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.12, 16), MAT.black);
     s.add(body);
@@ -899,6 +977,29 @@ for (const p of POWER) {
   }
 }
 
+// ---------------------------------------------------------------- объединение геометрии
+// Неподвижные детали предмета с одним материалом склеиваются в одну сетку: сотни книг и полок
+// превращаются в десяток вызовов отрисовки. Подсказки работают как раньше — по группе предмета.
+function mergeStatic(root) {
+  const buckets = new Map();
+  for (const m of root.children) {
+    if (!m.isMesh || m.isInstancedMesh || m.children.length) continue;
+    const key = `${m.material.uuid}|${m.castShadow}|${m.receiveShadow}`;
+    if (!buckets.has(key)) buckets.set(key, []);
+    buckets.get(key).push(m);
+  }
+  for (const list of buckets.values()) {
+    if (list.length < 2) continue;
+    const geos = list.map((m) => { m.updateMatrix(); return m.geometry.clone().applyMatrix4(m.matrix); });
+    const merged = new THREE.Mesh(mergeGeometries(geos, false), list[0].material);
+    merged.castShadow = list[0].castShadow; merged.receiveShadow = list[0].receiveShadow;
+    for (const m of list) { root.remove(m); m.geometry.dispose(); }
+    geos.forEach((g) => g.dispose());
+    root.add(merged);
+  }
+}
+pickables.forEach(mergeStatic);
+
 // ---------------------------------------------------------------- свет
 const LIGHTS = {};
 function addLight(key, light, base) {
@@ -924,28 +1025,32 @@ sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
 Object.assign(sun.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 30 });
 sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.02;
 
+// Площадные источники (дорогие) — только там, где важна форма света: трек, кровать, полки, экран.
+// Остальная подсветка — точечные источники с малым радиусом. Число источников постоянно.
 rectLight('track1', '#FFE9CF', 40, 0.03, 0.8, V(120, 360, CEIL - 3.7), 'down');
-rectLight('track2', '#FFE9CF', 40, 0.03, 0.9, V(250, 195, CEIL - 3.7), 'down');
-rectLight('track2', '#FFE9CF', 40, 0.03, 0.9, V(250, 335, CEIL - 3.7), 'down');
+rectLight('track2', '#FFE9CF', 40, 0.03, 2.3, V(250, 265, CEIL - 3.7), 'down');
 function spot(key, base, color, from, to, angle) {
   const s = new THREE.SpotLight(color, 0, 6, angle, 0.55, 2);
   s.position.copy(from); s.target.position.copy(to); scene.add(s.target);
   return addLight(key, s, base);
 }
 spot('spots', 9, '#FFE9CF', V(120, 125, CEIL - 6), V(105, 55, 130), 0.42);
-spot('spots', 9, '#FFE9CF', V(250, 430, CEIL - 6), V(362, 435, 150), 0.4);
-spot('desk', 5, '#FFF3E4', V(38, 378, 103), V(40, 440, 75), 0.75);
-addLight('sconce', new THREE.PointLight('#FFC98E', 0, 3.2, 2), 1.6).position.copy(V(18, 318, 96));
-addLight('seatLamp', new THREE.PointLight('#FFC98E', 0, 3, 2), 1.4).position.copy(V(232, L - 16, 92));
-rectLight('shelf', '#FFD9A8', 6, 0.24, 1.5, V(16, 445, 157), 'down');
-rectLight('shelf', '#FFD9A8', 6, 0.24, 1.5, V(16, 445, 119.5), 'down');
-rectLight('bar', '#FFF3E4', 14, 0.06, 0.3, V(325, 436, 127), 'down');
-rectLight('bias', '#FFF3E4', 5, 1.1, 0.3, V(334, 435, 108), '+x');
-rectLight('bedGlow', '#FFC98E', 7, 1.6, 1.0, V(110, 225, 12.5), 'down');
-rectLight('halo', '#FFC98E', 5, 0.03, 2.15, V(3, 247.5, 151.5), 'up');
-rectLight('console', '#FFC98E', 7, 0.36, 1.96, V(345, 225, 14.5), 'down');
+spot('spots', 9, '#FFE9CF', V(250, 410, CEIL - 6), V(362, 410, 150), 0.4);
+spot('desk', 5, '#FFF3E4', V(38, 358, 103), V(40, 420, 75), 0.75);
+function point(key, base, color, pos, dist) {
+  const l = new THREE.PointLight(color, 0, dist, 2);
+  l.position.copy(pos);
+  return addLight(key, l, base);
+}
+point('sconce', 1.6, '#FFC98E', V(18, 308, 96), 3.2);
+point('seatLamp', 1.4, '#FFC98E', V(232, L - 16, 92), 3);
+point('bias', 0.5, '#FFF3E4', V(345, 405, 110), 0.9);
+point('halo', 0.9, '#FFC98E', V(6, 237.5, 158), 1.6);
+point('console', 0.6, '#FFC98E', V(335, 225, 8), 1.2);
+point('soffit', 1.0, '#FFD9A8', V(182.5, 490, CEIL - 26), 2.2);
+rectLight('shelf', '#FFD9A8', 7, 0.24, 1.25, V(16, 410, 138), 'down');
+rectLight('bedGlow', '#FFC98E', 7, 1.6, 1.0, V(110, 215, 12.5), 'down');
 rectLight('screen', '#DCE4F0', 1.6, 2.21, 1.25, V(361.5, 225.7, 152), '-x');
-rectLight('soffit', '#FFD9A8', 9, 3.6, 0.04, V(182.5, 478, CEIL - 20.5), 'down');
 
 const SCENES = {
   day: {
@@ -983,7 +1088,8 @@ let extrasTarget = { blind: 0, screenDown: 0, beam: 0 };
 function applyValues() {
   for (const k of KEYS) {
     const v = cur[k];
-    (LIGHTS[k] || []).forEach(({ light, base }) => { light.intensity = base * v; light.visible = v > 0.001; });
+    // число источников не меняется — шейдеры не перекомпилируются при смене сценария
+    (LIGHTS[k] || []).forEach(({ light, base }) => { light.intensity = base * v; });
     (EMISSIVE[k] || []).forEach(({ m, base }) => { m.emissiveIntensity = base * v; });
   }
   blindRoll.scale.y = 0.14 + 0.86 * extras.blind;
@@ -1010,7 +1116,7 @@ const VIEWS = {
   overview: { pos: V(600, -250, 520), at: V(175, 290, 40) },
   door: { pos: V(270, 12, 165), at: V(130, 420, 90) },
   bed: { pos: V(48, 225, 102), at: V(365, 225, 150) },
-  window: { pos: V(250, 250, 150), at: V(90, 480, 95) },
+  window: { pos: V(182, 205, 190), at: V(182, 520, 80) },
   gaming: { pos: V(170, 300, 165), at: V(350, 455, 105) },
   top: { pos: V(182.5, 261.5, 1000), at: V(182.5, 262.5, 0) },
 };
@@ -1118,6 +1224,7 @@ resize();
 // ---------------------------------------------------------------- цикл
 setScene('day', true);
 setView('overview', true);
+renderer.compile(scene, camera);
 let last = performance.now();
 renderer.setAnimationLoop((now) => {
   const dt = Math.min(0.1, (now - last) / 1000); last = now;
@@ -1136,9 +1243,11 @@ renderer.setAnimationLoop((now) => {
   doorPivot.rotation.y += (doorTarget - doorPivot.rotation.y) * k;
   applyValues();
   updateCutaway();
+  if (cur.sun > 0.01) renderer.shadowMap.needsUpdate = true;
   if (hoverPending) { const [x, y] = hoverPending; hoverPending = null; showTip(pick(x, y), x, y); }
   renderer.render(scene, camera);
   state.frames++;
+  state.calls = renderer.info.render.calls;
   if (!state.ready && state.frames > 2) state.ready = true;
 });
 </script>

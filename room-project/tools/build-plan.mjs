@@ -91,6 +91,8 @@ push(`<defs>
     <rect width="4" height="4" fill="#5A5652"/><rect x="1" y="1" width="2" height="2" fill="#8E8983"/></pattern>
   <pattern id="peg" width="3" height="3" patternUnits="userSpaceOnUse">
     <rect width="3" height="3" fill="${C.graphite}"/><circle cx="1.5" cy="1.5" r="0.6" fill="#9A948D"/></pattern>
+  <pattern id="shelf" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="4" fill="#E9D7BD"/><line x1="0" y1="2" x2="4" y2="2" stroke="#9C7A55" stroke-width="0.6"/></pattern>
   <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
     <path d="M0,0 L10,5 L0,10 z" fill="${C.pass}"/></marker>
 </defs>`);
@@ -135,7 +137,7 @@ push(rect(wr.x0, wr.x1, wr.y0, wr.y1 - 10, `fill="${C.enamel}" stroke="${C.ink}"
 push(rect(wr.x0, wr.x0 + 106, wr.y1 - 10, wr.y1 - 5, `fill="url(#perf)" stroke="${C.ink}" stroke-width="0.5"`));
 push(rect(wr.x1 - 106, wr.x1, wr.y1 - 5, wr.y1, `fill="url(#perf)" stroke="${C.ink}" stroke-width="0.5"`));
 push(text(X(105), Y(32), 'Шкаф-купе 210×60×255', `font-size="8.5" text-anchor="middle" fill="${C.ink}" font-weight="600"`));
-push(text(X(105), Y(22), 'двери: перфорированный металл', `font-size="6.5" text-anchor="middle" fill="${C.muted}"`));
+push(text(X(105), Y(22), 'двери: перфорированный МДФ, графит', `font-size="6.5" text-anchor="middle" fill="${C.muted}"`));
 push(badge(14, 30, 1));
 
 // 4 изголовье, 2 кровать
@@ -148,16 +150,17 @@ push(rect(bed.x0 + 5, bed.x1 - 5, bed.y0 + 5, bed.y1 - 5, `fill="${C.linen}" str
 push(rect(bed.x0 + 9, bed.x0 + 42, bed.y0 + 12, bed.y0 + 70, `fill="#FFFFFF" stroke="${C.muted}" stroke-width="0.5" rx="4"`));
 push(rect(bed.x0 + 9, bed.x0 + 42, bed.y0 + 80, bed.y0 + 138, `fill="#FFFFFF" stroke="${C.muted}" stroke-width="0.5" rx="4"`));
 push(rect(bed.x1 - 32, bed.x1 - 8, bed.y0 + 6, bed.y1 - 6, `fill="#C7652F" opacity="0.85" stroke="none"`));
-push(text(X(140), Y(232), 'Кровать 140×200', `font-size="8.5" text-anchor="middle" fill="${C.ink}" font-weight="600"`));
-push(text(X(140), Y(222), 'рама 150×210, парящая', `font-size="6.5" text-anchor="middle" fill="${C.muted}"`));
-push(text(X(140), Y(213), 'плед — оранжевый', `font-size="6" text-anchor="middle" fill="${C.muted}"`));
-push(badge(150, 285, 2));
-push(badge(14, 345, 4));
+const bedMid = (bed.y0 + bed.y1) / 2;
+push(text(X(140), Y(bedMid + 7), 'Кровать 140×200', `font-size="8.5" text-anchor="middle" fill="${C.ink}" font-weight="600"`));
+push(text(X(140), Y(bedMid - 3), 'рама 150×210, парящая', `font-size="6.5" text-anchor="middle" fill="${C.muted}"`));
+push(text(X(140), Y(bedMid - 12), 'плед — оранжевый', `font-size="6" text-anchor="middle" fill="${C.muted}"`));
+push(badge(150, bed.y1 - 15, 2));
+push(badge(14, hb.y1 - 8, 4));
 
 // 5 тумба
 const ns = item('nightstand');
 push(rect(ns.x0, ns.x1, ns.y0, ns.y1, `fill="${C.oak}" stroke="${C.ink}" stroke-width="0.7"`));
-push(badge(28, 327, 5));
+push(badge(28, (ns.y0 + ns.y1) / 2, 5));
 
 // 6 стол, 7 полки (выше), 8 тумба (под столом)
 const sd = item('studyDesk');
@@ -166,10 +169,11 @@ const sh = item('shelves');
 push(rect(sh.x0, sh.x1, sh.y0, sh.y1, `fill="none" stroke="${C.ceiling}" stroke-width="0.7" stroke-dasharray="4 2"`));
 const pd = item('pedestal');
 push(rect(pd.x0, pd.x1, pd.y0, pd.y1, `fill="none" stroke="${C.muted}" stroke-width="0.6" stroke-dasharray="2 2"`));
-push(`<text x="${X(46)}" y="${Y(440)}" font-size="8" font-weight="600" fill="${C.ink}" text-anchor="middle" transform="rotate(-90 ${X(46)} ${Y(440)})">Учебный стол 160×65</text>`);
-push(badge(46, 382, 6));
-push(badge(15, 445, 7));
-push(badge(33, 498, 8));
+for (const h of [365, 381]) push(`<line x1="${X(pd.x0 + 3)}" y1="${Y(h)}" x2="${X(pd.x1 - 3)}" y2="${Y(h)}" stroke="${C.muted}" stroke-width="0.4" stroke-dasharray="2 2"/>`);
+push(`<text x="${X(46)}" y="${Y(433)}" font-size="8" font-weight="600" fill="${C.ink}" text-anchor="middle" transform="rotate(-90 ${X(46)} ${Y(433)})">Стол 130×65</text>`);
+push(badge(46, 466, 6));
+push(badge(15, 433, 7));
+push(badge(30, (pd.y0 + pd.y1) / 2, 8));
 
 // 9, 11 кресла
 for (const id of ['studyChair', 'gamingChair']) {
@@ -183,14 +187,15 @@ for (const id of ['studyChair', 'gamingChair']) {
 // 10 игровой стол, мониторы, 12 перфопанель
 const gd = item('gamingDesk');
 push(rect(gd.x0, gd.x1, gd.y0, gd.y1, `fill="${C.oak}" stroke="${C.ink}" stroke-width="0.8"`));
-push(`<line x1="${X(327)}" y1="${Y(376)}" x2="${X(330)}" y2="${Y(435)}" stroke="${C.graphite}" stroke-width="2.4"/>`);
-push(`<line x1="${X(330)}" y1="${Y(436)}" x2="${X(327)}" y2="${Y(495)}" stroke="${C.graphite}" stroke-width="2.4"/>`);
-push(rect(305, 355, 495, 516, `fill="none" stroke="${C.muted}" stroke-width="0.6" stroke-dasharray="2 2"`));
-push(`<text x="${X(312)}" y="${Y(435)}" font-size="8" font-weight="600" fill="${C.ink}" text-anchor="middle" transform="rotate(-90 ${X(312)} ${Y(435)})">Игровой стол 180×70</text>`);
+const gMid = (gd.y0 + gd.y1) / 2;
+push(`<line x1="${X(327)}" y1="${Y(gMid - 60)}" x2="${X(330)}" y2="${Y(gMid - 1)}" stroke="${C.graphite}" stroke-width="2.4"/>`);
+push(`<line x1="${X(330)}" y1="${Y(gMid + 1)}" x2="${X(327)}" y2="${Y(gMid + 60)}" stroke="${C.graphite}" stroke-width="2.4"/>`);
+push(rect(gd.x0 + 4, gd.x1 - 4, gd.y0, gd.y0 + 4, `fill="${C.graphite}" stroke="none"`));
+push(`<text x="${X(312)}" y="${Y(gMid)}" font-size="8" font-weight="600" fill="${C.ink}" text-anchor="middle" transform="rotate(-90 ${X(312)} ${Y(gMid)})">Игровой стол 140×70</text>`);
 const pg = item('pegboard');
 push(rect(pg.x0 - 2, pg.x1, pg.y0, pg.y1, `fill="url(#peg)" stroke="${C.ink}" stroke-width="0.4"`));
-push(badge(345, 360, 10));
-push(badge(352, 510, 12));
+push(badge(345, gd.y0 + 14, 10));
+push(badge(352, pg.y1 - 8, 12));
 
 // 13 медиатумба, 18 экран, 17 проектор и луч
 const cs = item('console');
@@ -224,6 +229,19 @@ push(text(X(160), Y(485), 'под ним радиатор 100×30 (пункти�
 const sf = item('soffit');
 push(rect(sf.x0, sf.x1, sf.y0, sf.y1, `fill="none" stroke="${C.ceiling}" stroke-width="0.7" stroke-dasharray="6 3"`));
 push(badge(80, 500, 14));
+
+// 34, 35 книжные шкафы в углах стены C: к сиденью — открытые полки, к столу — шкаф
+for (const id of ['studyBookcase', 'gamingBookcase']) {
+  const bc = item(id);
+  const seatSide = bc.openTo === '+x' ? [bc.split, bc.x1] : [bc.x0, bc.split];
+  const zoneSide = bc.openTo === '+x' ? [bc.x0, bc.split] : [bc.split, bc.x1];
+  push(rect(bc.x0, bc.x1, bc.y0, bc.y1, `fill="${C.oak}" stroke="${C.ink}" stroke-width="0.8"`));
+  push(rect(seatSide[0], seatSide[1], bc.y0 + 2, bc.y1 - 2, `fill="url(#shelf)" stroke="${C.oakDark}" stroke-width="0.5"`));
+  push(`<line x1="${X(bc.split)}" y1="${Y(bc.y0)}" x2="${X(bc.split)}" y2="${Y(bc.y1)}" stroke="${C.ink}" stroke-width="0.6"/>`);
+  push(`<line x1="${X(zoneSide[0] + 3)}" y1="${Y(bc.y0 + 1.5)}" x2="${X(zoneSide[1] - 3)}" y2="${Y(bc.y0 + 1.5)}" stroke="${C.ink}" stroke-width="1.2"/>`);
+  push(badge((seatSide[0] + seatSide[1]) / 2, 500, bc.n));
+}
+push(rect(333, 354, 478, 523, `fill="none" stroke="${C.muted}" stroke-width="0.6" stroke-dasharray="2 2"`));
 push(badge(272, 500, 15));
 
 // 16 кольцо и держатель мяча
@@ -233,12 +251,12 @@ push(rect(hp.x0, hp.x1, 0, 2, `fill="${C.ceiling}" opacity="0.6"`));
 push(`<circle cx="${X(353)}" cy="${Y(35)}" r="12" fill="none" stroke="${C.ink}" stroke-width="0.7"/>`);
 push(badge(270, 40, 16));
 push(badge(332, 35, 16));
-push(badge(258, 125, 30));
+push(badge(258, rug.y0 + 15, 30));
 
 // проходы
-push(passV(150, 60, 150, '90'));
-push(passH(215, 325, 270, '110'));
-push(passH(135, 225, 440, '90'));
+push(passV(150, 60, bed.y0, String(bed.y0 - 60)));
+push(passH(215, 325, bed.y1 - 30, '110'));
+push(passH(135, 225, 433, '90'));
 push(passH(235, 305, 100, '70'));
 
 // электроточки
@@ -265,13 +283,13 @@ for (const p of POWER) {
 }
 
 // размеры
-push(dimH([0, WINDOW.x0, WINDOW.x1, W], Y(L + T.C) - 16, Y(L + T.C) - 2));
+push(dimH([0, 65, WINDOW.x0, WINDOW.x1, 295, W], Y(L + T.C) - 16, Y(L + T.C) - 2));
 push(dimH([0, W], Y(L + T.C) - 32, Y(L + T.C) - 2));
 push(dimH([0, wr.x1, DOOR.x0, DOOR.x1, W], Y(0) + T.A + 22, Y(0) + T.A + 2));
 push(dimH([0, W], Y(0) + T.A + 40, Y(0) + T.A + 2));
-push(dimV([0, 60, 150, 300, 305, 350, 365, 525], X(-T.D) - 14, X(-T.D) - 2, undefined, { smallOffset: -9 }));
+push(dimV([0, 60, bed.y0, bed.y1, ns.y0, ns.y1, sd.y0, sd.y1, L], X(-T.D) - 14, X(-T.D) - 2, undefined, { smallOffset: -9 }));
 push(dimV([0, L], X(-T.D) - 36, X(-T.D) - 2));
-push(dimV([0, 125, 325, 345, 525], X(W + T.B) + 16, X(W + T.B) + 2, undefined, { smallOffset: -9 }));
+push(dimV([0, cs.y0, cs.y1, gd.y0, gd.y1, L], X(W + T.B) + 16, X(W + T.B) + 2, undefined, { smallOffset: -9 }));
 push(dimV([0, L], X(W + T.B) + 36, X(W + T.B) + 2));
 
 // подписи стен
@@ -289,16 +307,17 @@ push(text(PX, 52, 'План с мебелью · вариант 2 · М 1:25 (л
 push(text(PX, 62, 'Размеры в см. Потолок 260 черновой / 255 чистовой (натяжной).', `font-size="7" fill="${C.muted}"`));
 
 const legend = [
-  [1, 'Шкаф-купе, перфорированные двери'], [2, 'Кровать парящая 140×200'], [4, 'Мягкие панели изголовья'],
-  [5, 'Тумба подвесная'], [6, 'Учебный стол 160×65'], [7, 'Полки над столом (h 120–235)'],
-  [8, 'Тумба подкатная (под столом)'], [9, 'Кресло для учёбы'], [10, 'Игровой стол 180×70'],
+  [1, 'Шкаф-купе, перфорированный МДФ'], [2, 'Кровать парящая 140×200'], [4, 'Мягкие панели изголовья'],
+  [5, 'Тумба подвесная'], [6, 'Учебный стол 130×65'], [7, 'Полки над столом (h 120–235)'],
+  [8, 'Тумба с 4 ящиками, слева под столом'], [9, 'Кресло для учёбы'], [10, 'Игровой стол 140×70'],
   [11, 'Игровое кресло'], [12, 'Перфопанель (h 135–195)'], [13, 'Медиатумба (h 15–55)'],
   [14, 'Сиденье у окна (h 45)'], [15, 'Дубовый короб над окном (h 235)'], [16, 'Мини-кольцо и держатель мяча'],
   [17, 'Проектор на потолке'], [18, 'Экран 100″, низ на 90'], [30, 'Ковёр 160×230'],
+  [34, 'Книжный шкаф 65×50×235 у учёбы'], [35, 'Книжный шкаф 70×50×235 у игры'],
 ];
 push(text(PX, 84, 'МЕБЕЛЬ И ОБОРУДОВАНИЕ', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 legend.forEach(([n, s], i) => {
-  const y = 98 + i * 12.5;
+  const y = 98 + i * 11.5;
   push(`<circle cx="${PX + 5}" cy="${y - 2.6}" r="5" fill="${C.ink}"/><text x="${PX + 5}" y="${y - 0.4}" font-family="${MONO}" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">${n}</text>`);
   push(text(PX + 14, y, s, `font-size="7.2" fill="${C.ink}"`));
 });
@@ -307,21 +326,22 @@ const PX2 = 680;
 push(text(PX2, 84, 'ЭЛЕКТРИКА', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const shortPower = {
   E1: 'выключатель, h 90', E2: '1 розетка, h 30, уборка', E3: '4 розетки, h 35, медиа + LAN',
-  E4: '4 розетки, h 85, игра', E5: '4 розетки, h 30, игра + 2 LAN', E6: '1 розетка USB, h 55',
+  E4: '4 розетки, h 85, игра', E5: '4 розетки, h 30, ниша ПК + LAN', E6: '1 розетка USB, h 55',
   E7: '2 розетки, h 60, кровать', E8: '1 розетка, h 20, LED', E9: 'бра у кровати, h 105',
   E10: '2 розетки, h 85, учёба', E11: 'LED полок, h 118', E12: 'бра у окна, h 100',
   E13: 'проектор: розетка + HDMI', E14: 'мотор экрана', E15: 'LED в коробе',
+  E16: 'LED шкафа у учёбы, h 225', E17: 'LED шкафа у игры, h 225',
 };
 POWER.forEach((p, i) => {
-  const y = 98 + i * 12.5;
+  const y = 98 + i * 11.5;
   push(text(PX2, y, p.id, `font-family="${MONO}" font-size="6.5" font-weight="700" fill="${C.power}"`));
   push(text(PX2 + 17, y, shortPower[p.id], `font-size="6.8" fill="${C.ink}"`));
 });
 const sockets = POWER.filter((p) => p.type === 'socket').reduce((a, p) => a + p.count, 0);
-push(text(PX2, 98 + POWER.length * 12.5 + 4, `Розеток всего ${sockets}: игра 8, кровать 2, учёба 2`, `font-size="6.5" fill="${C.muted}"`));
+push(text(PX2, 98 + POWER.length * 11.5 + 4, `Розеток всего ${sockets}: игра 8, кровать 2, учёба 2`, `font-size="6.5" fill="${C.muted}"`));
 
 // обозначения
-const LY = 340;
+const LY = 335;
 push(text(PX, LY, 'ОБОЗНАЧЕНИЯ', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const sym = [
   [(x, y) => `<line x1="${x}" y1="${y}" x2="${x + 20}" y2="${y}" stroke="${C.pass}" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>`, 'проход, см (минимум 70)'],
@@ -341,11 +361,11 @@ sym.forEach(([draw, s], i) => {
 });
 
 // результаты проверки
-const CY = 425;
+const CY = 412;
 push(text(PX, CY, 'ПРОВЕРКА ПЛАНИРОВКИ (tools/check-layout.mjs)', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const results = runChecks();
 results.forEach((r, i) => {
-  const y = CY + 14 + i * 11.5;
+  const y = CY + 14 + i * 10.5;
   push(text(PX, y, r.ok ? '✓' : '✗', `font-size="8" font-weight="700" fill="${r.ok ? C.pass : '#B03A2E'}"`));
   push(text(PX + 11, y, `${r.group}: ${r.label}`, `font-size="6.8" fill="${C.ink}"`));
 });

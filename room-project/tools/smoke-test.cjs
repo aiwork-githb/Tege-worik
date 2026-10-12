@@ -35,7 +35,7 @@ const SCENES = ['day', 'general', 'work', 'evening', 'cinema'];
   if (state.errors.length) problems.push(...state.errors);
   if (overflow) problems.push('страница шире окна');
 
-  console.log(`кадров: ${state.frames}, вид: ${state.view}, свет: ${state.scene}`);
+  console.log(`кадров: ${state.frames}, вызовов отрисовки: ${state.calls}, вид: ${state.view}, свет: ${state.scene}`);
   console.log(problems.length ? 'ОШИБКИ:\n' + problems.join('\n') : 'Сцена открывается без ошибок');
   await browser.close();
   process.exit(problems.length ? 1 : 0);
