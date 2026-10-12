@@ -339,7 +339,7 @@
 <circle cx="540" cy="141.4" r="5" fill="#2E2C2A"/><text x="540" y="143.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
 <text x="549" y="144" font-size="7.2" fill="#2E2C2A">Учебный стол 130×65</text>
 <circle cx="540" cy="152.9" r="5" fill="#2E2C2A"/><text x="540" y="155.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
-<text x="549" y="155.5" font-size="7.2" fill="#2E2C2A">Полки над столом (h 120–235)</text>
+<text x="549" y="155.5" font-size="7.2" fill="#2E2C2A">Полки над столом, 2 ряда А4 (h 120–197,5)</text>
 <circle cx="540" cy="164.4" r="5" fill="#2E2C2A"/><text x="540" y="166.6" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
 <text x="549" y="167" font-size="7.2" fill="#2E2C2A">Тумба с 4 ящиками, слева под столом</text>
 <circle cx="540" cy="175.9" r="5" fill="#2E2C2A"/><text x="540" y="178.1" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="6" font-weight="700" fill="#FFFFFF" text-anchor="middle">9</text>
@@ -447,17 +447,21 @@
 <text x="535" y="537" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
 <text x="546" y="537" font-size="6.8" fill="#2E2C2A">Шкафы у окна: Нижние дверцы шкафов открываются под столешницей свободно</text>
 <text x="535" y="547.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="547.5" font-size="6.8" fill="#2E2C2A">Учебное место: Тумба с ящиками слева от сидящего</text>
+<text x="546" y="547.5" font-size="6.8" fill="#2E2C2A">Учебное место: Полки над столом: 2 ряда в свету по 35 и 35 см (нужно ≥ 34.7)</text>
 <text x="535" y="558" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="558" font-size="6.8" fill="#2E2C2A">Учебное место: Место для ног под столом 83 см (нужно ≥ 70)</text>
+<text x="546" y="558" font-size="6.8" fill="#2E2C2A">Учебное место: Верхний ряд полок закрыт дверцами, нижний открыт</text>
 <text x="535" y="568.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="568.5" font-size="6.8" fill="#2E2C2A">Проходы: Вход: дверной проём → комната: 70 см</text>
+<text x="546" y="568.5" font-size="6.8" fill="#2E2C2A">Учебное место: Тумба с ящиками слева от сидящего</text>
 <text x="535" y="579" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="579" font-size="6.8" fill="#2E2C2A">Проходы: Шкаф ↔ кровать: 80 см</text>
+<text x="546" y="579" font-size="6.8" fill="#2E2C2A">Учебное место: Место для ног под столом 83 см (нужно ≥ 70)</text>
 <text x="535" y="589.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="589.5" font-size="6.8" fill="#2E2C2A">Проходы: Изножье кровати ↔ медиатумба: 110 см</text>
+<text x="546" y="589.5" font-size="6.8" fill="#2E2C2A">Проходы: Вход: дверной проём → комната: 70 см</text>
 <text x="535" y="600" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
-<text x="546" y="600" font-size="6.8" fill="#2E2C2A">Проходы: К окну между креслами: 90 см</text>
+<text x="546" y="600" font-size="6.8" fill="#2E2C2A">Проходы: Шкаф ↔ кровать: 80 см</text>
+<text x="535" y="610.5" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="610.5" font-size="6.8" fill="#2E2C2A">Проходы: Изножье кровати ↔ медиатумба: 110 см</text>
+<text x="535" y="621" font-size="8" font-weight="700" fill="#2F7D55">✓</text>
+<text x="546" y="621" font-size="6.8" fill="#2E2C2A">Проходы: К окну между креслами: 90 см</text>
 <g transform="translate(555 648)">
   <circle r="16" fill="none" stroke="#2E2C2A" stroke-width="0.6"/>
   <path d="M -14 0 L 4 -5 L 4 5 Z" fill="#2E2C2A"/>

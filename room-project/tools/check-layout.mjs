@@ -92,6 +92,14 @@ export function runChecks() {
   }
   add('Шкафы у окна', 'Нижние дверцы шкафов открываются под столешницей свободно', doorBlockers.length === 0, doorBlockers.join('; '));
 
+  // Полки над учебным столом: 2 ряда, просвет каждого ≥ А4 по длинной стороне + 5 см, верхний ряд с дверцами.
+  const sh = ITEMS.find((it) => it.id === 'shelves');
+  const A4 = 29.7, need = A4 + 5;
+  const builtH = sh.board * 3 + sh.rows.reduce((a, r) => a + r.clear, 0);
+  add('Учебное место', `Полки над столом: 2 ряда в свету по ${sh.rows.map((r) => r.clear).join(' и ')} см (нужно ≥ ${need.toFixed(1)})`,
+    sh.rows.length === 2 && sh.rows.every((r) => r.clear >= need) && Math.abs(builtH - (sh.h1 - sh.h0)) < 0.01, '');
+  add('Учебное место', 'Верхний ряд полок закрыт дверцами, нижний открыт', sh.rows[1].doors && !sh.rows[0].doors, '');
+
   // 7. Учебное место: сидящий смотрит на стену D, левая рука — к стене A (меньшие y).
   const desk = ITEMS.find((it) => it.id === 'studyDesk');
   const ped = ITEMS.find((it) => it.id === 'pedestal');

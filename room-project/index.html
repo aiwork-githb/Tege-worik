@@ -599,34 +599,46 @@ let doorTarget = 0;
   box(32, 50, 451, 466, 78, 80, MAT.book[6], g);
 }
 {
+  // полки над учебным столом: 2 ряда в свету по 35 см (папка А4 стоя + 5 см), верхний ряд за подъёмными дверцами
   const it = item('shelves');
   const g = group(itemInfo('shelves'));
-  const levels = [it.h0, 158, 196, it.h1 - 2.5];
+  const b = it.board;
+  const boards = [it.h0];
+  for (const row of it.rows) boards.push(boards[boards.length - 1] + b + row.clear);
   const stripMat = led(COL.warmLed);
-  for (const h of levels) {
-    box(it.x0, it.x1, it.y0, it.y1, h, h + 2.5, MAT.oak, g);
-    if (h < it.h1 - 3) box(it.x1 - 3, it.x1 - 1, it.y0 + 3, it.y1 - 3, h - 0.4, h, stripMat, g, { cast: false });
-  }
+  for (const h of boards) box(it.x0, it.x1, it.y0, it.y1, h, h + b, MAT.oak, g);
+  // подсветка: под нижней доской — на столешницу, под средней — в открытый ряд
+  for (const h of boards.slice(0, 2)) box(it.x1 - 3, it.x1 - 1, it.y0 + 3, it.y1 - 3, h - 0.4, h, stripMat, g, { cast: false });
   box(it.x0, it.x1, it.y0, it.y0 + 2, it.h0, it.h1, MAT.oak, g);
   box(it.x0, it.x1, it.y1 - 2, it.y1, it.h0, it.h1, MAT.oak, g);
   const midY = (it.y0 + it.y1) / 2;
   box(it.x0, it.x1, midY - 1, midY + 1, it.h0, it.h1, MAT.oak, g);
   registerEmissive('shelf', [stripMat], 5);
+  // открытый ряд: папки-регистраторы А4 стоя и книги
   const r = rng(17);
-  for (const h of levels.slice(0, 3)) {
-    for (const [ya, yb] of [[it.y0 + 3, midY - 2], [midY + 2, it.y1 - 3]]) {
-      let y = ya + r() * 6;
-      while (y < yb - 4) {
-        if (r() < 0.12 && yb - y > 26) {
-          box(4, 26, y, y + 24, h + 2.5, h + 17, MAT.graphiteMatte, g); y += 27; continue;
-        }
-        const wB = 2 + r() * 3.5, hB = 20 + r() * 12, dB = 17 + r() * 6;
-        if (y + wB > yb) break;
-        box(2, 2 + dB, y, y + wB, h + 2.5, h + 2.5 + Math.min(hB, 34), MAT.book[(r() * MAT.book.length) | 0], g);
-        y += wB + 0.2;
-        if (r() < 0.06) y += 10;
-      }
+  const floorH = it.h0 + b, rowH = it.rows[0].clear;
+  const binders = [MAT.graphiteMatte, MAT.book[1], MAT.book[2], MAT.book[6]];
+  for (const [ya, yb] of [[it.y0 + 3, midY - 2], [midY + 2, it.y1 - 3]]) {
+    let y = ya + 1;
+    const nB = 3 + ((r() * 3) | 0);
+    for (let k = 0; k < nB; k++) {
+      box(1, 29, y, y + 7.5, floorH, floorH + 31.5, binders[(r() * binders.length) | 0], g);
+      y += 7.8;
     }
+    y += 2;
+    while (y < yb - 4) {
+      const wB = 2 + r() * 3.5, hB = 20 + r() * 10, dB = 17 + r() * 6;
+      if (y + wB > yb) break;
+      box(2, 2 + dB, y, y + wB, floorH, floorH + Math.min(hB, rowH - 2), MAT.book[(r() * MAT.book.length) | 0], g);
+      y += wB + 0.2;
+      if (r() < 0.06) y += 10;
+    }
+  }
+  // верхний ряд: 2 накладные подъёмные дверцы на газлифтах, ручка-профиль снизу
+  const d0 = boards[1] + 0.3, d1 = boards[2] + b - 0.3;
+  for (const [ya, yb] of [[it.y0 + 0.3, midY - 0.2], [midY + 0.2, it.y1 - 0.3]]) {
+    box(it.x1, it.x1 + 1.8, ya, yb, d0, d1, MAT.oak, g);
+    box(it.x1 + 1.8, it.x1 + 2.2, ya + 5, yb - 5, d0 + 1, d0 + 1.8, MAT.graphite, g, { cast: false });
   }
 }
 {
@@ -1060,7 +1072,7 @@ point('bias', 0.5, '#FFF3E4', V(345, 405, 110), 0.9);
 point('halo', 0.9, '#FFC98E', V(6, 237.5, 158), 1.6);
 point('console', 0.6, '#FFC98E', V(335, 225, 8), 1.2);
 point('soffit', 1.0, '#FFD9A8', V(182.5, 490, CEIL - 26), 2.2);
-rectLight('shelf', '#FFD9A8', 7, 0.24, 1.25, V(16, 410, 138), 'down');
+rectLight('shelf', '#FFD9A8', 7, 0.24, 1.25, V(16, 410, 119.5), 'down');
 rectLight('bedGlow', '#FFC98E', 7, 1.6, 1.0, V(110, 215, 12.5), 'down');
 rectLight('screen', '#DCE4F0', 1.6, 2.21, 1.25, V(361.5, 225.7, 152), '-x');
 
