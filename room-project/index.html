@@ -515,7 +515,7 @@ let doorTarget = 0;
     const map = perfMap.clone(); const em = perfGlow.clone();
     const rx = (x1 - x0 - 2 * fr) / 2.4, ry = (it.h1 - 13 - 2 * fr) / 2.4;
     map.repeat.set(rx, ry); em.repeat.set(rx, ry); map.needsUpdate = em.needsUpdate = true;
-    const pm = new THREE.MeshStandardMaterial({ color: '#ffffff', map, emissive: COL.warmLed, emissiveMap: em, emissiveIntensity: 0, roughness: 0.75, metalness: 0.05 });
+    const pm = new THREE.MeshStandardMaterial({ color: '#ffffff', map, emissive: COL.warmLed, emissiveMap: em, emissiveIntensity: 0, roughness: 0.5, metalness: 0.4 });
     glowMat.push(pm);
     box(x0 + fr, x1 - fr, y0 + 1, y1 - 1, 10 + fr, it.h1 - 3 - fr, pm, g);
   }
