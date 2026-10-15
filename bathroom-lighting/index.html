@@ -66,9 +66,10 @@ section, header { display: grid; gap: 20px; min-width: 0; }
   color: var(--muted);
   margin: 0;
 }
-h1, h2 { font-family: var(--font-display); font-weight: 500; margin: 0; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; text-wrap: balance; }
 h1 { font-size: clamp(30px, 5.4vw, 54px); line-height: 1.06; letter-spacing: -0.015em; }
 h2 { font-size: clamp(20px, 2.6vw, 26px); line-height: 1.2; }
+h3 { font-size: 16px; line-height: 1.3; }
 p { margin: 0; }
 .lead { font-size: 18px; max-width: 62ch; }
 .sub { color: var(--muted); max-width: 66ch; }
@@ -82,6 +83,18 @@ p { margin: 0; }
 .facts div { padding: 14px 20px 14px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 2px; }
 .facts dt { font-family: var(--font-data); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .facts dd { margin: 0; font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* ---------- photo findings ---------- */
+.findings { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 900px) { .findings { grid-template-columns: minmax(0, 1fr); } }
+.obs { min-width: 560px; }
+.obs td:first-child { width: 42%; }
+.urgent {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 18px 20px; display: grid; gap: 12px;
+}
+.urgent ol { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+.urgent li::marker { font-family: var(--font-data); color: var(--accent); }
 
 /* ---------- plan + controls ---------- */
 .plan-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 32px; align-items: start; }
@@ -143,7 +156,7 @@ p { margin: 0; }
 .toggle { display: flex; gap: 10px; align-items: center; cursor: pointer; }
 .toggle input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; }
 
-/* ---------- elevation ---------- */
+/* ---------- elevations ---------- */
 .elev-grid { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 40px; align-items: start; }
 @media (max-width: 760px) { .elev-grid { grid-template-columns: minmax(0, 1fr); } }
 .elev-grid .sheet { max-width: 420px; }
@@ -166,6 +179,7 @@ td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--rule); vertical-a
 td.pos { font-family: var(--font-data); font-weight: 700; color: var(--accent); white-space: nowrap; }
 td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; white-space: nowrap; }
 td .note { display: block; color: var(--muted); font-size: 13.5px; }
+.new { font-family: var(--font-data); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); margin-left: 6px; white-space: nowrap; }
 
 .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr)); gap: 40px; align-items: start; }
 .two > div { display: grid; gap: 16px; min-width: 0; }
@@ -197,8 +211,10 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .p-obj { fill: none; stroke: var(--plan-line); stroke-width: 1.6; }
 .p-obj.thin { stroke-width: 1; }
 .p-obj.solid { fill: var(--plan-bg); }
+.p-obj.dash { stroke-dasharray: 4 3; }
 .p-dim { stroke: var(--plan-dim); stroke-width: 1; fill: none; }
 .p-guide { stroke: var(--plan-dim); stroke-width: 1; stroke-dasharray: 2 4; }
+.p-rib { stroke: var(--plan-ink); stroke-width: 1.2; }
 .p-t { font-family: var(--font-data); font-size: 14px; fill: var(--plan-ink); }
 .p-tm { font-family: var(--font-data); font-size: 12.5px; fill: var(--plan-dim); }
 .p-corner { font-family: var(--font-data); font-size: 13px; font-weight: 700; fill: var(--plan-dim); }
@@ -211,6 +227,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .dl-core { fill: var(--plan-dim); }
 .lit .dl { stroke: var(--l3000); }
 .lit .dl-core { fill: var(--l3000); }
+.dl-acc { fill: var(--plan-bg); stroke: var(--plan-ink); stroke-width: 1.6; }
+.lit .dl-acc { stroke: var(--l2700); }
+.lit .acc-core { fill: var(--l2700); }
 .mir { fill: var(--plan-line); }
 .lit .mir, .lit .bar { fill: var(--l4000); }
 .bar { fill: var(--plan-dim); }
@@ -221,8 +240,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 .lit .dl-e { fill: var(--l3000); }
 .pir { fill: var(--plan-bg); stroke: var(--plan-ink); stroke-width: 1.4; stroke-dasharray: 3 2; }
 .pir-dot { fill: var(--plan-ink); }
-.zone1 { fill: var(--zone); fill-opacity: .2; stroke: var(--zone); stroke-width: 1.2; }
-.zone2 { fill: var(--zone); fill-opacity: .08; stroke: var(--zone); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.zone1 { fill: var(--zone); fill-opacity: .14; stroke: var(--zone); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.zone-pt { fill: var(--zone); }
 .zone-t { font-family: var(--font-data); font-size: 12.5px; fill: var(--zone); }
 .s3000 { stop-color: var(--l3000); }
 .s2700 { stop-color: var(--l2700); }
@@ -235,16 +254,48 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 <div class="wrap">
 
 <header>
-  <p class="eyebrow">Ванная по эскизу A–H · 1,86 × 1,94 м · ≈ 3,3 м²</p>
+  <p class="eyebrow">Ревизия 2 · по эскизу A–H и фото · 1,86 × 1,94 м · ≈ 3,3 м²</p>
   <h1>Световой план ванной</h1>
-  <p class="lead">Три слоя света. Четыре точки в потолке дают ровный общий свет, зеркало освещает лицо спереди без теней, а тёплая лента под тумбой работает как вечерняя подсветка и ночник по датчику движения.</p>
+  <p class="lead">Три слоя света. Четыре точки в потолке дают ровный общий свет, зеркало освещает лицо спереди без теней, а тёплая подсветка ниш, рифлёной колонны и пола под тумбой даёт вечерний свет и ночник по датчику движения.</p>
   <dl class="facts">
     <div><dt>Общий свет</dt><dd>4 × 500 лм, 3000 K → ≈ 220 лк</dd></div>
     <div><dt>У зеркала</dt><dd>≥ 300 лк на лице, Ra ≥ 90</dd></div>
-    <div><dt>Подсветка</dt><dd>Лента 2700 K, 24 В</dd></div>
-    <div><dt>Максимум</dt><dd>≈ 60 Вт на весь свет</dd></div>
+    <div><dt>Подсветка</dt><dd>Две ниши, колонна, пол · 2700 K</dd></div>
+    <div><dt>Максимум</dt><dd>≈ 70 Вт на весь свет</dd></div>
   </dl>
 </header>
+
+<section aria-labelledby="h-photo">
+  <h2 id="h-photo">Что изменилось по фото</h2>
+  <div class="findings">
+    <div class="table-wrap">
+      <table class="obs">
+        <thead><tr><th>Что видно</th><th>Что меняю</th></tr></thead>
+        <tbody>
+          <tr><td>Натяжной потолок: багет уже стоит, полотна ещё нет</td><td>Закладные под все точки ставим сейчас. Полотно лучше белое матовое: глянец отражает точки и решётку вентиляции.</td></tr>
+          <tr><td>Плитка крупного формата, светлая серо-бежевая, матовая</td><td>Расчёт 220 лк подтверждается. Общий свет 3000 K: на сером камне 4000 K выглядит холодно.</td></tr>
+          <tr><td>Унитаз подвесной, над инсталляцией высокая ниша</td><td>Новая лента S3 в верхней грани ниши. Ночью светятся S3 и S1.</td></tr>
+          <tr><td>Колонна у унитаза облицована рифлёной плиткой</td><td>Новый мини-спот L5 в 10 см от колонны: скользящий свет проявит рельеф.</td></tr>
+          <tr><td>Душ без поддона, с трапом; выход верхнего душа на стене A–H у угла</td><td>Зоны пересчитаны: зона 1 — 1,2 м от выхода воды, зоны 2 нет. L3 сдвинут к дверцам, чтобы лейка не перекрывала свет.</td></tr>
+          <tr><td>В душе горизонтальная ниша на стене G–H</td><td>Лента S2 больше не опция, перенесена на стену G–H.</td></tr>
+          <tr><td>Окно в стене G–H рядом с душем</td><td>Днём это боковой свет у зеркала. Вечером освещённую ванную видно с улицы: нужны штора или матовая плёнка.</td></tr>
+          <tr><td>Стены уже в плитке</td><td>Штробить нельзя. Ленты ставим в накладных профилях, провода ведём через потолок и полые короба.</td></tr>
+          <tr><td>Дверь в стене A–H рядом с душем</td><td>Предположение подтвердилось: выключатели снаружи у двери.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="urgent">
+      <h3>До натяжки полотна</h3>
+      <ol>
+        <li>Закладные платформы под L1–L5 и P1, кольцо под вентилятор.</li>
+        <li>Провода к каждой точке. Отдельный провод в короб инсталляции к нише S3 и к нише душа S2.</li>
+        <li>Проверить выводы на стене F–G под зеркало и ленту тумбы.</li>
+        <li>Место под блок питания и контроллер вне ванной, с доступом.</li>
+        <li>Решётку вентилятора развести с L1 и L3 минимум на 25–30 см.</li>
+      </ol>
+    </div>
+  </div>
+</section>
 
 <section aria-labelledby="h-plan">
   <h2 id="h-plan">План и сцены</h2>
@@ -255,7 +306,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
       <div class="sheet-scroll">
         <svg id="plan" viewBox="-210 -92 680 562" role="img" aria-labelledby="planTitle planDesc">
           <title id="planTitle">План ванной со светильниками</title>
-          <desc id="planDesc">Вид сверху. Слева внизу душевой поддон в форме четверти круга, справа вверху унитаз у стены D–E, справа внизу тумба с раковиной и зеркалом на стене F–G, дверь в стене A–H. Точечные светильники L1–L4, лента S1 под тумбой, лента S2 в нише душа, датчик движения P1, блок выключателей снаружи у двери.</desc>
+          <desc id="planDesc">Вид сверху. Слева внизу душ с трапом за стеклом в форме четверти круга, выход верхнего душа на стене A–H. В стене G–H ниша душа и окно. Справа вверху подвесной унитаз у стены D–E с нишей над инсталляцией, рядом рифлёная колонна B–C. Справа внизу тумба с раковиной и зеркалом на стене F–G. Дверь в стене A–H. Точечные светильники L1–L4, мини-спот L5 у колонны, ленты S1 под тумбой, S2 в нише душа, S3 в нише над унитазом, датчик движения P1, блок выключателей снаружи у двери.</desc>
           <defs>
             <clipPath id="roomClip"><path d="M0,0 H280 V46 H318 V204 H372 V388 H0 Z"/></clipPath>
             <radialGradient id="gWarm"><stop offset="0" class="s3000" stop-opacity=".85"/><stop offset=".45" class="s3000" stop-opacity=".3"/><stop offset="1" class="s3000" stop-opacity="0"/></radialGradient>
@@ -263,42 +314,47 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
             <radialGradient id="gNeutral"><stop offset="0" class="s4000" stop-opacity=".75"/><stop offset=".5" class="s4000" stop-opacity=".22"/><stop offset="1" class="s4000" stop-opacity="0"/></radialGradient>
           </defs>
 
-          <!-- walls, floor, door opening -->
+          <!-- walls, floor, openings, niches -->
           <path class="p-wall" fill-rule="evenodd" d="M-20,-20 H300 V26 H338 V184 H392 V408 H-20 Z M0,0 H280 V46 H318 V204 H372 V388 H0 Z"/>
           <path class="p-floor" d="M0,0 H280 V46 H318 V204 H372 V388 H0 Z"/>
           <rect class="p-floor" x="-21" y="30" width="22" height="120"/>
-          <rect class="p-floor" x="-12" y="284" width="12" height="60"/>
+          <rect class="p-floor" x="317" y="75" width="13" height="100"/>
+          <rect class="p-floor" x="20" y="387" width="120" height="13"/>
+          <rect class="p-floor" x="190" y="387" width="100" height="22"/>
+          <path class="p-obj thin" d="M190,394 H290 M190,398 H290 M190,402 H290"/>
+          <path class="p-rib" d="M281,4 H287 M281,10 H287 M281,16 H287 M281,22 H287 M281,28 H287 M281,34 H287 M281,40 H287"/>
 
-          <!-- safety zones -->
+          <!-- safety zone for a shower without a tray -->
           <g id="zones">
-            <path class="zone2" d="M0,88 A300,300 0 0 1 300,388 L180,388 A180,180 0 0 0 0,208 Z"/>
-            <path class="zone1" d="M0,208 A180,180 0 0 1 180,388 L0,388 Z"/>
-            <text class="zone-t" x="24" y="186">зона 2</text>
-            <text class="zone-t" x="96" y="376">зона 0–1</text>
+            <path class="zone1" d="M0,88 A240,240 0 0 1 232,388 L0,388 Z"/>
+            <circle class="zone-pt" cx="2" cy="328" r="4"/>
+            <text class="zone-t" x="150" y="240">зона 0–1</text>
+            <text class="zone-t" x="150" y="256">R 1,2 м</text>
           </g>
 
           <!-- light on the floor -->
           <g class="glow" clip-path="url(#roomClip)">
             <circle data-g="A" cx="90" cy="110" r="150" fill="url(#gWarm)"/>
             <circle data-g="A" cx="236" cy="124" r="150" fill="url(#gWarm)"/>
-            <circle data-g="A" cx="76" cy="312" r="150" fill="url(#gWarm)"/>
+            <circle data-g="A" cx="120" cy="284" r="150" fill="url(#gWarm)"/>
             <circle data-g="A" cx="244" cy="298" r="150" fill="url(#gWarm)"/>
             <ellipse data-g="M" cx="372" cy="298" rx="120" ry="130" fill="url(#gNeutral)"/>
             <ellipse data-g="S1" cx="300" cy="298" rx="95" ry="105" fill="url(#gAmber)" style="opacity:0"/>
-            <ellipse data-g="S2" cx="0" cy="314" rx="80" ry="90" fill="url(#gAmber)" style="opacity:0"/>
+            <ellipse data-g="S2" cx="80" cy="392" rx="90" ry="60" fill="url(#gAmber)" style="opacity:0"/>
+            <ellipse data-g="S3" cx="318" cy="125" rx="50" ry="75" fill="url(#gAmber)" style="opacity:0"/>
+            <ellipse data-g="L5" cx="280" cy="23" rx="34" ry="40" fill="url(#gAmber)" style="opacity:0"/>
           </g>
 
-          <!-- shower tray -->
+          <!-- shower: glass quarter circle, rain head -->
           <path class="p-obj" d="M0,208 A180,180 0 0 1 180,388"/>
-          <path class="p-obj thin" d="M0,220 A168,168 0 0 1 168,388"/>
-          <circle class="p-obj thin" cx="52" cy="340" r="5"/>
-          <text class="p-tm" x="12" y="252">душ 90×90</text>
+          <path class="p-obj thin" d="M0,213 A175,175 0 0 1 175,388"/>
+          <circle class="p-obj thin dash" cx="72" cy="328" r="22"/>
+          <text class="p-tm" x="12" y="236">душ</text>
 
-          <!-- toilet -->
-          <rect class="p-obj" x="282" y="84" width="34" height="82" rx="4"/>
-          <ellipse class="p-obj" cx="243" cy="125" rx="41" ry="35"/>
-          <ellipse class="p-obj thin" cx="238" cy="125" rx="28" ry="22"/>
-          <text class="p-tm" x="206" y="184">унитаз</text>
+          <!-- wall-hung toilet -->
+          <ellipse class="p-obj" cx="266" cy="125" rx="52" ry="36"/>
+          <ellipse class="p-obj thin" cx="260" cy="125" rx="36" ry="23"/>
+          <text class="p-tm" x="214" y="184">унитаз</text>
 
           <!-- vanity -->
           <rect class="p-obj" x="280" y="238" width="92" height="120"/>
@@ -306,6 +362,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
           <circle class="p-obj thin" cx="322" cy="298" r="3.5"/>
           <rect class="p-obj thin" x="358" y="293" width="9" height="10" rx="2"/>
           <text class="p-tm" x="290" y="378">тумба 60</text>
+          <text class="p-tm" x="240" y="425" text-anchor="middle">окно</text>
 
           <!-- door, outside switches -->
           <line class="door" x1="-20" y1="30" x2="-140" y2="30"/>
@@ -316,7 +373,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 
           <!-- corner marks from the sketch -->
           <text class="p-corner" x="8" y="18">A</text>
-          <text class="p-corner" x="272" y="18" text-anchor="end">B</text>
+          <text class="p-corner" x="272" y="14" text-anchor="end">B</text>
           <text class="p-corner" x="272" y="64" text-anchor="end">C</text>
           <text class="p-corner" x="312" y="64" text-anchor="end">D</text>
           <text class="p-corner" x="312" y="198" text-anchor="end">E</text>
@@ -327,21 +384,25 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
           <!-- fixtures -->
           <g data-sym="M" class="lit"><rect class="mir" x="364" y="242" width="6" height="112" rx="2"/></g>
           <g data-sym="S1"><line class="strip" x1="285" y1="243" x2="285" y2="353"/></g>
-          <g data-sym="S2"><line class="strip" x1="-6" y1="288" x2="-6" y2="340"/></g>
+          <g data-sym="S2"><line class="strip" x1="24" y1="393" x2="136" y2="393"/></g>
+          <g data-sym="S3"><line class="strip" x1="324" y1="79" x2="324" y2="171"/></g>
           <g data-sym="A" class="lit"><circle class="dl" cx="90" cy="110" r="9"/><circle class="dl-core" cx="90" cy="110" r="3.5"/></g>
           <g data-sym="A" class="lit"><circle class="dl" cx="236" cy="124" r="9"/><circle class="dl-core" cx="236" cy="124" r="3.5"/></g>
-          <g data-sym="A" class="lit"><circle class="dl-ring" cx="76" cy="312" r="14"/><circle class="dl" cx="76" cy="312" r="9"/><circle class="dl-core" cx="76" cy="312" r="3.5"/></g>
+          <g data-sym="A" class="lit"><circle class="dl-ring" cx="120" cy="284" r="14"/><circle class="dl" cx="120" cy="284" r="9"/><circle class="dl-core" cx="120" cy="284" r="3.5"/></g>
           <g data-sym="A" class="lit"><circle class="dl" cx="244" cy="298" r="9"/><circle class="dl-core" cx="244" cy="298" r="3.5"/></g>
+          <g data-sym="L5"><circle class="dl-acc" cx="260" cy="24" r="6.5"/><circle class="dl-core acc-core" cx="260" cy="24" r="2.5"/></g>
           <circle class="pir" cx="170" cy="200" r="8"/><circle class="pir-dot" cx="170" cy="200" r="2.5"/>
 
           <text class="p-lab" x="104" y="115">L1</text>
-          <text class="p-lab" x="252" y="114">L2</text>
-          <text class="p-lab" x="95" y="317">L3 · IP65</text>
+          <text class="p-lab" x="222" y="112" text-anchor="end">L2</text>
+          <text class="p-lab" x="106" y="262" text-anchor="end">L3 · IP65</text>
           <text class="p-lab" x="258" y="303">L4</text>
+          <text class="p-lab" x="252" y="46" text-anchor="end">L5</text>
           <text class="p-lab" x="184" y="205">P1</text>
           <text class="p-lab" x="400" y="303">M1</text>
           <text class="p-lab" x="278" y="232" text-anchor="end">S1</text>
-          <text class="p-lab" x="10" y="280">S2 · опц.</text>
+          <text class="p-lab" x="60" y="378">S2</text>
+          <text class="p-lab" x="344" y="130">S3</text>
 
           <!-- dimensions -->
           <g class="p-dim">
@@ -379,14 +440,16 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
           <text class="p-t" x="-180" y="194" text-anchor="middle" transform="rotate(-90 -180 194)">1,94</text>
         </svg>
       </div>
-      <div class="stamp"><span>План потолка · вид сверху</span><span>размеры в м · потолок 2,6 м (принято)</span></div>
+      <div class="stamp"><span>План потолка · вид сверху</span><span>размеры в м · потолок ≈ 2,6 м, натяжной</span></div>
       <ul class="legend">
         <li><svg viewBox="0 0 26 20" aria-hidden="true"><g class="lit"><circle class="dl" cx="13" cy="10" r="7"/><circle class="dl-core" cx="13" cy="10" r="2.8"/></g></svg>L1, L2, L4 — точка в потолке, IP44</li>
         <li><svg viewBox="0 0 26 20" aria-hidden="true"><g class="lit"><circle class="dl-ring" cx="13" cy="10" r="9"/><circle class="dl" cx="13" cy="10" r="5.5"/><circle class="dl-core" cx="13" cy="10" r="2.2"/></g></svg>L3 — точка над душем, IP65</li>
+        <li><svg viewBox="0 0 26 20" aria-hidden="true"><g class="lit"><circle class="dl-acc" cx="13" cy="10" r="5.5"/><circle class="dl-core acc-core" cx="13" cy="10" r="2.2"/></g></svg>L5 — мини-спот на рифлёную колонну</li>
         <li><svg viewBox="0 0 26 20" aria-hidden="true"><g class="lit"><rect class="mir" x="10" y="1" width="6" height="18" rx="2"/></g></svg>M1 — зеркало с подсветкой</li>
-        <li><svg viewBox="0 0 26 20" aria-hidden="true"><g class="lit"><line class="strip" x1="1" y1="10" x2="25" y2="10"/></g></svg>S1, S2 — LED-лента 24 В</li>
+        <li><svg viewBox="0 0 26 20" aria-hidden="true"><g class="lit"><line class="strip" x1="1" y1="10" x2="25" y2="10"/></g></svg>S1–S3 — LED-лента 24 В</li>
         <li><svg viewBox="0 0 26 20" aria-hidden="true"><circle class="pir" cx="13" cy="10" r="7"/><circle class="pir-dot" cx="13" cy="10" r="2.2"/></svg>P1 — датчик движения</li>
         <li><svg viewBox="0 0 26 20" aria-hidden="true"><rect class="sw" x="9" y="2" width="8" height="16" rx="2"/></svg>В1–В3 — выключатели снаружи, h 0,9 м</li>
+        <li><svg viewBox="0 0 26 20" aria-hidden="true"><circle class="p-obj thin dash" cx="13" cy="10" r="8"/></svg>Лейка верхнего душа</li>
       </ul>
     </figure>
 
@@ -418,7 +481,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
           <output id="outM" for="dimM">100 %</output>
         </div>
         <div class="dim-row">
-          <label for="dimS">Подсветка <span>S1 + S2 · клавиша В3</span></label>
+          <label for="dimS">Подсветка <span>S1–S3, L5 · клавиша В3</span></label>
           <input type="range" id="dimS" min="0" max="100" step="5" value="0">
           <output id="outS" for="dimS">0 %</output>
         </div>
@@ -429,7 +492,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
         <div><span class="label">Мощность сейчас</span><strong id="watt">≈ 48 Вт</strong></div>
       </div>
 
-      <label class="toggle" for="zonesToggle"><input type="checkbox" id="zonesToggle" checked> Показать зоны безопасности у душа</label>
+      <label class="toggle" for="zonesToggle"><input type="checkbox" id="zonesToggle" checked> Показать зону безопасности душа</label>
     </div>
   </div>
 </section>
@@ -502,7 +565,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
           <text class="p-tm" x="166" y="390">свет в пол</text>
         </svg>
       </div>
-      <div class="stamp"><span>Развёртка · вид от двери</span><span>высоты в м</span></div>
+      <div class="stamp"><span>Развёртка · вид от двери</span><span>тумба и зеркало по эскизу</span></div>
     </figure>
 
     <div class="prose">
@@ -511,9 +574,90 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
         <li>Зеркало 60 × 80 см: низ на 1,10 м, верх на 1,90 м. Полосы света 1,20–1,80 м, их середина приходится на уровень глаз.</li>
         <li>1200–1600 лм, Ra ≥ 90, иначе цвет кожи и макияжа искажается. Температура 3000–4000 K. Удобнее модель с регулировкой: утром нейтральный свет, вечером тёплый.</li>
         <li>Подогрев от запотевания подключается на ту же клавишу В2.</li>
-        <li>Стена F–G почти в метре от края поддона, это дальше зоны 2 (0,6 м). Поэтому сенсорная кнопка на самом зеркале допустима.</li>
+        <li>Стена F–G дальше 1,2 м от выхода воды в душе, это вне зон. Поэтому сенсорная кнопка на самом зеркале допустима.</li>
         <li>L4 висит в 0,64 м перед стеной, чуть впереди лица стоящего у раковины. Его отражение в зеркале выше верхнего края, поэтому он не бликует.</li>
-        <li>Лента S1 на нижней плоскости подвесной тумбы светит в пол: тумба «парит», а ночью этого света хватает, чтобы дойти до унитаза.</li>
+        <li>Лента S1 на нижней плоскости подвесной тумбы светит в пол: тумба «парит», а ночью этого света хватает, чтобы не споткнуться.</li>
+        <li>Стена уже в плитке, поэтому выводы под зеркало и тумбу должны быть на месте. Если их нет, напишите, подберу вариант.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-elev2">
+  <h2 id="h-elev2">Стена с унитазом D–E</h2>
+  <div class="elev-grid">
+    <figure class="sheet">
+      <div class="sheet-scroll">
+        <svg id="elev2" viewBox="-100 -40 420 510" role="img" aria-labelledby="el2Title el2Desc">
+          <title id="el2Title">Развёртка стены D–E</title>
+          <desc id="el2Desc">Короб инсталляции до потолка. Подвесной унитаз, кнопка смыва на высоте около 1 м, над ней ниша примерно 0,5 на 0,9 м с полкой на высоте 1,20 м. В верхней грани ниши лента S3. На потолке светильник L2 в 0,41 м перед стеной.</desc>
+          <defs>
+            <clipPath id="wallClip2"><rect x="0" y="0" width="126" height="416"/></clipPath>
+            <clipPath id="nicheClip"><rect x="23" y="80" width="80" height="144"/></clipPath>
+            <linearGradient id="beamL2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s3000" stop-opacity=".55"/><stop offset="1" class="s3000" stop-opacity="0"/></linearGradient>
+            <linearGradient id="nicheGlow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s2700" stop-opacity=".95"/><stop offset=".6" class="s2700" stop-opacity=".4"/><stop offset="1" class="s2700" stop-opacity=".25"/></linearGradient>
+          </defs>
+
+          <rect class="p-wall" x="-12" y="-14" width="150" height="14"/>
+          <rect class="p-wall" x="-12" y="416" width="150" height="14"/>
+          <rect class="p-wall" x="-12" y="0" width="12" height="416"/>
+          <rect class="p-wall" x="126" y="0" width="12" height="416"/>
+          <rect class="p-floor" x="0" y="0" width="126" height="416"/>
+
+          <g class="glow" clip-path="url(#wallClip2)">
+            <path data-g="A" d="M53,0 H73 L132,300 H-6 Z" fill="url(#beamL2)"/>
+          </g>
+          <rect class="p-obj solid" x="23" y="80" width="80" height="144"/>
+          <g class="glow" clip-path="url(#nicheClip)">
+            <rect data-g="S3" x="23" y="80" width="80" height="144" fill="url(#nicheGlow)" style="opacity:0"/>
+          </g>
+          <rect class="p-obj thin" x="29" y="86" width="68" height="138"/>
+          <path class="p-obj thin" d="M23,80 L29,86 M103,80 L97,86"/>
+          <g data-sym="S3"><line class="strip" x1="30" y1="84" x2="96" y2="84"/></g>
+
+          <rect class="p-obj solid" x="43" y="243" width="40" height="26" rx="2"/>
+          <path class="p-obj solid" d="M34,352 H92 V364 Q92,388 70,390 H56 Q34,388 34,364 Z"/>
+          <line class="p-obj thin" x1="34" y1="357" x2="92" y2="357"/>
+          <g data-sym="A" class="lit"><rect class="dl-e" x="55" y="0" width="16" height="4"/></g>
+
+          <g class="p-dim">
+            <line x1="-24" y1="0" x2="-24" y2="416"/>
+            <path d="M-30,0 H-18 M-30,80 H-18 M-30,224 H-18 M-30,256 H-18 M-30,352 H-18 M-30,416 H-18"/>
+            <line x1="0" y1="446" x2="126" y2="446"/>
+            <path d="M-5,451 L5,441 M121,451 L131,441"/>
+            <line x1="0" y1="432" x2="0" y2="452"/>
+            <line x1="126" y1="432" x2="126" y2="452"/>
+          </g>
+          <text class="p-t" x="-34" y="5" text-anchor="end">2,60</text>
+          <text class="p-t" x="-34" y="85" text-anchor="end">≈2,10</text>
+          <text class="p-t" x="-34" y="229" text-anchor="end">≈1,20</text>
+          <text class="p-t" x="-34" y="261" text-anchor="end">1,00</text>
+          <text class="p-t" x="-34" y="357" text-anchor="end">0,40</text>
+          <text class="p-t" x="-34" y="421" text-anchor="end">0</text>
+          <text class="p-t" x="63" y="440" text-anchor="middle">0,79</text>
+          <text class="p-corner" x="0" y="466" text-anchor="middle">D</text>
+          <text class="p-corner" x="126" y="466" text-anchor="middle">E</text>
+
+          <text class="p-tm" x="146" y="9">L2 в 0,41 м от стены</text>
+          <text class="p-lab" x="146" y="90">S3</text>
+          <text class="p-tm" x="146" y="107">лента 2700 K</text>
+          <text class="p-tm" x="146" y="123">ниша ≈ 0,5 × 0,9</text>
+          <text class="p-tm" x="146" y="229">полка ниши</text>
+          <text class="p-tm" x="146" y="260">кнопка смыва</text>
+          <text class="p-tm" x="146" y="372">унитаз подвесной</text>
+        </svg>
+      </div>
+      <div class="stamp"><span>Развёртка · вид от двери</span><span>размеры ниши по фото, ≈</span></div>
+    </figure>
+
+    <div class="prose">
+      <p><strong>Ниша над инсталляцией — самое заметное место в ванной,</strong> её видно от двери. Тёплая лента в верхней грани заливает светом заднюю стенку и полку, и ниша светится как витрина.</p>
+      <ul>
+        <li>Лента S3 в узком накладном профиле с матовым рассеивателем, на 2–3 см вглубь от переднего края. Так источник не виден от двери и не отражается в плитке.</li>
+        <li>Ночью S3 горит на 15 % вместе с S1: от двери видно, куда идти, и свет не бьёт в глаза.</li>
+        <li>Провод к нише: короб инсталляции полый, провод спускается из-под потолка внутри короба и выходит через отверстие 6–8 мм в верхней грани ниши. Сделать до натяжки полотна.</li>
+        <li>L2 висит в 0,41 м от стены, чуть впереди головы сидящего: свет падает на лицо, а не на макушку.</li>
+        <li>Колонна слева облицована рифлёной плиткой. Мини-спот L5 в 10 см от неё светит вдоль поверхности сверху вниз, и рельеф проявляется полосами. Без такого света колонна выглядит плоской.</li>
       </ul>
     </div>
   </div>
@@ -527,13 +671,16 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
         <tr><th>Поз.</th><th>Изделие</th><th>Кол-во</th><th>Параметры</th><th>Место</th></tr>
       </thead>
       <tbody>
-        <tr><td class="pos">L1, L2, L4</td><td>Встраиваемый точечный светильник с глубокой посадкой источника, без слепящего блика</td><td class="num">3 шт</td><td>6–8 Вт · 450–550 лм · 3000 K · Ra ≥ 90 · луч 36–60° · IP44 · диммируемый драйвер</td><td>Потолок, точки в таблице ниже</td></tr>
-        <tr><td class="pos">L3</td><td>Такой же светильник в исполнении для душа, закрытое стекло</td><td class="num">1 шт</td><td>450–550 лм · 3000 K · Ra ≥ 90 · IP65</td><td>Потолок над поддоном</td></tr>
+        <tr><td class="pos">L1, L2, L4</td><td>Встраиваемый точечный светильник с глубокой посадкой источника, без слепящего блика</td><td class="num">3 шт</td><td>6–8 Вт · 450–550 лм · 3000 K · Ra ≥ 90 · луч 36–60° · IP44 · диммируемый драйвер · низкий корпус под натяжной потолок</td><td>Потолок, точки в таблице ниже</td></tr>
+        <tr><td class="pos">L3</td><td>Такой же светильник в исполнении для душа, закрытое стекло</td><td class="num">1 шт</td><td>450–550 лм · 3000 K · Ra ≥ 90 · IP65</td><td>Потолок над душем, между лейкой и дверцами</td></tr>
+        <tr><td class="pos">L5</td><td>Мини-спот 24 В для скользящего света<span class="new">новое</span><span class="note">по желанию</span></td><td class="num">1 шт</td><td>3 Вт · 2700 K · Ra ≥ 90 · луч 24–36° · IP44</td><td>Потолок, 10 см от рифлёной колонны B–C</td></tr>
         <tr><td class="pos">M1</td><td>Зеркало с фронтальной LED-подсветкой (матовые полосы по бокам) и подогревом от запотевания</td><td class="num">1 шт</td><td>60 × 80 см · 1200–1600 лм · 3000–4000 K, лучше с регулировкой · Ra ≥ 90 · IP44</td><td>Стена F–G, низ на 1,10 м</td></tr>
         <tr><td class="pos">S1</td><td>LED-лента в алюминиевом профиле с матовым рассеивателем</td><td class="num">0,6 м</td><td>24 В · 8–10 Вт/м · 2700 K · Ra ≥ 90 · IP65</td><td>Низ подвесной тумбы, у переднего края</td></tr>
-        <tr><td class="pos">S2</td><td>LED-лента в силиконовом профиле<span class="note">по желанию, если в душе будет ниша</span></td><td class="num">0,3–0,6 м</td><td>24 В · 2700 K · IP67–IP68</td><td>Ниша в стене A–H над поддоном</td></tr>
-        <tr><td class="pos">БП</td><td>Блок питания 24 В и диммер-контроллер ленты с входом для датчика</td><td class="num">1 компл.</td><td>30 Вт: лента ≈ 12 Вт плюс запас</td><td>Вне ванной, с доступом</td></tr>
+        <tr><td class="pos">S2</td><td>LED-лента в накладном силиконовом профиле</td><td class="num">≈ 0,6 м</td><td>24 В · 8–10 Вт/м · 2700 K · IP67–IP68</td><td>Верхняя грань ниши в душе, стена G–H</td></tr>
+        <tr><td class="pos">S3</td><td>LED-лента в узком накладном профиле с матовым рассеивателем<span class="new">новое</span></td><td class="num">≈ 0,5 м</td><td>24 В · 8–10 Вт/м · 2700 K · Ra ≥ 90 · IP44</td><td>Верхняя грань ниши над унитазом</td></tr>
+        <tr><td class="pos">БП</td><td>Блок питания 24 В и двухканальный контроллер ленты с входом для датчика</td><td class="num">1 компл.</td><td>30 Вт: ленты и L5 ≈ 19 Вт плюс запас. Канал 1 — S1 + S3 и ночной режим, канал 2 — S2 + L5</td><td>Вне ванной, с доступом</td></tr>
         <tr><td class="pos">P1</td><td>Потолочный датчик движения</td><td class="num">1 шт</td><td>Задержка 1–2 мин, порог по освещённости</td><td>Потолок, центр комнаты</td></tr>
+        <tr><td class="pos">—</td><td>Закладные платформы для натяжного потолка<span class="new">новое</span></td><td class="num">6 шт + кольцо</td><td>Под диаметр выбранных светильников и датчика, кольцо под вентилятор</td><td>До натяжки полотна</td></tr>
         <tr><td class="pos">В1–В3</td><td>Блок у двери: диммер и две клавиши</td><td class="num">1 шт</td><td>Диммер для LED, с отсечкой по заднему фронту</td><td>Снаружи у двери, h 0,9 м</td></tr>
       </tbody>
     </table>
@@ -550,13 +697,14 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
           <tbody>
             <tr><td class="pos">L1</td><td class="num">0,45</td><td class="num">0,55</td><td>Центр зоны у входа</td></tr>
             <tr><td class="pos">L2</td><td class="num">1,18</td><td class="num">0,62</td><td>По оси унитаза, 0,41 м от стены D–E</td></tr>
-            <tr><td class="pos">L3</td><td class="num">0,38</td><td class="num">1,56</td><td>Центр поддона, по 0,38 м от стен A–H и G–H</td></tr>
+            <tr><td class="pos">L3</td><td class="num">0,60</td><td class="num">1,42</td><td>Между лейкой верхнего душа и дверцами, 0,52 м от стены G–H</td></tr>
             <tr><td class="pos">L4</td><td class="num">1,22</td><td class="num">1,49</td><td>По оси раковины, 0,64 м от стены F–G</td></tr>
+            <tr><td class="pos">L5</td><td class="num">1,30</td><td class="num">0,12</td><td>10 см от рифлёной колонны B–C, по её центру</td></tr>
             <tr><td class="pos">P1</td><td class="num">0,85</td><td class="num">1,00</td><td>Центр комнаты</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="small">Расстояния в метрах до центра светильника: от левой стены A–H и от верхней стены A–B. Перед сверлением проверьте, что над точкой нет балки, вентканала или трубы.</p>
+      <p class="small">Расстояния в метрах до центра светильника: от левой стены A–H и от верхней стены A–B. L3 ставьте не ближе 15 см к лейке верхнего душа и к стеклу. Если над точкой окажется вентиляция или балка, сдвигайте светильник, а не трубу.</p>
     </div>
     <div>
       <h2>Расчёт общего света</h2>
@@ -568,7 +716,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
         <div class="row"><span>E = Φ · UF · MF / S</span><span>2000 · 0,45 · 0,8 / 3,3</span></div>
         <div class="row total"><span>Освещённость пола</span><span>≈ 220 лк</span></div>
       </div>
-      <p class="small">Норма для ванной по СП 52.13330.2016 — 50 лк, это минимум. Для комфорта целимся в 150–250 лк. UF 0,45 взят для маленькой комнаты со светлой плиткой. Если плитка тёмная (UF ≈ 0,35), выйдет около 170 лк: тогда берите светильники на 650–700 лм.</p>
+      <p class="small">Норма для ванной по СП 52.13330.2016 — 50 лк, это минимум. Для комфорта целимся в 150–250 лк. UF 0,45 соответствует маленькой комнате со светлой матовой плиткой, как на фото. Подсветка ниш и колонны в расчёт не входит, она добавляет свет сверх этого.</p>
     </div>
   </div>
 </section>
@@ -581,8 +729,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
       <tbody>
         <tr><td class="pos">В1</td><td>L1–L4, общий свет</td><td>Диммер. Вытяжной вентилятор подключить к этой же линии через таймер задержки 3–5 мин или поставить модель с датчиком влажности.</td></tr>
         <tr><td class="pos">В2</td><td>M1, подсветка и подогрев зеркала</td><td>Обычная клавиша. Другой вариант: постоянное питание и сенсорная кнопка на самом зеркале.</td></tr>
-        <tr><td class="pos">В3</td><td>S1 + S2, подсветка</td><td>Клавиша подаёт команду на контроллер ленты, яркость задаётся на нём.</td></tr>
-        <tr><td class="pos">P1</td><td>S1 на 15 % ночью</td><td>Датчик подключён ко входу контроллера ленты. Ночной режим включается по времени или по датчику освещённости, свет гаснет через 1–2 минуты. Без контроллера то же делает умное реле.</td></tr>
+        <tr><td class="pos">В3</td><td>S1, S2, S3 и L5, подсветка</td><td>Клавиша подаёт команду на контроллер ленты, яркость задаётся на нём. Оба канала включаются вместе.</td></tr>
+        <tr><td class="pos">P1</td><td>S1 + S3 на 15 % ночью</td><td>Датчик подключён к каналу 1 контроллера. Ночной режим включается по времени или по датчику освещённости, свет гаснет через 1–2 минуты. Без контроллера то же делает умное реле.</td></tr>
       </tbody>
     </table>
   </div>
@@ -591,35 +739,37 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
 <section aria-labelledby="h-safe">
   <h2 id="h-safe">Электрика и безопасность</h2>
   <div class="zones">
-    <div><b>Зона 0</b><span>Внутри поддона. Только 12 В переменного или 30 В постоянного тока, IPX7.</span></div>
-    <div><b>Зона 1</b><span>Над поддоном до высоты 2,25 м. Только стационарные приборы, IPX4 и выше.</span></div>
-    <div><b>Зона 2</b><span>Полоса 0,6 м вокруг зоны 1, до 2,25 м. IPX4 и выше, без выключателей и розеток на 230 В.</span></div>
+    <div><b>Зона 0</b><span>Пол душа до высоты 10 см в границах зоны 1. Только 12 В переменного или 30 В постоянного тока, IPX7.</span></div>
+    <div><b>Зона 1</b><span>1,2 м по горизонтали от выхода воды верхнего душа, до высоты 2,25 м. Только стационарные приборы, IPX4 и выше.</span></div>
+    <div><b>Зоны 2 нет</b><span>У душа без поддона её заменяет расширенная зона 1.</span></div>
   </div>
-  <p class="small">Зоны по ГОСТ Р 50571.7.701-2013, отсчитаны от края поддона без учёта шторки.</p>
+  <p class="small">Зоны по ГОСТ Р 50571.7.701-2013 для душа без поддона. Открывающиеся дверцы душа зону не ограничивают. Точку выхода воды я взял по фото, около 0,3 м от угла H.</p>
   <ul class="rules">
     <li>Отдельная линия освещения: автомат 10 А и УЗО или дифавтомат с током утечки 30 мА. Для всех цепей ванной это обязательно.</li>
     <li>Кабель ВВГнг(А)-LS 3 × 1,5 мм² с жилой PE. Металлические светильники класса I заземлить.</li>
-    <li>Распаечные коробки, блок питания, контроллер ленты и диммер ставятся вне ванной или хотя бы вне зон 0–2, с доступом для замены: ревизионный люк, шкаф в коридоре.</li>
-    <li>Лента только на 24 В постоянного тока, от блока питания с разделительным трансформатором. В нише душа нужна защита IP67–IP68.</li>
-    <li>Над поддоном ставим IP65. Потолок на 2,6 м формально выше зоны 1, но пар и брызги туда доходят. В остальной ванной — не ниже IP44.</li>
+    <li>Распаечные коробки, блок питания, контроллер ленты и диммер ставятся вне ванной, с доступом для замены: ревизионный люк, шкаф в коридоре. Над натяжным полотном их не прятать.</li>
+    <li>Ленты и L5 только на 24 В постоянного тока, от блока питания с разделительным трансформатором. Ниша душа в зоне 1, там нужна защита IP67–IP68.</li>
+    <li>Над душем ставим IP65. Потолок на 2,6 м формально выше зоны 1, но пар и брызги туда доходят. В остальной ванной — не ниже IP44.</li>
     <li>Все четыре точки берите одной модели и партии, с диммируемыми драйверами, иначе при диммировании они будут светить по-разному.</li>
-    <li>При натяжном потолке закладные платформы под точки и датчик ставят до натяжки полотна. Высота корпуса светильника выбирается по зазору над полотном.</li>
+    <li>Светильники для натяжного потолка — с низким корпусом и вынесенным драйвером. Высоту корпуса подбирайте по зазору между плитой и багетом.</li>
   </ul>
 </section>
 
 <section aria-labelledby="h-check">
-  <h2 id="h-check">Что уточнить перед закупкой</h2>
+  <h2 id="h-check">Что уточнить</h2>
   <ol class="check">
-    <li><strong>Высота и тип потолка.</strong> Расчёт сделан для 2,6 м. Если потолок выше 2,8 м, берите точки на 650–700 лм с лучом 36°.</li>
-    <li><strong>Где дверь и куда открывается.</strong> По двум засечкам на стене A–H я принял проём около 0,6 м в верхней части стены и открывание наружу. Если дверь в другом месте, блок выключателей переезжает к ней, а L1 — к входу.</li>
-    <li><strong>Унитаз подвесной или напольный.</strong> Если подвесной с коробом инсталляции, на полку короба можно добавить ещё одну ленту: получится мягкий ночной свет за унитазом.</li>
-    <li><strong>Будет ли ниша в душе.</strong> Без ниши лента S2 не нужна, остальная схема не меняется.</li>
-    <li><strong>Цвет плитки.</strong> Для тёмной плитки нужен более мощный поток, см. расчёт выше.</li>
+    <li><strong>Зазор между плитой и багетом.</strong> Для встраиваемых точек нужно 6–7 см и больше. Если меньше, подберу светильники ниже.</li>
+    <li><strong>Где выходит вентиляция.</strong> Расстояния от двух стен до трубы, чтобы развести решётку с L1 и L3.</li>
+    <li><strong>Провод на стене A–B у колонны</strong>, на высоте около 2 м: для чего он? Если он свободен, его можно увести в потолок и запитать от него L5.</li>
+    <li><strong>Выводы на стене F–G</strong> под зеркало и ленту тумбы: есть ли они и на какой высоте.</li>
+    <li><strong>Размеры ниш:</strong> над унитазом (по фото ≈ 0,5 × 0,9 м) и в душе. И есть ли доступ в короб, чтобы завести в них провод.</li>
+    <li><strong>Высота потолка рулеткой.</strong> По фото около 2,6–2,7 м. Если выше 2,8 м, точки нужны на 650–700 лм.</li>
+    <li><strong>Куда открывается дверь.</strong> От этого зависит, с какой стороны проёма ставить выключатели.</li>
   </ol>
 </section>
 
 <footer>
-  <p class="small">Размеры взяты с эскиза. Верх по участкам 1,40 + 0,19 + 0,27 = 1,86 м против 1,84 м по низу, правая сторона 0,23 + 0,79 + 0,90 = 1,92 м против 1,94 м слева: стены не идеально параллельны, на плане это ±2 см. Второй эскиз (4,21 × 3,81 м) похож на соседнюю комнату и в расчёт не входит.</p>
+  <p class="small">Размеры взяты с эскиза, расположение ниш, окна и выхода воды — с фото. Верх по участкам 1,40 + 0,19 + 0,27 = 1,86 м против 1,84 м по низу, правая сторона 0,23 + 0,79 + 0,90 = 1,92 м против 1,94 м слева: стены не идеально параллельны, на плане это ±2 см. Второй эскиз (4,21 × 3,81 м) похож на соседнюю комнату и в расчёт не входит.</p>
 </footer>
 
 </div>
@@ -632,9 +782,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
     clean: { A: 100, M: 100, S: 100, night: false, name: 'Уборка',
       text: 'Всё включено на полную: видно каждый угол и швы плитки.' },
     evening: { A: 20, M: 0, S: 100, night: false, name: 'Вечер',
-      text: 'Душ перед сном. Точки приглушены до 20 %, горит тёплая лента 2700 K. Такой свет не бодрит и не бьёт в глаза.' },
+      text: 'Душ перед сном. Точки приглушены до 20 %, светятся обе ниши, колонна и пол под тумбой. Тёплые 2700 K не бодрят и не бьют в глаза.' },
     night: { A: 0, M: 0, S: 15, night: true, name: 'Ночь',
-      text: 'Датчик движения включает только ленту под тумбой на 15 % на 1–2 минуты. Хватает, чтобы не споткнуться, и не слепит.' }
+      text: 'Датчик движения включает ленту под тумбой и нишу над унитазом на 15 % на 1–2 минуты. Видно, куда идти, и свет не слепит.' }
   };
   var state = { A: 100, M: 100, S: 0, night: false };
   var current = 'morning';
@@ -646,11 +796,13 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); ou
   var outs = { A: document.getElementById('outA'), M: document.getElementById('outM'), S: document.getElementById('outS') };
 
   function render() {
-    var lv = { A: state.A / 100, M: state.M / 100, S1: state.S / 100, S2: state.night ? 0 : state.S / 100 };
+    var s = state.S / 100;
+    var ch2 = state.night ? 0 : s;
+    var lv = { A: state.A / 100, M: state.M / 100, S1: s, S3: s, S2: ch2, L5: ch2 };
     glows.forEach(function (el) { el.style.opacity = Math.pow(lv[el.dataset.g], 0.55).toFixed(3); });
     syms.forEach(function (el) { el.classList.toggle('lit', lv[el.dataset.sym] > 0); });
     ['A', 'M', 'S'].forEach(function (k) { sliders[k].value = state[k]; outs[k].textContent = state[k] + ' %'; });
-    var watt = 28 * lv.A + 20 * lv.M + (state.night ? 6 : 12) * lv.S1;
+    var watt = 28 * lv.A + 20 * lv.M + 10 * s + 9 * ch2;
     document.getElementById('lux').textContent = '≈ ' + Math.round(220 * lv.A) + ' лк';
     document.getElementById('watt').textContent = '≈ ' + Math.round(watt) + ' Вт';
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.scene === current)); });
