@@ -1,6 +1,6 @@
 <title>Двор таунхауса</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Эскизный проект заднего двора таунхауса 5,78 × 4,21 м: стеклянная пергола, лаунж с огнём, обеденная зона, клумба с туями.">
+<meta name="description" content="Эскизный проект заднего двора таунхауса в Краснодаре 5,78 × 4,21 м: живая изгородь из туй, газон, костровая чаша-гриль, пергола со стеклом и кресло-кокон.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Tenor+Sans&display=swap">
@@ -9,8 +9,9 @@
 :root{
   --paper:#ECEBE8; --sheet:#F7F6F4; --ink:#221B1B; --muted:#6A6260; --rule:#D2CDC7; --rule-soft:#E2DEDA;
   --brick:#5A3A3B; --larch:#A97C4E; --leaf:#4E6448; --glow:#B8691A;
-  --p-deck:#E8D5BC; --p-line:#CDB394; --p-stone:#DDD7CC; --p-soil:#9C8B78; --p-leaf:#6F8A63; --p-leaf2:#A3B693;
+  --p-deck:#E8D5BC; --p-line:#CDB394; --p-stone:#DDD7CC; --p-soil:#8E7560; --p-leaf:#5F7D55; --p-leaf2:#8FA9A0;
   --p-dark:#4A3B33; --p-furn:#FBFAF8; --p-cush:#8D9196; --p-conc:#EFEDE9; --p-glow:#F0B35E; --p-wall:#5A3A3B; --p-glass:#7FA8B3;
+  --p-lawn:#B9CC93; --p-gravel:#E2DCD0; --p-corten:#9A5530;
   --f-display:"Tenor Sans", "Golos Text", Georgia, serif;
   --f-body:"Golos Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -19,16 +20,18 @@
   :root:not([data-theme="light"]){
     --paper:#161213; --sheet:#1F1A1B; --ink:#EDE7E3; --muted:#A89F9B; --rule:#3B3334; --rule-soft:#2B2425;
     --brick:#D0A19A; --larch:#D6A979; --leaf:#9AB58E; --glow:#F2A84E;
-    --p-deck:#4B3E31; --p-line:#625140; --p-stone:#5A544E; --p-soil:#3C3229; --p-leaf:#53704A; --p-leaf2:#7A9670;
+    --p-deck:#4B3E31; --p-line:#625140; --p-stone:#5A544E; --p-soil:#3C3229; --p-leaf:#4F6A46; --p-leaf2:#5E7A72;
     --p-dark:#8A7262; --p-furn:#2C2627; --p-cush:#6B7075; --p-conc:#625F5A; --p-glow:#F2A84E; --p-wall:#7A4E4E; --p-glass:#8FB8C2;
+    --p-lawn:#3F5233; --p-gravel:#4A4640; --p-corten:#B8693C;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --paper:#161213; --sheet:#1F1A1B; --ink:#EDE7E3; --muted:#A89F9B; --rule:#3B3334; --rule-soft:#2B2425;
   --brick:#D0A19A; --larch:#D6A979; --leaf:#9AB58E; --glow:#F2A84E;
-  --p-deck:#4B3E31; --p-line:#625140; --p-stone:#5A544E; --p-soil:#3C3229; --p-leaf:#53704A; --p-leaf2:#7A9670;
+  --p-deck:#4B3E31; --p-line:#625140; --p-stone:#5A544E; --p-soil:#3C3229; --p-leaf:#4F6A46; --p-leaf2:#5E7A72;
   --p-dark:#8A7262; --p-furn:#2C2627; --p-cush:#6B7075; --p-conc:#625F5A; --p-glow:#F2A84E; --p-wall:#7A4E4E; --p-glass:#8FB8C2;
+  --p-lawn:#3F5233; --p-gravel:#4A4640; --p-corten:#B8693C;
   color-scheme:dark;
 }
 
@@ -37,15 +40,13 @@ body{background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--f-body);-w
 .wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 64px}
 h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:.005em}
 p{margin:0}
-.mono{font-family:var(--f-mono)}
-.num{font-variant-numeric:tabular-nums}
 
 /* ——— title block ——— */
 .head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 48px;align-items:end;padding-block:12px 28px}
 .eyebrow{font:500 12px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .head h1{font-size:clamp(2.6rem, 6vw, 4.4rem);line-height:1;margin-top:10px;color:var(--ink)}
 .lede{margin-top:16px;max-width:60ch;color:var(--ink);font-size:1.06rem}
-.stamp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1.5px solid var(--ink);background:var(--sheet)}
+.stamp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1.5px solid var(--ink);background:var(--sheet);margin:0}
 .stamp div{padding:9px 12px 10px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-width:0}
 .stamp div:nth-child(2n){border-right:0}
 .stamp div:nth-last-child(-n+2){border-bottom:0}
@@ -62,7 +63,7 @@ p{margin:0}
 .btn:hover{border-color:var(--ink)}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
 .btn:focus-visible{outline:2px solid var(--glow);outline-offset:2px}
-.stage{position:relative;height:clamp(380px, 64vh, 660px);background:linear-gradient(#c3ced4,#e1e6e7 70%);overflow:hidden;transition:background .6s}
+.stage{position:relative;height:clamp(380px, 64vh, 660px);background:linear-gradient(#bfd0dc,#e3e8e8 70%);overflow:hidden;transition:background .6s}
 .stage.night{background:linear-gradient(#0a0f17,#1b2431 70%)}
 .stage canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
 .stage canvas:active{cursor:grabbing}
@@ -92,7 +93,7 @@ p{margin:0}
 .sketch img{display:block;width:100%;height:auto;filter:grayscale(1)}
 .sketch figcaption{font-size:13px;color:var(--muted);margin-top:8px}
 
-.facts{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--rule)}
+.facts{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--rule)}
 .facts li{display:grid;grid-template-columns:5.6rem minmax(0,1fr);gap:14px;padding:11px 0;border-bottom:1px solid var(--rule)}
 .facts .k{font:500 15px var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink)}
 .facts .v{min-width:0}
@@ -101,7 +102,6 @@ p{margin:0}
 /* drawings */
 .drawing{border:1px solid var(--rule);background:var(--sheet);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .drawing svg{display:block;width:100%;height:auto;min-width:640px}
-.dwg-note{font-size:13px;color:var(--muted)}
 .p-line{stroke:var(--ink);stroke-width:1.1;fill:none}
 .p-thin{stroke:var(--ink);stroke-width:.6;fill:none}
 .p-dash{stroke:var(--ink);stroke-width:.9;stroke-dasharray:7 4;fill:none}
@@ -110,15 +110,16 @@ p{margin:0}
 .p-board{stroke:var(--p-line);stroke-width:.8}
 .p-hatch{stroke:var(--muted);stroke-width:.55}
 .p-dim{stroke:var(--muted);stroke-width:.8;fill:none}
-.p-led{stroke:var(--p-glow);stroke-width:3;stroke-linecap:round;fill:none}
+.p-garland{stroke:var(--p-glow);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:.1 9;fill:none}
 .p-glassline{stroke:var(--p-glass);stroke-width:3;fill:none}
 .t-dim{fill:var(--ink);font:500 13px var(--f-mono);font-variant-numeric:tabular-nums}
+.t-small{fill:var(--ink);font:500 10.5px var(--f-mono);font-variant-numeric:tabular-nums}
 .t-lbl{fill:var(--muted);font:500 10.5px var(--f-mono);letter-spacing:.08em}
 .t-in{fill:var(--sheet);font:500 10.5px var(--f-mono);letter-spacing:.08em}
 .t-axis{fill:var(--brick);font:400 17px var(--f-display)}
 .f-deck{fill:var(--p-deck)} .f-stone{fill:var(--p-stone)} .f-soil{fill:var(--p-soil)} .f-leaf{fill:var(--p-leaf)} .f-leaf2{fill:var(--p-leaf2)}
 .f-dark{fill:var(--p-dark)} .f-furn{fill:var(--p-furn)} .f-cush{fill:var(--p-cush)} .f-conc{fill:var(--p-conc)} .f-glow{fill:var(--p-glow)} .f-wall{fill:var(--p-wall)} .f-ink{fill:var(--ink)} .f-sheet{fill:var(--sheet)}
-.f-larch{fill:var(--larch)}
+.f-larch{fill:var(--larch)} .f-lawn{fill:var(--p-lawn)} .f-gravel{fill:var(--p-gravel)} .f-corten{fill:var(--p-corten)}
 .co circle{fill:var(--ink)}
 .co text{fill:var(--sheet);font:600 10px var(--f-mono);text-anchor:middle;dominant-baseline:central}
 
@@ -130,7 +131,7 @@ p{margin:0}
 .keys i{display:inline-block;width:26px;height:10px}
 
 /* zones */
-.zones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.zones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--ink)}
 .zone{padding:18px 22px 20px 0;border-bottom:1px solid var(--rule);min-width:0}
 .zone:nth-child(2n){padding-left:22px;padding-right:0;border-left:1px solid var(--rule)}
 .zone h3{font-size:1.3rem;line-height:1.2}
@@ -145,16 +146,17 @@ p{margin:0}
 .sw h3{font:600 14.5px/1.3 var(--f-body);margin-top:10px}
 .sw p{font-size:13.5px;color:var(--muted);margin-top:3px}
 .chip.walnut{background:repeating-linear-gradient(90deg,#3e2f27 0 26px,#2e231d 26px 34px)}
-.chip.glass{background:linear-gradient(135deg,#d9e7ea 0%,#bfd3d8 45%,#e6eff1 55%,#c7dade 100%)}
-.chip.larch{background:repeating-linear-gradient(90deg,#c99d6f 0 30px,#7a5a3b 30px 31px,#c29466 31px 61px,#7a5a3b 61px 62px,#cfa678 62px 92px,#7a5a3b 92px 93px)}
+.chip.glass{background:linear-gradient(135deg,#aebdbd 0%,#93a6a8 45%,#c3cfcf 55%,#9fb1b2 100%)}
+.chip.porcelain{background:repeating-linear-gradient(90deg,#d0b38d 0 38px,#9a8468 38px 39px,#c8aa83 39px 77px,#9a8468 77px 78px)}
 .chip.stone{background:
-  radial-gradient(circle at 22% 30%,#e9e5de 0 18%,transparent 19%),
-  radial-gradient(circle at 70% 64%,#d6d0c5 0 22%,transparent 23%),
-  radial-gradient(circle at 82% 18%,#e2ddd3 0 12%,transparent 13%),
-  #ccc5b9}
+  radial-gradient(ellipse 30% 26% at 24% 32%,#ebe7e0 0 96%,transparent 100%),
+  radial-gradient(ellipse 28% 34% at 66% 62%,#d9d3c8 0 96%,transparent 100%),
+  radial-gradient(ellipse 20% 22% at 86% 20%,#e4dfd6 0 96%,transparent 100%),
+  radial-gradient(ellipse 18% 20% at 20% 82%,#e0dbd2 0 96%,transparent 100%),
+  #b9b1a5}
+.chip.corten{background:radial-gradient(circle at 25% 30%,#a8602f 0 18%,transparent 40%),radial-gradient(circle at 70% 70%,#6e361b 0 20%,transparent 45%),#8c4a25}
 .chip.slats{background:repeating-linear-gradient(180deg,#45362d 0 14px,#1e1714 14px 18px)}
-.chip.fabric{background:repeating-linear-gradient(45deg,#5b5f64 0 3px,#53575c 3px 6px)}
-.chip.concrete{background:radial-gradient(circle at 30% 40%,#ebe8e2,#d9d5ce)}
+.chip.rattan{background:repeating-linear-gradient(45deg,#3b342e 0 4px,#4d443b 4px 8px),#3b342e}
 .chip.brick{background:repeating-linear-gradient(180deg,#4a3133 0 13px,#2f2a2a 13px 15px)}
 .chip .note{position:absolute;left:8px;bottom:6px;font:500 10px var(--f-mono);letter-spacing:.08em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 
@@ -163,17 +165,27 @@ p{margin:0}
 table{width:100%;border-collapse:collapse;font-size:14.5px;font-variant-numeric:tabular-nums}
 th,td{text-align:left;vertical-align:top;padding:10px 14px 10px 0;border-bottom:1px solid var(--rule)}
 th{font:500 10.5px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:12px}
-td.r,th.r{text-align:right;padding-right:0;white-space:nowrap}
-td.r:not(:last-child),th.r:not(:last-child){padding-right:24px}
+td.r,th.r{text-align:right;padding-right:24px;white-space:nowrap}
 td small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
-tfoot td{font-weight:600;border-bottom:0;border-top:1.5px solid var(--ink);font-size:15.5px}
 .plants td:first-child{min-width:13rem}
-.budget td:first-child{min-width:15rem}
+.no{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.no div{border:1px solid var(--rule);padding:12px 14px;min-width:0}
+.no b{display:block;font-weight:600}
+.no span{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+@media (max-width:760px){.no{grid-template-columns:minmax(0,1fr)}}
+
+/* care */
+.care{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;border-top:1px solid var(--ink)}
+.care div{padding:14px 0;border-bottom:1px solid var(--rule);min-width:0}
+.care b{display:block;font-weight:600}
+.care span{display:block;font-size:15px;margin-top:3px}
+@media (max-width:760px){.care{grid-template-columns:minmax(0,1fr)}}
 
 /* light */
 .scenes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .scene{border:1px solid var(--rule);background:var(--sheet);padding:16px 16px 18px;min-width:0}
 .scene h3{font-size:1.15rem}
+.scene .sub{font-size:13px;color:var(--muted);margin-top:4px}
 .scene .bar{display:grid;gap:5px;margin-top:12px}
 .scene .row{display:grid;grid-template-columns:7.2rem minmax(0,1fr) 2.6rem;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
 .scene .row b{display:block;height:6px;background:var(--rule-soft);position:relative}
@@ -192,6 +204,14 @@ ol.steps b{font-weight:600}
 ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
 @media (max-width:600px){ol.steps li{grid-template-columns:2.4rem minmax(0,1fr)}ol.steps .d{grid-column:2}}
 
+/* prompts */
+.prompts{display:grid;gap:16px}
+.prompt{border:1px solid var(--rule);background:var(--sheet);padding:14px 16px 16px;min-width:0}
+.prompt-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.prompt h3{font-size:1.15rem}
+.prompt .text{margin-top:10px;font-size:14.5px;line-height:1.55}
+.copy-ok{font:500 12px var(--f-mono);color:var(--glow);display:inline-block;min-width:6.5em}
+
 .ask{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;list-style:none;margin:0;padding:0}
 .ask li{padding:12px 0 12px 16px;border-left:2px solid var(--glow);min-width:0}
 .ask b{display:block;font-weight:600}
@@ -207,17 +227,17 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
 
 <header class="head">
   <div>
-    <p class="eyebrow">Эскизный проект · задний двор</p>
+    <p class="eyebrow">Эскизный проект · задний двор · Краснодар</p>
     <h1>Двор таунхауса</h1>
-    <p class="lede">Крытая терраса под стеклянной перголой с живым огнём, светлой лиственницей и камнем. Тёмный каркас перголы повторяет деревянные перголы на крыше дома, поэтому двор продолжает фасад, а не спорит с ним.</p>
+    <p class="lede">Зелёная комната: туи по периметру, газон, огонь в центре и тенистая терраса под стеклом с креслом-коконом у выхода из дома. Растения выбраны так, чтобы двор спокойно пережил ваш отъезд: хвойные, автополив, мульча.</p>
   </div>
   <dl class="stamp" aria-label="Основные параметры">
     <div><dt>Участок</dt><dd>5,78 × 4,21 м</dd></div>
     <div><dt>Площадь</dt><dd>24,3 м²</dd></div>
-    <div><dt>Под навесом</dt><dd>≈ 21 м²</dd></div>
-    <div><dt>Высота навеса</dt><dd>2,60 → 2,32 м</dd></div>
-    <div><dt>Посадочных мест</dt><dd>6 + 7</dd></div>
-    <div><dt>Стадия</dt><dd>Эскиз · 19.10.2026</dd></div>
+    <div><dt>Газон</dt><dd>≈ 7 м²</dd></div>
+    <div><dt>Под стеклом</dt><dd>≈ 7 м²</dd></div>
+    <div><dt>Живая изгородь</dt><dd>14 туй</dd></div>
+    <div><dt>Стадия</dt><dd>Эскиз 2 · 19.10.2026</dd></div>
   </dl>
 </header>
 
@@ -227,7 +247,7 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       <span class="label">Ракурс</span>
       <button class="btn" type="button" id="v-overview" data-view="overview" aria-pressed="true">Общий вид</button>
       <button class="btn" type="button" id="v-door" data-view="door" aria-pressed="false">Из двери</button>
-      <button class="btn" type="button" id="v-lounge" data-view="lounge" aria-pressed="false">От стола</button>
+      <button class="btn" type="button" id="v-fire" data-view="fire" aria-pressed="false">От огня</button>
       <button class="btn" type="button" id="v-top" data-view="top" aria-pressed="false">Сверху</button>
     </div>
     <div class="group">
@@ -242,11 +262,11 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
     <div class="zoom"><button type="button" id="zin" aria-label="Приблизить">+</button><button type="button" id="zout" aria-label="Отдалить">−</button></div>
     <div class="fail" id="viewer-fail" hidden><p>3D-модель не загрузилась в этом браузере.<br>План и разрез ниже показывают тот же проект.</p></div>
   </div>
-  <p class="viewer-cap">Окна и дверь на задней стене показаны условно: я видел только лицевой фасад. Кирпич, белые обрамления и тёмное дерево взяты с фото дома.</p>
+  <p class="viewer-cap">Окна и дверь на задней стене показаны условно: я видел только лицевой фасад. Туи показаны такими, какими станут через 2–3 года после посадки.</p>
 </section>
 
 <section class="sheet" id="input">
-  <div class="sheet-label">Исходные<b>Что я взял из эскиза</b></div>
+  <div class="sheet-label">Исходные<b>Эскиз и пожелания</b></div>
   <div class="sheet-body">
     <h2>Исходные данные</h2>
     <div class="two">
@@ -257,12 +277,12 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       <ul class="facts">
         <li><span class="k">5,78 м</span><span class="v">Ширина двора вдоль дома, между соседями.</span></li>
         <li><span class="k">4,21 м</span><span class="v">Глубина от стены дома до забора.</span></li>
-        <li><span class="k">3,49 м</span><span class="v">Глухой участок стены слева от выхода.</span></li>
-        <li><span class="k">0,74 м</span><span class="v">Средний отрезок, 5,78 − 3,49 − 1,55. Я принял его за дверь во двор.<span class="tag">проверьте</span></span></li>
-        <li><span class="k">1,55 м</span><span class="v">Участок стены справа от выхода.</span></li>
-        <li><span class="k">H 2,6</span><span class="v">Принял за допустимую высоту навеса у стены: на эту отметку выходит верх балки перголы.<span class="tag">проверьте</span></span></li>
-        <li><span class="k">Фасад</span><span class="v">Тёмный клинкер с фиолетово-коричневым отливом, белые обрамления окон, тёмные деревянные перголы на крыше.</span></li>
-        <li><span class="k">Стиль</span><span class="v">По вашим примерам: стеклянная крыша на тёмных балках, деревянный настил, круглый очаг, серые подушки, вечнозелёная стена, камень с подсвеченными нишами, тёплая подсветка.</span></li>
+        <li><span class="k">0,74 м</span><span class="v">Средний отрезок, 5,78 − 3,49 − 1,55. Принял его за дверь во двор.<span class="tag">проверьте</span></span></li>
+        <li><span class="k">H 2,6</span><span class="v">Принял за высоту навеса у стены дома.<span class="tag">проверьте</span></span></li>
+        <li><span class="k">Город</span><span class="v">Краснодар: жаркое лето, мягкая зима, мало снега. Стеклу нужна защита от солнца, растениям — полив в жару.</span></li>
+        <li><span class="k">Растения</span><span class="v">Хвойные, без роз. Живая изгородь из туй по периметру. Уход минимальный: бывают долгие отъезды.</span></li>
+        <li><span class="k">Зоны</span><span class="v">Огонь для барбекю и вечеров, кокон или гамак, газон, освещение.</span></li>
+        <li><span class="k">Фасад</span><span class="v">Тёмный клинкер, белые обрамления окон, тёмные деревянные перголы на крыше.</span></li>
       </ul>
     </div>
   </div>
@@ -272,20 +292,32 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
   <div class="sheet-label">Лист 1<b>Генплан</b></div>
   <div class="sheet-body">
     <h2>План двора</h2>
-    <p class="intro">Двор делится на две зоны по положению двери. Слева, на широком глухом участке стены, стоит лаунж с огнём. Справа, сразу за выходом, обеденный стол. От двери к обеим зонам ведёт свободная полоса шириной не меньше 0,9 м. Вдоль забора по всей ширине идёт клумба с туями. Это зелёная стена, которую видно из любой точки двора.</p>
+    <p class="intro">Туи идут вдоль трёх сторон, и двор становится зелёной комнатой. Справа, у выхода из дома, стоит пергола со стеклом: под ней стол на четверых и кокон, в тени и без дождя. Слева открытая часть с газоном и огнём в центре. Сюда падают солнце и дождь, поэтому туям и газону здесь хорошо.</p>
     <div class="drawing">
       <svg viewBox="-95 -62 775 650" role="img" aria-labelledby="planTitle">
-        <title id="planTitle">План двора 5,78 на 4,21 метра с зонами и мебелью</title>
+        <title id="planTitle">План двора 5,78 на 4,21 метра: туи по периметру, газон, огонь, пергола с коконом и столом</title>
         <defs>
-          <pattern id="boards" width="14.8" height="20" patternUnits="userSpaceOnUse" x="16" y="0"><path d="M0 0V20" class="p-board"/></pattern>
-          <pattern id="hatch45" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V7" class="p-hatch"/></pattern>
-          <pattern id="slats" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" class="f-dark"/><path d="M0 3H6" stroke="var(--sheet)" stroke-width=".8"/></pattern>
-          <pattern id="slatsV" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" class="f-dark"/><path d="M3 0V6" stroke="var(--sheet)" stroke-width=".8"/></pattern>
+          <pattern id="planks" width="20" height="120" patternUnits="userSpaceOnUse" x="305" y="0"><path d="M0 0V120" class="p-board"/><path d="M0 48H20" class="p-board"/></pattern>
+          <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="var(--muted)" opacity=".5"/><circle cx="6.5" cy="6" r=".7" fill="var(--muted)" opacity=".4"/></pattern>
         </defs>
 
-        <!-- deck -->
-        <rect x="16" y="71" width="553.5" height="350" class="f-deck"/>
-        <rect x="16" y="71" width="553.5" height="350" fill="url(#boards)"/>
+        <!-- lawn, gravel, beds -->
+        <path d="M66 66H512V146H572V157H305V391H66Z" class="f-lawn"/>
+        <rect x="6" y="391" width="299" height="30" class="f-gravel"/>
+        <rect x="6" y="391" width="299" height="30" fill="url(#dots)"/>
+        <path d="M6 6H572V66H66V391H6Z" class="f-soil"/>
+        <rect x="512" y="66" width="60" height="80" class="f-soil"/>
+        <path d="M66 391V66H512V146H572" class="p-thin"/>
+
+        <!-- terrace -->
+        <rect x="305" y="157" width="267" height="264" class="f-deck"/>
+        <rect x="305" y="157" width="267" height="264" fill="url(#planks)"/>
+
+        <!-- screens + garland -->
+        <rect x="0" y="0" width="6" height="421" class="f-dark"/>
+        <rect x="572" y="0" width="6" height="421" class="f-dark"/>
+        <rect x="0" y="0" width="578" height="6" class="f-dark"/>
+        <path d="M10 415V10H568" class="p-garland"/>
 
         <!-- house wall -->
         <rect x="-60" y="421" width="409" height="30" class="f-wall"/>
@@ -296,116 +328,97 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
         <text x="180" y="439.5" text-anchor="middle" class="t-lbl" style="font-size:8.5px">ОКНО?</text>
         <text x="40" y="440" class="t-in">ДОМ</text>
 
-        <!-- accent wall (left) -->
-        <rect x="0" y="0" width="16" height="421" class="f-stone"/>
-        <rect x="0" y="0" width="16" height="421" fill="url(#hatch45)"/>
-        <rect x="7" y="306" width="9" height="60" class="f-glow"/>
-        <rect x="7" y="206" width="9" height="60" class="f-glow"/>
-        <rect x="7" y="106" width="9" height="60" class="f-glow"/>
-        <rect x="0" y="0" width="16" height="421" class="p-line"/>
-
-        <!-- right slat screen + fence screen -->
-        <rect x="569.5" y="0" width="8.5" height="421" fill="url(#slats)"/>
-        <rect x="16" y="0" width="553.5" height="8.5" fill="url(#slatsV)"/>
-
-        <!-- planter -->
-        <rect x="16" y="61" width="553.5" height="10" class="f-stone"/>
-        <rect x="16" y="8.5" width="10" height="52.5" class="f-stone"/>
-        <rect x="559.5" y="8.5" width="10" height="52.5" class="f-stone"/>
-        <rect x="26" y="8.5" width="533.5" height="52.5" class="f-soil"/>
-        <path d="M16 8.5V71H569.5V8.5M26 8.5V61H559.5V8.5" class="p-thin"/>
-        <path d="M30 74H556" class="p-led"/>
+        <!-- fire pad + bowl + chairs -->
+        <circle cx="185" cy="221" r="95" class="f-stone"/>
+        <circle cx="185" cy="221" r="95" class="p-thin"/>
+        <circle cx="185" cy="221" r="42.5" class="f-corten"/>
+        <circle cx="185" cy="221" r="28" class="f-glow"/>
+        <circle cx="185" cy="221" r="42.5" class="p-line"/>
+        <g transform="translate(131 293) rotate(36.87)"><rect x="-32" y="-33" width="64" height="66" class="f-furn"/><path d="M-32 -33H32V33H-32ZM-32 21H32M-26 -33V21M26 -33V21" class="p-thin"/></g>
+        <g transform="translate(131 149) rotate(143.13)"><rect x="-32" y="-33" width="64" height="66" class="f-furn"/><path d="M-32 -33H32V33H-32ZM-32 21H32M-26 -33V21M26 -33V21" class="p-thin"/></g>
+        <path d="M66 221H142.5M62 225l8-8M138.5 225l8-8M227.5 221H305M223.5 225l8-8M301 225l8-8" class="p-dim"/>
+        <text x="104" y="214" text-anchor="middle" class="t-small">0,77</text>
+        <text x="266" y="214" text-anchor="middle" class="t-small">0,78</text>
 
         <!-- plants -->
         <g class="f-leaf" stroke="var(--sheet)" stroke-width="1">
-          <circle cx="80" cy="33" r="30"/><circle cx="160" cy="33" r="30"/><circle cx="238" cy="33" r="30"/>
-          <circle cx="345" cy="33" r="30"/><circle cx="425" cy="33" r="30"/><circle cx="505" cy="33" r="30"/>
+          <circle cx="36" cy="361" r="28"/><circle cx="36" cy="296" r="28"/><circle cx="36" cy="231" r="28"/><circle cx="36" cy="166" r="28"/><circle cx="36" cy="101" r="28"/>
+          <circle cx="36" cy="36" r="28"/><circle cx="106" cy="36" r="28"/><circle cx="176" cy="36" r="28"/><circle cx="246" cy="36" r="28"/>
+          <circle cx="316" cy="36" r="28"/><circle cx="386" cy="36" r="28"/><circle cx="456" cy="36" r="28"/><circle cx="526" cy="36" r="28"/>
+          <circle cx="542" cy="106" r="28"/>
         </g>
-        <g class="f-leaf2" stroke="var(--sheet)" stroke-width="1">
-          <circle cx="120" cy="47" r="13"/><circle cx="200" cy="47" r="13"/><circle cx="385" cy="47" r="13"/><circle cx="465" cy="47" r="13"/>
-          <circle cx="50" cy="38" r="15"/>
+        <g class="f-leaf2" stroke="var(--sheet)" stroke-width=".8">
+          <ellipse cx="71" cy="60" rx="22" ry="8"/><ellipse cx="141" cy="60" rx="22" ry="8"/><ellipse cx="211" cy="60" rx="22" ry="8"/><ellipse cx="281" cy="60" rx="22" ry="8"/>
+          <ellipse cx="351" cy="60" rx="22" ry="8"/><ellipse cx="421" cy="60" rx="22" ry="8"/><ellipse cx="491" cy="60" rx="22" ry="8"/>
         </g>
-        <path d="M540 30l-16-14M540 30l-4-20M540 30l10-18M540 30l18-8M540 30l20 4M540 30l-20 2M540 30l-14 14M540 30l14 14" stroke="var(--leaf)" stroke-width="1.6" stroke-linecap="round"/>
-        <g class="f-glow"><circle cx="160" cy="58" r="3"/><circle cx="345" cy="58" r="3"/><circle cx="505" cy="58" r="3"/></g>
+        <g class="f-glow"><circle cx="106" cy="66" r="3"/><circle cx="246" cy="66" r="3"/><circle cx="386" cy="66" r="3"/><circle cx="526" cy="66" r="3"/><circle cx="66" cy="296" r="3"/><circle cx="66" cy="166" r="3"/></g>
 
-        <!-- pergola: outline, rafters, beam, posts -->
-        <path d="M22 35V421M89.75 35V421M157.5 35V421M225.25 35V421M293 35V421M360.75 35V421M428.5 35V421M496.25 35V421M564 35V421" class="p-dashlight"/>
-        <rect x="18" y="47" width="550" height="14" class="p-dash"/>
-        <rect x="18" y="35" width="550" height="386" class="p-dash"/>
-        <g class="f-ink"><rect x="25" y="47" width="14" height="14"/><rect x="286" y="47" width="14" height="14"/><rect x="545" y="47" width="14" height="14"/></g>
-
-        <!-- lounge -->
-        <path d="M18 415H255V331H99V181H18Z" class="f-furn"/>
-        <path d="M42 181V391H246" class="p-thin"/>
-        <path d="M99 331H42M99 260H42M155 391V331M210 391V331" class="p-thin" opacity=".5"/>
-        <path d="M18 415H255V331H99V181H18Z" class="p-line"/>
-        <circle cx="195" cy="231" r="45" class="f-conc"/>
-        <circle cx="195" cy="231" r="45" class="p-line"/>
-        <circle cx="195" cy="231" r="16" class="f-glow"/>
-        <rect x="155" y="81" width="80" height="65" class="f-furn"/>
-        <path d="M155 81H235V146H155ZM155 81V146M160 98H230" class="p-line"/>
+        <!-- pergola -->
+        <path d="M313 149V421M378 149V421M443 149V421M514 149V421M565 149V421" class="p-dashlight"/>
+        <rect x="306" y="149" width="266" height="272" class="p-dash"/>
+        <g class="f-ink"><rect x="306" y="157" width="14" height="14"/><rect x="558" y="157" width="14" height="14"/></g>
 
         <!-- dining -->
-        <rect x="522" y="96" width="47.5" height="205" class="f-larch" opacity=".55"/>
-        <rect x="522" y="96" width="47.5" height="205" class="p-line"/>
-        <rect x="435" y="111" width="80" height="180" class="f-conc"/>
-        <rect x="435" y="111" width="80" height="180" class="p-line"/>
-        <g class="f-furn"><rect x="386" y="229" width="46" height="44"/><rect x="386" y="179" width="46" height="44"/><rect x="386" y="129" width="46" height="44"/></g>
-        <path d="M386 229h46v44h-46zM386 179h46v44h-46zM386 129h46v44h-46zM390 229v44M390 179v44M390 129v44" class="p-thin"/>
-        <circle cx="475" cy="236" r="21" class="p-dash"/>
-        <circle cx="475" cy="166" r="21" class="p-dash"/>
+        <rect x="340" y="211" width="110" height="75" class="f-conc"/>
+        <rect x="340" y="211" width="110" height="75" class="p-line"/>
+        <g class="f-furn"><rect x="351" y="290" width="42" height="42"/><rect x="397" y="290" width="42" height="42"/><rect x="351" y="164" width="42" height="42"/><rect x="397" y="164" width="42" height="42"/></g>
+        <path d="M351 290h42v42h-42zM397 290h42v42h-42zM351 164h42v42h-42zM397 164h42v42h-42zM351 328h42M397 328h42M351 168h42M397 168h42" class="p-thin"/>
+        <circle cx="370" cy="249" r="17" class="p-dash"/>
+        <circle cx="420" cy="249" r="17" class="p-dash"/>
+
+        <!-- cocoon -->
+        <path d="M471.7 366A50 50 0 1 0 471.7 316" class="f-cush"/>
+        <path d="M471.7 366A50 50 0 1 0 471.7 316" class="p-line"/>
+        <circle cx="519" cy="341" r="30" class="f-furn"/>
 
         <!-- door -->
         <text x="386" y="440" text-anchor="middle" class="t-lbl">ВЫХОД</text>
-        <path d="M386 418V384M380 391l6-7 6 7" class="p-line"/>
 
-        <!-- section line A–A -->
-        <path d="M195 -16V456" class="p-axis"/>
-        <path d="M195 -16h-14M195 456h-14" stroke="var(--brick)" stroke-width="2.5"/>
-        <path d="M181 -16l6 -5v10zM181 456l6 -5v10z" fill="var(--brick)"/>
-        <text x="204" y="-10" class="t-axis">А</text>
-        <text x="204" y="470" class="t-axis">А</text>
+        <!-- section line A–A through the cocoon -->
+        <path d="M514 -16V456" class="p-axis"/>
+        <path d="M514 -16h-14M514 456h-14" stroke="var(--brick)" stroke-width="2.5"/>
+        <path d="M500 -16l6 -5v10zM500 456l6 -5v10z" fill="var(--brick)"/>
+        <text x="522" y="-10" class="t-axis">А</text>
+        <text x="522" y="470" class="t-axis">А</text>
 
         <!-- callouts -->
         <g class="co">
-          <circle cx="150" cy="372" r="9"/><text x="150" y="372">1</text>
-          <circle cx="195" cy="166" r="9"/><text x="195" y="166">2</text>
-          <circle cx="195" cy="118" r="9"/><text x="195" y="118">3</text>
-          <circle cx="475" cy="201" r="9"/><text x="475" y="201">4</text>
-          <circle cx="409" cy="201" r="9"/><text x="409" y="201">5</text>
-          <circle cx="546" cy="250" r="9"/><text x="546" y="250">6</text>
-          <circle cx="475" cy="236" r="9"/><text x="475" y="236">7</text>
-          <circle cx="250" cy="66" r="9"/><text x="250" y="66">8</text>
-          <circle cx="160" cy="28" r="9"/><text x="160" y="28">9</text>
-          <circle cx="540" cy="30" r="9"/><text x="540" y="30">10</text>
-          <circle cx="8" cy="186" r="9"/><text x="8" y="186">11</text>
-          <circle cx="574" cy="380" r="9"/><text x="574" y="380">12</text>
-          <circle cx="330" cy="-24" r="9"/><text x="330" y="-24">13</text>
-          <circle cx="386" cy="404" r="9"/><text x="386" y="404">14</text>
-          <circle cx="100" cy="74" r="9"/><text x="100" y="74">15</text>
+          <circle cx="185" cy="158" r="9"/><text x="185" y="158">1</text>
+          <circle cx="245" cy="285" r="9"/><text x="245" y="285">2</text>
+          <circle cx="131" cy="293" r="9"/><text x="131" y="293">3</text>
+          <circle cx="420" cy="110" r="9"/><text x="420" y="110">4</text>
+          <circle cx="395" cy="230" r="9"/><text x="395" y="230">5</text>
+          <circle cx="519" cy="341" r="9"/><text x="519" y="341">6</text>
+          <circle cx="540" cy="215" r="9"/><text x="540" y="215">7</text>
+          <circle cx="176" cy="36" r="9"/><text x="176" y="36">8</text>
+          <circle cx="281" cy="60" r="9"/><text x="281" y="60">9</text>
+          <circle cx="200" cy="406" r="9"/><text x="200" y="406">10</text>
+          <circle cx="575" cy="290" r="9"/><text x="575" y="290">11</text>
+          <circle cx="10" cy="198" r="9"/><text x="10" y="198">12</text>
+          <circle cx="386" cy="404" r="9"/><text x="386" y="404">13</text>
+          <circle cx="460" cy="400" r="9"/><text x="460" y="400">14</text>
         </g>
-        <path d="M322 -19L296 46" class="p-thin"/>
 
         <!-- boundary labels -->
         <text x="289" y="-44" text-anchor="middle" class="t-lbl">ЗАБОР</text>
         <text transform="translate(-74 210) rotate(-90)" text-anchor="middle" class="t-lbl">СОСЕД</text>
-        <text transform="translate(604 210) rotate(90)" text-anchor="middle" class="t-lbl">СОСЕД</text>
+        <text transform="translate(596 330) rotate(90)" text-anchor="middle" class="t-lbl">СОСЕД</text>
 
         <!-- dimensions: bottom -->
         <path d="M0 455V526M349 455V486M423 455V486M578 455V526" class="p-dim"/>
         <path d="M0 480H578M-4 484l8-8M345 484l8-8M419 484l8-8M574 484l8-8" class="p-dim"/>
         <text x="174.5" y="474" text-anchor="middle" class="t-dim">3,49</text>
         <text x="386" y="474" text-anchor="middle" class="t-dim">0,74</text>
-        <text x="500.5" y="474" text-anchor="middle" class="t-dim">1,55</text>
+        <text x="470" y="474" text-anchor="middle" class="t-dim">1,55</text>
         <path d="M0 520H578M-4 524l8-8M574 524l8-8" class="p-dim"/>
         <text x="289" y="514" text-anchor="middle" class="t-dim">5,78</text>
         <!-- right -->
-        <path d="M582 0H646M582 421H646M640 0V421M636 4l8-8M636 425l8-8" class="p-dim"/>
-        <text transform="translate(633 210.5) rotate(-90)" text-anchor="middle" class="t-dim">4,21</text>
+        <path d="M582 0H650M582 157H618M582 421H650M612 157V421M608 161l8-8M608 425l8-8M644 0V421M640 4l8-8M640 425l8-8" class="p-dim"/>
+        <text transform="translate(606 289) rotate(-90)" text-anchor="middle" class="t-dim">2,65</text>
+        <text transform="translate(638 210.5) rotate(-90)" text-anchor="middle" class="t-dim">4,21</text>
         <!-- left -->
-        <path d="M-4 0H-52M-4 71H-52M-4 421H-52M-46 0V421M-50 4l8-8M-50 75l8-8M-50 425l8-8" class="p-dim"/>
-        <text transform="translate(-52 35.5) rotate(-90)" text-anchor="middle" class="t-dim">0,71</text>
-        <text transform="translate(-52 246) rotate(-90)" text-anchor="middle" class="t-dim">3,50</text>
+        <path d="M-4 0H-52M-4 66H-52M-46 0V66M-50 4l8-8M-50 70l8-8" class="p-dim"/>
+        <text transform="translate(-52 33) rotate(-90)" text-anchor="middle" class="t-small">0,66</text>
 
         <!-- scale bar + north note -->
         <rect x="0" y="556" width="100" height="6" class="f-ink"/>
@@ -417,27 +430,27 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       </svg>
     </div>
     <ol class="legend">
-      <li><span class="n">1</span><span>Угловой диван ≈ 2,4 × 2,3 м, 5–6 мест</span></li>
-      <li><span class="n">2</span><span>Очаг-стол Ø 0,9 м на биотопливе или газе</span></li>
-      <li><span class="n">3</span><span>Лаунж-кресло напротив дивана</span></li>
-      <li><span class="n">4</span><span>Обеденный стол 1,8 × 0,8 м</span></li>
-      <li><span class="n">5</span><span>Три стула</span></li>
-      <li><span class="n">6</span><span>Встроенная скамья 2,05 м с подушками</span></li>
-      <li><span class="n">7</span><span>Два подвесных светильника над столом</span></li>
-      <li><span class="n">8</span><span>Клумба из камня, высота 0,45 м, ширина 0,62 м</span></li>
-      <li><span class="n">9</span><span>Туя «Смарагд», 6 шт.</span></li>
-      <li><span class="n">10</span><span>Злаки, хосты, папоротник</span></li>
-      <li><span class="n">11</span><span>Стена из светлого камня, h 2,4 м, с тремя нишами</span></li>
-      <li><span class="n">12</span><span>Реечный экран h 2,0 м справа и по забору</span></li>
-      <li><span class="n">13</span><span>Стойки перголы 140 × 140, 3 шт., внутри клумбы</span></li>
-      <li><span class="n">14</span><span>Выход из дома, 0,74 м</span></li>
-      <li><span class="n">15</span><span>LED-лента под бортиком клумбы</span></li>
+      <li><span class="n">1</span><span>Костровая чаша-гриль из кортена Ø 0,85 м с кольцом-планчей и решёткой</span></li>
+      <li><span class="n">2</span><span>Площадка из светлого камня Ø 1,9 м</span></li>
+      <li><span class="n">3</span><span>Два лаунж-кресла у огня</span></li>
+      <li><span class="n">4</span><span>Газон ≈ 7 м², обходит площадку и заходит за перголу</span></li>
+      <li><span class="n">5</span><span>Стол 1,1 × 0,75 м и 4 стула, над столом два подвеса</span></li>
+      <li><span class="n">6</span><span>Подвесное кресло-кокон, Ø 1,0 м</span></li>
+      <li><span class="n">7</span><span>Пергола со стеклом 2,67 × 2,65 м</span></li>
+      <li><span class="n">8</span><span>Туя «Смарагд», 14 шт., шаг 0,65–0,7 м</span></li>
+      <li><span class="n">9</span><span>Можжевельник стелющийся по краю гряды, 7 шт.</span></li>
+      <li><span class="n">10</span><span>Полоса гравия вдоль дома</span></li>
+      <li><span class="n">11</span><span>Реечные экраны h 1,8 м за туями</span></li>
+      <li><span class="n">12</span><span>Гирлянда по верху экранов</span></li>
+      <li><span class="n">13</span><span>Выход из дома, 0,74 м</span></li>
+      <li><span class="n">14</span><span>Пол террасы: керамогранит под дерево</span></li>
     </ol>
     <div class="keys">
       <span><i style="border-top:1.5px dashed var(--ink)"></i>контур стеклянного навеса</span>
-      <span><i style="border-top:1px dotted var(--muted)"></i>стропила, шаг ≈ 0,68 м</span>
-      <span><i class="f-glow" style="background:var(--p-glow)"></i>подсвеченные ниши, лента, грунтовые светильники</span>
-      <span><i style="background:var(--p-deck)"></i>настил из лиственницы, 19,6 м²</span>
+      <span><i style="background:var(--p-lawn)"></i>газон</span>
+      <span><i style="background:var(--p-soil)"></i>гряды с мульчей</span>
+      <span><i style="background:var(--p-glow)"></i>грунтовые светильники и гирлянда</span>
+      <span><i style="border-top:1px solid var(--muted)"></i>0,77 и 0,78 м от чаши до туй и до навеса</span>
     </div>
   </div>
 </section>
@@ -445,11 +458,11 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
 <section class="sheet" id="cut">
   <div class="sheet-label">Лист 2<b>Разрез А–А</b></div>
   <div class="sheet-body">
-    <h2>Разрез через лаунж</h2>
-    <p class="intro">Навес крепится к дому на высоте 2,60 м и опускается к клумбе до 2,32 м. Уклон около 4,5° уводит воду в скрытый жёлоб над клумбой. Под самой низкой балкой остаётся 2,10 м, а она стоит над клумбой, где никто не ходит.</p>
+    <h2>Разрез через перголу и кокон</h2>
+    <p class="intro">Навес крепится к дому на высоте 2,60 м и опускается к газону до 2,40 м. Под фронтальной балкой остаётся 2,18 м. Кокон висит на двойном стропиле, сиденье на высоте около 0,5 м.</p>
     <div class="drawing">
       <svg viewBox="-100 22 595 388" role="img" aria-labelledby="cutTitle">
-        <title id="cutTitle">Разрез от стены дома до забора: навес, диван, очаг, кресло, клумба с туей</title>
+        <title id="cutTitle">Разрез от стены дома до забора через перголу, кокон, газон и туи</title>
         <defs>
           <pattern id="earth" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V8" class="p-hatch"/></pattern>
           <pattern id="brickS" width="12" height="7" patternUnits="userSpaceOnUse"><rect width="12" height="7" class="f-wall"/><path d="M0 6.5H12M6 0V3.5" stroke="var(--sheet)" stroke-width=".5" opacity=".5"/></pattern>
@@ -463,83 +476,70 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
         <path d="M0 32V320M-40 32V320" class="p-line"/>
         <text transform="translate(-16 180) rotate(-90)" text-anchor="middle" class="t-in">ДОМ</text>
 
-        <!-- deck -->
-        <rect x="0" y="316.5" width="350" height="3.5" class="f-larch"/>
+        <!-- ground surfaces -->
+        <rect x="0" y="316.5" width="265" height="3.5" class="f-deck"/>
+        <rect x="265" y="316" width="10" height="4" class="f-lawn"/>
+        <rect x="275" y="315" width="140" height="5" class="f-soil"/>
 
-        <!-- sofa -->
-        <rect x="6" y="292" width="84" height="22" class="f-larch"/>
-        <rect x="30" y="276" width="58" height="16" class="f-cush"/>
-        <rect x="10" y="242" width="20" height="50" class="f-cush"/>
-        <path d="M8 314v6M86 314v6" class="p-line"/>
-
-        <!-- person for scale -->
-        <g class="f-cush" opacity=".55">
-          <circle cx="114" cy="157" r="10"/>
-          <path d="M101 171Q114 165 127 171L128 246L124 318H117L114 256L111 318H104L100 246Z"/>
+        <!-- table, chairs and pendant beyond the cut -->
+        <g opacity=".55">
+          <path d="M135 240h75v4h-75zM143 244V320M202 244V320" class="p-thin"/>
+          <path d="M90 276h40M90 276v44M130 276v44M90 276V238" class="p-thin"/>
+          <path d="M215 276h44M215 276v44M259 276v44M259 276V238" class="p-thin"/>
+          <path d="M172 76V141M155 158a17 17 0 0 1 34 0Z" class="p-thin"/>
         </g>
-        <text x="114" y="140" text-anchor="middle" class="t-lbl">1,75</text>
 
-        <!-- fire table -->
-        <rect x="147" y="290" width="86" height="27" class="f-larch" opacity=".7"/>
-        <rect x="145" y="282" width="90" height="8" class="f-conc"/>
-        <path d="M145 282h90v8h-90zM147 290h86v27h-86z" class="p-thin"/>
-        <path d="M183 282c0-8 6-10 4-20 6 6 8 12 6 20M193 282c0-6 5-9 5-16 4 6 4 11 2 16" fill="var(--p-glow)"/>
+        <!-- thujas -->
+        <path d="M290 318C292 290 300 270 303 240C306 205 310 160 315 120C320 160 324 205 327 240C330 270 338 290 340 318Z" class="f-leaf"/>
+        <path d="M360 318C362 290 370 270 373 240C376 205 380 158 385 116C390 158 394 205 397 240C400 270 408 290 410 318Z" class="f-leaf" opacity=".8"/>
 
-        <!-- armchair -->
-        <rect x="275" y="292" width="65" height="22" class="f-larch"/>
-        <rect x="278" y="276" width="42" height="16" class="f-cush"/>
-        <rect x="318" y="242" width="18" height="50" class="f-cush"/>
-        <path d="M278 314v6M337 314v6" class="p-line"/>
-
-        <!-- planter -->
-        <rect x="350" y="275" width="10" height="45" class="f-stone"/>
-        <rect x="347" y="270" width="16" height="5" class="f-stone"/>
-        <rect x="360" y="278" width="52" height="42" class="f-soil"/>
-        <path d="M350 320V275M360 278V320M347 270h16v5h-16z" class="p-thin"/>
-        <path d="M352 272H343" class="p-led"/>
-
-        <!-- thuja -->
-        <path d="M360 278C362 250 371 230 374 200C377 165 382 120 388 78C394 120 399 165 402 200C405 230 414 250 416 278Z" class="f-leaf"/>
-
-        <!-- fence slats -->
-        <rect x="412" y="120" width="9" height="200" class="f-dark"/>
-
-        <!-- post + footing -->
-        <rect x="360" y="110" width="14" height="168" class="f-dark"/>
-        <rect x="352" y="320" width="30" height="20" class="p-dash"/>
+        <!-- fence screen + garland post -->
+        <rect x="415" y="140" width="6" height="180" class="f-dark"/>
+        <rect x="415" y="105" width="6" height="35" class="f-dark"/>
+        <circle cx="418" cy="112" r="4" class="f-glow"/>
 
         <!-- pergola -->
         <rect x="0" y="60" width="10" height="20" class="f-dark"/>
-        <path d="M10 60.8L378 88.8L378 104.8L10 76.8Z" class="f-dark"/>
-        <rect x="360" y="88" width="14" height="22" class="f-dark"/>
-        <rect x="376" y="86" width="10" height="9" class="f-ink"/>
-        <path d="M3 55.2L382 84" class="p-glassline"/>
+        <path d="M10 60.8L264 80.5L264 100.5L10 80.8Z" class="f-dark"/>
+        <rect x="250" y="80" width="14" height="22" class="f-dark"/>
+        <rect x="250" y="102" width="14" height="218" class="f-dark" opacity=".7"/>
+        <rect x="264" y="79" width="10" height="8" class="f-ink"/>
+        <path d="M3 55.2L274 76.2" class="p-glassline"/>
+
+        <!-- cocoon -->
+        <path d="M80 87V138" class="p-line"/>
+        <circle cx="80" cy="141" r="4" class="p-line"/>
+        <ellipse cx="80" cy="205" rx="50" ry="65" class="f-cush"/>
+        <ellipse cx="80" cy="205" rx="50" ry="65" class="p-line"/>
+        <ellipse cx="80" cy="214" rx="35" ry="46" class="f-furn"/>
+        <path d="M48 254Q80 240 112 254" class="p-thin"/>
 
         <!-- labels -->
-        <text x="16" y="44" class="t-lbl">СТЕКЛО 8.8.2 · УКЛОН ≈ 4,5°</text>
-        <text x="300" y="132" text-anchor="end" class="t-lbl">НИЗ БАЛКИ 2,10</text>
-        <path d="M304 128L358 110" class="p-thin"/>
+        <text x="16" y="44" class="t-lbl">СТЕКЛО С ТОНИРОВКОЙ · УКЛОН ≈ 4,5°</text>
+        <text x="280" y="110" class="t-lbl">НИЗ БАЛКИ 2,18</text>
+        <text x="80" y="290" text-anchor="middle" class="t-lbl">КОКОН</text>
+        <text x="350" y="340" text-anchor="middle" class="t-lbl">ТУИ</text>
+        <text x="270" y="340" text-anchor="middle" class="t-lbl">ГАЗОН</text>
 
         <!-- dims -->
         <path d="M-2 60H-78M-2 320H-78M-70 60V320M-74 64l8-8M-74 324l8-8" class="p-dim"/>
         <text transform="translate(-78 190) rotate(-90)" text-anchor="middle" class="t-dim">2,60</text>
-        <path d="M380 88H446M440 88V320M436 92l8-8M436 324l8-8M424 320H446" class="p-dim"/>
-        <text transform="translate(433 204) rotate(-90)" text-anchor="middle" class="t-dim">2,32</text>
-        <path d="M423 120H476M470 120V320M466 124l8-8M466 324l8-8M450 320H476" class="p-dim"/>
-        <text transform="translate(463 220) rotate(-90)" text-anchor="middle" class="t-dim">2,00</text>
-        <path d="M0 324V398M350 324V368M421 324V398M0 362H421M-4 366l8-8M346 366l8-8M417 366l8-8" class="p-dim"/>
-        <text x="175" y="356" text-anchor="middle" class="t-dim">3,50</text>
-        <text x="385.5" y="356" text-anchor="middle" class="t-dim">0,71</text>
+        <path d="M276 80H446M440 80V320M436 84l8-8M436 324l8-8M424 320H446" class="p-dim"/>
+        <text transform="translate(433 210) rotate(-90)" text-anchor="middle" class="t-dim">2,40</text>
+        <path d="M423 140H476M470 140V320M466 144l8-8M466 324l8-8M450 320H476" class="p-dim"/>
+        <text transform="translate(463 230) rotate(-90)" text-anchor="middle" class="t-dim">1,80</text>
+        <path d="M0 324V398M265 324V368M421 324V398M0 362H421M-4 366l8-8M261 366l8-8M417 366l8-8" class="p-dim"/>
+        <text x="132.5" y="356" text-anchor="middle" class="t-dim">2,65</text>
+        <text x="343" y="356" text-anchor="middle" class="t-dim">1,56</text>
         <path d="M0 392H421M-4 396l8-8M417 396l8-8" class="p-dim"/>
         <text x="210.5" y="386" text-anchor="middle" class="t-dim">4,21</text>
       </svg>
     </div>
     <div class="notes">
-      <p><b>Каркас.</b> Клеёный брус: стойки 140 × 140, фронтальная балка 140 × 220, стропила 70 × 160 с шагом около 0,68 м, сверху поперечные рейки, как на первом примере. Тон «тёмный орех», как у пергол на крыше. Можно сделать из стали с покраской в серо-коричневый RAL 8019.</p>
-      <p><b>Кровля.</b> Закалённый триплекс 8.8.2 на прижимных профилях. По фронту скрытый жёлоб, водосток спрятан у правой стойки и уходит в дренаж, а не в клумбу.</p>
-      <p><b>Снег.</b> Сечения балок и толщину стекла задаёт инженерный расчёт под ваш снеговой район. Цифры выше нужны для эскиза.</p>
-      <p><b>Крепление к дому.</b> Если клинкер — это облицовка на относе, балку на кирпич не вешаем. Тогда либо химические анкеры в несущую стену, либо вторая линия стоек у фасада, и пергола стоит сама.</p>
-      <p><b>Газ и окна.</b> Если по задней стене идёт газовая труба, как на лицевом фасаде, навес ставим ниже неё с нормативным отступом и трубу не закрываем.</p>
+      <p><b>Каркас.</b> Клеёный брус или сталь в тоне «тёмный орех», как перголы на крыше. Под кокон ставим двойное стропило 2 × 70 × 200 и крюк с вертлюгом. Нагрузку на крюк задаёт инженер.</p>
+      <p><b>Кровля для Краснодара.</b> Триплекс с солнцезащитной тонировкой, графит или бронза. Под стеклом раздвижная тканевая маркиза на июль и август, иначе под прозрачной крышей будет жарко, как в теплице. Если хочется полностью закрываться от солнца, вместо стекла можно поставить биоклиматическую перголу с поворотными ламелями.</p>
+      <p><b>Ветер и снег.</b> Снега в Краснодаре мало, но сечения, крепления и стекло всё равно задаёт расчёт.</p>
+      <p><b>Крепление к дому.</b> Если клинкер — это облицовка на относе, балку на кирпич не вешаем: химические анкеры в несущую стену или вторая линия стоек у фасада. Газовую трубу, если она есть на задней стене, навес не закрывает.</p>
     </div>
   </div>
 </section>
@@ -550,24 +550,24 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
     <h2>Как работает двор</h2>
     <div class="zones">
       <div class="zone">
-        <h3>Лаунж у огня</h3>
-        <div class="meta">≈ 8 м² · 6 мест</div>
-        <p>Угловой диван на деревянном каркасе с графитовыми подушками стоит в углу между домом и каменной стеной: спиной к стенам сидеть уютнее всего. В центре очаг-стол из светлого бетона с дровами под столешницей, как на вашем примере. Горит биотопливо или газ из баллона внутри. Дровяной огонь под стеклянной крышей коптит стекло, а дым идёт к соседям.</p>
+        <h3>Огонь</h3>
+        <div class="meta">чаша-гриль Ø 0,85 м · площадка Ø 1,9 м</div>
+        <p>Одна вещь закрывает все три ваших варианта: костровая чаша из кортена с широким стальным кольцом. На кольце-планче жарят мясо, рыбу и овощи, на решётку над огнём кладут шашлык, а вечером это просто костёр. Чаша стоит на площадке из светлого камня, рядом два кресла. До туй и до навеса по 0,8 м, поэтому основной вариант на газу: огонь настоящий, но без искр, дыма и золы. Туя горит как факел, а дрова и угли дают искры. Если без углей никак, на этой же площадке можно поставить гриль с крышкой.</p>
       </div>
       <div class="zone">
-        <h3>Обеденная зона</h3>
-        <div class="meta">≈ 4 м² · 6–7 мест</div>
-        <p>Стол 1,8 × 0,8 м стоит у правой границы, сразу за выходом из кухни. С одной стороны встроенная скамья вдоль реечного экрана, с другой три стула. Скамья занимает меньше места, чем ряд стульев, и за стол садится на одного человека больше. Над столом два белых купольных светильника, как на первом примере.</p>
+        <h3>Терраса под стеклом</h3>
+        <div class="meta">≈ 7 м² · стол на 4 · кокон</div>
+        <p>Терраса у выхода из кухни, в тени и без дождя. Стол на четверых для завтраков и ужинов. В углу подвесное кресло-кокон: из него виден огонь и весь двор. Гамак сюда не помещается: ему нужно 3,5–4 м между опорами, а кокону хватает круга около метра. Подушки на коконе и стульях под навесом не мокнут.</p>
       </div>
       <div class="zone">
-        <h3>Зелёная стена</h3>
-        <div class="meta">≈ 3,5 м² · клумба h 0,45 м</div>
-        <p>Приподнятая клумба из светлого камня занимает всю ширину вдоль забора. Шесть туй создают вечнозелёную стену, как живая изгородь на примере. Между ними хосты, в углу злаки. На широкий бортик можно присесть, когда гостей больше, чем мест. Стойки перголы спрятаны внутри клумбы, как на втором примере.</p>
+        <h3>Газон</h3>
+        <div class="meta">≈ 7 м² · овсяница тростниковая</div>
+        <p>Газон обходит каменную площадку и заходит за перголу. От гряд его отделяет стальная лента, поэтому край ровный, а триммер не задевает мульчу. Смесь с овсяницей тростниковой лучше всего держит краснодарскую жару, у неё глубокие корни. Поливают газон дождеватели по таймеру.</p>
       </div>
       <div class="zone">
-        <h3>Каменная стена с нишами</h3>
-        <div class="meta">h 2,4 м · 3 ниши</div>
-        <p>По границе с левым соседом, за диваном, стоит стена из светлого рваного камня. В ней три ниши с тёплой подсветкой для свечей и фонарей. Светлый камень отражает свет и уравновешивает тёмный клинкер дома. Справа и по забору поставлены тёмные реечные экраны в тон перголы: они закрывают от соседей и пропускают воздух.</p>
+        <h3>Живая изгородь</h3>
+        <div class="meta">14 туй · экраны h 1,8 м</div>
+        <p>Туи «Смарагд» посажены вдоль трёх сторон с шагом 0,65–0,7 м. За ними тёмные реечные экраны в тон перголы. Туи прибавляют 15–20 см в год, и пока они растут, экраны закрывают двор от соседей, а потом становятся фоном. Под туями мульча из коры, по краю стелющийся можжевельник. По верху экранов идёт гирлянда.</p>
       </div>
     </div>
   </div>
@@ -577,16 +577,16 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
   <div class="sheet-label">Лист 4<b>Материалы</b></div>
   <div class="sheet-body">
     <h2>Материалы и цвет</h2>
-    <p class="intro">Фасад дома тёмный и тёплый. Чтобы двор не стал мрачным, тёмные только каркас и экраны, повторяющие перголы на крыше. Пол, камень и мебель светлые.</p>
+    <p class="intro">Фасад дома тёмный и тёплый. Тёмными сделаны только каркас перголы и экраны: они повторяют перголы на крыше. Камень и пол светлые, зелень плотная.</p>
     <div class="swatches">
-      <div class="sw"><div class="chip brick"><span class="note">ФАСАД · ДАНО</span></div><h3>Клинкер дома</h3><p>Отправная точка палитры. Ничего не меняем.</p></div>
-      <div class="sw"><div class="chip walnut"></div><h3>Каркас перголы</h3><p>Клеёный брус, тонировка «тёмный орех» под перголы на крыше. Можно сталь RAL 8019.</p></div>
-      <div class="sw"><div class="chip glass"></div><h3>Стеклянная кровля</h3><p>Триплекс 8.8.2, прозрачный. Если дешевле, монолитный поликарбонат 8–10 мм.</p></div>
-      <div class="sw"><div class="chip larch"></div><h3>Настил</h3><p>Лиственница «Прима» 28 × 142, доски от дома к забору, чтобы двор казался глубже. Светлое масло.</p></div>
-      <div class="sw"><div class="chip stone"></div><h3>Камень</h3><p>Светлый доломит или известняк «рваный край» на стене с нишами и на клумбе. Повторяет белые обрамления окон.</p></div>
-      <div class="sw"><div class="chip slats"></div><h3>Реечные экраны</h3><p>Планкен 20 × 90 с зазором 20–25 мм, в тон перголы.</p></div>
-      <div class="sw"><div class="chip fabric"></div><h3>Текстиль</h3><p>Графитовый уличный акрил, подушки снимаются. Акценты охрой и льном.</p></div>
-      <div class="sw"><div class="chip concrete"></div><h3>Стол и очаг</h3><p>Светлый архитектурный бетон или керамогранит на столешнице.</p></div>
+      <div class="sw"><div class="chip brick"><span class="note">ФАСАД · ДАНО</span></div><h3>Клинкер дома</h3><p>Отправная точка палитры.</p></div>
+      <div class="sw"><div class="chip walnut"></div><h3>Каркас перголы</h3><p>Клеёный брус «тёмный орех» под перголы на крыше или сталь RAL 8019.</p></div>
+      <div class="sw"><div class="chip glass"></div><h3>Тонированное стекло</h3><p>Триплекс с солнцезащитной тонировкой, графит или бронза, плюс маркиза под стеклом.</p></div>
+      <div class="sw"><div class="chip porcelain"></div><h3>Пол террасы</h3><p>Керамогранит 20 мм под светлое дерево на регулируемых опорах. Масло не нужно, плитка не рассыхается.</p></div>
+      <div class="sw"><div class="chip stone"></div><h3>Площадка у огня</h3><p>Светлый доломит или песчаник. Не горит, угли с него легко сметаются.</p></div>
+      <div class="sw"><div class="chip corten"></div><h3>Кортен</h3><p>Ржавая сталь для чаши. Ржавчина защищает металл, красить не нужно.</p></div>
+      <div class="sw"><div class="chip slats"></div><h3>Реечные экраны</h3><p>Планкен 20 × 90 с зазором 20 мм в тон перголы. Стойки выше экрана держат гирлянду.</p></div>
+      <div class="sw"><div class="chip rattan"></div><h3>Кокон и текстиль</h3><p>Искусственный ротанг, не боится солнца и дождя. Подушки графитовые, уличный акрил.</p></div>
     </div>
   </div>
 </section>
@@ -595,88 +595,79 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
   <div class="sheet-label">Лист 5<b>Озеленение</b></div>
   <div class="sheet-body">
     <h2>Растения</h2>
-    <p class="intro">Набор для средней полосы, рассчитан на полутень: двор между стенами соседей и под стеклом получает мало прямого солнца. Под стеклом дождь до клумбы почти не доходит, поэтому в клумбе капельный полив с таймером.</p>
+    <p class="intro">Только то, что переносит краснодарскую жару и ваши отъезды при автополиве. Основа — хвойные. Октябрь и ноябрь — лучшее время сажать туи в Краснодаре: корни успевают прижиться до жары.</p>
     <div class="table-wrap">
       <table class="plants">
-        <thead><tr><th>Растение</th><th class="r">Кол-во</th><th>Где</th><th>Зачем</th></tr></thead>
+        <thead><tr><th>Растение</th><th class="r">Кол-во</th><th>Где</th><th>Почему</th></tr></thead>
         <tbody>
-          <tr><td>Туя западная «Смарагд»<small>высота 1,8–2,0 м, с комом</small></td><td class="r">6</td><td>Клумба вдоль забора, шаг 0,8 м</td><td>Вечнозелёный фон. Узкая, держит форму, стрижка раз в год на высоте 2,2 м</td></tr>
-          <tr><td>Хоста сизая и с каймой<small>например «Halcyon», «Patriot»</small></td><td class="r">4</td><td>Между туями у бортика</td><td>Крупный светлый лист в тени, уход минимальный</td></tr>
-          <tr><td>Щитовник мужской<small>папоротник</small></td><td class="r">2</td><td>Левый угол у каменной стены</td><td>Лёгкая фактура рядом с камнем, любит тень</td></tr>
-          <tr><td>Вейник «Karl Foerster»<small>в тени заменить на щучку «Goldtau»</small></td><td class="r">3</td><td>Правый угол за скамьёй</td><td>Вертикаль и движение, держит форму до весны</td></tr>
-          <tr><td>Живучка ползучая «Black Scallop»</td><td class="r">12</td><td>По всей клумбе</td><td>Закрывает грунт, тёмный лист в тон клинкера</td></tr>
-          <tr><td>Гортензия метельчатая «Bobo»<small>по желанию, в кашпо</small></td><td class="r">1–2</td><td>У выхода, если там бывает солнце</td><td>Цветёт с июля по сентябрь, кашпо можно переставить</td></tr>
+          <tr><td>Туя западная «Смарагд»<small>высота 1,6–1,8 м, с комом</small></td><td class="r">14</td><td>Живая изгородь вдоль трёх сторон, шаг 0,65–0,7 м</td><td>Узкая плотная колонна, растёт медленно, стрижка раз в год. В жару нужны капельный полив и вечернее дождевание крон.</td></tr>
+          <tr><td>Можжевельник горизонтальный<small>«Blue Chip» или «Wiltonii»</small></td><td class="r">7</td><td>Край гряды вдоль забора, перед туями</td><td>Стелется по краю, закрывает мульчу, переносит жару и засуху.</td></tr>
+          <tr><td>Газон: овсяница тростниковая<small>южная смесь, лучше рулонный</small></td><td class="r">≈ 7 м²</td><td>Вокруг площадки у огня</td><td>Глубокие корни, держит жару лучше обычных смесей.</td></tr>
+          <tr><td>Сосна горная «Mops»<small>по желанию, в кашпо Ø 60 см</small></td><td class="r">1–2</td><td>У стоек перголы, на капельном поливе</td><td>Плотный шар, прибавляет несколько сантиметров в год, не боится солнца.</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="notes">
+      <p><b>Если какая-то сторона на солнце весь день.</b> «Смарагд» на юге может обгорать и страдать от паутинного клеща. Для такой стороны лучше туя восточная (биота) или можжевельник скальный «Blue Arrow»: это та же узкая зелёная колонна, но жару они переносят легче. Скажите, где север, и я распределю их по сторонам.</p>
+    </div>
+    <div class="no">
+      <div><b>Розы</b><span>Не сажаем, как вы просили.</span></div>
+      <div><b>Самшит</b><span>Не сажаем: на юге его выедает самшитовая огнёвка.</span></div>
+      <div><b>Гортензии и влаголюбивые</b><span>Не переживут отъезд в жару даже с поливом.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sheet" id="care">
+  <div class="sheet-label">Лист 6<b>Уход</b></div>
+  <div class="sheet-body">
+    <h2>Пока вас нет</h2>
+    <p class="intro">Двор рассчитан на отъезды на две-три недели летом и на месяц и дольше в остальное время. Всё, что требует ежедневного внимания, делает автоматика.</p>
+    <div class="care">
+      <div><b>Автополив с Wi-Fi контроллером</b><span>Три зоны: капельная линия под туями, дождеватели газона, вечернее дождевание крон в жару. Расписание видно и меняется с телефона, датчик дождя отключает полив после ливня.</span></div>
+      <div><b>Мульча из сосновой коры 7–8 см</b><span>Держит влагу под туями и не даёт расти сорнякам. Обновлять раз в два года.</span></div>
+      <div><b>Газон</b><span>Овсяница растёт медленнее обычных смесей. Перед отъездом стрижка. Если уезжаете в мае или июне на месяц, нужен один покос: попросите соседа или садовника.</span></div>
+      <div><b>Свет по расписанию</b><span>Гирлянда и подсветка туй включаются вечером сами, и двор выглядит обитаемым.</span></div>
+      <div><b>Подушки</b><span>Под навесом не мокнут. Перед долгим отъездом их лучше убрать в дом.</span></div>
+      <div><b>Стрижка туй</b><span>Раз в год, в конце мая или в сентябре. Когда туи дорастут до 2 м, верх подрезается.</span></div>
     </div>
   </div>
 </section>
 
 <section class="sheet" id="light">
-  <div class="sheet-label">Лист 6<b>Свет</b></div>
+  <div class="sheet-label">Лист 7<b>Свет</b></div>
   <div class="sheet-body">
     <h2>Вечерний свет</h2>
-    <p class="intro">Свет тёплый, 2700 K, и спрятан: ленты под бортиком клумбы и вдоль балок, ниши, грунтовые светильники у туй, два подвеса над столом. Ни один источник не светит в глаза и в окна соседей. Нажмите «Вечер» над моделью, чтобы увидеть двор с подсветкой.</p>
+    <p class="intro">Свет тёплый, 2700 K. Гирлянда из ретро-лампочек по верху экранов, грунтовые светильники подсвечивают туи снизу, LED-лента вдоль балок перголы, два подвеса над столом и огонь в чаше. Нажмите «Вечер» над моделью, чтобы увидеть двор с подсветкой.</p>
     <div class="scenes">
-      <div class="scene"><h3>Ужин</h3>
+      <div class="scene"><h3>Ужин</h3><p class="sub">Под перголой светло, двор в полутьме</p>
         <div class="bar">
           <div class="row"><span>Подвесы</span><b><i style="width:100%"></i></b><span>100</span></div>
-          <div class="row"><span>Ниши</span><b><i style="width:60%"></i></b><span>60</span></div>
-          <div class="row"><span>Лента клумбы</span><b><i style="width:40%"></i></b><span>40</span></div>
+          <div class="row"><span>Гирлянда</span><b><i style="width:60%"></i></b><span>60</span></div>
           <div class="row"><span>Туи</span><b><i style="width:40%"></i></b><span>40</span></div>
+          <div class="row"><span>Лента перголы</span><b><i style="width:50%"></i></b><span>50</span></div>
         </div></div>
-      <div class="scene"><h3>У огня</h3>
+      <div class="scene"><h3>У огня</h3><p class="sub">Главный свет даёт огонь</p>
         <div class="bar">
           <div class="row"><span>Подвесы</span><b><i style="width:0%"></i></b><span>0</span></div>
-          <div class="row"><span>Ниши</span><b><i style="width:80%"></i></b><span>80</span></div>
-          <div class="row"><span>Лента клумбы</span><b><i style="width:30%"></i></b><span>30</span></div>
+          <div class="row"><span>Гирлянда</span><b><i style="width:80%"></i></b><span>80</span></div>
           <div class="row"><span>Туи</span><b><i style="width:70%"></i></b><span>70</span></div>
+          <div class="row"><span>Лента перголы</span><b><i style="width:20%"></i></b><span>20</span></div>
         </div></div>
-      <div class="scene"><h3>Дежурный</h3>
+      <div class="scene"><h3>Отъезд</h3><p class="sub">По расписанию, с 20:00 до 23:30</p>
         <div class="bar">
           <div class="row"><span>Подвесы</span><b><i style="width:0%"></i></b><span>0</span></div>
-          <div class="row"><span>Ниши</span><b><i style="width:20%"></i></b><span>20</span></div>
-          <div class="row"><span>Лента клумбы</span><b><i style="width:20%"></i></b><span>20</span></div>
-          <div class="row"><span>Туи</span><b><i style="width:0%"></i></b><span>0</span></div>
+          <div class="row"><span>Гирлянда</span><b><i style="width:40%"></i></b><span>40</span></div>
+          <div class="row"><span>Туи</span><b><i style="width:30%"></i></b><span>30</span></div>
+          <div class="row"><span>Лента перголы</span><b><i style="width:30%"></i></b><span>30</span></div>
         </div></div>
     </div>
     <ul class="plain">
-      <li>Ленты 24 В, IP67, в алюминиевом профиле с рассеивателем.</li>
-      <li>Блоки питания и реле в доме или в щитке IP65, а не под настилом.</li>
-      <li>Отдельная линия с УЗО 30 мА, кабель в гофре под настилом, уличная розетка IP44 у стола для гриля или обогревателя.</li>
-      <li>Грунтовые светильники у туй 3–5 Вт с антибликовой насадкой.</li>
+      <li>Гирлянда на стальном тросе, филаментные LED-лампы по 1 Вт, IP65.</li>
+      <li>Грунтовые светильники у туй 3–5 Вт с антибликовой насадкой, чтобы не светили соседям в окна.</li>
+      <li>Ленты 24 В IP67 в профиле. Блоки питания и умное реле с расписанием в доме или в щитке IP65.</li>
+      <li>Отдельная линия с УЗО 30 мА, уличная розетка IP44 под перголой.</li>
     </ul>
-  </div>
-</section>
-
-<section class="sheet" id="budget">
-  <div class="sheet-label">Лист 7<b>Смета</b></div>
-  <div class="sheet-body">
-    <h2>Ориентировочная стоимость</h2>
-    <p class="intro">Порядок цен для Москвы и области, материалы и работа вместе, без авторского надзора. Точные цифры дадут сметы двух-трёх подрядчиков по этому эскизу.</p>
-    <div class="table-wrap">
-      <table class="budget">
-        <thead><tr><th>Позиция</th><th>Объём</th><th class="r">тыс. ₽</th></tr></thead>
-        <tbody>
-          <tr><td>Основание: планировка, дренаж, щебень, опоры под стойки</td><td>24 м²</td><td class="r">60–100</td></tr>
-          <tr><td>Настил из лиственницы с подсистемой, маслом и монтажом</td><td>19,6 м²</td><td class="r">130–200</td></tr>
-          <tr><td>Каркас перголы: клеёный брус или сталь</td><td>≈ 21 м²</td><td class="r">250–450</td></tr>
-          <tr><td>Кровля: триплекс с профилями и жёлобом</td><td>≈ 21 м²</td><td class="r">300–550</td></tr>
-          <tr><td>Каменная стена с тремя нишами</td><td>10 м²</td><td class="r">90–160</td></tr>
-          <tr><td>Реечные экраны: правая граница и забор</td><td>19,6 м²</td><td class="r">120–220</td></tr>
-          <tr><td>Клумба из камня, грунт, капельный полив</td><td>5,5 пог. м</td><td class="r">90–150</td></tr>
-          <tr><td>Растения и посадка</td><td>6 туй + 21 многолетник</td><td class="r">60–110</td></tr>
-          <tr><td>Освещение и электрика</td><td>4 группы</td><td class="r">80–150</td></tr>
-          <tr><td>Угловой диван и кресло</td><td>7 мест</td><td class="r">150–350</td></tr>
-          <tr><td>Стол, 3 стула, подушки на скамью</td><td>6–7 мест</td><td class="r">90–200</td></tr>
-          <tr><td>Очаг-стол на биотопливе или газе</td><td>Ø 0,9 м</td><td class="r">70–200</td></tr>
-        </tbody>
-        <tfoot><tr><td>Итого</td><td></td><td class="r">1 490–2 840</td></tr></tfoot>
-      </table>
-    </div>
-    <div class="notes">
-      <p><b>Где сэкономить.</b> Поликарбонат вместо стекла: минус 230–420 тыс. ₽. Фиброцементные панели под камень вместо натурального камня на стене: минус 40–70 тыс. ₽. Мебель можно докупить во второй сезон: двор полностью готов и без неё.</p>
-    </div>
   </div>
 </section>
 
@@ -685,16 +676,38 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
   <div class="sheet-body">
     <h2>Порядок работ</h2>
     <ol class="steps">
-      <li><span><b>Проверка и согласование.</b> Обмер задней стены, газовой трубы, окон, отливов. Согласование навеса с УК и соседями.</span><span class="d">1–2 нед.</span></li>
-      <li><span><b>Рабочий проект перголы.</b> Расчёт на снег, сечения, узлы крепления, выбор кровли.</span><span class="d">1 нед.</span></li>
-      <li><span><b>Основание.</b> Планировка, геотекстиль, щебень, водоотвод, опоры под стойки.</span><span class="d">1 нед.</span></li>
-      <li><span><b>Электрика.</b> Кабели к клумбе, нишам, перголе и столу, розетка, УЗО.</span><span class="d">2–3 дня</span></li>
-      <li><span><b>Стены и клумба.</b> Каменная стена с нишами, клумба, реечные экраны.</span><span class="d">1–2 нед.</span></li>
-      <li><span><b>Пергола и кровля.</b> Монтаж каркаса, стекла, жёлоба и водостока.</span><span class="d">1 нед.</span></li>
-      <li><span><b>Настил.</b> Лаги, доска, масло.</span><span class="d">4–5 дней</span></li>
-      <li><span><b>Посадки и полив.</b> Лучше в апреле–мае или в сентябре.</span><span class="d">1–2 дня</span></li>
-      <li><span><b>Свет, мебель, текстиль.</b> Настройка сценариев освещения.</span><span class="d">2–3 дня</span></li>
+      <li><span><b>Проверка и согласование.</b> Обмер задней стены, двери, газовой трубы. Согласование перголы с УК и соседями.</span><span class="d">1–2 нед.</span></li>
+      <li><span><b>Рабочий проект.</b> Расчёт перголы и крюка под кокон, выбор стекла. Газ для чаши: баллон в шкафчике или отвод от домовой сети по проекту газовой службы.</span><span class="d">1–2 нед.</span></li>
+      <li><span><b>Земляные работы.</b> Планировка, дренаж, плодородный грунт под газон и гряды.</span><span class="d">3–5 дней</span></li>
+      <li><span><b>Инженерия.</b> Трубы автополива, кабели света, газ к чаше, если не баллон.</span><span class="d">3–4 дня</span></li>
+      <li><span><b>Основания.</b> Опоры террасы и керамогранит, каменная площадка, стальная лента по краю гряд.</span><span class="d">1 нед.</span></li>
+      <li><span><b>Экраны и пергола.</b> Реечные экраны со стойками под гирлянду, каркас, стекло, маркиза.</span><span class="d">1–2 нед.</span></li>
+      <li><span><b>Посадки.</b> Туи и можжевельники в октябре–ноябре или в марте, мульча, капельные линии.</span><span class="d">2 дня</span></li>
+      <li><span><b>Газон.</b> Рулонный в сентябре–октябре или в апреле.</span><span class="d">1 день</span></li>
+      <li><span><b>Свет, чаша, мебель, кокон.</b> Настройка сценариев света и расписания полива.</span><span class="d">2–3 дня</span></li>
     </ol>
+  </div>
+</section>
+
+<section class="sheet" id="photo">
+  <div class="sheet-label">Визуализация<b>Фотореализм</b></div>
+  <div class="sheet-body">
+    <h2>Фотореалистичные картинки</h2>
+    <p class="intro">Здесь я не могу нарисовать фотореалистичную картинку: в моих инструментах нет генератора изображений. Ниже готовые описания для генераторов картинок, вставьте текст как есть. Если генератор принимает картинку-образец, приложите скриншот модели в том же ракурсе: так композиция будет ближе к проекту. Генераторы не соблюдают размеры, поэтому картинка покажет настроение, а точная расстановка — в модели и на плане.</p>
+    <div class="prompts">
+      <div class="prompt">
+        <div class="prompt-head"><h3>День, вид из двери</h3><span><button class="btn copy" type="button" id="copy-1" data-target="p1">Копировать</button> <span class="copy-ok" aria-live="polite"></span></span></div>
+        <p class="text" id="p1">Фотореалистичная архитектурная визуализация маленького заднего двора таунхауса на юге России, 5,8 × 4,2 м, вид из двери дома, солнечный летний день. По трём сторонам плотная живая изгородь из колоновидных туй «Смарагд» высотой 2 м, за ними тёмные деревянные реечные экраны, по верху экранов гирлянда из ретро-лампочек. Слева зелёный газон, в центре газона круглая площадка из светлого природного камня, на ней костровая чаша из ржавой кортеновской стали с широким стальным кольцом-планчей, рядом два лаунж-кресла из светлого дерева с графитовыми подушками. Справа, у стены дома, пергола из тёмного дерева со стеклянной тонированной крышей; под ней пол из керамогранита под светлое дерево, стол из светлого бетона с четырьмя серыми стульями и подвесное кресло-кокон из тёмного ротанга. Стена дома из тёмного фиолетово-коричневого клинкерного кирпича с белыми обрамлениями окон. Мягкие тени от балок перголы, естественный свет, широкоугольный объектив, высокая детализация.</p>
+      </div>
+      <div class="prompt">
+        <div class="prompt-head"><h3>Вечер у огня</h3><span><button class="btn copy" type="button" id="copy-2" data-target="p2">Копировать</button> <span class="copy-ok" aria-live="polite"></span></span></div>
+        <p class="text" id="p2">Фотореалистичная визуализация маленького заднего двора таунхауса вечером, синие сумерки. Двор окружён живой изгородью из колоновидных туй высотой 2 м, туи мягко подсвечены снизу тёплым светом. По верху тёмных реечных экранов висит гирлянда из тёплых ретро-лампочек. В центре газона на круглой площадке из светлого камня горит живой огонь в кортеновской костровой чаше с широким стальным кольцом, тёплые отблески на камне и траве, рядом два деревянных лаунж-кресла с графитовыми подушками и пледом. Справа пергола из тёмного дерева со стеклянной крышей, вдоль балок светится тёплая LED-лента, над столом из светлого бетона горят два белых купольных подвесных светильника, в углу подвесное кресло-кокон из тёмного ротанга. Окна дома из тёмного клинкерного кирпича светятся изнутри. Уютная атмосфера, тёплый свет 2700 K, фотореализм, высокая детализация.</p>
+      </div>
+      <div class="prompt">
+        <div class="prompt-head"><h3>Вид сверху</h3><span><button class="btn copy" type="button" id="copy-3" data-target="p3">Копировать</button> <span class="copy-ok" aria-live="polite"></span></span></div>
+        <p class="text" id="p3">Фотореалистичный вид сверху под углом 45 градусов на маленький задний двор таунхауса 5,8 × 4,2 м. По трём сторонам живая изгородь из колоновидных туй, перед ними полоса стелющегося голубого можжевельника и мульча из коры. В центре газон и круглая площадка из светлого камня с кортеновской костровой чашей и двумя креслами. Справа у дома пергола из тёмного дерева со стеклянной крышей, под ней стол на четверых и подвесное кресло-кокон. Стена дома из тёмного клинкерного кирпича с белыми окнами. Летний день, чёткие тени, высокая детализация.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -703,23 +716,38 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
   <div class="sheet-body">
     <h2>Нужно от вас, чтобы довести проект</h2>
     <ul class="ask">
-      <li><b>Фото задней стены дома</b><span>Где окна, дверь, газовая труба, водостоки, кондиционер. Сейчас они в модели условные.</span></li>
+      <li><b>Где север</b><span>От этого зависит, где туя «Смарагд», а где биота, и нужна ли тень над огнём.</span></li>
+      <li><b>Фото задней стены дома</b><span>Окна, дверь, газовая труба, водостоки, кондиционер. Сейчас они в модели условные.</span></li>
       <li><b>Отрезок 0,74 м — это дверь?</b><span>И в какую сторону она открывается.</span></li>
-      <li><b>Что значит H 2,6</b><span>Высота до окон второго этажа, до трубы, высота забора или что-то ещё.</span></li>
-      <li><b>Где север</b><span>От этого зависит, нужна ли тень и какие растения выбрать.</span></li>
-      <li><b>Что сейчас по границам</b><span>Какой забор, какой высоты, можно ли ставить свою стену у соседа.</span></li>
-      <li><b>Город и бюджет</b><span>Чтобы уточнить растения и смету. И нужен ли гриль.</span></li>
+      <li><b>Что значит H 2,6</b><span>Высота до окон второго этажа, до газовой трубы или что-то ещё.</span></li>
+      <li><b>Огонь: газ или угли</b><span>Сейчас заложен газ. Если угли обязательны, переставлю зоны.</span></li>
+      <li><b>Что сейчас по границам</b><span>Какой забор и какой высоты, можно ли сажать туи вплотную к соседу.</span></li>
     </ul>
   </div>
 </section>
 
 <footer class="foot">
-  <span>Двор таунхауса · эскизный проект</span>
+  <span>Двор таунхауса · эскизный проект, версия 2</span>
   <span>Размеры в метрах · модель и план в одном масштабе</span>
 </footer>
 
 </div>
 
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var el = document.getElementById(b.dataset.target), ok = b.parentNode.querySelector('.copy-ok');
+    function selectText() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      ok.textContent = 'Выделено';
+    }
+    try {
+      navigator.clipboard.writeText(el.textContent).then(function () { ok.textContent = 'Скопировано'; }, selectText);
+    } catch (e) { selectText(); }
+  });
+});
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function () {
@@ -763,7 +791,7 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
     scene.fog = new T.Fog(lin('#dfe5e7'), 18, 46);
     var camera = new T.PerspectiveCamera(42, 1, 0.05, 140);
     // Model coordinates: x along the house wall, z from the house to the fence.
-    // Mirroring x makes the scene read like the plan: from the door the lounge is on the left.
+    // Mirroring x makes the scene read like the plan: from the door the fire is on the left.
     var root = new T.Group(); root.scale.x = -1; scene.add(root);
 
     /* ---------- textures ---------- */
@@ -776,6 +804,12 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       t.encoding = T.sRGBEncoding;
       t.anisotropy = Math.min(8, maxAniso);
       return t;
+    }
+    function speckle(g, w, h, n, cols, rmin, rmax) {
+      for (var i = 0; i < n; i++) {
+        g.fillStyle = cols[Math.floor(rand() * cols.length)];
+        g.beginPath(); g.ellipse(rand() * w, rand() * h, rmin + rand() * (rmax - rmin), rmin + rand() * (rmax - rmin) * 0.7, rand() * 3, 0, Math.PI * 2); g.fill();
+      }
     }
     var brickTex = canvasTex(512, 512, function (g, w, h) {
       g.fillStyle = '#2a2626'; g.fillRect(0, 0, w, h);
@@ -794,8 +828,8 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       }
     });
     var stoneTex = canvasTex(384, 384, function (g, S) {
-      var N = 30, pts = [];
-      for (var i = 0; i < N; i++) pts.push([rand() * S, rand() * S, 212 + rand() * 28, rand() * 6 - 3]);
+      var N = 26, pts = [];
+      for (var i = 0; i < N; i++) pts.push([rand() * S, rand() * S, 214 + rand() * 26, rand() * 6 - 3]);
       var img = g.createImageData(S, S), d = img.data;
       for (var y = 0; y < S; y++) for (var x = 0; x < S; x++) {
         var d1 = 1e9, d2 = 1e9, best = 0;
@@ -807,7 +841,7 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
           if (dd < d1) { d2 = d1; d1 = dd; best = n; } else if (dd < d2) d2 = dd;
         }
         var edge = Math.sqrt(d2) - Math.sqrt(d1), o = (y * S + x) * 4;
-        if (edge < 2.2) { d[o] = 150; d[o + 1] = 144; d[o + 2] = 136; }
+        if (edge < 2.4) { d[o] = 158; d[o + 1] = 152; d[o + 2] = 143; }
         else {
           var p = pts[best], nz = (rand() - 0.5) * 9, sh = Math.min(1, edge / 16) * 6;
           d[o] = p[2] + nz + sh; d[o + 1] = p[2] - 3 + nz + p[3] + sh; d[o + 2] = p[2] - 10 + nz + sh;
@@ -816,17 +850,55 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       }
       g.putImageData(img, 0, 0);
     });
-    var logsTex = canvasTex(256, 96, function (g, w, h) {
-      g.fillStyle = '#24180f'; g.fillRect(0, 0, w, h);
-      for (var row = 0, y = 11; y < h + 10; y += 19, row++) {
-        for (var x = (row % 2) * 11; x < w + 12; x += 22) {
-          var r = 8.2 + rand() * 2.6, gr = g.createRadialGradient(x, y, 1, x, y, r);
-          gr.addColorStop(0, '#d8ad76'); gr.addColorStop(0.7, '#b07f4c'); gr.addColorStop(1, '#5a3c22');
-          g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
-        }
+    var grassTex = canvasTex(256, 256, function (g, w, h) {
+      g.fillStyle = '#6a8741'; g.fillRect(0, 0, w, h);
+      var cols = ['#7d9a4e', '#5f7a3a', '#8aa65a', '#6b8743', '#93ad63', '#56703a'];
+      g.lineWidth = 1.3;
+      for (var i = 0; i < 6000; i++) {
+        var x = rand() * w, y = rand() * h, l = 2 + rand() * 5, a = (rand() - 0.5) * 1.2;
+        g.strokeStyle = cols[Math.floor(rand() * cols.length)];
+        g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.sin(a) * l, y - Math.cos(a) * l); g.stroke();
       }
     });
-    logsTex.repeat.set(5, 1);
+    var gravelTex = canvasTex(256, 256, function (g, w, h) {
+      g.fillStyle = '#cbc3b4'; g.fillRect(0, 0, w, h);
+      speckle(g, w, h, 2600, ['#e3dccf', '#b9b0a1', '#d6cfc2', '#a59c8e', '#efe9de'], 1.5, 4);
+    });
+    var mulchTex = canvasTex(256, 256, function (g, w, h) {
+      g.fillStyle = '#4a3424'; g.fillRect(0, 0, w, h);
+      for (var i = 0; i < 1800; i++) {
+        g.save(); g.translate(rand() * w, rand() * h); g.rotate(rand() * 3.14);
+        g.fillStyle = ['#6b4a31', '#5a3d28', '#7a573a', '#3d2a1d'][Math.floor(rand() * 4)];
+        g.fillRect(-4, -1.5, 5 + rand() * 6, 2.5 + rand() * 2); g.restore();
+      }
+    });
+    var tileTex = canvasTex(500, 600, function (g, w, h) {
+      var tones = ['#cdb08a', '#c6a881', '#d3b791', '#c9ab84', '#d0b28c'];
+      for (var c = 0; c < 5; c++) {
+        var x = c * 100, off = (c * 240) % 600;
+        g.fillStyle = tones[c]; g.fillRect(x, 0, 100, h);
+        for (var s = 0; s < 14; s++) {
+          g.strokeStyle = 'rgba(90,60,30,' + (0.05 + rand() * 0.06).toFixed(3) + ')';
+          var gx = x + 6 + rand() * 88;
+          g.beginPath(); g.moveTo(gx, 0); g.bezierCurveTo(gx + 4, h * 0.3, gx - 4, h * 0.6, gx + 2, h); g.stroke();
+        }
+        g.fillStyle = '#8d7a63'; g.fillRect(x, off, 100, 2); g.fillRect(x, 0, 2, h);
+      }
+    });
+    var rustTex = canvasTex(256, 128, function (g, w, h) {
+      g.fillStyle = '#7a3f22'; g.fillRect(0, 0, w, h);
+      speckle(g, w, h, 260, ['rgba(150,80,40,.45)', 'rgba(90,45,22,.45)', 'rgba(170,98,52,.35)', 'rgba(60,30,16,.4)'], 4, 16);
+    });
+    rustTex.repeat.set(3, 1);
+    var rattanTex = canvasTex(128, 128, function (g, w, h) {
+      g.fillStyle = '#2c2723'; g.fillRect(0, 0, w, h);
+      g.lineWidth = 4;
+      for (var i = -h; i < w + h; i += 10) {
+        g.strokeStyle = '#4d443b'; g.beginPath(); g.moveTo(i, 0); g.lineTo(i + h, h); g.stroke();
+        g.strokeStyle = '#3e3630'; g.beginPath(); g.moveTo(i + h, 0); g.lineTo(i, h); g.stroke();
+      }
+    });
+    rattanTex.repeat.set(6, 4);
 
     /* ---------- materials ---------- */
     var M = {
@@ -837,34 +909,38 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       glassOurs: mat('#2b363c', { roughness: 0.12, metalness: 0.4 }),
       glassNb: mat('#2b363c', { roughness: 0.12, metalness: 0.4 }),
       stone: mat('#ffffff', { map: stoneTex, roughness: 0.95 }),
-      stoneCap: mat('#e7e3db', { roughness: 0.9 }),
-      core: mat('#cfc8bc', { roughness: 0.95 }),
-      niche: mat('#eee4d2', { roughness: 0.9 }),
       timber: mat('#3e2f27', { roughness: 0.72 }),
       metal: mat('#1f1d1c', { roughness: 0.5, metalness: 0.6 }),
-      glassRoof: new T.MeshStandardMaterial({ color: lin('#dcebee'), transparent: true, opacity: 0.2, roughness: 0.05, metalness: 0.1, depthWrite: false }),
-      soil: mat('#3a2e25', { roughness: 1 }),
+      glassRoof: new T.MeshStandardMaterial({ color: lin('#b4c2c2'), transparent: true, opacity: 0.3, roughness: 0.05, metalness: 0.1, depthWrite: false }),
+      lawn: mat('#ffffff', { map: grassTex, roughness: 1 }),
+      gravel: mat('#ffffff', { map: gravelTex, roughness: 1 }),
+      mulch: mat('#ffffff', { map: mulchTex, roughness: 1 }),
+      tile: mat('#ffffff', { map: tileTex, roughness: 0.6 }),
+      corten: mat('#ffffff', { map: rustTex, roughness: 0.95 }),
+      cortenIn: mat('#ffffff', { map: rustTex, roughness: 0.95, side: T.DoubleSide }),
+      plancha: mat('#2b2927', { roughness: 0.45, metalness: 0.6, side: T.DoubleSide }),
+      lava: mat('#2a2523', { roughness: 1 }),
+      rattan: mat('#ffffff', { map: rattanTex, roughness: 0.9, side: T.DoubleSide }),
       teak: mat('#c19468', { roughness: 0.7 }),
       cushion: mat('#5b5f64', { roughness: 1 }),
-      pillowA: mat('#b8874f', { roughness: 1 }),
       pillowB: mat('#d8d2c7', { roughness: 1 }),
       concrete: mat('#e3e0da', { roughness: 0.9 }),
       chair: mat('#b4b8bb', { roughness: 0.6 }),
-      steel: mat('#262422', { roughness: 0.5, metalness: 0.5 }),
-      logs: mat('#ffffff', { map: logsTex, roughness: 0.9 }),
-      burner: mat('#121212', { roughness: 0.4, metalness: 0.6 }),
       led: mat('#d8d4cc', { roughness: 0.6 }),
+      edging: mat('#2a2826', { roughness: 0.6, metalness: 0.5 }),
       lampShade: mat('#f2f1ee', { roughness: 0.5, side: T.DoubleSide }),
       lampDisc: new T.MeshBasicMaterial({ color: lin('#d6d1c8') }),
-      candle: mat('#f3efe7', { roughness: 0.8 }),
-      lawn: mat('#7d8a5e', { roughness: 1 }),
+      bulb: new T.MeshBasicMaterial({ color: lin('#d9d2c4') }),
+      padLight: new T.MeshBasicMaterial({ color: lin('#9c968c') }),
+      nbLawn: mat('#7d8a5e', { roughness: 1 }),
       ground: mat('#8d8f86', { roughness: 1 }),
-      meshFence: mat('#4e5355', { roughness: 0.7, transparent: true, opacity: 0.45 }),
-      deckBase: mat('#2a2521', { roughness: 1 })
+      meshFence: mat('#4e5355', { roughness: 0.7, transparent: true, opacity: 0.45 })
     };
     M.brick.userData.uv = [1.0, 0.975];
-    M.stone.userData.uv = [1.2, 1.2];
-    var deckMats = ['#c99d6f', '#c29466', '#cfa678', '#bb8f62', '#d0a374', '#c6996b'].map(function (h) { return mat(h, { roughness: 0.78 }); });
+    M.lawn.userData.uv = [0.6, 0.6];
+    M.gravel.userData.uv = [0.45, 0.45];
+    M.mulch.userData.uv = [0.6, 0.6];
+    M.tile.userData.uv = [1.0, 1.2];
     var thujaMats = ['#3a5a3b', '#35553a', '#3f6040'].map(function (h) { return mat(h, { roughness: 0.95, flatShading: true }); });
 
     /* ---------- helpers ---------- */
@@ -889,20 +965,21 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       (opt.parent || root).add(mesh);
       return mesh;
     }
-    function cyl(r, h, y0, m, x, z, seg) {
-      var mesh = new T.Mesh(new T.CylinderGeometry(r, r, h, seg || 40), m);
-      mesh.position.set(x, y0 + h / 2, z);
-      mesh.castShadow = mesh.receiveShadow = true;
-      root.add(mesh);
+    function add(geo, m, x, y, z, opt) {
+      opt = opt || {};
+      var mesh = new T.Mesh(geo, m);
+      mesh.position.set(x, y, z);
+      mesh.castShadow = opt.cast !== false; mesh.receiveShadow = true;
+      (opt.parent || root).add(mesh);
       return mesh;
     }
 
     /* ---------- ground and neighbours ---------- */
     var ground = new T.Mesh(new T.PlaneGeometry(90, 90), M.ground);
-    ground.rotation.x = -Math.PI / 2; ground.position.set(W / 2, -0.035, 20); ground.receiveShadow = true; root.add(ground);
+    ground.rotation.x = -Math.PI / 2; ground.position.set(W / 2, -0.06, 20); ground.receiveShadow = true; root.add(ground);
     var HX0 = -6.5, HX1 = W + 6.5, HT = 6.3, HZ = -0.45;
-    block(HX0, 0, -0.035, -0.02, 0, D, M.lawn, { cast: false });
-    block(W, HX1, -0.035, -0.02, 0, D, M.lawn, { cast: false });
+    block(HX0, 0, -0.06, -0.03, 0, D, M.nbLawn, { cast: false });
+    block(W, HX1, -0.06, -0.03, 0, D, M.nbLawn, { cast: false });
     block(HX0, 0, 0, 1.6, D - 0.02, D, M.meshFence, { cast: false });
     block(W, HX1, 0, 1.6, D - 0.02, D, M.meshFence, { cast: false });
 
@@ -939,49 +1016,100 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       ourWins.forEach(function (w) { var q = mx(w[0], w[1]); windowAt(q[0], q[1], w[2], w[3], M.glassNb); });
     });
 
-    /* ---------- deck ---------- */
-    var AW = 0.16, XR = W - 0.085;
-    block(AW, XR, -0.06, -0.03, 0, 3.5, M.deckBase, { cast: false });
-    for (var bx = AW; bx < XR - 0.01; bx += 0.148) {
-      block(bx, Math.min(bx + 0.142, XR), -0.03, 0, 0, 3.5, deckMats[Math.floor(rand() * deckMats.length)], { cast: false });
+    /* ---------- surfaces: lawn, gravel, beds, terrace ---------- */
+    var BX = 0.66, BZ = 3.55, PX0 = 3.05, PZ1 = 2.64, XR = W - 0.085;
+    block(BX, PX0, -0.05, 0, 0.30, BZ, M.lawn, { cast: false });
+    block(PX0, 5.12, -0.05, 0, PZ1, BZ, M.lawn, { cast: false });
+    block(5.12, XR, -0.05, 0, PZ1, 2.75, M.lawn, { cast: false });
+    block(0.06, PX0, -0.05, -0.005, 0, 0.30, M.gravel, { cast: false });
+    block(0.06, BX, -0.05, 0.015, 0.30, BZ, M.mulch, { cast: false });
+    block(0.06, XR, -0.05, 0.015, BZ, 4.15, M.mulch, { cast: false });
+    block(5.12, XR, -0.05, 0.015, 2.75, BZ, M.mulch, { cast: false });
+    block(BX, BX + 0.006, -0.03, 0.04, 0.30, BZ, M.edging, { cast: false });
+    block(0.06, BX + 0.006, -0.03, 0.04, 0.294, 0.30, M.edging, { cast: false });
+    block(BX, 5.12, -0.03, 0.04, BZ - 0.006, BZ, M.edging, { cast: false });
+    block(5.114, 5.12, -0.03, 0.04, 2.75, BZ, M.edging, { cast: false });
+    block(5.12, XR, -0.03, 0.04, 2.75, 2.756, M.edging, { cast: false });
+    block(PX0, XR, -0.04, 0.0, 0, PZ1, M.tile, { cast: false });
+
+    /* ---------- screens with garland posts ---------- */
+    var SL = 0.09, SG = 0.025, SH = 1.8, PH = 2.15, yy;
+    var sidePostsZ = [0.05, 1.45, 2.85, 4.12];
+    sidePostsZ.forEach(function (z) {
+      block(0, 0.06, 0, PH, z, z + 0.06, M.timber);
+      block(W - 0.06, W, 0, PH, z, z + 0.06, M.timber);
+    });
+    [1.45, 2.9, 4.35].forEach(function (x) { block(x, x + 0.06, 0, PH, D - 0.06, D, M.timber); });
+    for (yy = 0.04; yy + SL <= SH + 0.001; yy += SL + SG) {
+      block(0.06, 0.085, yy, yy + SL, 0, D - 0.06, M.timber);
+      block(XR, W - 0.06, yy, yy + SL, 0, D - 0.06, M.timber);
+      block(0.06, XR, yy, yy + SL, D - 0.085, D - 0.06, M.timber);
     }
 
-    /* ---------- stone wall with niches (left boundary) ---------- */
-    var AH = 2.4, NY0 = 1.3, NY1 = 1.62;
-    var niches = [[0.55, 1.15], [1.55, 2.15], [2.55, 3.15]];
-    block(0, 0.06, 0, AH, 0, D, M.core);
-    block(0.06, AW, 0, NY0, 0, D, M.stone);
-    block(0.06, AW, NY1, AH, 0, D, M.stone);
-    var nz0 = 0;
-    niches.forEach(function (n) { block(0.06, AW, NY0, NY1, nz0, n[0], M.stone); nz0 = n[1]; });
-    block(0.06, AW, NY0, NY1, nz0, D, M.stone);
-    block(-0.01, AW + 0.02, AH, AH + 0.05, 0, D, M.stoneCap);
-    niches.forEach(function (n) {
-      block(0.059, 0.061, NY0, NY1, n[0], n[1], M.niche, { cast: false });
-      var cz = (n[0] + n[1]) / 2;
-      cyl(0.035, 0.13, NY0, M.candle, 0.11, cz - 0.09, 18);
-      cyl(0.03, 0.08, NY0, M.candle, 0.11, cz + 0.08, 18);
+    /* ---------- plants ---------- */
+    function thuja(x, z, h) {
+      var g = new T.ConeGeometry(0.28, h, 16, 10), p = g.attributes.position;
+      for (var i = 0; i < p.count; i++) {
+        var vx = p.getX(i), vy = p.getY(i), vz = p.getZ(i);
+        var n = 1 + 0.10 * Math.sin(vx * 23 + vy * 11) + 0.08 * Math.sin(vz * 19 - vy * 7);
+        var base = vy < -h / 2 + 0.25 ? 0.78 + 0.22 * ((vy + h / 2) / 0.25) : 1;
+        p.setXYZ(i, vx * n * base, vy, vz * n * base);
+      }
+      g.computeVertexNormals();
+      add(g, thujaMats[Math.floor(rand() * thujaMats.length)], x, 0.015 + h / 2, z);
+    }
+    [0.6, 1.25, 1.9, 2.55, 3.2].forEach(function (z) { thuja(0.36, z, 1.9 + rand() * 0.2); });
+    [0.36, 1.06, 1.76, 2.46, 3.16, 3.86, 4.56, 5.26].forEach(function (x) { thuja(x, 3.85, 1.9 + rand() * 0.2); });
+    thuja(5.42, 3.15, 1.95);
+    function juniper(x, z, col) {
+      var m = add(new T.IcosahedronGeometry(0.2, 1), mat(col, { roughness: 0.95, flatShading: true }), x, 0.045, z);
+      m.scale.set(1.3, 0.32, 0.8);
+    }
+    [0.71, 1.41, 2.11, 2.81, 3.51, 4.21, 4.91].forEach(function (x, i) { juniper(x, 3.6, i % 2 ? '#5f8279' : '#6b8e84'); });
+
+    /* ---------- fire: bowl-grill on a stone pad ---------- */
+    var FX = 1.85, FZ = 2.0;
+    add(new T.CylinderGeometry(0.95, 0.95, 0.03, 64), M.stone, FX, 0.005, FZ, { cast: false });
+    add(new T.CylinderGeometry(0.17, 0.21, 0.52, 40), M.corten, FX, 0.28, FZ);
+    add(new T.CylinderGeometry(0.30, 0.17, 0.36, 48, 1, true), M.cortenIn, FX, 0.72, FZ);
+    var ring = add(new T.RingGeometry(0.28, 0.425, 72), M.plancha, FX, 0.905, FZ);
+    ring.rotation.x = -Math.PI / 2;
+    add(new T.CylinderGeometry(0.425, 0.425, 0.025, 72, 1, true), M.plancha, FX, 0.8925, FZ);
+    add(new T.CylinderGeometry(0.26, 0.26, 0.02, 32), M.lava, FX, 0.80, FZ, { cast: false });
+    var flameMats = [
+      new T.MeshBasicMaterial({ color: lin('#ff8a1c'), transparent: true, opacity: 0.15, blending: T.AdditiveBlending, depthWrite: false }),
+      new T.MeshBasicMaterial({ color: lin('#ffd36b'), transparent: true, opacity: 0.2, blending: T.AdditiveBlending, depthWrite: false })
+    ];
+    var flames = [];
+    for (var fi = 0; fi < 9; fi++) {
+      var fa = fi / 9 * Math.PI * 2, fr = fi === 0 ? 0 : 0.07 + rand() * 0.08, fh = 0.22 + rand() * 0.2;
+      var fg = new T.ConeGeometry(0.05 + rand() * 0.03, fh, 10, 1, true);
+      fg.translate(0, fh / 2, 0);
+      var fl = add(fg, flameMats[fi % 2], FX + Math.cos(fa) * fr, 0.81, FZ + Math.sin(fa) * fr, { cast: false });
+      fl.userData = { ph: rand() * 6.28, sp: 6 + rand() * 5 };
+      flames.push(fl);
+    }
+    [0.6, 2.7, 4.6].forEach(function (a) {
+      var c = add(new T.CircleGeometry(0.03, 16), M.padLight, FX + Math.cos(a) * 0.85, 0.022, FZ + Math.sin(a) * 0.85, { cast: false });
+      c.rotation.x = -Math.PI / 2;
     });
+    function loungeChair(xc, zc) {
+      var g = new T.Group(); g.position.set(xc, 0.02, zc); g.rotation.y = Math.atan2(FX - xc, FZ - zc); root.add(g);
+      var o = { parent: g };
+      [[-0.33, -0.35], [0.28, -0.35], [-0.33, 0.28], [0.28, 0.28]].forEach(function (p) { block(p[0], p[0] + 0.05, 0, 0.06, p[1], p[1] + 0.07, M.teak, o); });
+      block(-0.33, 0.33, 0.06, 0.24, -0.35, 0.35, M.teak, o);
+      block(-0.33, -0.27, 0.24, 0.58, -0.35, 0.35, M.teak, o);
+      block(0.27, 0.33, 0.24, 0.58, -0.35, 0.35, M.teak, o);
+      block(-0.33, 0.33, 0.24, 0.74, -0.35, -0.31, M.teak, o);
+      block(-0.27, 0.27, 0.24, 0.38, -0.18, 0.34, M.cushion, o);
+      block(-0.27, 0.27, 0.36, 0.76, -0.31, -0.15, M.cushion, o);
+    }
+    loungeChair(1.31, 1.28);
+    loungeChair(1.31, 2.72);
 
-    /* ---------- slat screens (right boundary, fence) ---------- */
-    var SL = 0.09, SG = 0.025, SH = 2.0, yy;
-    [0.05, 1.45, 2.85, D - 0.09].forEach(function (z) { block(W - 0.06, W, 0, SH, z, z + 0.06, M.timber); });
-    for (yy = 0.04; yy + SL <= SH + 0.001; yy += SL + SG) block(XR, W - 0.06, yy, yy + SL, 0, D - 0.06, M.timber);
-    [0.3, 1.9, 3.5, 5.1].forEach(function (x) { block(x, x + 0.06, 0, SH, D - 0.06, D, M.timber); });
-    for (yy = 0.04; yy + SL <= SH + 0.001; yy += SL + SG) block(AW, XR, yy, yy + SL, D - 0.085, D - 0.06, M.timber);
-
-    /* ---------- planter ---------- */
-    var PZ0 = 3.5, PZ1 = D - 0.085, PH = 0.45;
-    block(AW, XR, 0, PH, PZ0, PZ0 + 0.1, M.stone);
-    block(AW, AW + 0.1, 0, PH, PZ0, PZ1, M.stone);
-    block(XR - 0.1, XR, 0, PH, PZ0, PZ1, M.stone);
-    block(AW, XR, PH, PH + 0.05, PZ0 - 0.03, PZ0 + 0.12, M.stoneCap);
-    block(AW + 0.1, XR - 0.1, 0.3, 0.42, PZ0 + 0.1, PZ1, M.soil, { cast: false });
-    block(AW + 0.12, XR - 0.12, 0.438, 0.448, PZ0 - 0.026, PZ0 - 0.012, M.led, { cast: false });
-
-    /* ---------- pergola ---------- */
+    /* ---------- pergola (right, over the door) ---------- */
     var perg = new T.Group(); root.add(perg);
-    var kk = (2.60 - 2.32) / 3.67, ang = Math.atan(kk);
+    var kk = (2.60 - 2.40) / 2.57, ang = Math.atan(kk);
     function top(z) { return 2.60 - kk * z; }
     function sloped(x0, x1, z0, z1, depth, m, yOff, parent) {
       var L = (z1 - z0) / Math.cos(ang), zc = (z0 + z1) / 2;
@@ -992,129 +1120,77 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       (parent || perg).add(mesh);
       return mesh;
     }
-    [0.32, 2.93, 5.52].forEach(function (x) { block(x - 0.07, x + 0.07, 0, 2.10, 3.60, 3.74, M.timber, { parent: perg }); });
-    block(0.18, W - 0.10, 2.10, 2.32, 3.60, 3.74, M.timber, { parent: perg });
-    block(0.18, W - 0.10, 2.40, 2.60, 0, 0.10, M.timber, { parent: perg });
-    for (var ri = 0; ri < 9; ri++) {
-      var rx = 0.22 + ri * (W - 0.14 - 0.22) / 8;
-      sloped(rx - 0.035, rx + 0.035, 0.10, 3.78, 0.16, M.timber, 0);
-    }
-    for (var bz = 0.35; bz < 3.75; bz += 0.42) block(0.18, W - 0.10, top(bz), top(bz) + 0.04, bz - 0.025, bz + 0.025, M.timber, { parent: perg });
-    var roofGlass = sloped(0.18, W - 0.10, 0.03, 3.80, 0.012, M.glassRoof, 0.052);
+    var GX0 = 3.06, GX1 = 5.72;
+    [3.13, 5.65].forEach(function (x) { block(x - 0.07, x + 0.07, 0, 2.18, 2.50, 2.64, M.timber, { parent: perg }); });
+    block(GX0, GX1, 2.18, 2.40, 2.50, 2.64, M.timber, { parent: perg });
+    block(GX0, GX1, 2.40, 2.60, 0, 0.10, M.timber, { parent: perg });
+    [[3.13, 0.14, 0.2], [3.78, 0.07, 0.16], [4.43, 0.07, 0.16], [5.14, 0.12, 0.2], [5.65, 0.14, 0.2]].forEach(function (r) {
+      sloped(r[0] - r[1] / 2, r[0] + r[1] / 2, 0.10, 2.64, r[2], M.timber, 0);
+    });
+    for (var bz = 0.3; bz < 2.6; bz += 0.42) block(GX0, GX1, top(bz), top(bz) + 0.04, bz - 0.025, bz + 0.025, M.timber, { parent: perg });
+    var roofGlass = sloped(GX0, GX1, 0.03, 2.72, 0.012, M.glassRoof, 0.052);
     roofGlass.castShadow = false; roofGlass.receiveShadow = false; roofGlass.renderOrder = 2;
-    block(0.18, W - 0.10, top(3.8) - 0.10, top(3.8), 3.78, 3.88, M.metal, { parent: perg });
-    block(5.60, 5.66, 0.42, top(3.8) - 0.10, 3.80, 3.86, M.metal, { parent: perg });
-    block(0.30, W - 0.20, 2.10, 2.116, 3.592, 3.600, M.led, { parent: perg, cast: false });
-    block(0.30, W - 0.20, 2.392, 2.40, 0.10, 0.108, M.led, { parent: perg, cast: false });
-
-    /* ---------- lounge ---------- */
-    function feet(x0, x1, z0, z1) {
-      [[x0, z0], [x1 - 0.05, z0], [x0, z1 - 0.05], [x1 - 0.05, z1 - 0.05]].forEach(function (p) { block(p[0], p[0] + 0.05, 0, 0.06, p[1], p[1] + 0.05, M.teak); });
-    }
-    feet(0.18, 2.55, 0.06, 0.90); block(0.18, 2.55, 0.06, 0.28, 0.06, 0.90, M.teak);
-    feet(0.18, 0.99, 0.90, 2.40); block(0.18, 0.99, 0.06, 0.28, 0.90, 2.40, M.teak);
-    block(0.18, 2.55, 0.28, 0.72, 0.06, 0.10, M.teak);
-    block(0.18, 0.22, 0.28, 0.72, 0.10, 2.40, M.teak);
-    block(2.47, 2.55, 0.28, 0.60, 0.10, 0.90, M.teak);
-    block(0.22, 0.99, 0.28, 0.60, 2.32, 2.40, M.teak);
-    block(0.22, 2.46, 0.28, 0.42, 0.10, 0.30, M.cushion);
-    block(0.22, 0.42, 0.28, 0.42, 0.30, 2.31, M.cushion);
-    [[0.42, 0.97, 0.30, 0.88], [0.99, 1.72, 0.30, 0.88], [1.74, 2.46, 0.30, 0.88], [0.42, 0.97, 0.90, 1.60], [0.42, 0.97, 1.62, 2.31]]
-      .forEach(function (c) { block(c[0], c[1], 0.28, 0.44, c[2], c[3], M.cushion); });
-    [[0.22, 0.98], [1.00, 1.72], [1.74, 2.46]].forEach(function (c) { block(c[0], c[1], 0.42, 0.80, 0.10, 0.30, M.cushion); });
-    [[0.32, 1.30], [1.32, 2.30]].forEach(function (c) { block(0.22, 0.42, 0.42, 0.80, c[0], c[1], M.cushion); });
-    var pA = new T.Mesh(new T.BoxGeometry(0.42, 0.38, 0.13), M.pillowA);
-    pA.position.set(1.35, 0.62, 0.40); pA.rotation.set(-0.3, 0.12, 0); pA.castShadow = true; root.add(pA);
-    var pB = new T.Mesh(new T.BoxGeometry(0.13, 0.38, 0.42), M.pillowB);
-    pB.position.set(0.52, 0.62, 1.95); pB.rotation.set(0, -0.1, 0.3); pB.castShadow = true; root.add(pB);
-    // armchair facing the sofa
-    block(1.55, 2.35, 0.06, 0.28, 2.75, 3.40, M.teak);
-    feet(1.55, 2.35, 2.75, 3.40);
-    block(1.60, 2.30, 0.28, 0.44, 2.78, 3.18, M.cushion);
-    block(1.60, 2.30, 0.40, 0.78, 3.18, 3.36, M.cushion);
-    block(1.55, 2.35, 0.28, 0.72, 3.36, 3.40, M.teak);
-    block(1.55, 1.60, 0.28, 0.60, 2.75, 3.40, M.teak);
-    block(2.30, 2.35, 0.28, 0.60, 2.75, 3.40, M.teak);
-
-    /* ---------- fire table ---------- */
-    var FX = 1.95, FZ = 1.90;
-    cyl(0.40, 0.03, 0, M.steel, FX, FZ);
-    cyl(0.385, 0.27, 0.03, M.logs, FX, FZ);
-    cyl(0.45, 0.08, 0.30, M.concrete, FX, FZ, 56);
-    cyl(0.16, 0.012, 0.38, M.burner, FX, FZ);
-    var flameMats = [
-      new T.MeshBasicMaterial({ color: lin('#ff8a1c'), transparent: true, opacity: 0.15, blending: T.AdditiveBlending, depthWrite: false }),
-      new T.MeshBasicMaterial({ color: lin('#ffd36b'), transparent: true, opacity: 0.2, blending: T.AdditiveBlending, depthWrite: false })
-    ];
-    var flames = [];
-    for (var fi = 0; fi < 7; fi++) {
-      var fa = fi / 7 * Math.PI * 2, fr = fi === 0 ? 0 : 0.085, fh = 0.18 + rand() * 0.14;
-      var fg = new T.ConeGeometry(0.045 + rand() * 0.02, fh, 10, 1, true);
-      fg.translate(0, fh / 2, 0);
-      var fl = new T.Mesh(fg, flameMats[fi % 2]);
-      fl.position.set(FX + Math.cos(fa) * fr, 0.392, FZ + Math.sin(fa) * fr);
-      fl.userData = { ph: rand() * 6.28, sp: 6 + rand() * 5 };
-      root.add(fl); flames.push(fl);
-    }
+    block(GX0, GX1, top(2.68) - 0.10, top(2.68), 2.64, 2.74, M.metal, { parent: perg });
+    block(GX0 + 0.1, GX1 - 0.1, 2.18, 2.196, 2.492, 2.50, M.led, { parent: perg, cast: false });
+    block(GX0 + 0.1, GX1 - 0.1, 2.392, 2.40, 0.10, 0.108, M.led, { parent: perg, cast: false });
 
     /* ---------- dining ---------- */
-    block(4.35, 5.15, 0.72, 0.76, 1.30, 3.10, M.concrete);
-    block(4.42, 5.08, 0, 0.72, 1.40, 1.47, M.concrete);
-    block(4.42, 5.08, 0, 0.72, 2.93, 3.00, M.concrete);
-    block(5.26, XR, 0, 0.06, 1.24, 3.21, M.deckBase);
-    block(5.22, XR, 0.06, 0.40, 1.20, 3.25, deckMats[2]);
-    block(5.24, XR - 0.01, 0.40, 0.47, 1.22, 3.23, M.cushion);
-    [[1.25, 1.90], [1.92, 2.57], [2.59, 3.22]].forEach(function (c) { block(5.56, XR - 0.005, 0.47, 0.85, c[0], c[1], M.cushion); });
-    function chair(zc) {
-      var x0 = 3.88, x1 = 4.32;
-      [[x0, zc - 0.21], [x1 - 0.03, zc - 0.21], [x0, zc + 0.18], [x1 - 0.03, zc + 0.18]].forEach(function (p) { block(p[0], p[0] + 0.03, 0, 0.43, p[1], p[1] + 0.03, M.chair); });
-      block(x0, x1, 0.43, 0.47, zc - 0.21, zc + 0.21, M.chair);
-      block(x0 - 0.02, x0 + 0.02, 0.47, 0.86, zc - 0.20, zc + 0.20, M.chair);
+    block(3.40, 4.50, 0.72, 0.76, 1.35, 2.10, M.concrete);
+    block(3.48, 3.55, 0, 0.72, 1.43, 2.02, M.concrete);
+    block(4.35, 4.42, 0, 0.72, 1.43, 2.02, M.concrete);
+    function diningChair(xc, zc, faceZ) {
+      var g = new T.Group(); g.position.set(xc, 0, zc); if (faceZ < 0) g.rotation.y = Math.PI; root.add(g);
+      var o = { parent: g };
+      [[-0.2, -0.2], [0.17, -0.2], [-0.2, 0.17], [0.17, 0.17]].forEach(function (p) { block(p[0], p[0] + 0.03, 0, 0.43, p[1], p[1] + 0.03, M.chair, o); });
+      block(-0.21, 0.21, 0.43, 0.47, -0.21, 0.21, M.chair, o);
+      block(-0.2, 0.2, 0.47, 0.86, -0.23, -0.19, M.chair, o);
     }
-    [1.70, 2.20, 2.70].forEach(chair);
-    var domeGeo = new T.SphereGeometry(0.21, 28, 10, 0, Math.PI * 2, 0, Math.PI / 2);
-    var lampZ = [1.85, 2.55];
-    lampZ.forEach(function (zc) {
-      var d = new T.Mesh(domeGeo, M.lampShade); d.position.set(4.75, 1.62, zc); d.castShadow = true; root.add(d);
-      var disc = new T.Mesh(new T.CircleGeometry(0.17, 24), M.lampDisc); disc.rotation.x = Math.PI / 2; disc.position.set(4.75, 1.625, zc); root.add(disc);
-      block(4.745, 4.755, 1.83, top(zc), zc - 0.005, zc + 0.005, M.metal, { parent: perg, cast: false });
+    [3.72, 4.18].forEach(function (x) { diningChair(x, 1.10, 1); diningChair(x, 2.36, -1); });
+    var domeGeo = new T.SphereGeometry(0.17, 28, 10, 0, Math.PI * 2, 0, Math.PI / 2);
+    [3.70, 4.20].forEach(function (x) {
+      add(domeGeo, M.lampShade, x, 1.62, 1.72);
+      var disc = add(new T.CircleGeometry(0.14, 24), M.lampDisc, x, 1.625, 1.72, { cast: false });
+      disc.rotation.x = Math.PI / 2;
+      block(x - 0.005, x + 0.005, 1.79, top(1.72), 1.715, 1.725, M.metal, { parent: perg, cast: false });
     });
 
-    /* ---------- plants ---------- */
-    function thuja(x, z, h) {
-      var g = new T.ConeGeometry(0.30, h, 16, 10), p = g.attributes.position;
-      for (var i = 0; i < p.count; i++) {
-        var vx = p.getX(i), vy = p.getY(i), vz = p.getZ(i);
-        var n = 1 + 0.10 * Math.sin(vx * 23 + vy * 11) + 0.08 * Math.sin(vz * 19 - vy * 7);
-        var base = vy < -h / 2 + 0.25 ? 0.78 + 0.22 * ((vy + h / 2) / 0.25) : 1;
-        p.setXYZ(i, vx * n * base, vy, vz * n * base);
+    /* ---------- cocoon hanging from the double rafter ---------- */
+    var CX = 5.14, CZ = 0.80;
+    block(CX - 0.006, CX + 0.006, 1.86, top(CZ) - 0.2, CZ - 0.006, CZ + 0.006, M.metal, { parent: perg, cast: false });
+    add(new T.TorusGeometry(0.05, 0.012, 8, 24), M.metal, CX, 1.84, CZ);
+    var egg = add(new T.SphereGeometry(0.5, 40, 28, 0.95, Math.PI * 2 - 1.9, 0.3, Math.PI - 0.3), M.rattan, CX, 1.15, CZ);
+    egg.scale.set(1, 1.3, 1);
+    add(new T.CylinderGeometry(0.06, 0.2, 0.06, 24), M.rattan, CX, 1.78, CZ);
+    var seat = add(new T.SphereGeometry(0.36, 24, 16), M.cushion, CX + 0.04, 0.64, CZ);
+    seat.scale.set(1, 0.3, 1);
+    var back = add(new T.SphereGeometry(0.3, 24, 16), M.pillowB, CX + 0.24, 1.0, CZ);
+    back.scale.set(0.4, 0.9, 1);
+
+    /* ---------- garland ---------- */
+    var wireMat = new T.LineBasicMaterial({ color: lin('#1c1a18') });
+    var bulbGeo = new T.SphereGeometry(0.028, 10, 8);
+    function garland(a, b, sag) {
+      var pts = [], n = 24;
+      for (var i = 0; i <= n; i++) {
+        var t = i / n;
+        pts.push(new T.Vector3(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t - sag * 4 * t * (1 - t), a[2] + (b[2] - a[2]) * t));
       }
-      g.computeVertexNormals();
-      var m = new T.Mesh(g, thujaMats[Math.floor(rand() * thujaMats.length)]);
-      m.position.set(x, 0.42 + h / 2, z); m.castShadow = m.receiveShadow = true; root.add(m);
+      root.add(new T.Line(new T.BufferGeometry().setFromPoints(pts), wireMat));
+      var len = Math.hypot(b[0] - a[0], b[2] - a[2]), k = Math.max(2, Math.round(len / 0.33));
+      for (var j = 1; j < k; j++) {
+        var s = j / k;
+        add(bulbGeo, M.bulb, a[0] + (b[0] - a[0]) * s, a[1] - sag * 4 * s * (1 - s) - 0.04, a[2] + (b[2] - a[2]) * s, { cast: false });
+      }
     }
-    [0.80, 1.60, 2.38, 3.45, 4.25, 5.05].forEach(function (x) { thuja(x, 3.88, 1.95 + rand() * 0.2); });
-    function bush(x, z, r, sy, col) {
-      var m = new T.Mesh(new T.IcosahedronGeometry(r, 1), mat(col, { roughness: 0.95, flatShading: true }));
-      m.scale.set(1, sy, 1); m.position.set(x, 0.42 + r * sy * 0.6, z); m.castShadow = m.receiveShadow = true; root.add(m);
-    }
-    bush(1.20, 3.72, 0.18, 0.55, '#7a978c'); bush(2.00, 3.72, 0.18, 0.55, '#5f7f45');
-    bush(3.85, 3.72, 0.18, 0.55, '#7a978c'); bush(4.65, 3.72, 0.18, 0.55, '#5f7f45');
-    bush(0.52, 3.80, 0.2, 0.6, '#55743d');
-    var grassMat = mat('#b3a46c', { roughness: 0.9 }), grassMat2 = mat('#8f8f58', { roughness: 0.9 });
-    for (var gi = 0; gi < 46; gi++) {
-      var gh = 0.65 + rand() * 0.35, gg = new T.ConeGeometry(0.012, gh, 4);
-      gg.translate(0, gh / 2, 0);
-      var blade = new T.Mesh(gg, gi % 3 ? grassMat : grassMat2);
-      blade.position.set(5.36 + (rand() - 0.5) * 0.3, 0.42, 3.86 + (rand() - 0.5) * 0.3);
-      blade.rotation.set((rand() - 0.5) * 0.45, 0, (rand() - 0.5) * 0.45);
-      blade.castShadow = true; root.add(blade);
-    }
+    var gy = PH - 0.03, gi;
+    for (gi = 0; gi < sidePostsZ.length - 1; gi++) garland([0.03, gy, sidePostsZ[gi] + 0.03], [0.03, gy, sidePostsZ[gi + 1] + 0.03], 0.12);
+    var gbx = [0.03, 1.48, 2.93, 4.38, W - 0.03];
+    for (gi = 0; gi < gbx.length - 1; gi++) garland([gbx[gi], gy, D - 0.03], [gbx[gi + 1], gy, D - 0.03], 0.12);
 
     /* ---------- lights ---------- */
     var hemi = new T.HemisphereLight(lin('#dfe8ee'), lin('#7d7466'), 0.7);
     root.add(hemi);
-    var sun = new T.DirectionalLight(lin('#fff3e2'), 1.7);
+    var sun = new T.DirectionalLight(lin('#fff3e2'), 1.75);
     sun.position.set(-1.5, 9, 10.5);
     sun.target.position.set(W / 2, 0, D / 2);
     sun.castShadow = true;
@@ -1130,28 +1206,20 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       var l = new T.PointLight(lin(color), intensity, distance, 2);
       l.position.set(x, y, z); l.visible = false; root.add(l); nightLights.push(l); return l;
     }
-    var fireLight = pl('#ff9440', 1.5, 3.2, FX, 0.75, FZ);
-    niches.forEach(function (n) { pl('#ffbf73', 0.7, 1.3, 0.28, 1.47, (n[0] + n[1]) / 2); });
     function spot(color, intensity, distance, angle, p, t) {
       var s = new T.SpotLight(lin(color), intensity, distance, angle, 0.7, 2);
       s.position.set(p[0], p[1], p[2]); s.target.position.set(t[0], t[1], t[2]);
       s.visible = false; root.add(s); root.add(s.target); nightLights.push(s); return s;
     }
-    // planter LED washes the deck; uplights point into the thujas, so nothing spills past the fence
-    spot('#ffd29a', 0.9, 2.6, 1.15, [1.5, 0.44, 3.45], [1.5, 0, 2.5]);
-    spot('#ffd29a', 0.9, 2.6, 1.15, [4.2, 0.44, 3.45], [4.2, 0, 2.5]);
-    [1.60, 3.45, 5.05].forEach(function (x) { spot('#f4f1e4', 1.6, 2.8, 0.45, [x, 0.45, 3.62], [x, 2.4, 3.95]); });
-    pl('#ffe0b8', 0.22, 5, 2.9, 2.1, 1.3);
-    lampZ.forEach(function (zc) {
-      var s = new T.SpotLight(lin('#ffd9a8'), 2.2, 3.6, 0.95, 0.6, 2);
-      s.position.set(4.75, 1.6, zc); s.target.position.set(4.75, 0, zc);
-      s.visible = false; root.add(s); root.add(s.target); nightLights.push(s);
-    });
+    var fireLight = pl('#ff9440', 1.9, 2.7, FX, 1.25, FZ);
+    pl('#ffe0b8', 0.25, 4, 4.4, 2.1, 1.3);
+    pl('#ffd9a0', 0.3, 2.2, 2.1, 2.0, 2.4);
+    [3.70, 4.20].forEach(function (x) { spot('#ffd9a8', 1.6, 3.2, 0.95, [x, 1.6, 1.72], [x, 0, 1.72]); });
+    [1.06, 2.46, 3.86, 5.26].forEach(function (x) { spot('#f4f1e4', 1.5, 2.8, 0.45, [x, 0.06, 3.5], [x, 2.2, 3.9]); });
+    [1.25, 2.55].forEach(function (z) { spot('#f4f1e4', 1.5, 2.8, 0.45, [0.72, 0.06, z], [0.32, 2.2, z]); });
 
-    var glow = [
-      [M.led, '#ffb35c', 2.4], [M.niche, '#ffc27a', 0.9], [M.glassOurs, '#ffcf8f', 0.55],
-      [M.glassNb, '#ffcf8f', 0.3], [M.candle, '#ffd9a0', 0.35]
-    ];
+    var glow = [[M.led, '#ffb35c', 2.4], [M.glassOurs, '#ffcf8f', 0.55], [M.glassNb, '#ffcf8f', 0.3]];
+    var basics = [[M.lampDisc, '#fff0d0', '#d6d1c8'], [M.bulb, '#ffd38a', '#d9d2c4'], [M.padLight, '#ffd9a0', '#9c968c']];
     var night = false;
     function setMode(n) {
       night = n;
@@ -1162,7 +1230,7 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
       sun.visible = !n; moon.visible = n;
       nightLights.forEach(function (l) { l.visible = n; });
       glow.forEach(function (g) { g[0].emissive = n ? lin(g[1]) : new T.Color(0x000000); g[0].emissiveIntensity = g[2]; });
-      M.lampDisc.color.copy(lin(n ? '#fff0d0' : '#d6d1c8'));
+      basics.forEach(function (b) { b[0].color.copy(lin(n ? b[1] : b[2])); });
       flameMats[0].opacity = n ? 0.8 : 0.15; flameMats[1].opacity = n ? 0.9 : 0.2;
       scene.fog.color.copy(lin(n ? '#1b2431' : '#dfe5e7'));
       renderer.toneMappingExposure = n ? 1.1 : 1.0;
@@ -1174,8 +1242,8 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
     /* ---------- camera ---------- */
     var PRESETS = {
       overview: { pos: [0.6, 9.6, 8.0], tgt: [2.8, 0.4, 2.0] },
-      door: { pos: [3.86, 1.62, 0.2], tgt: [2.2, 0.85, 3.4] },
-      lounge: { pos: [5.1, 1.5, 3.25], tgt: [1.3, 0.75, 0.9] },
+      door: { pos: [3.86, 1.62, 0.25], tgt: [1.85, 0.8, 2.4] },
+      fire: { pos: [0.95, 1.55, 3.3], tgt: [4.4, 1.0, 0.9] },
       top: { pos: [2.89, 10.5, 0.6], tgt: [2.89, 0, 2.2] }
     };
     var target = new T.Vector3(), sph = { r: 10, th: 0, ph: 1 }, tween = null;
@@ -1281,7 +1349,7 @@ ol.steps .d{font:500 12.5px var(--f-mono);color:var(--muted);white-space:nowrap}
         f.scale.y = 0.8 + 0.3 * Math.sin(t * u.sp + u.ph) + 0.12 * Math.sin(t * 17 + u.ph * 3);
         f.scale.x = f.scale.z = 0.9 + 0.12 * Math.sin(t * 9 + u.ph);
       });
-      fireLight.intensity = 1.4 + 0.22 * Math.sin(t * 11) + 0.12 * Math.sin(t * 23 + 1);
+      fireLight.intensity = 1.8 + 0.25 * Math.sin(t * 11) + 0.15 * Math.sin(t * 23 + 1);
     }
     function loop(now) {
       requestAnimationFrame(loop);
