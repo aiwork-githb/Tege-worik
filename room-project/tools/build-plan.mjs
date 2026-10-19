@@ -191,7 +191,7 @@ const gMid = (gd.y0 + gd.y1) / 2;
 push(`<line x1="${X(327)}" y1="${Y(gMid - 60)}" x2="${X(330)}" y2="${Y(gMid - 1)}" stroke="${C.graphite}" stroke-width="2.4"/>`);
 push(`<line x1="${X(330)}" y1="${Y(gMid + 1)}" x2="${X(327)}" y2="${Y(gMid + 60)}" stroke="${C.graphite}" stroke-width="2.4"/>`);
 push(rect(gd.x0 + 4, gd.x1 - 4, gd.y0, gd.y0 + 4, `fill="${C.graphite}" stroke="none"`));
-push(`<text x="${X(312)}" y="${Y(gMid)}" font-size="8" font-weight="600" fill="${C.ink}" text-anchor="middle" transform="rotate(-90 ${X(312)} ${Y(gMid)})">Игровой стол 140×70</text>`);
+push(`<text x="${X(312)}" y="${Y(gMid)}" font-size="8" font-weight="600" fill="${C.ink}" text-anchor="middle" transform="rotate(-90 ${X(312)} ${Y(gMid)})">Игровой стол 140×68</text>`);
 const pg = item('pegboard');
 push(rect(pg.x0 - 2, pg.x1, pg.y0, pg.y1, `fill="url(#peg)" stroke="${C.ink}" stroke-width="0.4"`));
 push(badge(345, gd.y0 + 14, 10));
@@ -203,15 +203,22 @@ push(rect(cs.x0, cs.x1, cs.y0, cs.y1, `fill="${C.oak}" stroke="${C.ink}" stroke-
 push(`<text x="${X(341)}" y="${Y(225)}" font-size="7.5" font-weight="600" fill="${C.ink}" text-anchor="middle" transform="rotate(-90 ${X(341)} ${Y(225)})">Медиатумба 200×40</text>`);
 push(badge(341, 140, 13));
 const sc = item('screen');
-push(`<line x1="${X(362)}" y1="${Y(115)}" x2="${X(362)}" y2="${Y(336)}" stroke="#111111" stroke-width="2.4"/>`);
+const scX = sc.x1 - 6; // полотно экрана в 6 см перед рейками
+push(`<line x1="${X(scX)}" y1="${Y(115)}" x2="${X(scX)}" y2="${Y(336)}" stroke="#111111" stroke-width="2.4"/>`);
 push(rect(sc.x0, sc.x1, sc.y0, sc.y1, `fill="none" stroke="${C.ceiling}" stroke-width="0.6" stroke-dasharray="4 2"`));
 push(badge(318, 108, 18));
 const pj = item('projector');
 push(`<g stroke="${C.ceiling}" stroke-width="0.5" stroke-dasharray="1 2" fill="none">
-  <line x1="${X(pj.x1)}" y1="${Y(225.5)}" x2="${X(362)}" y2="${Y(115)}"/>
-  <line x1="${X(pj.x1)}" y1="${Y(225.5)}" x2="${X(362)}" y2="${Y(336)}"/></g>`);
+  <line x1="${X(pj.x1)}" y1="${Y(225.5)}" x2="${X(scX)}" y2="${Y(115)}"/>
+  <line x1="${X(pj.x1)}" y1="${Y(225.5)}" x2="${X(scX)}" y2="${Y(336)}"/></g>`);
 push(rect(pj.x0, pj.x1, pj.y0, pj.y1, `fill="#FFFFFF" stroke="${C.ceiling}" stroke-width="0.8" stroke-dasharray="3 1.5"`));
 push(badge(75, 254, 17));
+
+// 37 акустические рейки на стене B: войлок и рейки с шагом 4 см
+const sl = item('slats');
+push(rect(sl.x0, sl.x1, sl.y0, sl.y1, `fill="#1E1D1C" stroke="none"`));
+for (let y = sl.y0 + 0.65; y + sl.slat <= sl.y1; y += sl.pitch) push(rect(sl.x0, sl.x0 + 1.2, y, y + sl.slat, `fill="#4A4642" stroke="none"`));
+push(badge(350, (item('console').y1 + item('gamingDesk').y0) / 2, sl.n));
 
 // треки
 for (const t of TRACKS) {
@@ -270,7 +277,7 @@ push(badge(258, rug.y0 + 15, 30));
 
 // проходы
 push(passV(150, 60, bed.y0, String(bed.y0 - 60)));
-push(passH(215, 325, bed.y1 - 30, '110'));
+push(passH(bed.x1, item('console').x0, bed.y1 - 30, String(item('console').x0 - bed.x1)));
 push(passH(135, 225, 433, '90'));
 push(passH(235, 305, 100, '70'));
 
@@ -322,14 +329,14 @@ push(text(PX, 52, 'План с мебелью · вариант 2 · М 1:25 (л
 push(text(PX, 62, 'Размеры в см. Потолок 260 черновой / 255 чистовой (натяжной).', `font-size="7" fill="${C.muted}"`));
 
 const legend = [
-  [1, 'Шкаф-купе, перфорированный металл'], [2, 'Кровать парящая 140×200'], [4, 'Мягкие панели изголовья'],
-  [5, 'Тумба подвесная'], [6, 'Учебный стол 130×65'], [7, 'Полки над столом, 2 ряда А4 (h 120–197,5)'],
-  [8, 'Тумба с 4 ящиками, слева под столом'], [9, 'Кресло для учёбы'], [10, 'Игровой стол 140×70'],
+  [1, 'Шкаф-купе, двери с перфорацией'], [2, 'Кровать парящая 140×200'], [4, 'Мягкие панели изголовья'],
+  [5, 'Тумба подвесная'], [6, 'Учебный стол 130×65'], [7, 'Полки над столом, 2 ряда А4'],
+  [8, 'Тумба с 4 ящиками, слева'], [9, 'Кресло для учёбы'], [10, 'Игровой стол 140×68'],
   [11, 'Игровое кресло'], [12, 'Перфопанель (h 135–195)'], [13, 'Медиатумба (h 15–55)'],
   [14, 'Сиденье у окна (h 45)'], [15, 'Дубовый короб над окном (h 235)'], [16, 'Мини-кольцо и держатель мяча'],
   [17, 'Проектор на потолке'], [18, 'Экран 100″, низ на 90'], [30, 'Ковёр 160×230'],
   [34, 'Книжный шкаф 65×50: внизу полки с дверцами'], [35, 'Книжный шкаф 70×50: внизу полки с дверцами'],
-  [36, 'Мягкие спинки у сиденья (h 45–75)'],
+  [36, 'Мягкие спинки у сиденья (h 45–75)'], [37, 'Акустические рейки на стене B'],
 ];
 push(text(PX, 84, 'МЕБЕЛЬ И ОБОРУДОВАНИЕ', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 legend.forEach(([n, s], i) => {
@@ -338,7 +345,7 @@ legend.forEach(([n, s], i) => {
   push(text(PX + 14, y, s, `font-size="7.2" fill="${C.ink}"`));
 });
 
-const PX2 = 680;
+const PX2 = 700;
 push(text(PX2, 84, 'ЭЛЕКТРИКА', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const shortPower = {
   E1: 'выключатель, h 90', E2: '1 розетка, h 30, уборка', E3: '4 розетки, h 35, медиа + LAN',
@@ -354,10 +361,10 @@ POWER.forEach((p, i) => {
   push(text(PX2 + 17, y, shortPower[p.id], `font-size="6.8" fill="${C.ink}"`));
 });
 const sockets = POWER.filter((p) => p.type === 'socket').reduce((a, p) => a + p.count, 0);
-push(text(PX2, 98 + POWER.length * 11.5 + 4, `Розеток всего ${sockets}: игра 8, кровать 2, учёба 2`, `font-size="6.5" fill="${C.muted}"`));
+push(text(PX2, 98 + POWER.length * 11.5 + 4, `Всего ${sockets} розеток`, `font-size="6.5" fill="${C.muted}"`));
 
 // обозначения
-const LY = 342;
+const LY = 352;
 push(text(PX, LY, 'ОБОЗНАЧЕНИЯ', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const sym = [
   [(x, y) => `<line x1="${x}" y1="${y}" x2="${x + 20}" y2="${y}" stroke="${C.pass}" stroke-width="0.9" marker-start="url(#arrowG)" marker-end="url(#arrowG)"/>`, 'проход, см (минимум 70)'],
@@ -377,7 +384,7 @@ sym.forEach(([draw, s], i) => {
 });
 
 // результаты проверки
-const CY = 418;
+const CY = 428;
 push(text(PX, CY, 'ПРОВЕРКА ПЛАНИРОВКИ (tools/check-layout.mjs)', `font-size="7" font-weight="700" letter-spacing="0.8" fill="${C.ink}"`));
 const results = runChecks();
 results.forEach((r, i) => {
@@ -387,7 +394,7 @@ results.forEach((r, i) => {
 });
 
 // компас и масштабная линейка
-const KY = 648;
+const KY = 668;
 push(`<g transform="translate(${PX + 20} ${KY})">
   <circle r="16" fill="none" stroke="${C.ink}" stroke-width="0.6"/>
   <path d="M -14 0 L 4 -5 L 4 5 Z" fill="${C.ink}"/>
@@ -403,8 +410,8 @@ push(`<g>
   <text x="${SX + 100}" y="${KY + 11}" font-family="${MONO}" font-size="6.5" text-anchor="middle" fill="${C.ink}">100 см</text>
   <text x="${SX}" y="${KY - 9}" font-size="6.5" fill="${C.muted}">1 м на плане = 40 мм при печати A3</text>
 </g>`);
-push(text(PX, 690, 'Площадь 19,2 м² · кровать изголовьем к D, экран напротив на B', `font-size="7" fill="${C.muted}"`));
-push(text(PX, 701, 'Учёба — у стены D рядом с окном; игра — у стены B рядом с медиастеной', `font-size="7" fill="${C.muted}"`));
+push(text(PX, 706, 'Площадь 19,2 м² · кровать изголовьем к D, экран напротив на B', `font-size="7" fill="${C.muted}"`));
+push(text(PX, 716, 'Учёба — у стены D рядом с окном; игра — у стены B рядом с медиастеной', `font-size="7" fill="${C.muted}"`));
 
 push('</svg>');
 

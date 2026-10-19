@@ -199,7 +199,7 @@ renderer.shadowMap.autoUpdate = false; // карта теней пересчит
 RectAreaLightUniformsLib.init();
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, 1, 0.03, 80);
+const camera = new THREE.PerspectiveCamera(45, 1, 0.05, 80);
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
@@ -752,7 +752,7 @@ const screenRoll = new THREE.Group();
   const it = item('screen');
   const g = group(itemInfo('screen'));
   box(it.x0, it.x1 - 1, it.y0, it.y1, CEIL - 8, CEIL, MAT.graphite, g);
-  screenRoll.position.copy(V(362.5, 225.7, CEIL - 8));
+  screenRoll.position.copy(V(it.x1 - 6, 225.7, CEIL - 8)); // полотно в 6 см перед рейками
   g.add(screenRoll);
   const drop = new THREE.Mesh(new THREE.PlaneGeometry(M(221.4 + 8), M(30)), MAT.black);
   drop.rotation.y = -Math.PI / 2; drop.position.y = -M(15); screenRoll.add(drop);
@@ -778,7 +778,8 @@ const beamMat = new THREE.MeshBasicMaterial({ color: '#FFF1D8', transparent: tru
   lens.rotation.z = Math.PI / 2; lens.position.copy(V(it.x1 + 1.5, 225.5, it.h0 + 5)); g.add(lens);
   registerEmissive('screen', [lensMat], 2);
   const apex = V(it.x1 + 3, 225.5, it.h0 + 5);
-  const c = [V(362, 115, 90), V(362, 336.4, 90), V(362, 336.4, 214.5), V(362, 115, 214.5)];
+  const sx = item('screen').x1 - 6;
+  const c = [V(sx, 115, 90), V(sx, 336.4, 90), V(sx, 336.4, 214.5), V(sx, 115, 214.5)];
   const pos = [];
   for (let i = 0; i < 4; i++) { const a = c[i], b = c[(i + 1) % 4]; pos.push(apex.x, apex.y, apex.z, a.x, a.y, a.z, b.x, b.y, b.z); }
   const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
@@ -984,6 +985,20 @@ const spotMat = led(COL.neutralLed);
   registerEmissive('spots', [spotMat], 6);
 }
 
+// 37. акустические рейки на стене B: чёрный войлок и графитовые рейки МДФ с шагом 4 см
+const slats = item('slats');
+{
+  const g = group(itemInfo('slats'));
+  box(slats.x0 + 1.2, slats.x1, slats.y0, slats.y1, slats.h0, slats.h1, std('#1B1A19', { map: fabricTex, roughness: 1 }), g, { cast: false });
+  const slatMat = std('#3A3734', { roughness: 0.7 });
+  for (let y = slats.y0 + (slats.pitch - slats.slat) / 2; y + slats.slat <= slats.y1; y += slats.pitch) {
+    box(slats.x0, slats.x0 + 1.2, y, y + slats.slat, slats.h0, slats.h1, slatMat, g);
+  }
+  wallB.extras.push(g); // снаружи стены B рейки прячутся вместе с ней
+}
+// лицевая плоскость стены B: на участке с рейками розетки выносятся на их поверхность
+const faceB = (y) => (y >= slats.y0 && y <= slats.y1 ? slats.x0 : W);
+
 // розетки и выключатели
 for (const p of POWER) {
   if (p.type === 'out' || p.wall === 'ceiling') continue;
@@ -996,7 +1011,7 @@ for (const p of POWER) {
     const depthOff = p.id === 'E7' ? item('headboard').x1 : 0;
     if (p.wall === 'A') box(p.pos + off - w / 2, p.pos + off + w / 2, 0, 1, z0, z1, mat, g, { cast: false });
     if (p.wall === 'C') box(p.pos + off - w / 2, p.pos + off + w / 2, L - 1, L, z0, z1, mat, g, { cast: false });
-    if (p.wall === 'B') box(W - 1, W, p.pos + off - w / 2, p.pos + off + w / 2, z0, z1, mat, g, { cast: false });
+    if (p.wall === 'B') box(faceB(p.pos) - 1, faceB(p.pos), p.pos + off - w / 2, p.pos + off + w / 2, z0, z1, mat, g, { cast: false });
     if (p.wall === 'D') box(depthOff, depthOff + 1, p.pos + off - w / 2, p.pos + off + w / 2, z0, z1, mat, g, { cast: false });
   }
 }
@@ -1074,7 +1089,7 @@ point('console', 0.6, '#FFC98E', V(335, 225, 8), 1.2);
 point('soffit', 1.0, '#FFD9A8', V(182.5, 490, CEIL - 26), 2.2);
 rectLight('shelf', '#FFD9A8', 7, 0.24, 1.25, V(16, 410, 119.5), 'down');
 rectLight('bedGlow', '#FFC98E', 7, 1.6, 1.0, V(110, 215, 12.5), 'down');
-rectLight('screen', '#DCE4F0', 1.6, 2.21, 1.25, V(361.5, 225.7, 152), '-x');
+rectLight('screen', '#DCE4F0', 1.6, 2.21, 1.25, V(item('screen').x1 - 7, 225.7, 152), '-x');
 
 const SCENES = {
   day: {
