@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Спортзал «Зал у окон»</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Unbounded:wght@500;600&display=swap">
+<style>
+/* Layout: альбом дизайн-проекта — один длинный лист на «столе», разделы-листы с номерами; план — главный лист с легендой сбоку */
+:root{
+  --desk:#e7ebe9;
+  --sheet:#fcfdfc;
+  --ink:#1a211e;
+  --ink-2:#505b56;
+  --rule:#d0d7d3;
+  --rule-strong:#9ea9a3;
+  --accent:#2e5a4a;
+  --accent-soft:#dae8e1;
+  --amber:#a5620c;
+  --amber-soft:#f4e2c6;
+  --lamp:#b88300;
+  --power:#b0412e;
+  --lowv:#2f6f93;
+  --hvac:#2e5a4a;
+  --wall:#27302c;
+  --equip:#ffffff;
+  --equip-line:#1a211e;
+  --glass:#5a9ab6;
+  --z-cardio:#e2ecf2;
+  --z-entry:#f0ede4;
+  --z-strength:#eae9ef;
+  --z-stretch:#e0ede5;
+  /* реальные цвета материалов — одинаковы в обеих темах */
+  --mat-floor:#3a3e40;
+  --mat-wall:#e4e1db;
+  --mat-accent:#2f4a40;
+  --mat-oak:#c9a77c;
+  --mat-metal:#1f2123;
+  --mat-uph:#46544c;
+  --f-display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --desk:#0d1110; --sheet:#151b19; --ink:#e2e8e5; --ink-2:#a2ada8; --rule:#2b3532; --rule-strong:#4b5853;
+    --accent:#8dc9ae; --accent-soft:#1c392e; --amber:#e3a452; --amber-soft:#3a2a14; --lamp:#f0c24f;
+    --power:#ef8b75; --lowv:#79b8dc; --hvac:#8dc9ae;
+    --wall:#c2cbc6; --equip:#1b2320; --equip-line:#dbe3df; --glass:#7db7d0;
+    --z-cardio:#17252d; --z-entry:#23211a; --z-strength:#1f1e26; --z-stretch:#16271e;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --desk:#0d1110; --sheet:#151b19; --ink:#e2e8e5; --ink-2:#a2ada8; --rule:#2b3532; --rule-strong:#4b5853;
+  --accent:#8dc9ae; --accent-soft:#1c392e; --amber:#e3a452; --amber-soft:#3a2a14; --lamp:#f0c24f;
+  --power:#ef8b75; --lowv:#79b8dc; --hvac:#8dc9ae;
+  --wall:#c2cbc6; --equip:#1b2320; --equip-line:#dbe3df; --glass:#7db7d0;
+  --z-cardio:#17252d; --z-entry:#23211a; --z-strength:#1f1e26; --z-stretch:#16271e;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{
+  margin:0;
+  background:var(--desk);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:24px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+.album{
+  max-width:1220px;
+  margin:0 auto;
+  background:var(--sheet);
+  border:1px solid var(--rule);
+}
+.album > *{padding-inline:clamp(18px, 4vw, 56px)}
+
+/* ——— шапка и штамп ——— */
+.head{
+  padding-block:clamp(28px, 5vw, 56px) 32px;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:clamp(24px, 4vw, 56px);
+  align-items:end;
+}
+.eyebrow{
+  font-family:var(--f-mono);
+  font-size:.75rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 14px;
+}
+h1{
+  font-family:var(--f-display);
+  font-weight:600;
+  font-size:clamp(2.3rem, 6vw, 4.2rem);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  margin:0 0 18px;
+  text-wrap:balance;
+}
+.lead{font-size:1.125rem; line-height:1.55; max-width:56ch; margin:0; color:var(--ink)}
+.stamp{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  border:1.5px solid var(--ink);
+  font-size:.875rem;
+}
+.stamp dt,.stamp dd{margin:0; padding:7px 10px; border-bottom:1px solid var(--rule-strong)}
+.stamp dt{
+  font-family:var(--f-mono); font-size:.6875rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-2); border-right:1px solid var(--rule-strong); white-space:nowrap; padding-top:9px;
+}
+.stamp dt:nth-last-of-type(1),.stamp dd:last-of-type{border-bottom:0}
+.stamp dd{min-width:0}
+
+.passport{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding-block:0;
+}
+.passport > div{padding:16px 16px 18px 0; min-width:0}
+.passport > div + div{padding-left:16px; border-left:1px solid var(--rule)}
+.passport b{
+  display:block;
+  font-family:var(--f-display); font-weight:500;
+  font-size:clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height:1.2;
+  font-variant-numeric:tabular-nums;
+}
+.passport span{display:block; font-size:.875rem; color:var(--ink-2); margin-top:4px}
+
+.toc{
+  display:flex; flex-wrap:wrap; gap:6px 18px;
+  padding-block:16px;
+  font-family:var(--f-mono); font-size:.8125rem;
+  border-bottom:1px solid var(--rule);
+}
+.toc a{color:var(--ink-2); text-decoration:none; white-space:nowrap}
+.toc a b{color:var(--accent); font-weight:500; margin-right:6px}
+.toc a:hover{color:var(--ink)}
+a:focus-visible,button:focus-visible,input:focus-visible + span{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ——— листы ——— */
+.sheet{padding-block:clamp(36px, 5vw, 60px); border-bottom:1px solid var(--rule)}
+.sheet:last-child{border-bottom:0}
+.sheet-head{display:flex; align-items:baseline; gap:16px; margin-bottom:24px; flex-wrap:wrap}
+.sheet-no{
+  font-family:var(--f-mono); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-2); border:1px solid var(--rule-strong); padding:2px 8px; white-space:nowrap;
+}
+h2{
+  font-family:var(--f-display); font-weight:500;
+  font-size:clamp(1.4rem, 2.6vw, 1.9rem); line-height:1.15; letter-spacing:-.01em;
+  margin:0; text-wrap:balance;
+}
+h3{font-size:1.0625rem; font-weight:600; margin:0 0 8px; line-height:1.35; text-wrap:balance}
+p{margin:0 0 12px; max-width:68ch}
+.muted{color:var(--ink-2)}
+.small{font-size:.875rem}
+ul.list,ol.list{margin:0; padding-left:1.2em; max-width:70ch}
+ul.list li,ol.list li{margin-bottom:8px}
+ul.list li::marker{color:var(--accent)}
+ol.list li::marker{font-family:var(--f-mono); color:var(--accent); font-size:.875rem}
+.label{
+  font-family:var(--f-mono); font-size:.6875rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2);
+}
+
+/* 01 исходные данные */
+.source-grid{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1fr); gap:28px; align-items:start}
+figure{margin:0; min-width:0}
+figcaption{font-size:.8125rem; color:var(--ink-2); margin-top:8px; font-family:var(--f-mono)}
+.photo{border:1px solid var(--rule); display:block; width:100%; height:auto; background:var(--desk)}
+.drawing{border:1px solid var(--rule); background:var(--sheet); overflow-x:auto}
+.drawing svg{display:block; width:100%; height:auto; min-width:540px}
+.two-col{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px 40px; margin-top:32px}
+.two-col > div{min-width:0}
+
+/* 02 концепция */
+.ideas{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:28px 40px; margin-top:28px}
+.idea{min-width:0; border-top:2px solid var(--ink); padding-top:14px}
+.idea p{font-size:.9688rem}
+
+/* 03 план */
+.plan-grid{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:32px; align-items:start}
+.plan-side{min-width:0; display:flex; flex-direction:column; gap:24px}
+.layers{display:flex; flex-wrap:wrap; gap:8px}
+.chip{position:relative; display:inline-flex; cursor:pointer; user-select:none}
+.chip input{position:absolute; opacity:0; width:1px; height:1px}
+.chip span{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--rule-strong); border-radius:999px; padding:5px 12px 5px 10px;
+  font-size:.875rem; color:var(--ink-2); background:var(--sheet);
+}
+.chip span::before{content:""; width:9px; height:9px; border-radius:50%; border:1.5px solid currentColor}
+.chip input:checked + span{background:var(--ink); color:var(--sheet); border-color:var(--ink)}
+.chip input:checked + span::before{background:currentColor}
+.legend{list-style:none; margin:0; padding:0; display:grid; gap:2px}
+.legend button{
+  all:unset; box-sizing:border-box; width:100%; cursor:default;
+  display:grid; grid-template-columns:26px minmax(0,1fr) auto; gap:10px; align-items:baseline;
+  padding:5px 6px; border-radius:4px;
+}
+.legend button:focus-visible{outline:2px solid var(--accent)}
+.legend .hot{background:var(--accent-soft)}
+.num{
+  display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%;
+  background:var(--ink); color:var(--sheet); font-family:var(--f-mono); font-size:.6875rem; font-weight:600;
+  transform:translateY(4px);
+}
+.legend .hot .num{background:var(--accent)}
+.legend .nm{font-size:.9063rem; line-height:1.35}
+.legend .sz{font-family:var(--f-mono); font-size:.75rem; color:var(--ink-2); white-space:nowrap; font-variant-numeric:tabular-nums}
+.keys{display:grid; gap:6px; font-size:.8438rem; color:var(--ink-2)}
+.keys div{display:flex; gap:10px; align-items:center}
+.keys svg{flex:none}
+.zone-keys{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px 14px; font-size:.8438rem}
+.zone-keys div{display:flex; gap:8px; align-items:center; min-width:0}
+.zone-keys i{flex:none; width:16px; height:16px; border:1px solid var(--rule-strong)}
+.zone-keys b{font-weight:500; font-family:var(--f-mono); font-size:.75rem; color:var(--ink-2); margin-left:auto}
+
+/* svg-план */
+.plan-svg text{font-family:var(--f-body)}
+.floor{fill:var(--sheet)}
+.wall{fill:var(--wall)}
+.gap{fill:var(--sheet)}
+.win-line{stroke:var(--ink); stroke-width:1.2; fill:none}
+.glass-line{stroke:var(--glass); stroke-width:2.4}
+.door-leaf{stroke:var(--ink); stroke-width:3}
+.door-arc{stroke:var(--ink-2); stroke-width:1; fill:none; stroke-dasharray:5 4}
+.column{stroke:var(--wall); stroke-width:2}
+.hatch-line{stroke:var(--wall); stroke-width:1.6}
+.hatch-bay{stroke:var(--rule-strong); stroke-width:1}
+.hatch-safe{stroke:var(--amber); stroke-width:1.4; opacity:.75}
+.hatch-bg{fill:var(--sheet)}
+.eq-body{fill:var(--equip); stroke:var(--equip-line); stroke-width:2}
+.eq-detail{fill:none; stroke:var(--equip-line); stroke-width:1.2}
+.eq-solid{fill:var(--equip-line)}
+.eq-thick{stroke:var(--equip-line); stroke-width:4; stroke-linecap:round}
+.eq-mat{fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5}
+.mirror{stroke:var(--glass); stroke-width:5}
+.eq{transition:opacity .15s}
+.ceiling .eq,.ceiling .zone-label,.ceiling .zone-area,.ceiling .work-text{opacity:.32}
+.ceiling .eq.hot{opacity:1}
+.eq.hot .eq-body,.eq.hot .eq-mat{fill:var(--accent-soft); stroke:var(--accent); stroke-width:3.5}
+.eq.hot .mirror{stroke:var(--accent)}
+.badge circle{fill:var(--ink)}
+.badge text{fill:var(--sheet); font:600 14px var(--f-mono); text-anchor:middle; dominant-baseline:central}
+.eq.hot .badge circle{fill:var(--accent)}
+.z-cardio{fill:var(--z-cardio)} .z-entry{fill:var(--z-entry)} .z-strength{fill:var(--z-strength)} .z-stretch{fill:var(--z-stretch)}
+.zone-label{fill:var(--ink-2); font-weight:600; font-size:16px; letter-spacing:.1em; text-anchor:middle}
+.zone-area{fill:var(--ink-2); font:500 13px var(--f-mono); text-anchor:middle}
+.tag{fill:var(--ink-2); font:500 13px var(--f-mono)}
+.tag-mid{text-anchor:middle}
+.safe-zone{stroke:var(--amber); stroke-width:1.6; stroke-dasharray:7 4}
+.safe-text{fill:var(--amber); font:600 14px var(--f-mono); text-anchor:middle; dominant-baseline:central; paint-order:stroke; stroke:var(--sheet); stroke-width:5px; stroke-linejoin:round}
+.work-zone{fill:none; stroke:var(--accent); stroke-width:1.5; stroke-dasharray:6 5}
+.work-text{fill:var(--accent); font:500 12px var(--f-mono); text-anchor:middle}
+.arrow{stroke:var(--accent); stroke-width:3; fill:none}
+.arrow-head{fill:var(--accent)}
+.dim line{stroke:var(--ink-2); stroke-width:1}
+.dim .tick{stroke:var(--ink); stroke-width:1.8}
+.dim text{fill:var(--ink); font:500 14px var(--f-mono); text-anchor:middle; dominant-baseline:central; paint-order:stroke; stroke:var(--sheet); stroke-width:6px; stroke-linejoin:round}
+.pass line{stroke:var(--accent)}
+.pass .tick{stroke:var(--accent)}
+.pass text{fill:var(--accent); font-weight:600}
+.lamp{fill:var(--sheet); stroke:var(--lamp); stroke-width:2.5}
+.lamp-wash{stroke:var(--lamp); stroke-width:4; stroke-dasharray:10 6}
+.lamp-warm{stroke:var(--lamp); stroke-width:4; stroke-dasharray:2 7; stroke-linecap:round}
+.lamp-txt{fill:var(--lamp); font:600 11px var(--f-mono); text-anchor:middle; dominant-baseline:central}
+.sym circle,.sym rect{fill:var(--sheet); stroke-width:1.8}
+.sym text{font:600 10px var(--f-mono); text-anchor:middle; dominant-baseline:central}
+.sym-power circle,.sym-power rect{stroke:var(--power)} .sym-power text{fill:var(--power)}
+.sym-lowv circle,.sym-lowv rect{stroke:var(--lowv)} .sym-lowv text{fill:var(--lowv)}
+.sym-hvac circle,.sym-hvac rect{stroke:var(--hvac)} .sym-hvac text{fill:var(--hvac)}
+.sym-lamp circle,.sym-lamp rect{stroke:var(--lamp)} .sym-lamp text{fill:var(--lamp)}
+.hvac-x{stroke:var(--hvac); stroke-width:1.5}
+
+/* 04 3D */
+.view3d{position:relative; height:clamp(360px, 58vw, 640px); border:1px solid var(--rule); background:var(--sheet); overflow:hidden; touch-action:none}
+.view3d canvas{display:block; width:100%; height:100%}
+.view-tools{position:absolute; top:12px; left:12px; display:flex; flex-wrap:wrap; gap:6px; z-index:2}
+.view-tools button,.zoom button{
+  font:500 .8125rem var(--f-body); color:var(--ink); background:var(--sheet);
+  border:1px solid var(--rule-strong); border-radius:999px; padding:5px 12px; cursor:pointer;
+}
+.view-tools button[aria-pressed="true"]{background:var(--ink); color:var(--sheet); border-color:var(--ink)}
+.zoom{position:absolute; right:12px; top:12px; display:flex; flex-direction:column; gap:6px; z-index:2}
+.zoom button{width:34px; height:34px; padding:0; font-size:1.1rem; line-height:1}
+.view-hint{position:absolute; left:12px; bottom:10px; font:500 .75rem var(--f-mono); color:var(--ink-2); z-index:2; margin:0}
+.view-fail{position:absolute; inset:0; display:grid; place-items:center; text-align:center; padding:24px; color:var(--ink-2)}
+
+/* таблицы */
+.table-wrap{overflow-x:auto; border-top:1.5px solid var(--ink)}
+table{border-collapse:collapse; width:100%; min-width:680px; font-size:.9063rem}
+th{
+  text-align:left; font-family:var(--f-mono); font-weight:500; font-size:.6875rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-2); padding:10px 12px 10px 0; border-bottom:1px solid var(--rule-strong);
+}
+td{padding:11px 12px 11px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+td.mono,th.mono{font-family:var(--f-mono); font-size:.8125rem; white-space:nowrap; font-variant-numeric:tabular-nums}
+td .num{transform:none}
+tfoot td{font-weight:600; border-bottom:0}
+.zone-dot{display:inline-block; width:12px; height:12px; border:1px solid var(--rule-strong); margin-right:8px; vertical-align:-1px}
+
+/* 07 материалы */
+.swatches{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:28px 32px}
+.swatch{min-width:0}
+.chipbox{aspect-ratio:16/9; max-width:100%; border:1px solid var(--rule-strong); margin-bottom:12px; position:relative}
+.chipbox small{
+  position:absolute; left:8px; bottom:6px; font:500 .6875rem var(--f-mono); letter-spacing:.06em;
+  color:#f2f2ef; text-shadow:0 1px 2px rgba(0,0,0,.45);
+}
+.chipbox.light small{color:#2a2a28; text-shadow:none}
+.c-floor{background-color:var(--mat-floor); background-image:radial-gradient(#8b9093 1px, transparent 1.6px),radial-gradient(#6f7477 1px, transparent 1.6px); background-size:11px 13px,17px 9px; background-position:0 0,5px 4px}
+.c-wall{background:var(--mat-wall)}
+.c-accent{background:var(--mat-accent)}
+.c-oak{background:repeating-linear-gradient(90deg, var(--mat-oak) 0 26px, #a9875d 26px 29px)}
+.c-metal{background:var(--mat-metal)}
+.c-uph{background-color:var(--mat-uph); background-image:radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.5px); background-size:5px 5px}
+.swatch p{font-size:.9063rem; margin:0}
+.more-mat{margin-top:32px}
+
+/* 08 инженерия */
+.eng-grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:32px 40px}
+.eng-grid > div{min-width:0}
+.eng-grid h3{display:flex; align-items:center; gap:10px}
+.eng-grid h3 i{width:12px; height:12px; border-radius:50%; flex:none}
+.calc{
+  font-family:var(--f-mono); font-size:.8125rem; color:var(--ink-2);
+  border-left:2px solid var(--rule-strong); padding:6px 0 6px 12px; margin:12px 0 0; max-width:none;
+}
+
+/* вариант Б */
+.variant{display:grid; grid-template-columns:auto minmax(0,1fr); gap:20px; align-items:start; margin-top:32px; padding-top:20px; border-top:2px solid var(--ink)}
+.variant .tagb{font-family:var(--f-display); font-weight:500; font-size:1.5rem; line-height:1; color:var(--accent)}
+
+@media (max-width: 960px){
+  .plan-grid{grid-template-columns:minmax(0,1fr)}
+  .swatches{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+@media (max-width: 820px){
+  .head{grid-template-columns:minmax(0,1fr)}
+  .source-grid,.two-col,.ideas,.eng-grid{grid-template-columns:minmax(0,1fr)}
+  .passport{grid-template-columns:repeat(2, minmax(0,1fr))}
+  .passport > div:nth-child(3){padding-left:0; border-left:0}
+  .passport > div:nth-child(n+3){border-top:1px solid var(--rule)}
+}
+@media (max-width: 520px){
+  body{padding-block:12px}
+  .swatches{grid-template-columns:minmax(0,1fr)}
+  .zone-keys{grid-template-columns:minmax(0,1fr)}
+  .variant{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<div class="album">
+
+  <header class="head">
+    <div>
+      <p class="eyebrow">Эскизный дизайн-проект · тренажёрный зал гостиницы</p>
+      <h1>Зал у окон</h1>
+      <p class="lead">Небольшой зал для гостей отеля площадью 44,5 м². Кардиотренажёры развёрнуты к окнам, силовая зона собрана у зеркальной стены, растяжка вынесена в тихий угол у пристройки. Планировка построена по вашему эскизу с размерами.</p>
+    </div>
+    <dl class="stamp">
+      <dt>Объект</dt><dd>Тренажёрный зал при гостинице</dd>
+      <dt>Стадия</dt><dd>ЭП, эскизный проект</dd>
+      <dt>Основание</dt><dd>Эскиз заказчика с обмерами</dd>
+      <dt>Масштаб</dt><dd>План 1:50, на экране без масштаба</dd>
+      <dt>Дата</dt><dd>21.10.2026</dd>
+    </dl>
+  </header>
+
+  <section class="passport" aria-label="Основные показатели">
+    <div><b>44,5 м²</b><span>площадь зала, плюс 6,0 м² пристройки</span></div>
+    <div><b>4 + 1</b><span>кардиотренажёра и силовая рама, гантели 2–20 кг</span></div>
+    <div><b>до 6</b><span>гостей одновременно</span></div>
+    <div><b>24/7</b><span>вход по ключ-карте номера</span></div>
+  </section>
+
+  <nav class="toc" aria-label="Листы проекта">
+    <a href="#ishodnye"><b>01</b>Исходные данные</a>
+    <a href="#koncepciya"><b>02</b>Концепция</a>
+    <a href="#plan"><b>03</b>План расстановки</a>
+    <a href="#vid3d"><b>04</b>3D-вид</a>
+    <a href="#zony"><b>05</b>Зоны и полы</a>
+    <a href="#oborudovanie"><b>06</b>Оборудование</a>
+    <a href="#otdelka"><b>07</b>Отделка</a>
+    <a href="#inzheneriya"><b>08</b>Свет и инженерия</a>
+    <a href="#bezopasnost"><b>09</b>Безопасность</a>
+    <a href="#dalshe"><b>10</b>Дальше</a>
+  </nav>
+
+  <!-- 01 -->
+  <section class="sheet" id="ishodnye">
+    <div class="sheet-head"><span class="sheet-no">Лист 01</span><h2>Исходные данные</h2></div>
+    <div class="source-grid">
+      <figure>
+        <img class="photo" src="eskiz.jpg" width="1050" height="1400" alt="Карандашный эскиз помещения с размерами: стены 560, 558, 473 и 193 см, колонны, подсобка 118 на 145 см, пристройка 170 см">
+        <figcaption>Эскиз заказчика</figcaption>
+      </figure>
+      <figure>
+        <div class="drawing"><svg id="svg-survey" class="plan-svg" role="img" aria-label="Обмерный план по эскизу"></svg></div>
+        <figcaption>Обмерный план, перенесённый с эскиза. Размеры в сантиметрах</figcaption>
+      </figure>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3>Как прочитан эскиз</h3>
+        <ul class="list">
+          <li>Зал — почти прямоугольник 560 × 848 см. Верхняя стена 560 см, нижняя 558. Левая стена 848 (478 + 12 + 358), правая 831 (473 + 165 + 193). Нижняя стена идёт с перекосом около 17 см.</li>
+          <li>Три колонны стоят по оси зала, примерно в 276 см от левой стены. Сечение по эскизу около 25 × 25 см. Первая колонна в 212 см от верхней стены, вторая на 110 см ниже, третья в 225 см от нижней стены.</li>
+          <li>Вход в левой стене, сразу над выступом 105 × 12 см. Дверь открывается наружу, проём около 120 см.</li>
+          <li>Заштрихованные прямоугольники на стенах — окна. Два окна в левой стене (О-1, О-2), два окна между залом и пристройкой (О-3, О-4), три в наружной стене пристройки (О-5…О-7).</li>
+          <li>У правой стены стоит существующее помещение 118 × 145 см в чистоте, стены 10 см, дверь в зал. В проекте это подсобка.</li>
+          <li>Слева внизу пристройка 170 × 352 см. Прохода в неё из зала на эскизе нет, поэтому она идёт отдельным вариантом.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Что проверить на объекте</h3>
+        <ul class="list">
+          <li>Высота потолка в чистоте. Для беговой дорожки нужно не меньше 2,7 м, в расчётах принято 2,8 м.</li>
+          <li>Высота подоконников и радиаторы под окнами: перед дорожкой и эллипсом заложено 40 см до стены.</li>
+          <li>Точное сечение колонн и их положение по горизонтали. Колонны К-1 и К-2 сняты с эскиза примерно.</li>
+          <li>Назначение помещения 118 × 145: подсобка, санузел или шахта.</li>
+          <li>Есть ли проход в пристройку, отапливается ли она.</li>
+          <li>Что находится над залом и под ним. Если там номера, понадобится усиленная шумоизоляция пола.</li>
+          <li>Несущая способность перекрытия: дорожка весит около 180 кг, рама с грузоблоками около 350 кг, гантели около 190 кг.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="sheet" id="koncepciya">
+    <div class="sheet-head"><span class="sheet-no">Лист 02</span><h2>Концепция</h2></div>
+    <p>Гостиничный зал — это не фитнес-клуб. Гость приходит на 30–40 минут перед завтраком или после встреч. Ему нужно понятное оборудование без инструктора, свежий воздух, вода и полотенце под рукой. Зал должен выглядеть как часть отеля, а не как подвал с тренажёрами. Проект держат четыре решения.</p>
+    <div class="ideas">
+      <div class="idea">
+        <h3>Кардио смотрит в окна</h3>
+        <p>Беговая дорожка стоит напротив окна О-1, эллипс напротив О-2. Гость видит улицу и дневной свет, а не стену. Свободная зона 2 м за дорожкой уходит в центр зала, где нет оборудования.</p>
+      </div>
+      <div class="idea">
+        <h3>Колонны становятся частью интерьера</h3>
+        <p>Все три колонны стоят на одной оси, и это используется в планировке. До высоты 2 м их обшивают рейкой под дуб со скруглёнными углами. Обшивка защищает от ударов и задаёт ритм, который делит зал на два ряда.</p>
+      </div>
+      <div class="idea">
+        <h3>Тяжёлое у глухих стен, тихое у пристройки</h3>
+        <p>Силовая рама, гантели и зеркало занимают нижнюю и правую глухие стены. Там удары и вибрация не мешают окнам. Растяжка вынесена в угол у окон пристройки, подальше от беговой дорожки.</p>
+      </div>
+      <div class="idea">
+        <h3>Сервис на оси входа</h3>
+        <p>От двери гость сразу видит сервисную стойку на зелёной акцентной стене. Там кулер, полотенца, салфетки, антисептик, правила зала и кнопка вызова ресепшен.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="sheet" id="plan">
+    <div class="sheet-head"><span class="sheet-no">Лист 03</span><h2>План расстановки оборудования</h2></div>
+    <div class="plan-grid">
+      <div class="drawing"><svg id="svg-plan" class="plan-svg" role="img" aria-label="План расстановки оборудования в зале"></svg></div>
+      <div class="plan-side">
+        <div>
+          <p class="label" style="margin-bottom:10px">Слои плана</p>
+          <div class="layers" role="group" aria-label="Слои плана">
+            <label class="chip"><input type="checkbox" id="ly-zones" data-layer="zones" checked><span>Зоны</span></label>
+            <label class="chip"><input type="checkbox" id="ly-safe" data-layer="safe" checked><span>Безопасность и проходы</span></label>
+            <label class="chip"><input type="checkbox" id="ly-dims" data-layer="dims"><span>Размеры</span></label>
+            <label class="chip"><input type="checkbox" id="ly-light" data-layer="light"><span>Свет</span></label>
+            <label class="chip"><input type="checkbox" id="ly-eng" data-layer="eng"><span>Инженерия</span></label>
+          </div>
+        </div>
+        <div>
+          <p class="label" style="margin-bottom:8px">Экспликация · габариты, см</p>
+          <ul class="legend" id="legend"></ul>
+        </div>
+        <div data-key="zones">
+          <p class="label" style="margin-bottom:8px">Зоны</p>
+          <div class="zone-keys">
+            <div><i style="background:var(--z-cardio)"></i>Кардио<b>19,4 м²</b></div>
+            <div><i style="background:var(--z-entry)"></i>Вход и сервис<b>7,6 м²</b></div>
+            <div><i style="background:var(--z-strength)"></i>Силовая<b>13,8 м²</b></div>
+            <div><i style="background:var(--z-stretch)"></i>Растяжка<b>3,7 м²</b></div>
+          </div>
+        </div>
+        <div data-key="safe" class="keys">
+          <div><svg width="34" height="16" aria-hidden="true"><rect x="1" y="1" width="32" height="14" fill="var(--amber-soft)" stroke="var(--amber)" stroke-dasharray="4 3"/></svg>Свободная зона 2 м за беговой дорожкой</div>
+          <div><svg width="34" height="16" aria-hidden="true"><rect x="1" y="1" width="32" height="14" fill="none" stroke="var(--accent)" stroke-dasharray="4 3"/></svg>Рабочая зона у рамы и гантелей</div>
+          <div><svg width="34" height="16" aria-hidden="true"><line x1="2" y1="8" x2="32" y2="8" stroke="var(--accent)"/><line x1="0" y1="12" x2="6" y2="4" stroke="var(--accent)" stroke-width="2"/><line x1="28" y1="12" x2="34" y2="4" stroke="var(--accent)" stroke-width="2"/></svg>Ширина прохода, см</div>
+        </div>
+        <div data-key="light" class="keys" hidden>
+          <div><svg width="34" height="16" aria-hidden="true"><rect x="2" y="5" width="30" height="6" class="lamp"/></svg>Линейный светильник 4000 К, ~3800 лм (9 шт.)</div>
+          <div><svg width="34" height="16" aria-hidden="true"><line x1="2" y1="8" x2="32" y2="8" class="lamp-wash"/></svg>Подсветка зеркала, рассеянный свет</div>
+          <div><svg width="34" height="16" aria-hidden="true"><line x1="3" y1="8" x2="32" y2="8" class="lamp-warm"/></svg>Тёплая подсветка 3000 К с диммером</div>
+          <div><svg width="34" height="16" aria-hidden="true"><g class="sym sym-lamp"><circle cx="17" cy="8" r="7"/><text x="17" y="8.5">А</text></g></svg>Аварийный светильник</div>
+          <div><svg width="34" height="16" aria-hidden="true"><g class="sym sym-lamp"><circle cx="17" cy="8" r="7"/><text x="17" y="8.5">Д</text></g></svg>Датчик присутствия</div>
+        </div>
+        <div data-key="eng" class="keys" hidden>
+          <div><svg width="34" height="16" aria-hidden="true"><g class="sym sym-power"><circle cx="17" cy="8" r="7"/><text x="17" y="8.5">Р</text></g></svg>Розетка 230 В · «16» — отдельная линия 16 А</div>
+          <div><svg width="34" height="16" aria-hidden="true"><g class="sym sym-lowv"><circle cx="17" cy="8" r="7"/><text x="17" y="8.5">К</text></g></svg>Камера · W — Wi-Fi · Г — динамик · ! — кнопка вызова · С — СКУД</div>
+          <div><svg width="34" height="16" aria-hidden="true"><g class="sym sym-hvac"><rect x="10" y="1" width="14" height="14"/><text x="17" y="8.5">П</text></g></svg>Приточный диффузор · В — вытяжная решётка</div>
+          <div><svg width="34" height="16" aria-hidden="true"><rect x="10" y="1" width="14" height="14" fill="none" stroke="var(--hvac)" stroke-width="1.5"/><line x1="10" y1="1" x2="24" y2="15" class="hvac-x"/><line x1="24" y1="1" x2="10" y2="15" class="hvac-x"/></svg>Кассетный кондиционер ~5 кВт</div>
+        </div>
+        <p class="small muted" style="margin:0">Наведите на строку экспликации, чтобы найти предмет на плане.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="sheet" id="vid3d">
+    <div class="sheet-head"><span class="sheet-no">Лист 04</span><h2>3D-вид</h2></div>
+    <p class="muted">Объёмная модель по тем же размерам: материалы, оборудование и колонны в обшивке. Стены со стороны камеры скрыты, чтобы было видно зал. Пристройка в модели не показана.</p>
+    <div class="view3d" id="view3d">
+      <div class="view-tools" role="group" aria-label="Ракурс">
+        <button type="button" data-view="overview" aria-pressed="true">Общий вид</button>
+        <button type="button" data-view="entry" aria-pressed="false">От входа</button>
+        <button type="button" data-view="top" aria-pressed="false">Сверху</button>
+      </div>
+      <div class="zoom"><button type="button" data-zoom="0.85" aria-label="Приблизить">+</button><button type="button" data-zoom="1.18" aria-label="Отдалить">−</button></div>
+      <p class="view-hint">Тяните, чтобы повернуть · правой кнопкой сдвинуть</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="sheet" id="zony">
+    <div class="sheet-head"><span class="sheet-no">Лист 05</span><h2>Зоны и покрытия пола</h2></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Зона</th><th class="mono">Площадь</th><th>Что в ней (№ по плану)</th><th>Покрытие пола</th></tr></thead>
+        <tbody>
+          <tr><td><i class="zone-dot" style="background:var(--z-cardio)"></i>Кардио</td><td class="mono">19,4 м²</td><td>Беговая дорожка (1), эллипс (2), велотренажёр (3), гребной (4), телевизор (13)</td><td>Рулонная резина 10 мм на акустической подложке, под дорожкой виброопоры</td></tr>
+          <tr><td><i class="zone-dot" style="background:var(--z-entry)"></i>Вход и сервис</td><td class="mono">7,6 м²</td><td>Проход от двери шириной около 1 м, сервисная стойка (11)</td><td>Рулонная резина 10 мм</td></tr>
+          <tr><td><i class="zone-dot" style="background:var(--z-strength)"></i>Силовая</td><td class="mono">13,8 м²</td><td>Функциональная рама (5), скамья (6), гантели (7), аксессуары (8), зеркало (12)</td><td>Плиты 20 мм в зоне гантелей, в остальной части рулон 10 мм</td></tr>
+          <tr><td><i class="zone-dot" style="background:var(--z-stretch)"></i>Растяжка</td><td class="mono">3,7 м²</td><td>Коврики и фитбол (9), стойка для ковриков (10)</td><td>Рулонная резина 10 мм, сверху коврики</td></tr>
+          <tr><td>Подсобка</td><td class="mono">1,7 м²</td><td>Запас полотенец, уборочный инвентарь, бутыли для кулера (14)</td><td>Без изменений</td></tr>
+          <tr><td>Пристройка</td><td class="mono">6,0 м²</td><td>Вариант Б, если в неё есть проход</td><td>По варианту Б</td></tr>
+        </tbody>
+        <tfoot><tr><td>Итого зал</td><td class="mono">44,5 м²</td><td colspan="2" class="muted" style="font-weight:400">Без подсобки, колонн и выступа стены. С пристройкой 50,5 м²</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="sheet" id="oborudovanie">
+    <div class="sheet-head"><span class="sheet-no">Лист 06</span><h2>Спецификация оборудования</h2></div>
+    <p class="muted">Всё оборудование коммерческого или полукоммерческого класса. Домашние модели в отеле быстро ломаются: ими пользуются по несколько часов в день разные люди. Габариты типовые, конкретные модели подбираются на следующей стадии.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>№</th><th>Позиция</th><th class="mono">Габарит, см</th><th class="mono">Кол.</th><th>Что важно при выборе</th></tr></thead>
+        <tbody id="spec"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="sheet" id="otdelka">
+    <div class="sheet-head"><span class="sheet-no">Лист 07</span><h2>Отделка и материалы</h2></div>
+    <div class="swatches">
+      <div class="swatch"><div class="chipbox c-floor"><small>ПОЛ</small></div><h3>Резина, графит с крошкой</h3><p class="muted">Рулон 10 мм, 10 % серой крошки EPDM. В зоне гантелей плиты 20 мм. Под всем залом акустическая подложка.</p></div>
+      <div class="swatch"><div class="chipbox c-wall light"><small>СТЕНЫ</small></div><h3>Тёплый светло-серый</h3><p class="muted">Моющаяся матовая краска, 1-й класс стойкости к мокрому истиранию. Не бликует на экранах консолей.</p></div>
+      <div class="swatch"><div class="chipbox c-accent"><small>АКЦЕНТ</small></div><h3>Хвойный зелёный</h3><p class="muted">Правая стена кардиозоны, от угла до подсобки. Её видно сразу от входа, на ней стоят сервисная стойка и гребной тренажёр.</p></div>
+      <div class="swatch"><div class="chipbox c-oak light"><small>ДЕРЕВО</small></div><h3>Рейка под дуб 40 × 20 мм</h3><p class="muted">HPL или шпонированный МДФ. Колонны до высоты 2 м, панель у зоны растяжки, корпус сервисной стойки, отбойник под зеркалом.</p></div>
+      <div class="swatch"><div class="chipbox c-metal"><small>МЕТАЛЛ</small></div><h3>Чёрный матовый</h3><p class="muted">Рамы тренажёров, стойки для гантелей и ковриков, профиль зеркала. Один цвет на всём оборудовании.</p></div>
+      <div class="swatch"><div class="chipbox c-uph"><small>ОБИВКА</small></div><h3>Графитово-зелёная экокожа</h3><p class="muted">Скамья и сиденья. Легко протирается антисептиком, не трескается от частой обработки.</p></div>
+    </div>
+    <div class="two-col more-mat">
+      <div>
+        <h3>Зеркало</h3>
+        <p class="muted">Серебряное зеркало 4–6 мм на плёнке безопасности, 420 × 200 см на нижней стене. Низ на высоте 30 см, под ним дубовый отбойник, чтобы гантель не задела стекло.</p>
+        <h3 style="margin-top:20px">Потолок</h3>
+        <p class="muted">Акустический подвесной потолок, белый, с поглощением звука NRC не ниже 0,7. Светильники встраиваются в модуль. В маленьком зале с резиновым полом без такого потолка будет гулко.</p>
+      </div>
+      <div>
+        <h3>Окна</h3>
+        <p class="muted">Рулонные шторы-скрин с открытостью 5 %. Они убирают блики на экранах дорожки и эллипса, а вид наружу остаётся.</p>
+        <h3 style="margin-top:20px">Колонны</h3>
+        <p class="muted">Рейка по периметру на высоту 2 м, углы скруглены радиусом 20 мм. Выше колонна окрашена в цвет стен. Внизу металлический плинтус 60 мм от ударов уборочной техники.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="sheet" id="inzheneriya">
+    <div class="sheet-head"><span class="sheet-no">Лист 08</span><h2>Свет, климат, инженерия</h2></div>
+    <div class="eng-grid">
+      <div>
+        <h3><i style="background:var(--lamp)"></i>Свет</h3>
+        <ul class="list">
+          <li>9 линейных светильников 4000 К, Ra от 90, UGR не выше 19, по ~3800 лм.</li>
+          <li>Над скамьёй и ковриками светильников нет: лёжа гость не смотрит в источник света.</li>
+          <li>Растяжка: тёплая подсветка 3000 К вдоль окон пристройки, с диммером.</li>
+          <li>Над зеркалом рассеянный настенный свет, лицо в отражении освещено ровно.</li>
+          <li>Три сценария: «День» — всё на 100 %; «Вечер» — общий свет 60 % и тёплая подсветка; «Пусто» — дежурные 10 %, если 15 минут нет движения.</li>
+          <li>Аварийное освещение и табло «Выход» над дверью.</li>
+        </ul>
+        <p class="calc">9 × 3800 лм × 0,6 × 0,8 ÷ 44,5 м² ≈ 370 лк в среднем на полу</p>
+      </div>
+      <div>
+        <h3><i style="background:var(--hvac)"></i>Воздух и климат</h3>
+        <ul class="list">
+          <li>Приток наружного воздуха — ориентир 80 м³/ч на занимающегося. На 6 гостей это не меньше 500 м³/ч.</li>
+          <li>Охлаждение около 5 кВт: это тепло от людей на кардио, мотора дорожки, света и солнца через окна.</li>
+          <li>Кассетный кондиционер стоит над проходом, а не над тренажёрами, чтобы поток не дул в лицо.</li>
+          <li>Приток над кардиозоной, вытяжка в силовой зоне и у входа.</li>
+          <li>Температура 18–21 °C, влажность 40–60 %.</li>
+        </ul>
+        <p class="calc">500 м³/ч ÷ (44,5 м² × 2,8 м) ≈ 4 обмена воздуха в час</p>
+      </div>
+      <div>
+        <h3><i style="background:var(--power)"></i>Электрика и слаботочка</h3>
+        <ul class="list">
+          <li>Беговая дорожка — отдельная линия 16 А с УЗО.</li>
+          <li>Розетки у эллипса, у сервисной стойки для кулера, за телевизором (там же LAN) и две для уборки.</li>
+          <li>Велотренажёр и гребной работают без розетки.</li>
+          <li>Слаботочные системы: точка Wi-Fi, 2 камеры с обзором всего зала, 4 потолочных динамика, 2 кнопки вызова ресепшен, считыватель ключ-карты снаружи у двери.</li>
+        </ul>
+      </div>
+      <div>
+        <h3><i style="background:var(--ink-2)"></i>Шум и вибрация</h3>
+        <ul class="list">
+          <li>Если над залом или под ним номера, пол делается плавающим: акустическая подложка и резина 10 мм, в зоне гантелей 20 мм.</li>
+          <li>Беговая дорожка стоит на виброизолирующих опорах.</li>
+          <li>Гантели до 20 кг, без штанги и блинов: в зале нечего ронять с высоты.</li>
+          <li>Ночью громкость музыки ограничена. На двери доводчик и уплотнитель.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="sheet" id="bezopasnost">
+    <div class="sheet-head"><span class="sheet-no">Лист 09</span><h2>Безопасность и эксплуатация</h2></div>
+    <div class="two-col" style="margin-top:0">
+      <div>
+        <h3>В планировке</h3>
+        <ul class="list">
+          <li>За беговой дорожкой свободная зона 2,0 × 0,9 м по EN ISO 20957-6. На плане она заштрихована, ставить туда ничего нельзя.</li>
+          <li>Между тренажёрами не меньше 60 см. Основные проходы от 90 до 171 см.</li>
+          <li>Колонны обшиты до 2 м, углы скруглены.</li>
+          <li>Огнетушитель у входа. Аптечка и кнопка вызова у сервисной стойки, вторая кнопка в силовой зоне.</li>
+          <li>Рекомендуем дефибриллятор (AED) в шкафу у сервисной стойки, потому что зал работает без инструктора.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Правила и уход</h3>
+        <ul class="list">
+          <li>Правила у входа: гости с 16 лет, младше только со взрослым. Спортивная обувь, полотенце на скамью, протереть тренажёр после себя.</li>
+          <li>Влажная уборка ежедневно. Ручки, сиденья и консоли протирать 2–3 раза в день.</li>
+          <li>Тросы и карабины рамы проверять раз в неделю.</li>
+          <li>Техобслуживание кардиотренажёров раз в квартал, смазка полотна дорожки по регламенту производителя.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="variant">
+      <span class="tagb">Б</span>
+      <div>
+        <h3>Вариант с пристройкой</h3>
+        <p class="muted" style="margin:0">Если проход в пристройку уже есть или его можно сделать, растяжка переезжает туда. Например, окно О-3 расширяется до двери; это нужно согласовать и, возможно, рассчитать перемычку. В пристройке получится 6 м² у трёх окон с тёплым светом и растениями. В освободившемся углу на 3,7 м² можно поставить второй велотренажёр или станцию для упражнений с собственным весом.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="sheet" id="dalshe">
+    <div class="sheet-head"><span class="sheet-no">Лист 10</span><h2>Следующие шаги</h2></div>
+    <ol class="list">
+      <li>Обмер на месте: высота потолка, окна и подоконники, колонны, пристройка, назначение помещения 118 × 145.</li>
+      <li>Утверждение планировки, варианта А или Б и материалов.</li>
+      <li>Подбор моделей оборудования под бюджет и смета.</li>
+      <li>Рабочие чертежи: электрика, свет, вентиляция, полы, развёртки стен.</li>
+      <li>Закупка, отделка, монтаж оборудования и пусконаладка.</li>
+    </ol>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+"use strict";
+/* ============ ГЕОМЕТРИЯ (см, ось x вправо, y вниз — как на эскизе) ============ */
+var bY = function(x){ return 848 - 17*x/558; };          // нижняя стена
+var rX = function(y){ return 560 - 2*y/831; };            // правая стена
+var bayB = function(x){ return 842 + 6*(x+190)/170; };    // нижняя стена пристройки
+
+var ROOM = [[0,0],[560,0],[558,831],[0,848]];
+var BAY  = [[-20,490],[-190,490],[-190,842],[-20,848]];
+var WALLS = [
+  [[-20,-20],[580,-20],[580,0],[-20,0]],
+  [[-20,0],[0,0],[0,478],[-20,478]],
+  [[560,0],[580,0],[578.6,850.4],[558,831]],
+  [[-20,bY(-20)],[558,831],[578.6,850.4],[-20,bY(-20)+20]],
+  [[-20,490],[0,490],[0,848],[-20,bY(-20)]],
+  [[-202,478],[105,478],[105,490],[-202,490]],
+  [[-202,478],[-190,478],[-190,854],[-202,854]],
+  [[-202,bayB(-202)],[-20,848],[-20,860],[-202,bayB(-202)+12]]
+];
+var OPENINGS = [
+  {id:"О-1", x0:-20, x1:0, a:38,  b:137, type:"win"},
+  {id:"О-2", x0:-20, x1:0, a:213, b:321, type:"win"},
+  {id:"Д-1", x0:-20, x1:0, a:355, b:478, type:"door"},
+  {id:"О-3", x0:-20, x1:0, a:529, b:625, type:"win"},
+  {id:"О-4", x0:-20, x1:0, a:669, b:775, type:"win"},
+  {id:"О-5", x0:-202, x1:-190, a:502, b:591, type:"win"},
+  {id:"О-6", x0:-202, x1:-190, a:624, b:718, type:"win"},
+  {id:"О-7", x0:-202, x1:-190, a:760, b:830, type:"win"}
+];
+var COLS = [{id:"К-1", x:276, y:212}, {id:"К-2", x:276, y:347}, {id:"К-3", x:276, y:589}];
+
+/* экспликация: n, название, габарит, кол-во, требования */
+var ITEMS = [
+  [1, "Беговая дорожка", "210 × 90, h 150", "1", "Мотор переменного тока от 3 л.с. длительной мощности, полотно не меньше 150 × 55, скорость до 20 км/ч, наклон до 15 %, пользователь до 180 кг. Отдельная линия 16 А."],
+  [2, "Эллиптический тренажёр", "200 × 75, h 170", "1", "Длина шага от 50 см, самогенерирующий или от розетки, пользователь до 160 кг."],
+  [3, "Велотренажёр вертикальный", "110 × 60, h 140", "1", "Самогенерирующий, без розетки. Сиденье регулируется по высоте и вперёд-назад."],
+  [4, "Гребной тренажёр", "244 × 61, h 50", "1", "Воздушное или магнитное сопротивление. Можно хранить вертикально, в стоячем положении занимает 60 × 90."],
+  [5, "Функциональная рама, двойной блок", "150 × 100, h 215", "1", "Два грузоблока по 70–90 кг в закрытых кожухах, блоки регулируются по высоте, турник, набор рукояток."],
+  [6, "Скамья регулируемая", "130 × 60", "1", "Наклон спинки от −10 до 85°, колёса для перемещения к раме."],
+  [7, "Гантели и двухъярусная стойка", "150 × 55, h 80", "9 пар", "Гексагональные в резине: 2, 4, 6, 8, 10, 12,5, 15, 17,5, 20 кг. Штанги и блинов нет."],
+  [8, "Стеллаж для аксессуаров", "45 × 45, h 100", "1", "Гири 8, 12 и 16 кг, медболы 3 и 5 кг, эспандеры, мини-петли."],
+  [9, "Зона растяжки", "235 × 158", "—", "4 коврика 180 × 60 × 1 см, 2 массажных ролла, фитбол 65 см."],
+  [10, "Стойка для ковриков и роллов", "92 × 25", "1", "Настенная, на выступе стены рядом с зоной растяжки."],
+  [11, "Сервисная стойка", "115 × 35, h 90", "1", "Кулер, полотенца, корзина для использованных, салфетки, антисептик, аптечка. Над стойкой правила зала и кнопка вызова."],
+  [12, "Зеркало", "420 × 200", "1", "4–6 мм на плёнке безопасности, низ на высоте 30 см, под ним отбойник."],
+  [13, "Телевизор 55″", "123 × 7", "1", "На кронштейне, низ на высоте 1,7 м, за экраном розетка и LAN."],
+  [14, "Подсобка (существующая)", "118 × 145", "—", "Запас полотенец, уборочный инвентарь, бутыли для кулера."]
+];
+
+/* ============ SVG-помощники ============ */
+var NS = "http://www.w3.org/2000/svg";
+function el(p, tag, a, txt){
+  var e = document.createElementNS(NS, tag);
+  if (a) for (var k in a) e.setAttribute(k, a[k]);
+  if (txt != null) e.textContent = txt;
+  if (p) p.appendChild(e);
+  return e;
+}
+function P(a){ return a.map(function(p){ return p[0].toFixed(1)+","+p[1].toFixed(1); }).join(" "); }
+function R(p,x,y,w,h,c,rx){ var a={x:x,y:y,width:w,height:h,"class":c}; if(rx) a.rx=rx; return el(p,"rect",a); }
+function L(p,x1,y1,x2,y2,c){ return el(p,"line",{x1:x1,y1:y1,x2:x2,y2:y2,"class":c}); }
+function C(p,cx,cy,r,c){ return el(p,"circle",{cx:cx,cy:cy,r:r,"class":c}); }
+function T(p,x,y,t,c,extra){ var a={x:x,y:y,"class":c}; if(extra) for(var k in extra) a[k]=extra[k]; return el(p,"text",a,t); }
+
+function defs(svg, id){
+  var d = el(svg,"defs");
+  function hatch(name, size, cls, bg){
+    var pt = el(d,"pattern",{id:id+"-"+name, width:size, height:size, patternUnits:"userSpaceOnUse", patternTransform:"rotate(45)"});
+    if (bg) R(pt,0,0,size,size,"hatch-bg");
+    L(pt,0,0,0,size,cls);
+  }
+  hatch("col", 7, "hatch-line", true);
+  hatch("bay", 16, "hatch-bay", false);
+  hatch("safe", 11, "hatch-safe", false);
+  var m = el(d,"marker",{id:id+"-arr", viewBox:"0 0 10 10", refX:"8", refY:"5", markerWidth:"5", markerHeight:"5", orient:"auto-start-reverse"});
+  el(m,"path",{d:"M0,0 L10,5 L0,10 z","class":"arrow-head"});
+}
+
+/* размерные линии */
+function tick(g,x,y){ L(g,x-6,y+6,x+6,y-6,"tick"); }
+function dimV(g, xl, y1, y2, txt, fromX1, fromX2){
+  var s = Math.sign(xl - fromX1) || 1;
+  L(g, fromX1 + s*5, y1, xl + s*8, y1);
+  L(g, (fromX2==null?fromX1:fromX2) + s*5, y2, xl + s*8, y2);
+  L(g, xl, y1-6, xl, y2+6);
+  tick(g,xl,y1); tick(g,xl,y2);
+  T(g, xl, (y1+y2)/2, txt, "", {transform:"rotate(-90 "+xl+" "+((y1+y2)/2)+")"});
+}
+function dimH(g, yl, x1, x2, txt, fromY1, fromY2){
+  var s = Math.sign(yl - fromY1) || 1;
+  L(g, x1, fromY1 + s*5, x1, yl + s*8);
+  L(g, x2, (fromY2==null?fromY1:fromY2) + s*5, x2, yl + s*8);
+  L(g, x1-6, yl, x2+6, yl);
+  tick(g,x1,yl); tick(g,x2,yl);
+  T(g, (x1+x2)/2, yl, txt, "");
+}
+function dimA(g, A, B, off, txt){ // выровненный размер (нижняя стена с перекосом)
+  var dx=B[0]-A[0], dy=B[1]-A[1], len=Math.hypot(dx,dy), ux=dx/len, uy=dy/len, nx=-uy, ny=ux;
+  if (ny < 0){ nx=-nx; ny=-ny; }
+  var A2=[A[0]+nx*off, A[1]+ny*off], B2=[B[0]+nx*off, B[1]+ny*off];
+  L(g, A[0]+nx*5, A[1]+ny*5, A2[0]+nx*8, A2[1]+ny*8);
+  L(g, B[0]+nx*5, B[1]+ny*5, B2[0]+nx*8, B2[1]+ny*8);
+  L(g, A2[0]-ux*6, A2[1]-uy*6, B2[0]+ux*6, B2[1]+uy*6);
+  tick(g,A2[0],A2[1]); tick(g,B2[0],B2[1]);
+  var mx=(A2[0]+B2[0])/2, my=(A2[1]+B2[1])/2, ang=Math.atan2(uy,ux)*180/Math.PI;
+  T(g, mx, my, txt, "", {transform:"rotate("+ang.toFixed(2)+" "+mx+" "+my+")"});
+}
+
+/* ============ ОСНОВА: пол, стены, проёмы, колонны, подсобка ============ */
+function drawBase(svg, id){
+  var g = el(svg,"g",{"class":"base"});
+  el(g,"polygon",{points:P(ROOM),"class":"floor"});
+  el(g,"polygon",{points:P(BAY),"class":"floor"});
+  el(g,"polygon",{points:P(BAY),fill:"url(#"+id+"-bay)"});
+  WALLS.forEach(function(w){ el(g,"polygon",{points:P(w),"class":"wall"}); });
+  OPENINGS.forEach(function(o){
+    var t = o.x1 - o.x0;
+    R(g, o.x0-0.5, o.a, t+1, o.b-o.a, "gap");
+    if (o.type === "win"){
+      L(g,o.x0,o.a,o.x1,o.a,"win-line"); L(g,o.x0,o.b,o.x1,o.b,"win-line");
+      L(g,o.x0,o.a,o.x0,o.b,"win-line"); L(g,o.x1,o.a,o.x1,o.b,"win-line");
+      L(g,o.x0+t/2,o.a,o.x0+t/2,o.b,"glass-line");
+    } else {
+      var r = o.b - o.a;
+      L(g, o.x0, o.a, o.x0 - r, o.a, "door-leaf");
+      el(g,"path",{d:"M "+(o.x0-r)+" "+o.a+" A "+r+" "+r+" 0 0 0 "+o.x0+" "+o.b,"class":"door-arc"});
+    }
+  });
+  // подсобка 118 × 145, стены 10 см, дверь в зал
+  R(g,431,473,128,10,"wall"); R(g,431,473,10,97,"wall"); R(g,431,630,10,8,"wall"); R(g,431,628,128,10,"wall");
+  L(g,431,570,371,570,"door-leaf");
+  el(g,"path",{d:"M 371 570 A 60 60 0 0 0 431 630","class":"door-arc"});
+  COLS.forEach(function(c){ el(g,"rect",{x:c.x,y:c.y,width:25,height:25,fill:"url(#"+id+"-col)","class":"column"}); });
+  T(g,500,544,"ПОДСОБКА","zone-label",{style:"font-size:13px"});
+  T(g,500,562,"1,7 м²","zone-area");
+  T(g,-105,646,"ПРИСТРОЙКА","zone-label",{style:"font-size:14px"});
+  T(g,-105,666,"6,0 м²","zone-area");
+  T(g,-105,684,"доступ уточнить","zone-area",{style:"font-size:11.5px"});
+  return g;
+}
+
+/* ============ ОБОРУДОВАНИЕ ============ */
+function drawEquip(svg){
+  var root = el(svg,"g",{"class":"equip"});
+  function item(n, draw, bx, by){
+    var g = el(root,"g",{"class":"eq","data-n":n});
+    draw(g);
+    var b = el(g,"g",{"class":"badge"}); C(b,bx,by,13); T(b,bx,by+0.5,String(n));
+    return g;
+  }
+  item(1,function(g){ // беговая дорожка
+    R(g,40,50,210,90,"eq-body",8); R(g,78,66,166,58,"eq-detail",4); R(g,40,54,24,82,"eq-solid",4);
+    L(g,64,58,120,58,"eq-detail"); L(g,64,132,120,132,"eq-detail");
+  },150,95);
+  item(2,function(g){ // эллипс
+    R(g,40,240,200,75,"eq-body",12); L(g,66,277.5,205,277.5,"eq-detail");
+    R(g,105,247,72,14,"eq-detail",6); R(g,105,294,72,14,"eq-detail",6);
+    R(g,205,262,30,31,"eq-detail",6); R(g,40,262,22,31,"eq-solid",4);
+    C(g,74,252,4,"eq-solid"); C(g,74,303,4,"eq-solid");
+  },140,277.5);
+  item(3,function(g){ // велотренажёр
+    R(g,330,255,110,60,"eq-body",12); L(g,343,262,343,308,"eq-thick");
+    C(g,366,285,11,"eq-detail"); el(g,"ellipse",{cx:420,cy:285,rx:15,ry:11,"class":"eq-detail"});
+  },393,285);
+  item(4,function(g){ // гребной
+    R(g,512,85,17,184,"eq-body",3); R(g,494,25,54,60,"eq-body",16); C(g,521,52,17,"eq-detail");
+    R(g,499,92,44,16,"eq-detail",4); R(g,507,150,27,27,"eq-detail",6);
+  },520.5,222);
+  item(5,function(g){ // функциональная рама
+    R(g,455,665,100,150,"eq-body",4); R(g,500,668,52,30,"eq-solid",2); R(g,500,782,52,30,"eq-solid",2);
+    C(g,468,683,8,"eq-detail"); C(g,468,797,8,"eq-detail"); L(g,526,698,526,782,"eq-detail");
+  },478,740);
+  item(6,function(g){ // скамья
+    R(g,210,670,60,130,"eq-body",8); L(g,214,758,266,758,"eq-detail"); L(g,240,678,240,750,"eq-detail");
+  },240,712);
+  item(7,function(g){ // гантели
+    R(g,50,783,150,55,"eq-body",4); L(g,54,811,196,811,"eq-detail");
+    for (var i=0;i<9;i++){ var x=58+i*16.5; R(g,x-3.5,788,7,18,"eq-solid",2); R(g,x-3.5,816,7,18,"eq-solid",2); }
+  },125,768);
+  item(8,function(g){ // аксессуары
+    R(g,3,795,42,45,"eq-body",3); C(g,14,807,6,"eq-detail"); C(g,33,807,6,"eq-detail"); C(g,14,827,6,"eq-detail"); C(g,33,827,6,"eq-detail");
+  },24,776);
+  item(9,function(g){ // растяжка
+    R(g,30,532,180,58,"eq-mat",4); R(g,30,602,180,58,"eq-mat",4); C(g,240,530,28,"eq-detail");
+  },120,596);
+  item(10,function(g){ // стойка ковриков
+    R(g,8,490,92,25,"eq-body",2); C(g,22,502.5,8,"eq-detail"); C(g,40,502.5,8,"eq-detail"); C(g,58,502.5,8,"eq-detail"); R(g,72,494,24,17,"eq-detail",8);
+  },118,503);
+  item(11,function(g){ // сервисная стойка
+    R(g,443,438,115,35,"eq-body",3); R(g,447,441,30,29,"eq-detail",4); C(g,462,455.5,8,"eq-detail");
+    L(g,486,446,550,446,"eq-detail"); L(g,486,455,550,455,"eq-detail"); L(g,486,464,550,464,"eq-detail");
+  },518,455);
+  item(12,function(g){ // зеркало
+    L(g,20,bY(20)-4,440,bY(440)-4,"mirror");
+  },300,814);
+  item(13,function(g){ // ТВ
+    R(g,428,1,123,7,"eq-solid",1);
+  },412,22);
+  item(14,function(){},465,596);
+  return root;
+}
+
+/* ============ СЛОИ ============ */
+function layer(svg, name, on){ var g = el(svg,"g",{"data-layer":name}); if(!on) g.setAttribute("hidden",""); return g; }
+
+function drawZones(g){
+  el(g,"polygon",{points:P([[0,0],[560,0],[rX(347),347],[0,347]]),"class":"z-cardio"});
+  el(g,"polygon",{points:P([[0,347],[rX(347),347],[rX(473),473],[431,473],[431,490],[0,490]]),"class":"z-entry"});
+  el(g,"polygon",{points:P([[0,490],[431,490],[431,638],[rX(638),638],[558,831],[0,848]]),"class":"z-strength"});
+  R(g,20,505,235,158,"z-stretch");
+}
+function drawZoneLabels(g){
+  T(g,150,186,"КАРДИО","zone-label"); T(g,150,206,"19,4 м²","zone-area");
+  T(g,232,444,"ВХОД · СЕРВИС","zone-label"); T(g,232,463,"7,6 м²","zone-area");
+  T(g,366,514,"СИЛОВАЯ","zone-label"); T(g,366,534,"13,8 м²","zone-area");
+  T(g,120,565,"РАСТЯЖКА · 3,7 м²","zone-area",{style:"font-weight:600"});
+}
+function drawSafe(g, id){
+  el(g,"rect",{x:250,y:50,width:200,height:90,fill:"url(#"+id+"-safe)","class":"safe-zone"});
+  T(g,350,120,"свободно 2,0 м","safe-text");
+  R(g,278,645,177,188,"work-zone");
+  T(g,366,664,"рабочая зона рамы","work-text");
+  R(g,50,698,150,82,"work-zone");
+  T(g,125,716,"подход к гантелям","work-text");
+  var p = el(g,"g",{"class":"dim pass"});
+  dimH(p, 285, 240, 330, "90", 285, 285);
+  dimH(p, 601, 301, 431, "130", 601, 601);
+  dimH(p, 484, 105, 276, "171", 484, 484);
+  el(g,"line",{x1:6,y1:404,x2:72,y2:404,"class":"arrow","marker-end":"url(#"+id+"-arr)"});
+  T(g,40,394,"вход","work-text",{style:"font-size:13px;font-weight:600"});
+}
+function drawDims(g){
+  var d = el(g,"g",{"class":"dim"});
+  dimH(d,-55,0,560,"560",-20,-20);
+  dimV(d,-50,0,478,"478",-20,-20);
+  T(d,-72,484,"12","");
+  dimV(d,-50,490,848,"358",-20,-20);
+  dimV(d,-232,490,842,"352",-202,-202);
+  dimH(d,522,-190,-20,"170",510,510);
+  dimV(d,625,0,473,"473",rX(0)+20,rX(473)+20);
+  dimV(d,625,473,638,"165",rX(473)+20,rX(638)+20);
+  dimV(d,625,638,831,"193",rX(638)+20,578.6);
+  dimA(d,[0,848],[558,831],58,"558");
+  dimV(d,288,0,212,"212",288,288);
+  dimV(d,288,237,347,"110",288,288);
+  dimV(d,288,614,bY(288),"225",288,288);
+  dimH(d,602,0,276,"276",602,602);
+  dimH(d,615,441,559,"118",615,615);
+  dimV(d,550,483,628,"145",550,550);
+  dimH(d,462,0,105,"105",478,478);
+}
+function drawTags(g){
+  OPENINGS.forEach(function(o){
+    var x = o.x0 === -20 ? 8 : -186, y = (o.a+o.b)/2;
+    T(g,x,y+4,o.id,"tag");
+  });
+  COLS.forEach(function(c){ T(g,c.x+32,c.y+17,c.id,"tag"); });
+}
+function drawLight(g){
+  [[70,100],[340,100],[70,280],[340,280],[40,425],[320,425],[310,575],[70,740],[340,740]].forEach(function(p){
+    R(g,p[0],p[1]-4,120,8,"lamp",2);
+  });
+  L(g,30,bY(30)-26,430,bY(430)-26,"lamp-wash");
+  L(g,12,512,12,656,"lamp-warm");
+  L(g,14,524,100,524,"lamp-warm");
+  [[60,190,"А"],[380,470,"А"],[160,700,"А"],[250,158,"Д"],[395,690,"Д"]].forEach(function(s){
+    var sg = el(g,"g",{"class":"sym sym-lamp"}); C(sg,s[0],s[1],10); T(sg,s[0],s[1]+0.5,s[2]);
+  });
+  R(g,6,362,52,16,"lamp",2); T(g,32,370.5,"ВЫХОД","lamp-txt",{style:"font-size:9px"});
+}
+function drawEng(g){
+  function s(x,y,txt,kind,square){
+    var sg = el(g,"g",{"class":"sym sym-"+kind});
+    if (square) R(sg,x-10,y-10,20,20); else C(sg,x,y,10);
+    T(sg,x,y+0.5,txt);
+  }
+  s(12,22,"16","power"); s(12,338,"Р","power"); s(548,428,"Р","power"); s(12,647,"Р","power"); s(548,651,"Р","power"); s(442,24,"Р","power");
+  s(14,152,"К","lowv"); s(546,823,"К","lowv"); s(230,400,"W","lowv"); s(520,425,"!","lowv"); s(500,650,"!","lowv"); s(-34,340,"С","lowv");
+  s(245,200,"Г","lowv"); s(430,178,"Г","lowv"); s(190,690,"Г","lowv"); s(400,556,"Г","lowv");
+  s(200,336,"П","hvac",true); s(380,172,"П","hvac",true); s(380,800,"В","hvac",true); s(150,468,"В","hvac",true);
+  R(g,436,345,57,57,"",0).setAttribute("style","fill:none;stroke:var(--hvac);stroke-width:1.8");
+  L(g,436,345,493,402,"hvac-x"); L(g,493,345,436,402,"hvac-x");
+}
+
+/* ============ СБОРКА ============ */
+function svgBox(svg, vb){ svg.setAttribute("viewBox", vb.join(" ")); svg.setAttribute("preserveAspectRatio","xMidYMid meet"); }
+
+// обмерный план
+(function(){
+  var svg = document.getElementById("svg-survey");
+  svgBox(svg,[-262,-96,935,1040]);
+  defs(svg,"sv");
+  drawBase(svg,"sv");
+  drawDims(el(svg,"g"));
+  drawTags(el(svg,"g"));
+})();
+
+// план расстановки
+var planSvg = document.getElementById("svg-plan");
+(function(){
+  var svg = planSvg;
+  svgBox(svg,[-262,-96,935,1040]);
+  defs(svg,"pl");
+  var zones = layer(svg,"zones",true);
+  drawBase(svg,"pl");
+  drawZones(zones);
+  // перенести зоны под стены, но над полом
+  var base = svg.querySelector(".base");
+  base.insertBefore(zones, base.children[3]);
+  drawEquip(svg);
+  drawSafe(layer(svg,"safe",true),"pl");
+  drawZoneLabels(layer(svg,"zones",true));
+  drawLight(layer(svg,"light",false));
+  drawEng(layer(svg,"eng",false));
+  drawDims(layer(svg,"dims",false));
+})();
+
+// легенда и спецификация
+var legend = document.getElementById("legend");
+var spec = document.getElementById("spec");
+ITEMS.forEach(function(it){
+  var li = document.createElement("li");
+  var b = document.createElement("button");
+  b.type = "button"; b.dataset.n = it[0];
+  b.innerHTML = '<span class="num">'+it[0]+'</span><span class="nm"></span><span class="sz"></span>';
+  b.querySelector(".nm").textContent = it[1];
+  b.querySelector(".sz").textContent = it[2].replace(/, h \d+/,"");
+  li.appendChild(b); legend.appendChild(li);
+  var tr = document.createElement("tr");
+  tr.innerHTML = '<td><span class="num">'+it[0]+'</span></td><td></td><td class="mono"></td><td class="mono"></td><td></td>';
+  tr.children[1].textContent = it[1]; tr.children[2].textContent = it[2]; tr.children[3].textContent = it[3]; tr.children[4].textContent = it[4];
+  spec.appendChild(tr);
+});
+function hot(n, on){
+  planSvg.querySelectorAll('.eq[data-n="'+n+'"]').forEach(function(e){ e.classList.toggle("hot", on); });
+  legend.querySelectorAll('button[data-n="'+n+'"]').forEach(function(e){ e.classList.toggle("hot", on); });
+}
+legend.addEventListener("pointerover", function(e){ var b=e.target.closest("button"); if(b) hot(b.dataset.n,true); });
+legend.addEventListener("pointerout", function(e){ var b=e.target.closest("button"); if(b) hot(b.dataset.n,false); });
+legend.addEventListener("focusin", function(e){ var b=e.target.closest("button"); if(b) hot(b.dataset.n,true); });
+legend.addEventListener("focusout", function(e){ var b=e.target.closest("button"); if(b) hot(b.dataset.n,false); });
+planSvg.addEventListener("pointerover", function(e){ var g=e.target.closest(".eq"); if(g) hot(g.dataset.n,true); });
+planSvg.addEventListener("pointerout", function(e){ var g=e.target.closest(".eq"); if(g) hot(g.dataset.n,false); });
+
+// на узком экране чертёж открывается по центру
+document.querySelectorAll(".drawing").forEach(function(d){
+  if (d.scrollWidth > d.clientWidth) d.scrollLeft = (d.scrollWidth - d.clientWidth) / 2;
+});
+
+// переключатели слоёв
+document.querySelectorAll(".layers input").forEach(function(inp){
+  function apply(){
+    var name = inp.dataset.layer;
+    planSvg.querySelectorAll('[data-layer="'+name+'"]').forEach(function(g){ g.toggleAttribute("hidden", !inp.checked); });
+    document.querySelectorAll('[data-key="'+name+'"]').forEach(function(k){ k.hidden = !inp.checked; });
+    planSvg.classList.toggle("ceiling", document.getElementById("ly-light").checked || document.getElementById("ly-eng").checked);
+  }
+  inp.addEventListener("change", apply);
+  apply();
+});
+
+/* ============ 3D ============ */
+var box = document.getElementById("view3d");
+function fail(msg){
+  var d = document.createElement("div"); d.className = "view-fail";
+  d.textContent = msg || "3D-вид не загрузился. План и спецификация выше и ниже показывают ту же расстановку.";
+  box.appendChild(d);
+  box.querySelectorAll(".view-tools,.zoom,.view-hint").forEach(function(e){ e.hidden = true; });
+}
+if (!window.THREE || !THREE.OrbitControls){ fail(); return; }
+var renderer;
+try { renderer = new THREE.WebGLRenderer({antialias:true}); } catch(e){ fail("Браузер не поддерживает WebGL, поэтому 3D-вид недоступен."); return; }
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+box.insertBefore(renderer.domElement, box.firstChild);
+
+var scene = new THREE.Scene();
+function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || "#ffffff"; }
+function setBg(){ scene.background = new THREE.Color(cssVar("--sheet")); }
+setBg();
+
+var H = 280;
+function lam(c, o){ var m = new THREE.MeshLambertMaterial(Object.assign({color:c}, o||{})); return m; }
+function stripes(base, line, n, w){
+  var c = document.createElement("canvas"); c.width = 64; c.height = 64;
+  var x = c.getContext("2d"); x.fillStyle = base; x.fillRect(0,0,64,64); x.fillStyle = line;
+  for (var i=0;i<n;i++) x.fillRect(i*64/n, 0, w, 64);
+  var t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t;
+}
+function speckle(){
+  var c = document.createElement("canvas"); c.width = 256; c.height = 256;
+  var x = c.getContext("2d"); x.fillStyle = "#3a3e40"; x.fillRect(0,0,256,256);
+  for (var i=0;i<2600;i++){ x.fillStyle = Math.random()<.5 ? "#7d8285" : "#5d6265"; x.fillRect(Math.random()*256, Math.random()*256, 1.6, 1.6); }
+  var t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(1.2,1.2); return t;
+}
+var M = {
+  floor: lam(0xffffff, {map:speckle()}),
+  tiles: lam(0x2b2e30),
+  wall: lam(0xe6e3dd),
+  accent: lam(0x2f4a40),
+  oak: lam(0xffffff, {map:stripes("#c9a77c","#a3825a",4,3)}),
+  oakPlain: lam(0xc9a77c),
+  black: lam(0x1f2123),
+  dark: lam(0x3a3f42),
+  grey: lam(0x8c9295),
+  mat: lam(0x3f6152),
+  uph: lam(0x46544c),
+  white: lam(0xf3f3f0),
+  plinth: lam(0x2a2f2d),
+  glass: lam(0xa8cfe0, {transparent:true, opacity:0.32}),
+  mirror: new THREE.MeshPhongMaterial({color:0xcdd7db, shininess:120, specular:0xffffff})
+};
+M.oak.map.repeat.set(1,1);
+M.oakPanel = lam(0xffffff, {map:stripes("#c9a77c","#a3825a",4,3)}); M.oakPanel.map.repeat.set(5,1);
+
+function bx(x0,y0,x1,y1,z0,z1,mat){
+  var m = new THREE.Mesh(new THREE.BoxGeometry((x1-x0)/100,(z1-z0)/100,(y1-y0)/100), mat);
+  m.position.set((x0+x1)/200,(z0+z1)/200,(y0+y1)/200);
+  m.castShadow = true; m.receiveShadow = true; scene.add(m); return m;
+}
+function cyl(x,y,r,z0,z1,mat,horizontal){
+  var m = new THREE.Mesh(new THREE.CylinderGeometry(r/100,r/100,(z1-z0)/100,20), mat);
+  m.position.set(x/100,(z0+z1)/200,y/100); if (horizontal) m.rotation.x = Math.PI/2;
+  m.castShadow = true; scene.add(m); return m;
+}
+
+// пол и цоколь
+function flat(poly, mat, yLift){
+  var s = new THREE.Shape();
+  poly.forEach(function(p,i){ var X=p[0]/100, Y=-p[1]/100; if(i) s.lineTo(X,Y); else s.moveTo(X,Y); });
+  var m = new THREE.Mesh(new THREE.ShapeGeometry(s), mat);
+  m.rotation.x = -Math.PI/2; m.position.y = yLift || 0; m.receiveShadow = true; scene.add(m); return m;
+}
+flat([[-20,-20],[580,-20],[578.6,850.4],[-20,bY(-20)+20]], M.plinth, -0.004);
+flat(ROOM, M.floor, 0);
+bx(0,690,206,840,0,0.6,M.tiles);
+
+// стены-плоскости, повёрнутые внутрь (ближние к камере не рисуются)
+function wall(Pa,Qa,s0,s1,ops,mat){
+  var dx=Qa[0]-Pa[0], dy=Qa[1]-Pa[1], len=Math.hypot(dx,dy), ux=dx/len, uy=dy/len;
+  var nx=-uy, ny=ux, mx=Pa[0]+dx/2, my=Pa[1]+dy/2;
+  if ((280-mx)*nx + (420-my)*ny < 0){ nx=-nx; ny=-ny; }
+  var rot = Math.atan2(nx, ny), pieces=[], cur=s0;
+  ops.filter(function(o){ return o.b>s0 && o.a<s1; }).sort(function(a,b){ return a.a-b.a; }).forEach(function(o){
+    if (o.a>cur) pieces.push([cur,o.a,0,H,mat]);
+    if (o.z0>0) pieces.push([o.a,o.b,0,o.z0,mat]);
+    if (o.z1<H) pieces.push([o.a,o.b,o.z1,H,mat]);
+    if (o.type==="win") pieces.push([o.a,o.b,o.z0,o.z1,M.glass]);
+    cur=o.b;
+  });
+  if (cur<s1) pieces.push([cur,s1,0,H,mat]);
+  pieces.forEach(function(p){
+    var m = new THREE.Mesh(new THREE.PlaneGeometry((p[1]-p[0])/100,(p[3]-p[2])/100), p[4]);
+    var sm=(p[0]+p[1])/2;
+    m.position.set((Pa[0]+ux*sm)/100,(p[2]+p[3])/200,(Pa[1]+uy*sm)/100);
+    m.rotation.y = rot; m.receiveShadow = p[4]!==M.glass; scene.add(m);
+  });
+}
+var leftOps = OPENINGS.filter(function(o){ return o.x0===-20; }).map(function(o){
+  return {a:o.a, b:o.b, z0:o.type==="win"?85:0, z1:o.type==="win"?230:210, type:o.type};
+});
+wall([0,0],[560,0],0,560,[],M.wall);
+wall([560,0],[558,831],0,473,[],M.accent);
+wall([560,0],[558,831],473,831.002,[],M.wall);
+wall([0,848],[558,831],0,558.26,[],M.wall);
+wall([0,0],[0,848],0,848,leftOps,M.wall);
+
+// выступ, подсобка, колонны
+bx(0,478,105,490,0,H,M.wall);
+bx(431,473,559,483,0,H,M.wall); bx(431,483,441,570,0,H,M.wall); bx(431,630,441,638,0,H,M.wall);
+bx(431,570,441,630,210,H,M.wall); bx(431,628,559,638,0,H,M.wall);
+var leaf = bx(0,0,4,60,0,208,M.oakPlain); leaf.position.set(4.098,1.04,5.912); leaf.rotation.y = -Math.PI/4;
+COLS.forEach(function(c){ bx(c.x-2,c.y-2,c.x+27,c.y+27,0,200,M.oak); bx(c.x,c.y,c.x+25,c.y+25,200,H,M.wall); });
+
+// 1 беговая дорожка
+bx(48,52,250,138,0,22,M.black); bx(76,66,246,124,22,23.5,M.dark);
+bx(46,52,58,62,0,135,M.black); bx(46,128,58,138,0,135,M.black);
+bx(40,54,70,136,128,148,M.dark); bx(58,55,120,60,98,103,M.grey); bx(58,130,120,135,98,103,M.grey);
+// 2 эллипс
+bx(40,268,240,287,0,16,M.black); bx(44,270,66,285,0,150,M.black); bx(40,262,70,293,142,158,M.dark);
+bx(105,248,177,262,26,32,M.grey); bx(105,293,177,307,26,32,M.grey);
+bx(70,250,76,256,40,165,M.grey); bx(70,299,76,305,40,165,M.grey); bx(200,262,240,293,0,52,M.black);
+// 3 велотренажёр
+bx(332,262,438,308,0,7,M.black); bx(358,277,414,293,7,82,M.black); bx(410,281,418,289,82,96,M.grey);
+bx(402,272,436,298,96,103,M.uph); bx(340,280,350,290,30,112,M.black); bx(334,262,348,308,110,116,M.grey); bx(338,272,352,298,116,128,M.dark);
+// 4 гребной
+bx(512,85,529,269,22,30,M.grey); bx(505,255,536,269,0,22,M.black); bx(494,25,548,85,0,58,M.black);
+bx(499,92,543,108,8,16,M.dark); bx(507,150,534,177,30,38,M.uph);
+// 5 функциональная рама
+bx(455,665,555,815,0,3,M.black);
+bx(495,665,555,692,0,215,M.black); bx(495,788,555,815,0,215,M.black); bx(495,665,555,815,203,215,M.black);
+bx(463,676,473,688,10,205,M.grey); bx(463,792,473,804,10,205,M.grey); bx(502,694,550,786,192,200,M.grey);
+// 6 скамья
+bx(232,680,248,790,0,30,M.black); bx(212,760,268,800,38,47,M.uph); bx(212,672,268,756,40,49,M.uph);
+// 7 гантели
+bx(50,783,56,838,0,80,M.black); bx(194,783,200,838,0,80,M.black); bx(56,786,194,806,32,36,M.dark); bx(56,812,194,834,62,66,M.dark);
+for (var i=0;i<9;i++){ var gx=58+i*16.5; bx(gx-5,786,gx+5,806,36,46,M.black); bx(gx-5,812,gx+5,834,66,76,M.black); }
+// 8 аксессуары
+bx(3,795,45,840,0,100,M.black);
+[[14,807],[33,807],[14,827],[33,827]].forEach(function(k){ var s=new THREE.Mesh(new THREE.SphereGeometry(0.07,16,12),M.dark); s.position.set(k[0]/100,0.07+0.02,k[1]/100); s.castShadow=true; scene.add(s); });
+// 9 растяжка
+bx(30,532,210,590,0,1.2,M.mat); bx(30,602,210,660,0,1.2,M.mat);
+var ball = new THREE.Mesh(new THREE.SphereGeometry(0.28,32,20), M.mat); ball.position.set(2.40,0.28,5.30); ball.castShadow = true; scene.add(ball);
+// 10 стойка ковриков на выступе + дубовая панель
+bx(2,490,104,494,0,220,M.oakPanel);
+[22,40,58].forEach(function(x){ cyl(x,503,8,10,70,M.mat); }); cyl(84,503,7,10,55,M.grey);
+// 11 сервисная стойка
+bx(480,438,558,473,0,88,M.oakPanel); bx(478,436,558,473,88,91,M.white); bx(446,441,477,471,0,108,M.white);
+cyl(461.5,456,12,108,140,M.glass); bx(490,444,548,468,91,101,M.white); bx(490,444,548,468,101,111,M.white);
+// 12 зеркало + отбойник
+var wallItems = [];
+(function(){
+  var len=420*558.26/558/100, ang=Math.atan2(17,558);
+  var m = new THREE.Mesh(new THREE.BoxGeometry(len,2.0,0.02), M.mirror);
+  m.position.set(2.30, 0.30+1.0, (bY(230)-2)/100); m.rotation.y = ang; scene.add(m); wallItems.push(m);
+  var r = new THREE.Mesh(new THREE.BoxGeometry(len,0.08,0.04), M.oakPlain);
+  r.position.set(2.30, 0.26, (bY(230)-3)/100); r.rotation.y = ang; scene.add(r); wallItems.push(r);
+})();
+// 13 телевизор
+var tv = bx(428,1,551,7,170,240,M.black);
+
+// свет
+scene.add(new THREE.HemisphereLight(0xffffff, 0x50555a, 0.55));
+var sun = new THREE.DirectionalLight(0xffffff, 0.62);
+sun.position.set(-3.5, 9, 2.5); sun.target.position.set(2.8, 0, 4.2); scene.add(sun.target);
+sun.castShadow = true; sun.shadow.mapSize.set(2048,2048);
+var sc = sun.shadow.camera; sc.left=-7; sc.right=7; sc.top=7; sc.bottom=-7; sc.near=0.5; sc.far=30; sun.shadow.bias=-0.0006;
+scene.add(sun);
+var fill = new THREE.DirectionalLight(0xfff4e6, 0.25); fill.position.set(10, 6, 12); scene.add(fill);
+
+var camera = new THREE.PerspectiveCamera(38, 1, 0.05, 100);
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableZoom = false; controls.maxPolarAngle = Math.PI*0.49; controls.screenSpacePanning = true;
+var VIEWS = {
+  overview: {pos:[9.6,8.2,-3.4], tgt:[2.6,0.3,4.6]},
+  entry:    {pos:[0.45,1.65,4.15], tgt:[4.6,1.0,3.6]},
+  top:      {pos:[2.8,13.5,4.35], tgt:[2.8,0,4.3]}
+};
+function render(){
+  // предметы на скрытой стене тоже прячем, чтобы не висели в воздухе
+  var c = camera.position;
+  tv.visible = c.z > 0.02;
+  var behindBottom = c.z*100 > bY(c.x*100);
+  wallItems.forEach(function(m){ m.visible = !behindBottom; });
+  renderer.render(scene, camera);
+}
+function setView(k){
+  var v = VIEWS[k]; camera.position.set(v.pos[0],v.pos[1],v.pos[2]); controls.target.set(v.tgt[0],v.tgt[1],v.tgt[2]);
+  controls.update(); render();
+  box.querySelectorAll("[data-view]").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.view===k)); });
+}
+function resize(){
+  var w = box.clientWidth, h = box.clientHeight; if (!w || !h) return;
+  renderer.setSize(w, h, false); camera.aspect = w/h;
+  camera.fov = w/h < 1 ? 52 : 38; camera.updateProjectionMatrix(); render();
+}
+controls.addEventListener("change", render);
+box.querySelectorAll("[data-view]").forEach(function(b){ b.addEventListener("click", function(){ setView(b.dataset.view); }); });
+box.querySelectorAll("[data-zoom]").forEach(function(b){
+  b.addEventListener("click", function(){
+    var f = parseFloat(b.dataset.zoom), off = camera.position.clone().sub(controls.target).multiplyScalar(f);
+    var d = off.length(); if (d < 1.2 || d > 25) return;
+    camera.position.copy(controls.target).add(off); controls.update(); render();
+  });
+});
+if (window.ResizeObserver) new ResizeObserver(resize).observe(box); else window.addEventListener("resize", resize);
+var mq = window.matchMedia("(prefers-color-scheme: dark)");
+function themeChanged(){ setBg(); render(); }
+if (mq.addEventListener) mq.addEventListener("change", themeChanged);
+new MutationObserver(themeChanged).observe(document.documentElement, {attributes:true, attributeFilter:["data-theme"]});
+setView("overview"); resize();
+})();
+</script>
+</body>
+</html>
