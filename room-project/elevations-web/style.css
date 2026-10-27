@@ -1,0 +1,299 @@
+/* Развёртки электрики. Слева — ключевой план комнаты и фильтры, справа — лист с развёрткой стены.
+   При печати каждая стена — отдельный лист A4 альбомный, чертёж в масштабе 1:25. */
+
+:root {
+  color-scheme: light;
+  --desk: #E4E1DC;        /* стол, на котором лежат листы */
+  --paper: #FFFFFF;
+  --ink: #2E2C2A;
+  --muted: #625C56;
+  --rule: #CBC5BC;
+  --rule-soft: #E6E2DC;
+  --power: #2C64B0;       /* всё, что относится к электрике */
+  --power-wash: #E3ECF8;
+  --ceiling: #7A5FA8;     /* потолочные выводы */
+  --oak: #C9A577;
+  --font: 'Golos Text', 'PT Sans', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'DejaVu Sans Mono', ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+body {
+  margin: 0;
+  background: var(--desk);
+  color: var(--ink);
+  font: 400 15px/1.5 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p { margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--power); outline-offset: 2px; }
+
+.page {
+  display: grid;
+  grid-template-columns: 264px minmax(0, 1fr);
+  gap: 32px;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 32px 32px 48px;
+}
+
+/* ---------- левая колонка ---------- */
+
+.side {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  display: grid;
+  gap: 28px;
+}
+
+.intro h1 {
+  font-size: 28px;
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.intro p { margin-top: 8px; color: var(--muted); font-size: 14px; }
+
+.walls { display: grid; gap: 14px; }
+
+.keyplan { width: 100%; max-width: 236px; height: auto; display: block; overflow: visible; }
+.keyplan .room { fill: var(--paper); }
+.keyplan .thing { fill: none; stroke: var(--rule); stroke-width: 2.5; }
+.keyplan .wall { stroke: var(--ink); stroke-width: 10; stroke-linecap: butt; transition: stroke 0.2s, stroke-width 0.2s; }
+.keyplan .window { stroke: var(--ink); stroke-width: 2; }
+.keyplan .door-swing { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 6 5; }
+.keyplan .cone { fill: var(--power); opacity: 0.14; }
+.keyplan .eye { fill: var(--power); }
+.keyplan .hit { stroke: transparent; stroke-width: 46; cursor: pointer; }
+.keyplan .letter { font: 700 34px var(--font); fill: var(--ink); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.keyplan a:hover .wall, .keyplan a:focus-visible .wall { stroke: var(--power); }
+.keyplan a:focus { outline: none; }
+.keyplan a:focus-visible .hit { stroke: var(--power-wash); }
+.keyplan a.is-current .wall { stroke: var(--power); stroke-width: 18; }
+.keyplan a.is-current .letter { fill: var(--power); }
+
+.wall-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.wall-list a {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 10px 6px 8px;
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.wall-list a:hover { background: rgba(255, 255, 255, 0.55); }
+.wall-list a[aria-current="page"] { background: var(--paper); box-shadow: inset 3px 0 0 var(--power); }
+.wall-list .key { font-weight: 700; font-size: 17px; }
+.wall-list a[aria-current="page"] .key { color: var(--power); }
+.wall-list .count { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.wall-list .all { grid-column: 2 / 4; color: var(--muted); }
+.wall-list a[aria-current="page"] .all { color: var(--ink); }
+
+.filters h2 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.filter-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 4px 11px 4px 8px;
+  border: 1px solid var(--rule);
+  border-radius: 17px;
+  background: var(--paper);
+  font-size: 14px;
+  cursor: pointer;
+}
+.chip svg { width: 18px; height: 18px; flex: none; }
+.chip b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.chip[aria-pressed="false"] { background: transparent; color: var(--muted); border-style: dashed; }
+.chip[aria-pressed="false"] svg { opacity: 0.35; }
+
+.totals { font-size: 14px; display: grid; gap: 6px; }
+.totals strong { font-weight: 600; }
+.totals .ids { color: var(--power); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.print { display: grid; gap: 8px; }
+.print p { color: var(--muted); font-size: 13px; }
+.print-btn {
+  justify-self: start;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  cursor: pointer;
+}
+.print-btn:hover { background: #45413D; }
+
+/* ---------- листы ---------- */
+
+.sheets { display: grid; gap: 32px; align-content: start; min-width: 0; }
+.hint { color: var(--muted); font-size: 14px; }
+
+.sheet {
+  background: var(--paper);
+  padding: 14px 14px 14px 44px;            /* поле подшивки слева, как на чертеже */
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(46, 44, 42, 0.12), 0 6px 24px rgba(46, 44, 42, 0.08);
+}
+.frame { border: 1.5px solid var(--ink); padding: 18px 20px 16px; display: grid; gap: 14px; }
+
+.sheet-head { display: grid; grid-template-columns: 1fr auto; gap: 4px 24px; align-items: end; }
+.sheet-head h2 { font-size: 22px; line-height: 1.2; font-weight: 700; letter-spacing: -0.005em; }
+.sheet-head .view { grid-column: 1; color: var(--muted); font-size: 13.5px; max-width: 72ch; }
+.sheet-head .tally { grid-column: 2; grid-row: 1 / 3; align-self: end; text-align: right; font-size: 14px; font-variant-numeric: tabular-nums; }
+.tally b { color: var(--power); font-weight: 600; }
+
+.drawing { position: relative; overflow-x: auto; overscroll-behavior-x: contain; }
+.drawing svg { display: block; width: 100%; height: auto; min-width: 640px; }
+.scroll-note { display: none; color: var(--muted); font-size: 13px; margin-top: -6px; }
+
+/* точки на чертеже */
+.pt { cursor: pointer; transform-box: fill-box; transform-origin: center; transition: transform 0.15s ease-out, opacity 0.15s; }
+.pt:focus { outline: none; }
+.pt.is-active { transform: scale(1.45); }
+.pt:focus-visible { filter: drop-shadow(0 0 1.5px var(--power)); }
+.pt-label, .dim-value, .dim-tick { transition: opacity 0.15s; }
+svg.is-on .pt:not(.is-active) { opacity: 0.4; }
+svg.is-on .pt-label:not(.is-active) { opacity: 0.4; }
+svg.is-on .dim-value.is-active { font-weight: 700; fill: var(--power); }
+svg.is-on .dim-tick.is-active { stroke-dasharray: none; stroke-width: 0.8; }
+.is-filtered { opacity: 0.1 !important; pointer-events: none; }
+
+.locator { pointer-events: none; }
+.locator line { stroke: var(--power); stroke-width: 0.6; stroke-dasharray: 2 1.5; }
+.locator rect { fill: var(--power); }
+.locator text { fill: #FFFFFF; font: 700 5.5px var(--mono); }
+
+.tip {
+  position: absolute;
+  z-index: 2;
+  width: max-content;
+  max-width: 300px;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 6px 20px rgba(46, 44, 42, 0.16);
+  font-size: 13.5px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+.tip .tip-id { color: var(--power); font-weight: 700; margin-right: 6px; }
+.tip .tip-what { font-weight: 600; }
+.tip .tip-where { color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 2px; }
+.tip .tip-label { margin-top: 4px; }
+
+/* низ листа: таблица на всю ширину, под ней обозначения и штамп в правом нижнем углу */
+.sheet-foot { display: grid; gap: 20px; }
+
+.points { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.points th { text-align: left; font-weight: 600; font-size: 12.5px; color: var(--muted); padding: 0 10px 6px 0; border-bottom: 1.5px solid var(--ink); white-space: nowrap; }
+.points td { padding: 5px 10px 5px 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+.points td.num, .points th.num { text-align: right; padding-right: 16px; white-space: nowrap; }
+.points td:first-child { font-weight: 700; color: var(--power); white-space: nowrap; }
+.points tr[data-type="ceiling"] td:first-child { color: var(--ceiling); }
+.points td.what { white-space: nowrap; }
+.points tbody tr { cursor: pointer; transition: background 0.12s, opacity 0.15s; }
+.points tbody tr:hover, .points tbody tr.is-active { background: var(--power-wash); }
+
+.sheet-side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 320px); gap: 24px; align-items: end; }
+.legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 13px; }
+.legend li { display: grid; grid-template-columns: 24px 1fr; align-items: center; gap: 8px; }
+.legend svg { width: 24px; height: 18px; }
+
+/* штамп: основная надпись чертежа */
+.stamp { border: 1.5px solid var(--ink); display: grid; grid-template-columns: 1fr 52px 52px; font-size: 12.5px; }
+.stamp > div { padding: 5px 8px; border-left: 1px solid var(--ink); border-top: 1px solid var(--ink); }
+.stamp .name { grid-column: 1; grid-row: 1 / 3; border-left: 0; border-top: 0; display: grid; align-content: center; gap: 2px; }
+.stamp .name b { font-weight: 600; }
+.stamp .cap { border-top: 0; color: var(--muted); font-size: 11.5px; text-align: center; padding-bottom: 0; }
+.stamp .val { border-top: 0; text-align: center; font-weight: 700; font-size: 16px; padding-top: 0; }
+.stamp .scale { grid-column: 1 / 4; border-left: 0; color: var(--muted); }
+
+.noscript { padding: 24px 32px; }
+
+/* ---------- узкие экраны ---------- */
+
+@media (max-width: 900px) {
+  .page { grid-template-columns: 1fr; gap: 24px; padding: 20px 16px 40px; }
+  .side { position: static; gap: 20px; }
+  .walls { grid-template-columns: 132px 1fr; align-items: center; gap: 16px; }
+  .sheet { padding: 8px; }
+  .frame { padding: 14px 12px; }
+  .sheet-head { grid-template-columns: 1fr; }
+  .sheet-head .tally { grid-column: 1; grid-row: auto; text-align: left; }
+  .sheet-side { grid-template-columns: 1fr; }
+  .points td.what { white-space: normal; }
+  .scroll-note { display: block; }
+}
+
+/* на телефоне таблица — список: номер, привязка и высота в строку, назначение под ними */
+@media (max-width: 560px) {
+  .points thead { display: none; }
+  .points tbody tr { display: grid; grid-template-columns: 44px auto auto 1fr; column-gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--rule-soft); }
+  .points td { padding: 0; border: 0; }
+  .points td.what { display: none; }
+  .points td.num { text-align: left; padding: 0; }
+  .points td.num::before { content: attr(data-label) ' '; color: var(--muted); font-weight: 400; }
+  .points td:last-child { grid-column: 2 / -1; margin-top: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+
+/* ---------- печать: 4 листа A4 альбомных ---------- */
+
+@page { size: A4 landscape; margin: 0; }
+
+@media print {
+  body { background: #FFFFFF; font-size: 9pt; }
+  .page { display: block; max-width: none; padding: 0; }
+  .side, .hint, .tip, .locator, .scroll-note { display: none !important; }
+  .sheets { display: block; }
+  .sheet, .sheet[hidden] {
+    display: block !important;
+    width: 297mm;
+    height: 210mm;
+    padding: 5mm 5mm 5mm 20mm;
+    box-shadow: none;
+    border-radius: 0;
+    break-after: page;
+    overflow: hidden;
+  }
+  .sheet:last-child { break-after: auto; }
+  .frame { height: 100%; padding: 3mm 5mm; gap: 2mm; border-width: 0.5mm; align-content: start; }
+  .sheet-head { grid-template-columns: 1fr auto; gap: 0.5mm 6mm; }
+  .sheet-head h2 { font-size: 13pt; grid-column: 1; grid-row: 1; }
+  .sheet-head .tally { grid-column: 2; grid-row: 1; align-self: baseline; text-align: right; font-size: 8pt; }
+  .sheet-head .view { grid-column: 1 / 3; grid-row: 2; max-width: none; font-size: 7.5pt; }
+  .drawing { overflow: visible; }
+  .drawing svg { width: var(--print-w); min-width: 0; }
+  svg.is-on .pt, svg.is-on .pt-label { opacity: 1 !important; }
+  .pt.is-active { transform: none; }
+  .is-filtered { opacity: 1 !important; }
+  .sheet-foot { grid-template-columns: minmax(0, 1fr) 70mm; gap: 5mm; align-items: start; }
+  .sheet-side { grid-template-columns: 1fr; gap: 3mm; align-items: start; }
+  .points { font-size: 7.5pt; line-height: 1.2; }
+  .points th { font-size: 7pt; padding-bottom: 0.8mm; }
+  .points td { padding: 0.45mm 3mm 0.45mm 0; }
+  .points td.what { white-space: nowrap; }
+  .points tbody tr.is-active, .points tbody tr:hover { background: none; }
+  .legend { font-size: 7.5pt; gap: 1mm; }
+  .legend svg { width: 6mm; height: 4.5mm; }
+  .stamp { font-size: 7.5pt; grid-template-columns: 1fr 13mm 13mm; }
+  .stamp .cap { font-size: 6.5pt; }
+  .stamp .val { font-size: 11pt; }
+  .stamp > div { padding: 1mm 2mm; }
+}

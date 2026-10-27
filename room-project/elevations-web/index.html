@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Развёртки электрики</title>
+<meta name="description" content="Розетки, выключатели и выводы на четырёх стенах спальни 365 × 525 см: высоты, привязки от угла, назначение.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <aside class="side" aria-label="Стены и фильтры">
+    <header class="intro">
+      <h1>Развёртки электрики</h1>
+      <p>Спальня подростка 365 × 525 см. Розетки, выключатели и выводы на каждой из четырёх стен.</p>
+    </header>
+
+    <nav class="walls" aria-label="Стены">
+      <svg class="keyplan" id="keyplan" role="img" aria-label="План комнаты: выберите стену"></svg>
+      <ul class="wall-list" id="wall-list"></ul>
+    </nav>
+
+    <section class="filters" aria-labelledby="filters-title">
+      <h2 id="filters-title">На чертеже</h2>
+      <div class="filter-row" id="filters"></div>
+    </section>
+
+    <section class="totals" id="totals" aria-label="Итого по комнате"></section>
+
+    <section class="print">
+      <button type="button" class="print-btn" id="print">Распечатать 4 листа</button>
+      <p>A4 альбомная, масштаб 100 %: чертёж выйдет в масштабе 1:25.</p>
+    </section>
+  </aside>
+
+  <main class="sheets" id="sheets">
+    <p class="hint">Наведите на точку или строку таблицы, чтобы увидеть её на стене. Нажмите, чтобы закрепить.</p>
+  </main>
+</div>
+
+<noscript><p class="noscript">Чертежи рисуются скриптом. Включите JavaScript или откройте SVG-файлы из папки elevations.</p></noscript>
+
+<script src="data.js"></script>
+<script src="draw.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
