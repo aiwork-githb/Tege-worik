@@ -113,6 +113,7 @@
 node room-project/tools/check-layout.mjs   # проверка, код выхода 1 при ошибке
 node room-project/tools/build-plan.mjs     # пересобрать plan.svg после правок layout.js
 node room-project/tools/build-elevations.mjs  # пересобрать развёртки: elevations/*.svg и elevations-web/data.js
+NODE_PATH=$(npm root -g) node room-project/tools/elevations-png.cjs  # картинки elevations/*.png (нужен Playwright)
 ```
 
 ## Электрика
@@ -120,19 +121,19 @@ node room-project/tools/build-elevations.mjs  # пересобрать разв�
 Розетки, выключатели и выводы — на развёртках, по листу на стену. На каждом листе: стена с мебелью и проёмами, точки с номерами и высотами, привязки от левого угла и таблица.
 
 Развёртки есть в двух видах:
-- **SVG-файлы** в папке `elevations/` — по файлу на стену.
+- **Картинки и SVG** в папке `elevations/`: на каждую стену PNG (лист A4, около 290 dpi) и SVG.
 - **Страница** `elevations-web/index.html` открывается двойным щелчком, сервер не нужен. Стена выбирается на плане комнаты. При наведении на точку видны её высота и привязка, розетки, выключатели и выводы можно скрывать фильтрами. Кнопка «Распечатать 4 листа» выводит листы A4 альбомные, чертёж в масштабе 1:25.
 
 | Лист | Стена | Точки |
 |---|---|---|
-| [1-wall-D.svg](elevations/1-wall-D.svg) | D — кровать и учебная зона | E1–E11 |
-| [2-wall-C.svg](elevations/2-wall-C.svg) | C — окно | E12–E16 |
-| [3-wall-B.svg](elevations/3-wall-B.svg) | B — экран, медиатумба, игровая зона | E17–E22 |
-| [4-wall-A.svg](elevations/4-wall-A.svg) | A — вход | E23 |
+| [1-wall-D.png](elevations/1-wall-D.png) · [svg](elevations/1-wall-D.svg) | D — кровать и учебная зона | E1–E11 |
+| [2-wall-C.png](elevations/2-wall-C.png) · [svg](elevations/2-wall-C.svg) | C — окно | E12–E16 |
+| [3-wall-B.png](elevations/3-wall-B.png) · [svg](elevations/3-wall-B.svg) | B — экран, медиатумба, игровая зона | E17–E22 |
+| [4-wall-A.png](elevations/4-wall-A.png) · [svg](elevations/4-wall-A.svg) | A — вход | E23 |
 
 Каждая развёртка — вид из комнаты на стену. Номера идут по порядку листов, на листе слева направо. Потолочные выводы E24–E26 отмечены на листе ближайшей стены. Высоты — от чистого пола до центра изделия.
 
-![Развёртка стены D](elevations/1-wall-D.svg)
+![Развёртка стены D](elevations/1-wall-D.png)
 
 | № | Где | Что | Назначение | Высота, см |
 |---|---|---|---|---:|
