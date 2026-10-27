@@ -1,6 +1,6 @@
 // Проверка планировки: пересечения мебели, дверь, окно, радиатор, проходы ≥ 70 см.
 // Запуск: node room-project/tools/check-layout.mjs
-import { ROOM, DOOR, WINDOW, RADIATOR, ITEMS, PASSAGES } from '../layout.js';
+import { ROOM, DOOR, WINDOW, RADIATOR, ITEMS, PASSAGES, POWER } from '../layout.js';
 
 const MIN_PASSAGE = 70;
 
@@ -107,6 +107,74 @@ export function runChecks() {
   const knee = desk.y1 - ped.y1;
   add('Учебное место', 'Тумба с ящиками слева от сидящего', (ped.y0 + ped.y1) / 2 < (chairS.y0 + chairS.y1) / 2, '');
   add('Учебное место', `Место для ног под столом ${knee} см (нужно ≥ 70)`, knee >= 70, '');
+
+  // Перед шкафом-купе: у стены D до тумбы ≥ 40 см, на остальной ширине основной проход.
+  const wr = ITEMS.find((it) => it.id === 'wardrobe');
+  const front = { x0: wr.x0, x1: wr.x1, y0: wr.y1, y1: wr.y1 + 40, h0: 0, h1: 150 };
+  const frontHits = ITEMS.filter((it) => it.kind !== 'flat' && volumeOverlap(it, front)).map((it) => it.name);
+  add('Шкаф-купе', 'Перед дверями свободно 40 см по всей ширине (у тумбы) и 80 см в проходе', frontHits.length === 0, frontHits.join(', '));
+
+  // Электрика по заданию.
+  const onD = POWER.filter((p) => p.wall === 'D');
+  for (const id of ['nightstandL', 'nightstand']) {
+    const ns = ITEMS.find((it) => it.id === id);
+    const above = onD.filter((p) => p.pos >= ns.y0 && p.pos <= ns.y1 && p.h > ns.h1);
+    const ok = above.some((p) => p.type === 'socket') && above.some((p) => p.type === 'switch') && above.some((p) => p.type === 'out');
+    add('Электрика', `${ns.name}: над ней розетка, выключатель и бра`, ok, above.map((p) => p.id).join(', '));
+  }
+  const deskMid = (desk.y0 + desk.y1) / 2;
+  const overDesk = onD.filter((p) => p.pos >= desk.y0 && p.pos <= desk.y1 && p.h > desk.h1 && p.h < sh.h0);
+  const leftSockets = overDesk.filter((p) => p.pos < deskMid && p.type === 'socket').reduce((a, p) => a + p.count, 0);
+  const right = overDesk.filter((p) => p.pos > deskMid);
+  add('Электрика', `Над учебным столом слева ${leftSockets} розетки`, leftSockets === 2, '');
+  add('Электрика', 'Над учебным столом справа розетка и выключатель подсветки стола',
+    right.some((p) => p.type === 'socket') && right.some((p) => p.type === 'switch'), right.map((p) => p.id).join(', '));
+  const onC = POWER.filter((p) => p.wall === 'C');
+  const ledIn = (bc) => onC.some((p) => p.type === 'out' && p.pos > bc.x0 && p.pos < bc.x1);
+  add('Электрика', 'Стена C: выводы подсветки полок обоих книжных шкафов и выключатель к ним',
+    ledIn(studyBc) && ledIn(gameBc) && onC.some((p) => p.type === 'switch'), '');
+  // Стена B, вид из комнаты: слева угол C (большие y), справа угол A (малые y).
+  const onB = POWER.filter((p) => p.wall === 'B');
+  const sum = (list) => list.filter((p) => p.type === 'socket').reduce((a, p) => a + p.count, 0);
+  const con = ITEMS.find((it) => it.id === 'console');
+  const conMid = (con.y0 + con.y1) / 2, conThird = (con.y1 - con.y0) / 6;
+  add('Электрика', 'Над медиатумбой по центру 2 розетки',
+    sum(onB.filter((p) => Math.abs(p.pos - conMid) <= conThird && p.h > con.h1)) === 2, '');
+  const edge = onB.filter((p) => p.type === 'socket' && p.count === 1 && p.h === 20 && p.pos < con.y0 && p.pos >= con.y0 - 25);
+  add('Электрика', 'У правого края медиатумбы 1 розетка на высоте 20 см', edge.length === 1, edge.map((p) => p.id).join(', '));
+  add('Электрика', 'Вывод подсветки медиатумбы спрятан за ней',
+    onB.some((p) => p.type === 'out' && p.pos > con.y0 && p.pos < con.y1 && p.h > con.h0 && p.h < con.h1), '');
+  const gd = ITEMS.find((it) => it.id === 'gamingDesk');
+  const gMid = (gd.y0 + gd.y1) / 2;
+  const onGame = onB.filter((p) => p.pos >= gd.y0 && p.pos <= gd.y1);
+  const overG = onGame.filter((p) => p.h > gd.h1), underG = onGame.filter((p) => p.h < gd.h1 - 5);
+  add('Электрика', 'Над игровым столом: 4 розетки у левого края, 2 у правого',
+    sum(overG.filter((p) => p.pos > gMid)) === 4 && sum(overG.filter((p) => p.pos < gMid)) === 2, '');
+  add('Электрика', 'Под игровым столом у правого края 4 розетки',
+    sum(underG.filter((p) => p.pos < gMid)) === 4 && sum(underG.filter((p) => p.pos > gMid)) === 0, '');
+  // Розетки и выключатели не прячутся за мебелью: перед ними свободно 5 см от лицевой плоскости
+  // (стены, реек на B или мягкой панели изголовья на D). Розетка за кроватью на h 20 закрыта намеренно.
+  const W = ROOM.width, L = ROOM.length;
+  const skins = ITEMS.filter((it) => it.id === 'slats' || it.id === 'headboard');
+  const zone = (p) => {
+    const half = p.type === 'socket' ? (p.count * 7.1 + 1.6) / 2 : 4.3;
+    const z = { h0: p.h - 4.3, h1: p.h + 4.3 };
+    const [lo, hi] = [p.pos - half, p.pos + half];
+    const skin = skins.find((it) => (p.wall === 'D' ? it.x0 === 0 : p.wall === 'B' ? it.x1 === W : false)
+      && it.y0 <= lo && it.y1 >= hi && it.h0 <= z.h0 && it.h1 >= z.h1);
+    const d = (skin ? skin.x1 - skin.x0 : 0) + 5;
+    if (p.wall === 'D') return { x0: 0, x1: d, y0: lo, y1: hi, ...z };
+    if (p.wall === 'B') return { x0: W - d, x1: W, y0: lo, y1: hi, ...z };
+    if (p.wall === 'A') return { x0: lo, x1: hi, y0: 0, y1: d, ...z };
+    return { x0: lo, x1: hi, y0: L - d, y1: L, ...z };
+  };
+  // у столов мешает только столешница: под ней место для ног и розеток
+  const solid = ITEMS.filter((it) => it.kind !== 'flat' && !skins.includes(it))
+    .map((it) => (it.id === 'studyDesk' || it.id === 'gamingDesk' ? { ...it, h0: it.h1 - 3 } : it));
+  const hidden = POWER.filter((p) => p.type !== 'out' && p.wall !== 'ceiling' && !(p.wall === 'D' && p.h <= 25))
+    .map((p) => [p.id, solid.filter((it) => volumeOverlap(it, zone(p))).map((it) => it.name)])
+    .filter(([, hits]) => hits.length);
+  add('Электрика', 'Розетки и выключатели не закрыты мебелью', hidden.length === 0, hidden.map(([id, h]) => `${id}: ${h.join(', ')}`).join('; '));
 
   // 8. Проходы.
   for (const p of PASSAGES) {

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 742 525" width="296.8mm" height="210mm" font-family="Golos Text, 'PT Sans', Arial, sans-serif">
+<title>Развёртка: Стена D — кровать и учебная зона</title>
+<defs>
+  <pattern id="slats" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#1E1D1C"/><rect x="0.65" width="2.7" height="4" fill="#4A4642"/></pattern>
+  <pattern id="perf" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="#4A4642"/><rect x="0.8" y="0.8" width="1.4" height="1.4" fill="#8E8983"/></pattern>
+  <pattern id="peg" width="2.5" height="2.5" patternUnits="userSpaceOnUse"><rect width="2.5" height="2.5" fill="#3A3836"/><circle cx="1.25" cy="1.25" r="0.5" fill="#9A948D"/></pattern>
+</defs>
+<rect width="742" height="525" fill="#FFFFFF"/>
+<text x="62" y="26" font-size="15" font-weight="800" fill="#2E2C2A">Развёртка 1 из 4 · Стена D — кровать и учебная зона</text>
+<text x="62" y="39" font-size="7" fill="#6E6862">Вид из комнаты: слева угол со стеной A, справа — со стеной C. Привязки — от левого угла до центра изделия, высоты — от чистого пола до центра. М 1:25 (A4).</text>
+<text x="62" y="50" font-size="7" fill="#2E2C2A">На стене: розеток — 6, выключателей — 3, выводов под свет и технику — 3.</text>
+<rect x="62" y="70" width="525" height="260" fill="#F4F1EC" stroke="none"/>
+<line x1="62" y1="75" x2="587" y2="75" stroke="#2E2C2A" stroke-width="0.8"/>
+<line x1="62" y1="70" x2="587" y2="70" stroke="#6E6862" stroke-width="0.5" stroke-dasharray="4 2"/>
+<text x="590" y="77" font-size="5.5" fill="#6E6862">255 чистовой</text>
+<text x="590" y="72" font-size="5.5" fill="#6E6862">260</text>
+<rect x="62" y="75" width="60" height="255" fill="#E6E1DA" stroke="#A9875E" stroke-width="0.6"/>
+<text x="92" y="190" font-size="6" fill="#6E6862" text-anchor="middle">шкаф-купе</text>
+<rect x="162" y="180" width="230" height="150" fill="#B9B2A8" stroke="#2E2C2A" stroke-width="0.5"/>
+<line x1="190.75" y1="328" x2="190.75" y2="180" stroke="#A39C93" stroke-width="0.5"/>
+<line x1="219.5" y1="328" x2="219.5" y2="180" stroke="#A39C93" stroke-width="0.5"/>
+<line x1="248.25" y1="328" x2="248.25" y2="180" stroke="#A39C93" stroke-width="0.5"/>
+<line x1="277" y1="328" x2="277" y2="180" stroke="#A39C93" stroke-width="0.5"/>
+<line x1="305.75" y1="328" x2="305.75" y2="180" stroke="#A39C93" stroke-width="0.5"/>
+<line x1="334.5" y1="328" x2="334.5" y2="180" stroke="#A39C93" stroke-width="0.5"/>
+<line x1="363.25" y1="328" x2="363.25" y2="180" stroke="#A39C93" stroke-width="0.5"/>
+<text x="277" y="190" font-size="6" fill="#6E6862" text-anchor="middle">мягкие панели изголовья, h 150</text>
+<rect x="202" y="296" width="150" height="20" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<rect x="207" y="279" width="140" height="21" fill="#FFFFFF" stroke="#6E6862" stroke-width="0.5"/>
+<rect x="227" y="316" width="100" height="14" fill="#3A3836"/>
+<text x="277" y="292" font-size="6" fill="#6E6862" text-anchor="middle">кровать</text>
+<rect x="167" y="277" width="30" height="20" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<text x="182" y="304" font-size="6" fill="#6E6862" text-anchor="middle">тумба</text>
+<rect x="357" y="277" width="30" height="20" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<text x="372" y="304" font-size="6" fill="#6E6862" text-anchor="middle">тумба</text>
+<rect x="407" y="255" width="130" height="3" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<rect x="409" y="258" width="45" height="72" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<line x1="411" y1="312" x2="452" y2="312" stroke="#A9875E" stroke-width="0.5"/>
+<line x1="411" y1="294" x2="452" y2="294" stroke="#A9875E" stroke-width="0.5"/>
+<line x1="411" y1="276" x2="452" y2="276" stroke="#A9875E" stroke-width="0.5"/>
+<text x="431.5" y="326" font-size="6" fill="#6E6862" text-anchor="middle">тумба с ящиками</text>
+<rect x="407" y="132.5" width="130" height="77.5" fill="none" stroke="#A9875E" stroke-width="0.8"/>
+<rect x="407" y="207.5" width="130" height="2.5" fill="#DCC29E" stroke="none"/>
+<rect x="407" y="170" width="130" height="2.5" fill="#DCC29E" stroke="none"/>
+<rect x="407" y="132.5" width="130" height="2.5" fill="#DCC29E" stroke="none"/>
+<rect x="408" y="135" width="63.5" height="35" fill="#DCC29E" stroke="#A9875E" stroke-width="0.5"/>
+<rect x="472.5" y="135" width="63.5" height="35" fill="#DCC29E" stroke="#A9875E" stroke-width="0.5"/>
+<rect x="410" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="417.8" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="425.6" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="433.40000000000003" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="441.20000000000005" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="449.00000000000006" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="456.80000000000007" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="464.6000000000001" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="472.4000000000001" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="480.2000000000001" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="488.0000000000001" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="495.8000000000001" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="503.60000000000014" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="511.40000000000015" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="519.2000000000002" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="527.0000000000002" y="176" width="6.5" height="31.5" fill="#D9D3CA" stroke="#6E6862" stroke-width="0.3"/>
+<text x="472" y="129.5" font-size="6" fill="#6E6862" text-anchor="middle">полки: открытый ряд и ряд с дверцами</text>
+<rect x="537" y="255" width="50" height="75" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<rect x="537" y="95" width="50" height="160" fill="#EAD9BF" stroke="#A9875E" stroke-width="0.6"/>
+<rect x="537" y="215" width="50" height="2.5" fill="#DCC29E"/>
+<rect x="537" y="175" width="50" height="2.5" fill="#DCC29E"/>
+<rect x="537" y="135" width="50" height="2.5" fill="#DCC29E"/>
+<text x="562" y="312" font-size="6" fill="#6E6862" text-anchor="middle">книжный шкаф</text>
+<rect x="537" y="75" width="50" height="20" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<rect x="539" y="255" width="46" height="30" fill="#CDBFAA" stroke="#6E6862" stroke-width="0.5"/>
+<rect x="537" y="285" width="50" height="9" fill="#DCC29E" stroke="#A9875E" stroke-width="0.6"/>
+<rect x="62" y="70" width="525" height="260" fill="none" stroke="#2E2C2A" stroke-width="1.2"/>
+<line x1="54" y1="330" x2="595" y2="330" stroke="#2E2C2A" stroke-width="2"/>
+<text x="58" y="342" font-size="7" font-weight="700" text-anchor="end" fill="#2E2C2A">угол A</text>
+<text x="591" y="342" font-size="7" font-weight="700" fill="#2E2C2A">угол C</text>
+<line x1="53" y1="330" x2="60" y2="330" stroke="#6E6862" stroke-width="0.6"/>
+<text x="51" y="332" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="end" fill="#6E6862">0</text>
+<line x1="57" y1="320" x2="60" y2="320" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="310" x2="60" y2="310" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="300" x2="60" y2="300" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="290" x2="60" y2="290" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="53" y1="280" x2="60" y2="280" stroke="#6E6862" stroke-width="0.6"/>
+<text x="51" y="282" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="end" fill="#6E6862">50</text>
+<line x1="57" y1="270" x2="60" y2="270" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="260" x2="60" y2="260" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="250" x2="60" y2="250" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="240" x2="60" y2="240" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="53" y1="230" x2="60" y2="230" stroke="#6E6862" stroke-width="0.6"/>
+<text x="51" y="232" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="end" fill="#6E6862">100</text>
+<line x1="57" y1="220" x2="60" y2="220" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="210" x2="60" y2="210" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="200" x2="60" y2="200" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="190" x2="60" y2="190" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="53" y1="180" x2="60" y2="180" stroke="#6E6862" stroke-width="0.6"/>
+<text x="51" y="182" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="end" fill="#6E6862">150</text>
+<line x1="57" y1="170" x2="60" y2="170" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="160" x2="60" y2="160" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="150" x2="60" y2="150" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="140" x2="60" y2="140" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="53" y1="130" x2="60" y2="130" stroke="#6E6862" stroke-width="0.6"/>
+<text x="51" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="end" fill="#6E6862">200</text>
+<line x1="57" y1="120" x2="60" y2="120" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="110" x2="60" y2="110" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="100" x2="60" y2="100" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="57" y1="90" x2="60" y2="90" stroke="#6E6862" stroke-width="0.3"/>
+<line x1="53" y1="80" x2="60" y2="80" stroke="#6E6862" stroke-width="0.6"/>
+<text x="51" y="82" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="end" fill="#6E6862">250</text>
+<line x1="57" y1="70" x2="60" y2="70" stroke="#6E6862" stroke-width="0.3"/>
+<rect x="173.15" y="255.7" width="8.7" height="8.6" rx="1" fill="#E3ECF8" stroke="#2C64B0" stroke-width="0.8"/><circle cx="177.5" cy="260" r="2.8" fill="#FFFFFF" stroke="#2C64B0" stroke-width="0.6"/><circle cx="176.5" cy="260" r="0.5" fill="#2C64B0"/><circle cx="178.5" cy="260" r="0.5" fill="#2C64B0"/>
+<path d="M 182 220.5 L 186.5 225 L 182 229.5 L 177.5 225 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.1"/>
+<rect x="182.2" y="255.7" width="8.6" height="8.6" rx="1" fill="#2C64B0" stroke="#2C64B0" stroke-width="0.8"/><line x1="186.5" y1="256.7" x2="186.5" y2="263.3" stroke="#FFFFFF" stroke-width="0.8"/>
+<rect x="227.65" y="305.7" width="8.7" height="8.6" rx="1" fill="#E3ECF8" stroke="#2C64B0" stroke-width="0.8"/><circle cx="232" cy="310" r="2.8" fill="#FFFFFF" stroke="#2C64B0" stroke-width="0.6"/><circle cx="231" cy="310" r="0.5" fill="#2C64B0"/><circle cx="233" cy="310" r="0.5" fill="#2C64B0"/>
+<rect x="363.2" y="255.7" width="8.6" height="8.6" rx="1" fill="#2C64B0" stroke="#2C64B0" stroke-width="0.8"/><line x1="367.5" y1="256.7" x2="367.5" y2="263.3" stroke="#FFFFFF" stroke-width="0.8"/>
+<path d="M 372 220.5 L 376.5 225 L 372 229.5 L 367.5 225 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.1"/>
+<rect x="372.15" y="255.7" width="8.7" height="8.6" rx="1" fill="#E3ECF8" stroke="#2C64B0" stroke-width="0.8"/><circle cx="376.5" cy="260" r="2.8" fill="#FFFFFF" stroke="#2C64B0" stroke-width="0.6"/><circle cx="375.5" cy="260" r="0.5" fill="#2C64B0"/><circle cx="377.5" cy="260" r="0.5" fill="#2C64B0"/>
+<path d="M 414 207.5 L 418.5 212 L 414 216.5 L 409.5 212 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.1"/>
+<rect x="420.1" y="240.7" width="15.799999999999999" height="8.6" rx="1" fill="#E3ECF8" stroke="#2C64B0" stroke-width="0.8"/><circle cx="424.45" cy="245" r="2.8" fill="#FFFFFF" stroke="#2C64B0" stroke-width="0.6"/><circle cx="423.45" cy="245" r="0.5" fill="#2C64B0"/><circle cx="425.45" cy="245" r="0.5" fill="#2C64B0"/><circle cx="431.55" cy="245" r="2.8" fill="#FFFFFF" stroke="#2C64B0" stroke-width="0.6"/><circle cx="430.55" cy="245" r="0.5" fill="#2C64B0"/><circle cx="432.55" cy="245" r="0.5" fill="#2C64B0"/>
+<rect x="511.15" y="240.7" width="8.7" height="8.6" rx="1" fill="#E3ECF8" stroke="#2C64B0" stroke-width="0.8"/><circle cx="515.5" cy="245" r="2.8" fill="#FFFFFF" stroke="#2C64B0" stroke-width="0.6"/><circle cx="514.5" cy="245" r="0.5" fill="#2C64B0"/><circle cx="516.5" cy="245" r="0.5" fill="#2C64B0"/>
+<rect x="520.2" y="240.7" width="8.6" height="8.6" rx="1" fill="#2C64B0" stroke="#2C64B0" stroke-width="0.8"/><rect x="522.3" y="242" width="4.4" height="6" fill="none" stroke="#FFFFFF" stroke-width="0.7"/>
+<text x="182" y="253.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E1 E3</text>
+<text x="193" y="262" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h70</text>
+<text x="182" y="218.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E2</text>
+<text x="188.5" y="227" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h105</text>
+<text x="232" y="303.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E4</text>
+<text x="238.35" y="312" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h20</text>
+<text x="372" y="253.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E5 E7</text>
+<text x="383" y="262" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h70</text>
+<text x="372" y="218.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E6</text>
+<text x="378.5" y="227" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h105</text>
+<text x="414" y="205.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E8</text>
+<text x="420.5" y="214" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h118</text>
+<text x="428" y="238.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E9</text>
+<text x="437.9" y="247" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h85</text>
+<text x="520" y="238.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" font-weight="700" text-anchor="middle" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E10 E11</text>
+<text x="531" y="247" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#2C64B0" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">h85</text>
+<line x1="62" y1="348" x2="587" y2="348" stroke="#2E2C2A" stroke-width="0.5"/>
+<text x="62" y="355" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">0</text>
+<line x1="177.5" y1="332" x2="177.5" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<line x1="182" y1="332" x2="182" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<line x1="186.5" y1="332" x2="186.5" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<text x="182" y="355" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">115,5</text>
+<text x="182" y="361.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">120</text>
+<text x="182" y="368" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">124,5</text>
+<line x1="232" y1="332" x2="232" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<text x="232" y="355" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">170</text>
+<line x1="367.5" y1="332" x2="367.5" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<line x1="372" y1="332" x2="372" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<line x1="376.5" y1="332" x2="376.5" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<text x="372" y="355" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">305,5</text>
+<text x="372" y="361.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">310</text>
+<text x="372" y="368" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">314,5</text>
+<line x1="414" y1="332" x2="414" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<line x1="428" y1="332" x2="428" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<text x="421" y="355" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">352</text>
+<text x="421" y="361.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">366</text>
+<line x1="515.5" y1="332" x2="515.5" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<line x1="524.5" y1="332" x2="524.5" y2="348" stroke="#2C64B0" stroke-width="0.4" stroke-dasharray="1.5 1.5"/>
+<text x="520" y="355" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">453,5</text>
+<text x="520" y="361.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">462,5</text>
+<text x="587" y="355" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5.5" text-anchor="middle" fill="#2E2C2A">525</text>
+<path d="M 288 70.5 L 292.5 75 L 288 79.5 L 283.5 75 Z" fill="#FFFFFF" stroke="#7A5FA8" stroke-width="1.1"/>
+<text x="294" y="84" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="5" fill="#7A5FA8" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">E24 потолок, 75 от стены</text>
+<g font-size="6.5" fill="#2E2C2A">
+<text x="62" y="383.5" font-weight="700">№</text>
+<text x="88" y="383.5" font-weight="700">Что</text>
+<text x="170" y="383.5" font-weight="700">От угла A, см</text>
+<text x="230" y="383.5" font-weight="700">h, см</text>
+<text x="262" y="383.5" font-weight="700">Назначение</text>
+<line x1="62" y1="386.5" x2="722" y2="386.5" stroke="#2E2C2A" stroke-width="0.5"/>
+<text x="62" y="395.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E1</text>
+<text x="88" y="395.5">розетка × 1</text>
+<text x="170" y="395.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">115,5</text>
+<text x="230" y="395.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">70</text>
+<text x="262" y="395.5">Над тумбой у шкафа-купе, с USB</text>
+<text x="62" y="405" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E2</text>
+<text x="88" y="405">вывод</text>
+<text x="170" y="405" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">120</text>
+<text x="230" y="405" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">105</text>
+<text x="262" y="405">Бра над тумбой у шкафа-купе</text>
+<text x="62" y="414.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E3</text>
+<text x="88" y="414.5">выключатель, 2 клавиши</text>
+<text x="170" y="414.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">124,5</text>
+<text x="230" y="414.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">70</text>
+<text x="262" y="414.5">Над тумбой у шкафа-купе: общий свет (проходной) + бра E2</text>
+<text x="62" y="424" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E4</text>
+<text x="88" y="424">розетка × 1</text>
+<text x="170" y="424" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">170</text>
+<text x="230" y="424" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">20</text>
+<text x="262" y="424">За кроватью: контроллер подсветки кровати и изголовья</text>
+<text x="62" y="433.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E5</text>
+<text x="88" y="433.5">выключатель, 2 клавиши</text>
+<text x="170" y="433.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">305,5</text>
+<text x="230" y="433.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">70</text>
+<text x="262" y="433.5">Над тумбой у учебной зоны: общий свет (перекрёстный) + бра E6</text>
+<text x="62" y="443" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E6</text>
+<text x="88" y="443">вывод</text>
+<text x="170" y="443" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">310</text>
+<text x="230" y="443" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">105</text>
+<text x="262" y="443">Бра над тумбой у учебной зоны</text>
+<text x="62" y="452.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E7</text>
+<text x="88" y="452.5">розетка × 1</text>
+<text x="170" y="452.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">314,5</text>
+<text x="230" y="452.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">70</text>
+<text x="262" y="452.5">Над тумбой у учебной зоны, с USB</text>
+<text x="62" y="462" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E8</text>
+<text x="88" y="462">вывод</text>
+<text x="170" y="462" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">352</text>
+<text x="230" y="462" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">118</text>
+<text x="262" y="462">Подсветка стола: лента под полками</text>
+<text x="62" y="471.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E9</text>
+<text x="88" y="471.5">розетка × 2</text>
+<text x="170" y="471.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">366</text>
+<text x="230" y="471.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">85</text>
+<text x="262" y="471.5">Над учебным столом слева: лампа, зарядки</text>
+<text x="62" y="481" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E10</text>
+<text x="88" y="481">розетка × 1</text>
+<text x="170" y="481" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">453,5</text>
+<text x="230" y="481" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">85</text>
+<text x="262" y="481">Над учебным столом справа: ноутбук</text>
+<text x="62" y="490.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E11</text>
+<text x="88" y="490.5">выключатель, 1 клавиша</text>
+<text x="170" y="490.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">462,5</text>
+<text x="230" y="490.5" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">85</text>
+<text x="262" y="490.5">Над учебным столом справа: подсветка стола E8</text>
+<text x="62" y="500" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-weight="700" fill="#2C64B0">E24</text>
+<text x="88" y="500">вывод на потолке</text>
+<text x="170" y="500" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">226</text>
+<text x="230" y="500" font-family="'JetBrains Mono', 'DejaVu Sans Mono', monospace">—</text>
+<text x="262" y="500">Проектор: розетка + 2 гофры HDMI</text>
+</g>
+<rect x="592.65" y="17.7" width="8.7" height="8.6" rx="1" fill="#E3ECF8" stroke="#2C64B0" stroke-width="0.8"/><circle cx="597" cy="22" r="2.8" fill="#FFFFFF" stroke="#2C64B0" stroke-width="0.6"/><circle cx="596" cy="22" r="0.5" fill="#2C64B0"/><circle cx="598" cy="22" r="0.5" fill="#2C64B0"/>
+<text x="606" y="24" font-size="6" fill="#2E2C2A">розетка (число гнёзд в рамке)</text>
+<rect x="592.7" y="28.7" width="8.6" height="8.6" rx="1" fill="#2C64B0" stroke="#2C64B0" stroke-width="0.8"/><rect x="594.8" y="30" width="4.4" height="6" fill="none" stroke="#FFFFFF" stroke-width="0.7"/>
+<text x="606" y="35" font-size="6" fill="#2E2C2A">выключатель 1 клавиша</text>
+<rect x="592.7" y="39.7" width="8.6" height="8.6" rx="1" fill="#2C64B0" stroke="#2C64B0" stroke-width="0.8"/><line x1="597" y1="40.7" x2="597" y2="47.3" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="606" y="46" font-size="6" fill="#2E2C2A">выключатель 2 клавиши</text>
+<path d="M 597 50.5 L 601.5 55 L 597 59.5 L 592.5 55 Z" fill="#FFFFFF" stroke="#2C64B0" stroke-width="1.1"/>
+<text x="606" y="57" font-size="6" fill="#2E2C2A">вывод под свет / технику</text>
+</svg>

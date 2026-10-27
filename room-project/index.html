@@ -424,6 +424,7 @@ const itemInfo = (id) => {
   return { num: `№ ${it.n}`, name: it.name, size: it.size + ' см', note: it.note };
 };
 const item = (id) => ITEMS.find((i) => i.id === id);
+const SCONCES = POWER.filter((p) => p.wall === 'D' && p.fixture === 'sconce');
 
 // ---------------------------------------------------------------- комната
 const W = ROOM.width, L = ROOM.length, H = ROOM.height, CEIL = ROOM.ceiling, T = ROOM.walls;
@@ -551,23 +552,25 @@ let doorTarget = 0;
   registerEmissive('halo', [halo], 4);
   const n = 8, step = (it.y1 - it.y0) / n;
   for (let i = 0; i < n; i++) box(1, it.x1, it.y0 + i * step + 0.3, it.y0 + (i + 1) * step - 0.3, 2, it.h1, MAT.soft, g);
-  // бра для чтения на панели
+  // бра для чтения на панели, над каждой тумбой
   const lampHead = led(COL.warmLed);
-  const sy = POWER.find((p) => p.id === 'E9').pos;
-  box(it.x1, it.x1 + 10, sy - 2, sy + 2, 104, 106, MAT.graphite, g);
-  const shade = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.045, 0.08, 20, 1, true), MAT.graphite);
-  shade.position.copy(V(it.x1 + 12, sy, 102)); shade.castShadow = true; g.add(shade);
-  const bulb = new THREE.Mesh(new THREE.CircleGeometry(0.04, 20), lampHead);
-  bulb.rotation.x = -Math.PI / 2; bulb.position.copy(V(it.x1 + 12, sy, 98.2)); g.add(bulb);
+  for (const p of SCONCES) {
+    const sy = p.pos;
+    box(it.x1, it.x1 + 10, sy - 2, sy + 2, p.h - 1, p.h + 1, MAT.graphite, g);
+    const shade = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.045, 0.08, 20, 1, true), MAT.graphite);
+    shade.position.copy(V(it.x1 + 12, sy, p.h - 3)); shade.castShadow = true; g.add(shade);
+    const bulb = new THREE.Mesh(new THREE.CircleGeometry(0.04, 20), lampHead);
+    bulb.rotation.x = -Math.PI / 2; bulb.position.copy(V(it.x1 + 12, sy, p.h - 6.8)); g.add(bulb);
+  }
   registerEmissive('sconce', [lampHead], 5);
 }
-{
-  const it = item('nightstand');
-  const g = group(itemInfo('nightstand'));
+for (const id of ['nightstandL', 'nightstand']) {
+  const it = item(id);
+  const g = group(itemInfo(id));
   box(it.x0, it.x1, it.y0, it.y1, it.h0, it.h1, MAT.oak, g);
   box(it.x1, it.x1 + 0.3, it.y0 + 2, it.y1 - 2, 43, 43.6, MAT.black, g, { cast: false });
-  box(12, 32, it.y0 + 7, it.y0 + 27, it.h1, it.h1 + 3, MAT.book[3], g);
-  box(14, 30, it.y0 + 8, it.y0 + 25, it.h1 + 3, it.h1 + 5, MAT.book[5], g);
+  box(12, 32, it.y0 + 4, it.y0 + 24, it.h1, it.h1 + 3, MAT.book[id === 'nightstand' ? 3 : 6], g);
+  box(14, 30, it.y0 + 5, it.y0 + 22, it.h1 + 3, it.h1 + 5, MAT.book[id === 'nightstand' ? 5 : 1], g);
 }
 
 // ---------------------------------------------------------------- 6–9. учебная зона
@@ -696,7 +699,7 @@ function chair(info, { cx, cy, back = 105, head = false, seatMat, backMat, facin
   const g = group(itemInfo('gamingDesk'));
   box(it.x0, it.x1, it.y0, it.y1, 72, 75, MAT.oak, g);
   box(it.x0 + 4, it.x1 - 2, it.y0 + 1, it.y0 + 4, 0, 72, MAT.graphite, g);
-  box(346, 360, it.y0 + 15, it.y1 - 15, 60, 70, MAT.graphite, g);
+  box(346, 360, it.y0 + 40, it.y1 - 15, 60, 70, MAT.graphite, g); // кабель-канал; у правого края розетки E18
   // клавиатура, мышь
   box(300, 314, 383, 427, 75, 77, MAT.graphite, g);
   box(302, 309, 436, 442, 75, 78, MAT.graphite, g);
@@ -999,7 +1002,8 @@ const slats = item('slats');
 // лицевая плоскость стены B: на участке с рейками розетки выносятся на их поверхность
 const faceB = (y) => (y >= slats.y0 && y <= slats.y1 ? slats.x0 : W);
 
-// розетки и выключатели
+// розетки и выключатели; на стене D в зоне изголовья — на лицевой стороне мягкой панели
+const hb = item('headboard');
 for (const p of POWER) {
   if (p.type === 'out' || p.wall === 'ceiling') continue;
   const g = group({ num: p.id, name: p.type === 'switch' ? 'Выключатель' : `Розетки: ${p.count} шт.`, size: `высота ${p.h} см`, note: p.label });
@@ -1008,7 +1012,7 @@ for (const p of POWER) {
   for (let i = 0; i < n; i++) {
     const off = (i - (n - 1) / 2) * step;
     const z0 = p.h - w / 2, z1 = p.h + w / 2;
-    const depthOff = p.id === 'E7' ? item('headboard').x1 : 0;
+    const depthOff = p.wall === 'D' && p.pos >= hb.y0 && p.pos <= hb.y1 && p.h <= hb.h1 ? hb.x1 : 0;
     if (p.wall === 'A') box(p.pos + off - w / 2, p.pos + off + w / 2, 0, 1, z0, z1, mat, g, { cast: false });
     if (p.wall === 'C') box(p.pos + off - w / 2, p.pos + off + w / 2, L - 1, L, z0, z1, mat, g, { cast: false });
     if (p.wall === 'B') box(faceB(p.pos) - 1, faceB(p.pos), p.pos + off - w / 2, p.pos + off + w / 2, z0, z1, mat, g, { cast: false });
@@ -1081,7 +1085,7 @@ function point(key, base, color, pos, dist) {
   l.position.copy(pos);
   return addLight(key, l, base);
 }
-point('sconce', 1.6, '#FFC98E', V(18, 308, 96), 3.2);
+for (const p of SCONCES) point('sconce', 1.6, '#FFC98E', V(item('headboard').x1 + 13, p.pos, p.h - 9), 3.2);
 point('seatLamp', 1.4, '#FFC98E', V(232, L - 16, 92), 3);
 point('bias', 0.5, '#FFF3E4', V(345, 405, 110), 0.9);
 point('halo', 0.9, '#FFC98E', V(6, 237.5, 158), 1.6);
